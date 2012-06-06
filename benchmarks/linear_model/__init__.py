@@ -1,1 +1,1 @@
-from linear_regression import linear_regression_dummy
+from linear_regression import *

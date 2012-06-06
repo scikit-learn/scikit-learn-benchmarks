@@ -1,5 +1,5 @@
 from vbench.api import Benchmark, GitRepo
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import os
 
@@ -45,7 +45,8 @@ python setup.py build_ext --inplace
 """
 dependencies = ['deps.py']
 
-START_DATE = datetime(2012, 5, 8)
+# this is for debugging purposes, only run a couple of days of commits
+START_DATE = datetime.now() - timedelta(days=3)
 
 repo = GitRepo(REPO_PATH)
 
