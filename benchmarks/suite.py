@@ -47,7 +47,7 @@ dependencies = ['deps.py']
 
 # this is for debugging purposes, only run a couple of days of commits
 START_DATE = datetime.now() - timedelta(days=3)
-
+#START_DATE = datetime(2012, 1, 1)
 repo = GitRepo(REPO_PATH)
 
 RST_BASE = '../doc'
@@ -72,22 +72,28 @@ def generate_rst_files(benchmarks):
     for bmk in benchmarks:
         print 'Generating rst file for %s' % bmk.name
         rst_path = os.path.join(RST_BASE, 'vbench/%s.txt' % bmk.name)
+        image_paths = []
+        for y, ylabel, suffix in zip(('timing', 'memory'),
+                                     ('miliseconds', 'MB'),
+                                     ('', '-mem')):
+            fig_filename = '%s%s.png' % (bmk.name, suffix)
+            fig_full_path = os.path.join(fig_base_path, fig_filename)
 
-        fig_full_path = os.path.join(fig_base_path, '%s.png' % bmk.name)
+            # make the figure
+            plt.figure(figsize=(10, 6))
+            ax = plt.gca()
 
-        # make the figure
-        plt.figure(figsize=(10, 6))
-        ax = plt.gca()
-        bmk.plot(DB_PATH, ax=ax)
+            bmk.plot(DB_PATH, ax=ax, y=y, ylabel=ylabel)  # what if it's None?
 
-        start, end = ax.get_xlim()
+            start, end = ax.get_xlim()
 
-        plt.xlim([start - 30, end + 30])
-        plt.savefig(fig_full_path, bbox_inches='tight')
-        plt.close('all')
+            plt.xlim([start - 30, end + 30])
+            plt.savefig(fig_full_path, bbox_inches='tight')
+            plt.close('all')
 
-        fig_rel_path = 'vbench/figures/%s.png' % bmk.name
-        rst_text = bmk.to_rst(image_path=fig_rel_path)
+            fig_rel_path = 'vbench/figures/%s' % fig_filename
+            image_paths.append(fig_rel_path)
+        rst_text = bmk.to_rst(image_paths=image_paths)
         with open(rst_path, 'w') as f:
             f.write(rst_text)
 

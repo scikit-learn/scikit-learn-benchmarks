@@ -20,5 +20,6 @@ _configurations = [
 _statement = "lr.fit(X, y)"
 
 _globs = globals()
-_globs.update({name: Benchmark(_statement, _setup % str(kwargs), name=name)
+_globs.update({name: Benchmark(_statement, _setup % str(kwargs), name=name,
+                               memory=True)
               for name, kwargs in _configurations})
