@@ -9,4 +9,4 @@ logreg = linear_model.LogisticRegression(C=1e5)
 statement = "logreg.fit(X, y)"
 
 logistic_regression_dummy = Benchmark(statement, setup,
-                                    name='logistic_regression_dummy')
+                                      name='logistic_regression_dummy')

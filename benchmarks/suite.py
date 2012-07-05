@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import os
 
-modules = ['linear_model']
+modules = ['linear_model', 'logreg_model']
 
 by_module = {}
 benchmarks = []
@@ -61,6 +61,25 @@ def generate_rst_files(benchmarks):
     vb_path = os.path.join(RST_BASE, 'vbench')
     fig_base_path = os.path.join(vb_path, 'figures')
 
+    def plot_benchmark(benchmark, column, label):
+        fig_filename = '%s-%s.png' % (benchmark.name, column)
+
+        # create paths
+        fig_full_path = os.path.join(fig_base_path, fig_filename)
+        fig_rel_path = 'vbench/figures/%s' % fig_filename
+
+        # plot the figure
+        plt.figure(figsize=(10, 6))
+        ax = plt.gca()
+
+        benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label)
+
+        start, end = ax.get_xlim()
+        plt.xlim([start - 30, end + 30])
+        plt.savefig(fig_full_path, bbox_inches='tight')
+        plt.close('all')
+        return fig_rel_path
+
     if not os.path.exists(vb_path):
         print 'creating %s' % vb_path
         os.makedirs(vb_path)
@@ -72,28 +91,17 @@ def generate_rst_files(benchmarks):
     for bmk in benchmarks:
         print 'Generating rst file for %s' % bmk.name
         rst_path = os.path.join(RST_BASE, 'vbench/%s.txt' % bmk.name)
-        image_paths = []
-        for y, ylabel, suffix in zip(('timing', 'memory'),
-                                     ('miliseconds', 'MB'),
-                                     ('', '-mem')):
-            fig_filename = '%s%s.png' % (bmk.name, suffix)
-            fig_full_path = os.path.join(fig_base_path, fig_filename)
+        image_paths = []  # tuple of (title, full_path, rel_path)
 
-            # make the figure
-            plt.figure(figsize=(10, 6))
-            ax = plt.gca()
+        # TODO: condition this as well. Maybe some benchmarks are only for mem
+        image_paths.append(('Execution time',
+                            plot_benchmark(bmk, 'timing', 'miliseconds')))
 
-            bmk.plot(DB_PATH, ax=ax, y=y, ylabel=ylabel)  # what if it's None?
+        if bmk.memory:
+            image_paths.append(('Memory usage',
+                                plot_benchmark(bmk, 'memory', 'megabytes')))
 
-            start, end = ax.get_xlim()
-
-            plt.xlim([start - 30, end + 30])
-            plt.savefig(fig_full_path, bbox_inches='tight')
-            plt.close('all')
-
-            fig_rel_path = 'vbench/figures/%s' % fig_filename
-            image_paths.append(fig_rel_path)
-        rst_text = bmk.to_rst(image_paths=image_paths)
+        rst_text = bmk.to_rst(image_paths)
         with open(rst_path, 'w') as f:
             f.write(rst_text)
 
