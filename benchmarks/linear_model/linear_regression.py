@@ -23,3 +23,4 @@ _globs = globals()
 _globs.update({name: Benchmark(_statement, _setup % str(kwargs), name=name,
                                memory=True)
               for name, kwargs in _configurations})
+

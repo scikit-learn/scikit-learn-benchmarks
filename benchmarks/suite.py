@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import os
 
-modules = ['linear_model', 'logreg_model']
+modules = ['linear_model', 'logreg_model', 'decomposition']
 
 by_module = {}
 benchmarks = []
@@ -43,7 +43,7 @@ python setup.py clean
 BUILD = """
 python setup.py build_ext --inplace
 """
-dependencies = ['deps.py']
+dependencies = ['deps.py', 'data']
 
 # this is for debugging purposes, only run a couple of days of commits
 START_DATE = datetime.now() - timedelta(days=3)
