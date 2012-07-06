@@ -7,7 +7,7 @@ from sklearn import linear_model
 from sklearn.datasets.samples_generator import make_blobs
 
 
-def load_data(dataset, data_dir="data"):
+def _load_data(dataset, data_dir="data"):
     """"
     Parameters
     ----------
@@ -40,3 +40,7 @@ def load_data(dataset, data_dir="data"):
         T = T.reshape(-1, 10000)
 
     return  X, y, T, valid
+
+data = {name: _load_data(name) for name in ('arcene', 'madelon')}
+
+load_data = data.get
