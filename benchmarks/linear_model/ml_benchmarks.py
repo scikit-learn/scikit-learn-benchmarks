@@ -1,47 +1,24 @@
-from itertools import product
+from templates import make_suite as _make_suite
 
-from vbench.benchmark import Benchmark
-
-_setup = """
-from sklearn.linear_model import %(estimator)s
-from deps import load_data
-
-kwargs = %(init_params)s
-X, y, X_t, y_t = load_data('%(data)s')
-est = %(estimator)s(**kwargs)
-"""
-
-_datasets = ['arcene', 'madelon']
-_configurations = [
+_benchmarks = [
     {
-     'estimator': 'LassoLars',
-     'init_params': str({'alpha': 0.1, 'normalize': False}),
+     'obj': 'LassoLars',
+     'init_params': {'alpha': 0.1, 'normalize': False},
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit', 'predict')
     },
     {
-     'estimator': 'Lasso',
-     'init_params': str({'alpha': 0.1, 'normalize': False}),
+     'obj': 'Lasso',
+     'init_params': {'alpha': 0.1, 'normalize': False},
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit', 'predict')
     },
     {
-     'estimator': 'ElasticNet',
-     'init_params': str({'rho': 0.5, 'alpha': 0.5}),  # normalize here?
+     'obj': 'ElasticNet',
+     'init_params': {'rho': 0.5, 'alpha': 0.5},  # normalize here?
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit', 'predict')
     },
 ]
 
-_all_configs = [dict(config, **{'name': config['estimator'] + '-' + data,
-                                'data': data})
-                for config, data in product(_configurations, _datasets)]
-
-_fit_statement = "est.fit(X, y)"
-
-_predict_statement = "est.predict(X_t)"
-
-_globs = globals()
-_globs.update({config['name'] + '-fit':
-               Benchmark(_fit_statement, _setup % config, name=config['name'],
-                         memory=True)
-               for config in _all_configs})
-
-_globs.update({config['name'] + '-predict':
-               Benchmark(_predict_statement, _setup % config + _fit_statement,
-                         name=config['name'], memory=True)
-               for config in _all_configs})
+suite = _make_suite(config_arg_list=_benchmarks, module='linear_model')

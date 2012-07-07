@@ -1,4 +1,5 @@
-from vbench.api import Benchmark, GitRepo
+from vbench.api import GitRepo
+from vbench.benchmark import gather_benchmarks
 from datetime import datetime, timedelta
 
 import os
@@ -7,12 +8,9 @@ modules = ['linear_model', 'logreg_model', 'decomposition']
 
 by_module = {}
 benchmarks = []
-
-for modname in modules:
-    ref = __import__(modname)
-    by_module[modname] = [v for v in ref.__dict__.values()
-                          if isinstance(v, Benchmark)]
-    benchmarks.extend(by_module[modname])
+for mod in modules:
+    by_module[mod] = [b for b in gather_benchmarks(__import__(mod).__dict__)]
+    benchmarks.extend(by_module[mod])
 
 for bm in benchmarks:
     assert(bm.name is not None)
@@ -46,7 +44,7 @@ python setup.py build_ext --inplace
 dependencies = ['deps.py', 'data']
 
 # this is for debugging purposes, only run a couple of days of commits
-START_DATE = datetime.now() - timedelta(days=3)
+START_DATE = datetime.now() - timedelta(days=4)
 #START_DATE = datetime(2012, 1, 1)
 repo = GitRepo(REPO_PATH)
 
