@@ -1,46 +1,33 @@
-# linear regression
-from sklearn.datasets import make_regression
-from sklearn.linear_model import LinearRegression
-
-# logistic regression
-from sklearn import linear_model
 from sklearn.datasets.samples_generator import make_blobs
 
 
-def _load_data(dataset, data_dir="data"):
-    """"
-    Parameters
-    ----------
+def _load_data(data_dir="data"):
+    # newsgroups: natural train/test split, first 100
+    # blobs:
+    # X, y = make_blobs(n_samples=500, n_features=50,
+    #                   centers=10, center_box=(5, 20))
+    # split 300-200
+    from numpy import load
+    from scipy.io import mmread
+    from os.path import join
 
-    dataset : string
-        Which dataset to load. Currently can be "madelon" or "arcene"
-    """
-    from numpy import fromfile, float64, int32
-    f = open(data_dir + '/%s_train.data' % dataset)
-    X = fromfile(f, dtype=float64, sep=' ')
-    f.close()
+    data = {
+        name: (load(join(data_dir, name, 'X_train.npy')),
+               load(join(data_dir, name, 'y_train.npy')),
+               load(join(data_dir, name, 'X_test.npy')),
+               load(join(data_dir, name, 'y_test.npy')))
+        for name in ('madelon', 'arcene', 'blobs')
+    }
 
-    f = open(data_dir + '/%s_train.labels' % dataset)
-    y = fromfile(f, dtype=int32, sep=' ')
-    f.close()
+    data['newsgroups'] = (mmread(join(data_dir, 'newsgroups', 'X_train.mtx')),
+                          load(join(data_dir, 'newsgroups', 'y_train.npy')),
+                          mmread(join(data_dir, 'newsgroups', 'X_test.mtx')),
+                          load(join(data_dir, 'newsgroups', 'y_test.npy')))
+    return data
 
-    f = open(data_dir + '/%s_valid.data' % dataset)
-    T = fromfile(f, dtype=float64, sep=' ')
-    f.close()
-
-    f = open(data_dir + '/%s_valid.labels' % dataset)
-    valid = fromfile(f, dtype=float64, sep=' ')
-    f.close()
-
-    if dataset == 'madelon':
-        X = X.reshape(-1, 500)
-        T = T.reshape(-1, 500)
-    elif dataset == 'arcene':
-        X = X.reshape(-1, 10000)
-        T = T.reshape(-1, 10000)
-
-    return  X, y, T, valid
-
-data = {name: _load_data(name) for name in ('arcene', 'madelon')}
+try:
+    data = _load_data()
+except:
+    raise ValueError("Please extract the data before running the benchmarks.")
 
 load_data = data.get
