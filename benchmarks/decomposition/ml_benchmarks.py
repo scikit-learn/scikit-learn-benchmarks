@@ -9,8 +9,28 @@ _benchmarks = [
     },
     {
      'obj': 'RandomizedPCA',
-     'init_params': str({'n_components': 9}),
-     'datasets': ('arcene', 'madelon', 'newsgroups'),
+     'init_params': {'n_components': 9},
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit', 'transform', 'fit_transform')
+    },
+    {
+     'obj': 'ProbabilisticPCA',
+     'init_params': {'n_components': 9},
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit', 'transform', 'fit_transform')
+    },
+    {
+     'obj': 'KernelPCA',
+     'init_params': {'n_components': 9, 'kernel': 'rbf'},
+     'spec': 'rbf',
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit', 'transform', 'fit_transform')
+    },
+    {
+     'obj': 'KernelPCA',
+     'init_params': {'n_components': 9, 'kernel': 'sigmoid'},
+     'spec': 'sigmoid',
+     'datasets': ('arcene', 'madelon'),
      'statements': ('fit', 'transform', 'fit_transform')
     },
     {
@@ -31,6 +51,18 @@ _benchmarks = [
      'obj': 'NMF',
      'init_params': {'n_components': 2},
      'datasets': ('blobs',),
+     'statements': ('fit', 'transform', 'fit_transform')
+    },
+    {
+     'obj': 'MiniBatchDictionaryLearning',
+     'init_params': {'n_components': 100},
+     'datasets': ('arcene',),
+     'statements': ('fit', 'transform', 'fit_transform')
+    },
+    {
+     'obj': 'MiniBatchSparsePCA',
+     'init_params': {'n_components': 2},
+     'datasets': ('madelon',),
      'statements': ('fit', 'transform', 'fit_transform')
     },
 ]

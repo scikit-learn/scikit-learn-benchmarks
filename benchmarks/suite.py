@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 import os
 
-modules = ['linear_model', 'logreg_model', 'decomposition']
+modules = ['linear_model', 'decomposition']
 
 by_module = {}
 benchmarks = []
@@ -44,7 +44,7 @@ python setup.py build_ext --inplace
 dependencies = ['deps.py', 'data']
 
 # this is for debugging purposes, only run a couple of days of commits
-START_DATE = datetime.now() - timedelta(days=4)
+START_DATE = datetime.now() - timedelta(days=6)
 #START_DATE = datetime(2012, 1, 1)
 repo = GitRepo(REPO_PATH)
 
