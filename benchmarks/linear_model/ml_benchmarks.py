@@ -4,13 +4,13 @@ _benchmarks = [
     {
      'obj': 'LinearRegression',
      'init_params': {},
-     'datasets': ('arcene', 'madelon'),
+     'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit', 'predict')
     },
     {
      'obj': 'RidgeRegression',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('arcene', 'madelon'),
+     'datasets': ('minimadelon', 'madelon'),
      'statements': ('fit', 'predict')
     },
     {
@@ -34,13 +34,13 @@ _benchmarks = [
     {
      'obj': 'ElasticNet',
      'init_params': {'rho': 0.5, 'alpha': 0.5},  # normalize here?
-     'datasets': ('arcene', 'madelon'),
+     'datasets': ('arcene', 'blobs'),
      'statements': ('fit', 'predict')
     },
     {
      'obj': 'OrthogonalMatchingPursuit',
      'init_params': {'n_nonzero_coefs': 10},
-     'datasets': ('arcene', 'madelon'),
+     'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit', 'predict')
     },
     {
@@ -52,7 +52,7 @@ _benchmarks = [
     {
      'obj': 'LogisticRegression',
      'init_params': {'C': 1e5},
-     'datasets': ('blobs',),
+     'datasets': ('minimadelon-oney', 'blobs'),
      'statements': ('fit', 'predict')
     }
 ]

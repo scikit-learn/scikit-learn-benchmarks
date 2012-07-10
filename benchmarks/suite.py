@@ -4,7 +4,8 @@ from datetime import datetime, timedelta
 
 import os
 
-modules = ['linear_model', 'decomposition']
+modules = ['linear_model', 'cluster', 'semi_supervised', 'naive_bayes', 'svm',
+           'decomposition']
 
 by_module = {}
 benchmarks = []

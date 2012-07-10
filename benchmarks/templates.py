@@ -40,7 +40,18 @@ def join_safe(terms, joiner='-'):
     return '-'.join(filter(lambda x: x is not None, terms))
 
 
-def make_suite(config_arg_list, module):
+def make_suite(config_arg_list, module=None):
+    if module is None:
+        try:
+            # Do some tricks to automatically guess module name
+            # just for some extra sugar in the benchmark file
+            import inspect
+            frm = inspect.stack()[1]
+            module = inspect.getmodule(frm[0]).__name__
+            module = module.split('.')[0]
+        except:
+            raise ValueError('Unable to guess module name. Please specify it '
+                             'manually in the benchmarks file.')
     configs = [
         (
             join_safe((arg['obj'], arg.get('spec'), data, stmt)),  # name
