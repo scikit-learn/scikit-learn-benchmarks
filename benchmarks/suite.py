@@ -1,8 +1,13 @@
-from vbench.api import GitRepo
-from vbench.benchmark import gather_benchmarks
+import os
+import getpass
+import sys
 from datetime import datetime, timedelta
 
-import os
+from vbench.api import GitRepo
+from vbench.benchmark import gather_benchmarks
+
+###################
+# Gather benchmarks
 
 modules = ['linear_model', 'cluster', 'semi_supervised', 'naive_bayes', 'svm',
            'decomposition', 'neighbors', 'covariance', 'gaussian_process',
@@ -17,8 +22,8 @@ for mod in modules:
 for bm in benchmarks:
     assert(bm.name is not None)
 
-import getpass
-import sys
+###############
+# Configuration
 
 USERNAME = getpass.getuser()
 
@@ -31,11 +36,33 @@ if sys.platform == 'darwin':
 else:
     HOME = '/home/%s' % USERNAME
 
+# Configuration defaults
+
 REPO_PATH = os.path.join(HOME, 'code/scikit-learn')
 REPO_URL = 'git@github.com:scikit-learn/scikit-learn.git'
 DB_PATH = os.path.join(HOME,
                        'code/scikit-learn-speed/benchmarks/benchmarks.db')
 TMP_DIR = '/tmp/vb_sklearn'
+
+try:
+    import ConfigParser
+
+    config = ConfigParser.ConfigParser()
+    config.readfp(open(os.path.expanduser('~/.vbench-skl')))
+
+    def get_config(key, var):
+        if config.has_option('setup', key):
+            return config.get('setup', key)
+        else:
+            print "The %s option is not set. Reverting to default." % key
+            return var
+
+    REPO_PATH = get_config('repo_path', REPO_PATH)
+    REPO_URL = get_config('repo_url', REPO_URL)
+    DB_PATH = get_config('db_path', DB_PATH)
+    TMP_DIR = get_config('tmp_dir', TMP_DIR)
+except:
+    print "Cannot load configuration file. Reverting to defaults."
 
 PREPARE = """
 python setup.py clean
@@ -43,16 +70,18 @@ python setup.py clean
 BUILD = """
 python setup.py build_ext --inplace
 """
-dependencies = ['deps.py', 'data']
-
-# this is for debugging purposes, only run a couple of days of commits
-START_DATE = datetime.now() - timedelta(days=6)
-#START_DATE = datetime(2012, 1, 1)
-repo = GitRepo(REPO_PATH)
 
 RST_BASE = '../doc'
 
+dependencies = ['deps.py', 'data']
 
+# this is for debugging purposes, only run a couple of days of commits.
+# setting is ignored anyway, by default only the last commit is run.
+START_DATE = datetime.now() - timedelta(days=6)
+repo = GitRepo(REPO_PATH)
+
+
+# Helper function, move it?
 def generate_rst_files(benchmarks):
     import matplotlib as mpl
     mpl.use('Agg')
