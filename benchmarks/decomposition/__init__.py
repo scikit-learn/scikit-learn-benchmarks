@@ -1,1 +1,1 @@
-from ml_benchmarks import *
+from benchmarks import suite
