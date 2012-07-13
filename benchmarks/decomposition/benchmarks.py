@@ -50,7 +50,7 @@ _benchmarks = [
     {
      'obj': 'NMF',
      'init_params': {'n_components': 2},
-     'datasets': ('minimadelon', 'blobs',),
+     'datasets': ('blobs',),
      'statements': ('fit', 'transform', 'fit_transform')
     },
     {
