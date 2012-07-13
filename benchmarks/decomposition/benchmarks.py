@@ -55,7 +55,7 @@ _benchmarks = [
     },
     {
      'obj': 'MiniBatchDictionaryLearning',
-     'init_params': {'n_components': 100},
+     'init_params': {'n_atoms': 100},
      'datasets': ('madelon',),
      'statements': ('fit', 'transform', 'fit_transform')
     },
