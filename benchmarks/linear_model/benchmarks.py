@@ -8,7 +8,7 @@ _benchmarks = [
      'statements': ('fit', 'predict')
     },
     {
-     'obj': 'RidgeRegression',
+     'obj': 'Ridge',
      'init_params': {'alpha': 0.1, 'normalize': False},
      'datasets': ('minimadelon', 'madelon'),
      'statements': ('fit', 'predict')
