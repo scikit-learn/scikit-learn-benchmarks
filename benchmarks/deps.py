@@ -22,13 +22,13 @@ def _load_data(data_dir="data"):
     from scipy.io import mmread
     from os.path import join
 
-    data = {
-        name: (load(join(data_dir, name, 'X_train.npy')),
+    data = dict(
+        [(name, (load(join(data_dir, name, 'X_train.npy')),
                load(join(data_dir, name, 'y_train.npy')),
                load(join(data_dir, name, 'X_test.npy')),
-               load(join(data_dir, name, 'y_test.npy')))
+               load(join(data_dir, name, 'y_test.npy'))))
         for name in ('madelon', 'minimadelon', 'arcene', 'blobs')
-    }
+    ])
 
     data['newsgroups'] = (mmread(join(data_dir, 'newsgroups', 'X_train.mtx')),
                           load(join(data_dir, 'newsgroups', 'y_train.npy')),
