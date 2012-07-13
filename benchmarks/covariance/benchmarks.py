@@ -8,7 +8,7 @@ _benchmarks = [
      'statements': ('fit',)
     },
     {
-     'obj': 'MCD',
+     'obj': 'MinCovDet',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit',)
