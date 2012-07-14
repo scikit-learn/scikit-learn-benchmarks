@@ -36,7 +36,7 @@ _benchmarks = [
      'statements': ('fit', 'predict')
     },
     {
-     'obj': 'OneClassSVC',
+     'obj': 'OneClassSVM',
      'init_params': {'kernel': 'rbf'},
      'datasets': ('madelon',),
      'statements': ('fit',)

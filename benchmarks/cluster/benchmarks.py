@@ -27,7 +27,7 @@ _benchmarks = [
     },
     {
      'obj': 'MeanShift',
-     'init_params': {'n_clusters': 9},
+     'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit', 'predict')
     },

@@ -13,6 +13,7 @@ obj = %(obj)s(**kwargs)
 
 _statements = {
     'fit': 'obj.fit(X, y)',
+    'fit_unsup': 'obj.fit(X)',
     'predict': 'obj.predict(X_t)',
     'transform': 'obj.transform(X)',
     'fit_transform': 'obj.fit_transform(X)'
@@ -20,6 +21,7 @@ _statements = {
 
 _setup_extra = {
     'fit': '',
+    'fit_unsup': '',
     'predict': _statements['fit'],
     'transform': _statements['fit'],
     'fit_transform': ''
