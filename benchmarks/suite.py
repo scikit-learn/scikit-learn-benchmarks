@@ -75,9 +75,7 @@ RST_BASE = '../doc'
 
 dependencies = ['deps.py', 'data']
 
-# this is for debugging purposes, only run a couple of days of commits.
-# setting is ignored anyway, by default only the last commit is run.
-START_DATE = datetime.now() - timedelta(days=6)
+START_DATE = datetime.now() - timedelta(days=400)
 repo = GitRepo(REPO_PATH)
 
 
