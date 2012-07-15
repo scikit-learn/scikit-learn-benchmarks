@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>cluster &mdash; Vbench performance benchmarks for scikit-learn</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.12-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
+    <link rel="next" title="covariance" href="vb_covariance.html" />
+    <link rel="prev" title="Performance Benchmarks" href="index.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <h1><a href="index.html">Vbench performance benchmarks for scikit-learn</a></h1>
+        <div class="rel">
+          <a href="index.html" title="Performance Benchmarks"
+             accesskey="P">previous</a> |
+          <a href="vb_covariance.html" title="covariance"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#kmeans-minimadelon-fit-unsup">KMeans-minimadelon-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kmeans-minimadelon-predict-unsup">KMeans-minimadelon-predict_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kmeans-blobs-fit-unsup">KMeans-blobs-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kmeans-blobs-predict-unsup">KMeans-blobs-predict_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minibatchkmeans-minimadelon-fit-unsup">MiniBatchKMeans-minimadelon-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minibatchkmeans-minimadelon-predict-unsup">MiniBatchKMeans-minimadelon-predict_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minibatchkmeans-madelon-fit-unsup">MiniBatchKMeans-madelon-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minibatchkmeans-madelon-predict-unsup">MiniBatchKMeans-madelon-predict_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spectralclustering-minimadelon-fit-unsup">SpectralClustering-minimadelon-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spectralclustering-minimadelon-predict-unsup">SpectralClustering-minimadelon-predict_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spectralclustering-blobs-fit-unsup">SpectralClustering-blobs-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spectralclustering-blobs-predict-unsup">SpectralClustering-blobs-predict_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ward-minimadelon-fit-unsup">Ward-minimadelon-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ward-blobs-fit-unsup">Ward-blobs-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meanshift-minimadelon-fit-unsup">MeanShift-minimadelon-fit_unsup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meanshift-blobs-fit-unsup">MeanShift-blobs-fit_unsup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">gaussian_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">linear_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">svm</a></li>
+</ul>
+
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" name="q" size="18" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cluster">
+<h1>cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kmeans-minimadelon-fit-unsup">
+<h2>KMeans-minimadelon-fit_unsup<a class="headerlink" href="#kmeans-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/KMeans-minimadelon-fit_unsup-timing.png" src="_images/KMeans-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/KMeans-minimadelon-fit_unsup-memory.png" src="_images/KMeans-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="kmeans-minimadelon-predict-unsup">
+<h2>KMeans-minimadelon-predict_unsup<a class="headerlink" href="#kmeans-minimadelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/KMeans-minimadelon-predict_unsup-timing.png" src="_images/KMeans-minimadelon-predict_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/KMeans-minimadelon-predict_unsup-memory.png" src="_images/KMeans-minimadelon-predict_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="kmeans-blobs-fit-unsup">
+<h2>KMeans-blobs-fit_unsup<a class="headerlink" href="#kmeans-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/KMeans-blobs-fit_unsup-timing.png" src="_images/KMeans-blobs-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/KMeans-blobs-fit_unsup-memory.png" src="_images/KMeans-blobs-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="kmeans-blobs-predict-unsup">
+<h2>KMeans-blobs-predict_unsup<a class="headerlink" href="#kmeans-blobs-predict-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/KMeans-blobs-predict_unsup-timing.png" src="_images/KMeans-blobs-predict_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/KMeans-blobs-predict_unsup-memory.png" src="_images/KMeans-blobs-predict_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="minibatchkmeans-minimadelon-fit-unsup">
+<h2>MiniBatchKMeans-minimadelon-fit_unsup<a class="headerlink" href="#minibatchkmeans-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MiniBatchKMeans-minimadelon-fit_unsup-timing.png" src="_images/MiniBatchKMeans-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MiniBatchKMeans-minimadelon-fit_unsup-memory.png" src="_images/MiniBatchKMeans-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="minibatchkmeans-minimadelon-predict-unsup">
+<h2>MiniBatchKMeans-minimadelon-predict_unsup<a class="headerlink" href="#minibatchkmeans-minimadelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MiniBatchKMeans-minimadelon-predict_unsup-timing.png" src="_images/MiniBatchKMeans-minimadelon-predict_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MiniBatchKMeans-minimadelon-predict_unsup-memory.png" src="_images/MiniBatchKMeans-minimadelon-predict_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="minibatchkmeans-madelon-fit-unsup">
+<h2>MiniBatchKMeans-madelon-fit_unsup<a class="headerlink" href="#minibatchkmeans-madelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MiniBatchKMeans-madelon-fit_unsup-timing.png" src="_images/MiniBatchKMeans-madelon-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MiniBatchKMeans-madelon-fit_unsup-memory.png" src="_images/MiniBatchKMeans-madelon-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="minibatchkmeans-madelon-predict-unsup">
+<h2>MiniBatchKMeans-madelon-predict_unsup<a class="headerlink" href="#minibatchkmeans-madelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MiniBatchKMeans-madelon-predict_unsup-timing.png" src="_images/MiniBatchKMeans-madelon-predict_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MiniBatchKMeans-madelon-predict_unsup-memory.png" src="_images/MiniBatchKMeans-madelon-predict_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="spectralclustering-minimadelon-fit-unsup">
+<h2>SpectralClustering-minimadelon-fit_unsup<a class="headerlink" href="#spectralclustering-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">SpectralClustering</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SpectralClustering-minimadelon-fit_unsup-timing.png" src="_images/SpectralClustering-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SpectralClustering-minimadelon-fit_unsup-memory.png" src="_images/SpectralClustering-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="spectralclustering-minimadelon-predict-unsup">
+<h2>SpectralClustering-minimadelon-predict_unsup<a class="headerlink" href="#spectralclustering-minimadelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">SpectralClustering</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SpectralClustering-minimadelon-predict_unsup-timing.png" src="_images/SpectralClustering-minimadelon-predict_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SpectralClustering-minimadelon-predict_unsup-memory.png" src="_images/SpectralClustering-minimadelon-predict_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="spectralclustering-blobs-fit-unsup">
+<h2>SpectralClustering-blobs-fit_unsup<a class="headerlink" href="#spectralclustering-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">SpectralClustering</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SpectralClustering-blobs-fit_unsup-timing.png" src="_images/SpectralClustering-blobs-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SpectralClustering-blobs-fit_unsup-memory.png" src="_images/SpectralClustering-blobs-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="spectralclustering-blobs-predict-unsup">
+<h2>SpectralClustering-blobs-predict_unsup<a class="headerlink" href="#spectralclustering-blobs-predict-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">SpectralClustering</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SpectralClustering</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SpectralClustering-blobs-predict_unsup-timing.png" src="_images/SpectralClustering-blobs-predict_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SpectralClustering-blobs-predict_unsup-memory.png" src="_images/SpectralClustering-blobs-predict_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="ward-minimadelon-fit-unsup">
+<h2>Ward-minimadelon-fit_unsup<a class="headerlink" href="#ward-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">Ward</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ward-minimadelon-fit_unsup-timing.png" src="_images/Ward-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ward-minimadelon-fit_unsup-memory.png" src="_images/Ward-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="ward-blobs-fit-unsup">
+<h2>Ward-blobs-fit_unsup<a class="headerlink" href="#ward-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">Ward</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ward-blobs-fit_unsup-timing.png" src="_images/Ward-blobs-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ward-blobs-fit_unsup-memory.png" src="_images/Ward-blobs-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="meanshift-minimadelon-fit-unsup">
+<h2>MeanShift-minimadelon-fit_unsup<a class="headerlink" href="#meanshift-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MeanShift</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MeanShift</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MeanShift-minimadelon-fit_unsup-timing.png" src="_images/MeanShift-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MeanShift-minimadelon-fit_unsup-memory.png" src="_images/MeanShift-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="meanshift-blobs-fit-unsup">
+<h2>MeanShift-blobs-fit_unsup<a class="headerlink" href="#meanshift-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MeanShift</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MeanShift</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MeanShift-blobs-fit_unsup-timing.png" src="_images/MeanShift-blobs-fit_unsup-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MeanShift-blobs-fit_unsup-memory.png" src="_images/MeanShift-blobs-fit_unsup-memory.png" style="width: 6in;" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="index.html" title="Performance Benchmarks"
+             >previous</a> |
+          <a href="vb_covariance.html" title="covariance"
+             >next</a> |
+          <a href="genindex.html" title="General Index"
+             >index</a>
+            <br/>
+            <a href="_sources/vb_cluster.txt"
+               rel="nofollow">Show Source</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

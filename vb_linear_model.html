@@ -1,0 +1,897 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>linear_model &mdash; Vbench performance benchmarks for scikit-learn</title>
+    
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.12-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
+    <link rel="next" title="mixture" href="vb_mixture.html" />
+    <link rel="prev" title="gaussian_process" href="vb_gaussian_process.html" /> 
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <div class="header">
+        <h1><a href="index.html">Vbench performance benchmarks for scikit-learn</a></h1>
+        <div class="rel">
+          <a href="vb_gaussian_process.html" title="gaussian_process"
+             accesskey="P">previous</a> |
+          <a href="vb_mixture.html" title="mixture"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">gaussian_process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">linear_model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linearregression-minimadelon-fit">LinearRegression-minimadelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linearregression-minimadelon-predict">LinearRegression-minimadelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linearregression-blobs-fit">LinearRegression-blobs-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linearregression-blobs-predict">LinearRegression-blobs-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ridge-minimadelon-fit">Ridge-minimadelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ridge-minimadelon-predict">Ridge-minimadelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ridge-madelon-fit">Ridge-madelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ridge-madelon-predict">Ridge-madelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lars-arcene-fit">Lars-arcene-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lars-arcene-predict">Lars-arcene-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lars-madelon-fit">Lars-madelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lars-madelon-predict">Lars-madelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lassolars-arcene-fit">LassoLars-arcene-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lassolars-arcene-predict">LassoLars-arcene-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lassolars-madelon-fit">LassoLars-madelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lassolars-madelon-predict">LassoLars-madelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lasso-arcene-fit">Lasso-arcene-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lasso-arcene-predict">Lasso-arcene-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lasso-madelon-fit">Lasso-madelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lasso-madelon-predict">Lasso-madelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elasticnet-arcene-fit">ElasticNet-arcene-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elasticnet-arcene-predict">ElasticNet-arcene-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elasticnet-blobs-fit">ElasticNet-blobs-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elasticnet-blobs-predict">ElasticNet-blobs-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#orthogonalmatchingpursuit-minimadelon-fit">OrthogonalMatchingPursuit-minimadelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#orthogonalmatchingpursuit-minimadelon-predict">OrthogonalMatchingPursuit-minimadelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#orthogonalmatchingpursuit-blobs-fit">OrthogonalMatchingPursuit-blobs-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#orthogonalmatchingpursuit-blobs-predict">OrthogonalMatchingPursuit-blobs-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sgdclassifier-madelon-fit">SGDClassifier-madelon-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sgdclassifier-madelon-predict">SGDClassifier-madelon-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sgdclassifier-newsgroups-fit">SGDClassifier-newsgroups-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sgdclassifier-newsgroups-predict">SGDClassifier-newsgroups-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logisticregression-minimadelon-oney-fit">LogisticRegression-minimadelon-oney-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logisticregression-minimadelon-oney-predict">LogisticRegression-minimadelon-oney-predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logisticregression-blobs-fit">LogisticRegression-blobs-fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logisticregression-blobs-predict">LogisticRegression-blobs-predict</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">svm</a></li>
+</ul>
+
+          <h3 style="margin-top: 1.5em;">Search</h3>
+          <form class="search" action="search.html" method="get">
+            <input type="text" name="q" size="18" />
+            <input type="submit" value="Go" />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+          </form>
+          <p class="searchtip" style="font-size: 90%">
+            Enter search terms or a module, class or function name.
+          </p>
+        </div>
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="linear-model">
+<h1>linear_model<a class="headerlink" href="#linear-model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="linearregression-minimadelon-fit">
+<h2>LinearRegression-minimadelon-fit<a class="headerlink" href="#linearregression-minimadelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LinearRegression-minimadelon-fit-timing.png" src="_images/LinearRegression-minimadelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LinearRegression-minimadelon-fit-memory.png" src="_images/LinearRegression-minimadelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="linearregression-minimadelon-predict">
+<h2>LinearRegression-minimadelon-predict<a class="headerlink" href="#linearregression-minimadelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LinearRegression-minimadelon-predict-timing.png" src="_images/LinearRegression-minimadelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LinearRegression-minimadelon-predict-memory.png" src="_images/LinearRegression-minimadelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="linearregression-blobs-fit">
+<h2>LinearRegression-blobs-fit<a class="headerlink" href="#linearregression-blobs-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LinearRegression-blobs-fit-timing.png" src="_images/LinearRegression-blobs-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LinearRegression-blobs-fit-memory.png" src="_images/LinearRegression-blobs-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="linearregression-blobs-predict">
+<h2>LinearRegression-blobs-predict<a class="headerlink" href="#linearregression-blobs-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LinearRegression-blobs-predict-timing.png" src="_images/LinearRegression-blobs-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LinearRegression-blobs-predict-memory.png" src="_images/LinearRegression-blobs-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="ridge-minimadelon-fit">
+<h2>Ridge-minimadelon-fit<a class="headerlink" href="#ridge-minimadelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ridge-minimadelon-fit-timing.png" src="_images/Ridge-minimadelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ridge-minimadelon-fit-memory.png" src="_images/Ridge-minimadelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="ridge-minimadelon-predict">
+<h2>Ridge-minimadelon-predict<a class="headerlink" href="#ridge-minimadelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ridge-minimadelon-predict-timing.png" src="_images/Ridge-minimadelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ridge-minimadelon-predict-memory.png" src="_images/Ridge-minimadelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="ridge-madelon-fit">
+<h2>Ridge-madelon-fit<a class="headerlink" href="#ridge-madelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ridge-madelon-fit-timing.png" src="_images/Ridge-madelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ridge-madelon-fit-memory.png" src="_images/Ridge-madelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="ridge-madelon-predict">
+<h2>Ridge-madelon-predict<a class="headerlink" href="#ridge-madelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ridge-madelon-predict-timing.png" src="_images/Ridge-madelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ridge-madelon-predict-memory.png" src="_images/Ridge-madelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lars-arcene-fit">
+<h2>Lars-arcene-fit<a class="headerlink" href="#lars-arcene-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lars-arcene-fit-timing.png" src="_images/Lars-arcene-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lars-arcene-fit-memory.png" src="_images/Lars-arcene-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lars-arcene-predict">
+<h2>Lars-arcene-predict<a class="headerlink" href="#lars-arcene-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lars-arcene-predict-timing.png" src="_images/Lars-arcene-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lars-arcene-predict-memory.png" src="_images/Lars-arcene-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lars-madelon-fit">
+<h2>Lars-madelon-fit<a class="headerlink" href="#lars-madelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lars-madelon-fit-timing.png" src="_images/Lars-madelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lars-madelon-fit-memory.png" src="_images/Lars-madelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lars-madelon-predict">
+<h2>Lars-madelon-predict<a class="headerlink" href="#lars-madelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lars-madelon-predict-timing.png" src="_images/Lars-madelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lars-madelon-predict-memory.png" src="_images/Lars-madelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lassolars-arcene-fit">
+<h2>LassoLars-arcene-fit<a class="headerlink" href="#lassolars-arcene-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoLars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LassoLars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LassoLars-arcene-fit-timing.png" src="_images/LassoLars-arcene-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LassoLars-arcene-fit-memory.png" src="_images/LassoLars-arcene-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lassolars-arcene-predict">
+<h2>LassoLars-arcene-predict<a class="headerlink" href="#lassolars-arcene-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoLars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LassoLars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LassoLars-arcene-predict-timing.png" src="_images/LassoLars-arcene-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LassoLars-arcene-predict-memory.png" src="_images/LassoLars-arcene-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lassolars-madelon-fit">
+<h2>LassoLars-madelon-fit<a class="headerlink" href="#lassolars-madelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoLars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LassoLars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LassoLars-madelon-fit-timing.png" src="_images/LassoLars-madelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LassoLars-madelon-fit-memory.png" src="_images/LassoLars-madelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lassolars-madelon-predict">
+<h2>LassoLars-madelon-predict<a class="headerlink" href="#lassolars-madelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoLars</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LassoLars</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LassoLars-madelon-predict-timing.png" src="_images/LassoLars-madelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LassoLars-madelon-predict-memory.png" src="_images/LassoLars-madelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lasso-arcene-fit">
+<h2>Lasso-arcene-fit<a class="headerlink" href="#lasso-arcene-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lasso-arcene-fit-timing.png" src="_images/Lasso-arcene-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lasso-arcene-fit-memory.png" src="_images/Lasso-arcene-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lasso-arcene-predict">
+<h2>Lasso-arcene-predict<a class="headerlink" href="#lasso-arcene-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lasso-arcene-predict-timing.png" src="_images/Lasso-arcene-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lasso-arcene-predict-memory.png" src="_images/Lasso-arcene-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lasso-madelon-fit">
+<h2>Lasso-madelon-fit<a class="headerlink" href="#lasso-madelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lasso-madelon-fit-timing.png" src="_images/Lasso-madelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lasso-madelon-fit-memory.png" src="_images/Lasso-madelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="lasso-madelon-predict">
+<h2>Lasso-madelon-predict<a class="headerlink" href="#lasso-madelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;normalize&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Lasso-madelon-predict-timing.png" src="_images/Lasso-madelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Lasso-madelon-predict-memory.png" src="_images/Lasso-madelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="elasticnet-arcene-fit">
+<h2>ElasticNet-arcene-fit<a class="headerlink" href="#elasticnet-arcene-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">ElasticNet</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ElasticNet-arcene-fit-timing.png" src="_images/ElasticNet-arcene-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ElasticNet-arcene-fit-memory.png" src="_images/ElasticNet-arcene-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="elasticnet-arcene-predict">
+<h2>ElasticNet-arcene-predict<a class="headerlink" href="#elasticnet-arcene-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">ElasticNet</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ElasticNet-arcene-predict-timing.png" src="_images/ElasticNet-arcene-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ElasticNet-arcene-predict-memory.png" src="_images/ElasticNet-arcene-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="elasticnet-blobs-fit">
+<h2>ElasticNet-blobs-fit<a class="headerlink" href="#elasticnet-blobs-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">ElasticNet</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ElasticNet-blobs-fit-timing.png" src="_images/ElasticNet-blobs-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ElasticNet-blobs-fit-memory.png" src="_images/ElasticNet-blobs-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="elasticnet-blobs-predict">
+<h2>ElasticNet-blobs-predict<a class="headerlink" href="#elasticnet-blobs-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">ElasticNet</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ElasticNet</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ElasticNet-blobs-predict-timing.png" src="_images/ElasticNet-blobs-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ElasticNet-blobs-predict-memory.png" src="_images/ElasticNet-blobs-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="orthogonalmatchingpursuit-minimadelon-fit">
+<h2>OrthogonalMatchingPursuit-minimadelon-fit<a class="headerlink" href="#orthogonalmatchingpursuit-minimadelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">OrthogonalMatchingPursuit</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">OrthogonalMatchingPursuit</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-minimadelon-fit-timing.png" src="_images/OrthogonalMatchingPursuit-minimadelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-minimadelon-fit-memory.png" src="_images/OrthogonalMatchingPursuit-minimadelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="orthogonalmatchingpursuit-minimadelon-predict">
+<h2>OrthogonalMatchingPursuit-minimadelon-predict<a class="headerlink" href="#orthogonalmatchingpursuit-minimadelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">OrthogonalMatchingPursuit</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">OrthogonalMatchingPursuit</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-minimadelon-predict-timing.png" src="_images/OrthogonalMatchingPursuit-minimadelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-minimadelon-predict-memory.png" src="_images/OrthogonalMatchingPursuit-minimadelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="orthogonalmatchingpursuit-blobs-fit">
+<h2>OrthogonalMatchingPursuit-blobs-fit<a class="headerlink" href="#orthogonalmatchingpursuit-blobs-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">OrthogonalMatchingPursuit</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">OrthogonalMatchingPursuit</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-blobs-fit-timing.png" src="_images/OrthogonalMatchingPursuit-blobs-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-blobs-fit-memory.png" src="_images/OrthogonalMatchingPursuit-blobs-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="orthogonalmatchingpursuit-blobs-predict">
+<h2>OrthogonalMatchingPursuit-blobs-predict<a class="headerlink" href="#orthogonalmatchingpursuit-blobs-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">OrthogonalMatchingPursuit</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_nonzero_coefs&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">OrthogonalMatchingPursuit</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-blobs-predict-timing.png" src="_images/OrthogonalMatchingPursuit-blobs-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/OrthogonalMatchingPursuit-blobs-predict-memory.png" src="_images/OrthogonalMatchingPursuit-blobs-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="sgdclassifier-madelon-fit">
+<h2>SGDClassifier-madelon-fit<a class="headerlink" href="#sgdclassifier-madelon-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SGDClassifier-madelon-fit-timing.png" src="_images/SGDClassifier-madelon-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SGDClassifier-madelon-fit-memory.png" src="_images/SGDClassifier-madelon-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="sgdclassifier-madelon-predict">
+<h2>SGDClassifier-madelon-predict<a class="headerlink" href="#sgdclassifier-madelon-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SGDClassifier-madelon-predict-timing.png" src="_images/SGDClassifier-madelon-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SGDClassifier-madelon-predict-memory.png" src="_images/SGDClassifier-madelon-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="sgdclassifier-newsgroups-fit">
+<h2>SGDClassifier-newsgroups-fit<a class="headerlink" href="#sgdclassifier-newsgroups-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;newsgroups&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SGDClassifier-newsgroups-fit-timing.png" src="_images/SGDClassifier-newsgroups-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SGDClassifier-newsgroups-fit-memory.png" src="_images/SGDClassifier-newsgroups-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="sgdclassifier-newsgroups-predict">
+<h2>SGDClassifier-newsgroups-predict<a class="headerlink" href="#sgdclassifier-newsgroups-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;newsgroups&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/SGDClassifier-newsgroups-predict-timing.png" src="_images/SGDClassifier-newsgroups-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/SGDClassifier-newsgroups-predict-memory.png" src="_images/SGDClassifier-newsgroups-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="logisticregression-minimadelon-oney-fit">
+<h2>LogisticRegression-minimadelon-oney-fit<a class="headerlink" href="#logisticregression-minimadelon-oney-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="mf">100000.0</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon-oney&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LogisticRegression-minimadelon-oney-fit-timing.png" src="_images/LogisticRegression-minimadelon-oney-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LogisticRegression-minimadelon-oney-fit-memory.png" src="_images/LogisticRegression-minimadelon-oney-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="logisticregression-minimadelon-oney-predict">
+<h2>LogisticRegression-minimadelon-oney-predict<a class="headerlink" href="#logisticregression-minimadelon-oney-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="mf">100000.0</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon-oney&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LogisticRegression-minimadelon-oney-predict-timing.png" src="_images/LogisticRegression-minimadelon-oney-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LogisticRegression-minimadelon-oney-predict-memory.png" src="_images/LogisticRegression-minimadelon-oney-predict-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="logisticregression-blobs-fit">
+<h2>LogisticRegression-blobs-fit<a class="headerlink" href="#logisticregression-blobs-fit" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="mf">100000.0</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LogisticRegression-blobs-fit-timing.png" src="_images/LogisticRegression-blobs-fit-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LogisticRegression-blobs-fit-memory.png" src="_images/LogisticRegression-blobs-fit-memory.png" style="width: 6in;" />
+</div>
+<div class="section" id="logisticregression-blobs-predict">
+<h2>LogisticRegression-blobs-predict<a class="headerlink" href="#logisticregression-blobs-predict" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;C&#39;</span><span class="p">:</span> <span class="mf">100000.0</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LogisticRegression-blobs-predict-timing.png" src="_images/LogisticRegression-blobs-predict-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LogisticRegression-blobs-predict-memory.png" src="_images/LogisticRegression-blobs-predict-memory.png" style="width: 6in;" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <a href="vb_gaussian_process.html" title="gaussian_process"
+             >previous</a> |
+          <a href="vb_mixture.html" title="mixture"
+             >next</a> |
+          <a href="genindex.html" title="General Index"
+             >index</a>
+            <br/>
+            <a href="_sources/vb_linear_model.txt"
+               rel="nofollow">Show Source</a>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
