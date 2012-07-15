@@ -38,14 +38,14 @@ _benchmarks = [
      'spec': 'deflation',
      'init_params': {'n_components': 9, 'algorithm': 'deflation'},
      'datasets': ('arcene', 'blobs'),
-     'statements': ('fit_unsup', 'transform', 'fit_transform')
+     'statements': ('fit_unsup', 'transform')
     },
     {
      'obj': 'FastICA',
      'spec': 'parallel',
      'init_params': {'n_components': 9, 'algorithm': 'parallel'},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit_unsup', 'transform', 'fit_transform')
+     'statements': ('fit_unsup', 'transform')
     },
     {
      'obj': 'NMF',
@@ -55,7 +55,7 @@ _benchmarks = [
     },
     {
      'obj': 'MiniBatchDictionaryLearning',
-     'init_params': {'n_atoms': 100},
+     'init_params': {'n_atoms': 50},
      'datasets': ('blobs',),
      'statements': ('fit_unsup', 'transform', 'fit_transform')
     },

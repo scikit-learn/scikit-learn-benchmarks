@@ -18,14 +18,14 @@ _benchmarks = [
     {
      'obj': 'RadiusNeighborsClassifier',
      'spec': 'brute',
-     'init_params': {'algorithm': 'brute'},
+     'init_params': {'algorithm': 'brute', 'radius': 500.0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit', 'predict')
     },
     {
      'obj': 'RadiusNeighborsClassifier',
      'spec': 'ball_tree',
-     'init_params': {'algorithm': 'ball_tree'},
+     'init_params': {'algorithm': 'ball_tree', 'radius': 500.0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit', 'predict')
     },

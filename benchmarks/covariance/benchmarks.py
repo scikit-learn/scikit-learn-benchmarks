@@ -5,31 +5,31 @@ _benchmarks = [
      'obj': 'GraphLasso',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit',)
+     'statements': ('fit_unsup',)
     },
     {
      'obj': 'MinCovDet',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit',)
+     'statements': ('fit_unsup',)
     },
     {
      'obj': 'ShrunkCovariance',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit',)
+     'statements': ('fit_unsup',)
     },
     {
      'obj': 'LedoitWolf',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit',)
+     'statements': ('fit_unsup',)
     },
     {
      'obj': 'OAS',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit',)
+     'statements': ('fit_unsup',)
     },
 ]
 

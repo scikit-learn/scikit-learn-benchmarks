@@ -24,6 +24,8 @@ _setup_extra = {
     'fit_unsup': '',
     'predict': _statements['fit'],
     'transform': _statements['fit'],
+    'predict_unsup': _statements['fit_unsup'],
+    'transform_unsup': _statements['fit_unsup'],
     'fit_transform': ''
 }
 
