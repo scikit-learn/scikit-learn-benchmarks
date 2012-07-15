@@ -29,7 +29,7 @@ _benchmarks = [
      'obj': 'MeanShift',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit_unsup', 'predict_unsup')
+     'statements': ('fit_unsup',)
     },
 #    {
 #     'obj': 'AffinityPropagation',

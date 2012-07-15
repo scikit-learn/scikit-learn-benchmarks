@@ -17,6 +17,7 @@ _statements = {
     'predict': 'obj.predict(X_t)',
     'predict_unsup': 'obj.predict(X_t)',
     'transform': 'obj.transform(X)',
+    'transform_unsup': 'obj.transform(X)',
     'fit_transform': 'obj.fit_transform(X)'
 }
 
