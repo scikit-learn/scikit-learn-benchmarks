@@ -100,10 +100,16 @@ def generate_rst_files(benchmarks):
         ax = plt.gca()
 
         benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label)
-
+        # TODO: customizable?
+        ylo, yhi = ax.get_ylim()
+        plt.ylim([0.0, 1.1 * yhi])
         start, end = ax.get_xlim()
         plt.xlim([start - 30, end + 30])
+        for label in ax.xaxis.get_ticklabels():
+            label.set_rotation(66)
+
         plt.savefig(fig_full_path, bbox_inches='tight')
+
         plt.close('all')
         return fig_rel_path
 
