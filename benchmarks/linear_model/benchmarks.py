@@ -57,4 +57,4 @@ _benchmarks = [
     }
 ]
 
-suite = _make_suite(config_arg_list=_benchmarks, module='linear_model')
+suite = _make_suite(config_arg_list=_benchmarks)

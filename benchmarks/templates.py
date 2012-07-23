@@ -1,6 +1,13 @@
 from itertools import product
 
-from vbench.benchmark import Benchmark, BenchmarkSuite
+from vbench.benchmark import BenchmarkSuite, PythonBenchmark, \
+                             CProfileBenchmarkMixin, MemoryBenchmarkMixin
+
+
+class SklBenchmark(CProfileBenchmarkMixin,
+                   MemoryBenchmarkMixin, PythonBenchmark):
+    pass
+
 
 _setup = """
 from sklearn.%(module)s import %(obj)s
@@ -73,5 +80,5 @@ def make_suite(config_arg_list, module=None):
         for data, stmt in product(arg['datasets'], arg['statements'])
     ]
 
-    return BenchmarkSuite(Benchmark(code, setup, name=name, memory=True)
+    return BenchmarkSuite(SklBenchmark(code, setup, name=name)
                           for name, code, setup in configs)

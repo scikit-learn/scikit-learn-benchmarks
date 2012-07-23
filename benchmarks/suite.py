@@ -73,7 +73,7 @@ python setup.py build_ext --inplace
 
 RST_BASE = '../doc'
 
-dependencies = ['deps.py', 'data']
+dependencies = ['deps.py', 'templates.py', 'data']
 
 START_DATE = datetime.now() - timedelta(days=400)
 repo = GitRepo(REPO_PATH)
@@ -130,11 +130,10 @@ def generate_rst_files(benchmarks):
         image_paths.append(('Execution time',
                             plot_benchmark(bmk, 'timing', 'miliseconds')))
 
-        if bmk.memory:
-            image_paths.append(('Memory usage',
-                                plot_benchmark(bmk, 'memory', 'megabytes')))
+        image_paths.append(('Memory usage',
+                            plot_benchmark(bmk, 'memory', 'megabytes')))
 
-        rst_text = bmk.to_rst(image_paths)
+        rst_text = bmk.to_rst(DB_PATH, image_paths)
         with open(rst_path, 'w') as f:
             f.write(rst_text)
 
@@ -160,6 +159,4 @@ Produced on a machine with TODO
                 print >> mh, header
 
                 for bmk in mod_bmks:
-                    print >> mh, bmk.name
-                    print >> mh, '-' * len(bmk.name)
                     print >> mh, '.. include:: vbench/%s.txt\n' % bmk.name
