@@ -98,9 +98,7 @@ def generate_rst_files(benchmarks):
         # plot the figure
         plt.figure(figsize=(10, 6))
         ax = plt.gca()
-
         benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label)
-        # TODO: customizable?
         ylo, yhi = ax.get_ylim()
         plt.ylim([0.0, 1.1 * yhi])
         start, end = ax.get_xlim()

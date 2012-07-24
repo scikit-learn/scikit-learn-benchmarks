@@ -6,8 +6,63 @@ from vbench.benchmark import BenchmarkSuite, PythonBenchmark, \
 
 class SklBenchmark(CProfileBenchmarkMixin,
                    MemoryBenchmarkMixin, PythonBenchmark):
-    pass
+    def plot(self, db_path, label='time', ax=None, title=True, y='timing',
+             ylabel='miliseconds'):
+        import matplotlib.pyplot as plt
+        from matplotlib.dates import MonthLocator, DateFormatter
 
+        results = self.get_results(db_path)
+
+        if ax is None:
+            fig = plt.figure()
+            ax = fig.add_subplot(111)
+
+        if y == 'timing':
+            timing = results['timing_min']
+            std = results['timing_std']
+
+            if self.start_date is not None:
+                timing = timing.truncate(before=self.start_date)
+                std = std.truncate(before=self.start_date)
+            timing.plot(ax=ax, style='b-', label=label)
+            (timing + std).plot(ax=ax, style='b:')
+            (timing - std).plot(ax=ax, style='b:')
+        else:
+            timing = results[y]
+            if self.start_date is not None:
+                timing = timing.truncate(before=self.start_date)
+
+            timing.plot(ax=ax, style='b-', label=label)
+
+        ax.set_xlabel('Date')
+        ax.set_ylabel(ylabel)
+
+        if self.logy:
+            ax2 = ax.twinx()
+            try:
+                timing.plot(ax=ax2, label='%s (log scale)' % label,
+                            style='r-',
+                            logy=self.logy)
+                ax2.set_ylabel(ylabel + ' (log scale)')
+                ax.legend(loc='best')
+                ax2.legend(loc='best')
+            except ValueError:
+                pass
+
+        ylo, yhi = ax.get_ylim()
+
+        if ylo < 1:
+            ax.set_ylim([0, yhi])
+
+        formatter = DateFormatter("%b %Y")
+        ax.xaxis.set_major_locator(MonthLocator())
+        ax.xaxis.set_major_formatter(formatter)
+        ax.autoscale_view(scalex=True)
+
+        if title:
+            ax.set_title(self.name)
+
+        return ax
 
 _setup = """
 from sklearn.%(module)s import %(obj)s
