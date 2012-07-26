@@ -114,6 +114,54 @@
 <img alt="_images/CCA-minimadelon-fit-timing.png" src="_images/CCA-minimadelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/CCA-minimadelon-fit-memory.png" src="_images/CCA-minimadelon-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      342 function calls in 0.022 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.022    0.022 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.022    0.022 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.022    0.022 /tmp/vb_sklearn/sklearn/pls.py:218(fit)
+     2    0.001    0.000    0.019    0.009 /tmp/vb_sklearn/sklearn/pls.py:16(_nipals_twoblocks_inner_loop)
+     4    0.000    0.000    0.017    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     4    0.014    0.004    0.016    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+    14    0.002    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+    63    0.002    0.000    0.002    0.000 {numpy.core.multiarray.dot}
+     4    0.000    0.000    0.001    0.000 {map}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/pls.py:75(_center_scale_xy)
+    28    0.001    0.000    0.001    0.000 {method 'any' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     2    0.000    0.000    0.000    0.000 {method 'std' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/basic.py:253(inv)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
+    18    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+    12    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+    10    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     4    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+    20    0.000    0.000    0.000    0.000 {issubclass}
+    12    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+    12    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    10    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+    18    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     8    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     6    0.000    0.000    0.000    0.000 {range}
+    18    0.000    0.000    0.000    0.000 {len}
+     7    0.000    0.000    0.000    0.000 {isinstance}
+     6    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="cca-minimadelon-transform">
 <h2>CCA-minimadelon-transform<a class="headerlink" href="#cca-minimadelon-transform" title="Permalink to this headline">¶</a></h2>
@@ -135,6 +183,20 @@
 <img alt="_images/CCA-minimadelon-transform-timing.png" src="_images/CCA-minimadelon-transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/CCA-minimadelon-transform-memory.png" src="_images/CCA-minimadelon-transform-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      7 function calls in 0.000 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.000    0.000 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/pls.py:336(transform)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="cca-blobs-fit">
 <h2>CCA-blobs-fit<a class="headerlink" href="#cca-blobs-fit" title="Permalink to this headline">¶</a></h2>
@@ -196,6 +258,47 @@
 <img alt="_images/PLSCanonical-minimadelon-fit-timing.png" src="_images/PLSCanonical-minimadelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/PLSCanonical-minimadelon-fit-memory.png" src="_images/PLSCanonical-minimadelon-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      633 function calls in 0.017 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.017    0.017 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.017    0.017 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.017    0.017 /tmp/vb_sklearn/sklearn/pls.py:218(fit)
+     2    0.007    0.003    0.014    0.007 /tmp/vb_sklearn/sklearn/pls.py:16(_nipals_twoblocks_inner_loop)
+   543    0.008    0.000    0.008    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/pls.py:75(_center_scale_xy)
+     2    0.000    0.000    0.000    0.000 {method 'std' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/basic.py:253(inv)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     2    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     4    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+    12    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     4    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     6    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 {range}
+     2    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="plscanonical-minimadelon-transform">
 <h2>PLSCanonical-minimadelon-transform<a class="headerlink" href="#plscanonical-minimadelon-transform" title="Permalink to this headline">¶</a></h2>
@@ -217,6 +320,20 @@
 <img alt="_images/PLSCanonical-minimadelon-transform-timing.png" src="_images/PLSCanonical-minimadelon-transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/PLSCanonical-minimadelon-transform-memory.png" src="_images/PLSCanonical-minimadelon-transform-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      7 function calls in 0.000 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.000    0.000 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/pls.py:336(transform)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="plscanonical-blobs-fit">
 <h2>PLSCanonical-blobs-fit<a class="headerlink" href="#plscanonical-blobs-fit" title="Permalink to this headline">¶</a></h2>
@@ -278,6 +395,47 @@
 <img alt="_images/PLSRegression-minimadelon-fit-timing.png" src="_images/PLSRegression-minimadelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/PLSRegression-minimadelon-fit-memory.png" src="_images/PLSRegression-minimadelon-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      574 function calls in 0.016 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.016    0.016 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.016    0.016 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.016    0.016 /tmp/vb_sklearn/sklearn/pls.py:218(fit)
+     2    0.006    0.003    0.013    0.006 /tmp/vb_sklearn/sklearn/pls.py:16(_nipals_twoblocks_inner_loop)
+   484    0.008    0.000    0.008    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/pls.py:75(_center_scale_xy)
+     2    0.000    0.000    0.000    0.000 {method 'std' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/basic.py:253(inv)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     2    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     4    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+     6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+    12    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     4    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     6    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="plsregression-minimadelon-transform">
 <h2>PLSRegression-minimadelon-transform<a class="headerlink" href="#plsregression-minimadelon-transform" title="Permalink to this headline">¶</a></h2>
@@ -299,6 +457,20 @@
 <img alt="_images/PLSRegression-minimadelon-transform-timing.png" src="_images/PLSRegression-minimadelon-transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/PLSRegression-minimadelon-transform-memory.png" src="_images/PLSRegression-minimadelon-transform-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      7 function calls in 0.000 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.000    0.000 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/pls.py:336(transform)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="plsregression-blobs-fit">
 <h2>PLSRegression-blobs-fit<a class="headerlink" href="#plsregression-blobs-fit" title="Permalink to this headline">¶</a></h2>
@@ -319,6 +491,51 @@
 <img alt="_images/PLSRegression-blobs-fit-timing.png" src="_images/PLSRegression-blobs-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/PLSRegression-blobs-fit-memory.png" src="_images/PLSRegression-blobs-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      111 function calls in 0.004 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.004    0.004 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.004    0.004 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.004    0.004 /tmp/vb_sklearn/sklearn/pls.py:218(fit)
+    41    0.001    0.000    0.001    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/pls.py:75(_center_scale_xy)
+     2    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/pls.py:16(_nipals_twoblocks_inner_loop)
+     2    0.000    0.000    0.000    0.000 {method 'std' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/basic.py:253(inv)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
+     2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    12    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {issubclass}
+     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="plsregression-blobs-transform">
 <h2>PLSRegression-blobs-transform<a class="headerlink" href="#plsregression-blobs-transform" title="Permalink to this headline">¶</a></h2>
@@ -340,6 +557,20 @@
 <img alt="_images/PLSRegression-blobs-transform-timing.png" src="_images/PLSRegression-blobs-transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/PLSRegression-blobs-transform-memory.png" src="_images/PLSRegression-blobs-transform-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      7 function calls in 0.001 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.001    0.001 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.001    0.001 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/pls.py:336(transform)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 </div>
 

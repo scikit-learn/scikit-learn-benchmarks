@@ -118,6 +118,129 @@
 <img alt="_images/LabelSpreading-knn-arcene-semi-fit-timing.png" src="_images/LabelSpreading-knn-arcene-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-knn-arcene-semi-fit-memory.png" src="_images/LabelSpreading-knn-arcene-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      1300 function calls (1299 primitive calls) in 0.338 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.338    0.338 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.338    0.338 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.338    0.338 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.000    0.000    0.333    0.333 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:377(_build_graph)
+     1    0.000    0.000    0.331    0.331 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.298    0.298 /tmp/vb_sklearn/sklearn/neighbors/base.py:261(kneighbors_graph)
+     1    0.000    0.000    0.298    0.298 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.295    0.295    0.295    0.295 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+     1    0.000    0.000    0.033    0.033 /tmp/vb_sklearn/sklearn/neighbors/base.py:576(fit)
+     1    0.030    0.030    0.033    0.033 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+    20    0.005    0.000    0.005    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+    15    0.000    0.000    0.004    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    16    0.000    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+    15    0.000    0.000    0.002    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:250(_mul_vector)
+    17    0.001    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/graph.py:132(graph_laplacian)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/graph.py:78(_graph_laplacian_sparse)
+    57    0.001    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   106    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+    41    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     3    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+     2    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:35(__neg__)
+    16    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:486(sum)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:115(__init__)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:526(tocoo)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:205(_check)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:643(_with_data)
+    39    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:354(_with_data)
+    15    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:287(csr_matvec)
+   114    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+   170    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+   110    0.000    0.000    0.000    0.000 {isinstance}
+    15    0.000    0.000    0.000    0.000 {_csr.csr_matvec}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:370(_mul_vector)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+    18    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:55(asmatrix)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+    67    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:233(__new__)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:529(csr_sort_indices)
+    16    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+    70    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {_csr.csr_sort_indices}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:733(issubdtype)
+     2    0.000    0.000    0.000    0.000 {method 'view' of 'numpy.ndarray' objects}
+    19    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     7    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     4    0.000    0.000    0.000    0.000 {method 'min' of 'numpy.ndarray' objects}
+    30    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+   4/3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:279(__array_finalize__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+    20    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     6    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {_coo.coo_tocsr}
+    15    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:174(coo_matvec)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:81(isintlike)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.000    0.000 {_coo.coo_matvec}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
+     3    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:111(issequence)
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     3    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:70(expandptr)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/unsupervised.py:85(__init__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 {_csr.csr_sum_duplicates}
+     5    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:77(_init_params)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:665(issubclass_)
+     1    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
+     1    0.000    0.000    0.000    0.000 {_csr.expandptr}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
+     1    0.000    0.000    0.000    0.000 {_csr.csr_has_sorted_indices}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:597(__set_sorted)
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-knn-arcene-semi-predict">
 <h2>LabelSpreading-knn-arcene-semi-predict<a class="headerlink" href="#labelspreading-knn-arcene-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -139,6 +262,39 @@
 <img alt="_images/LabelSpreading-knn-arcene-semi-predict-timing.png" src="_images/LabelSpreading-knn-arcene-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-knn-arcene-semi-predict-memory.png" src="_images/LabelSpreading-knn-arcene-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      462 function calls in 0.298 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.298    0.298 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.298    0.298 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.298    0.298 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.002    0.002    0.298    0.298 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     1    0.000    0.000    0.294    0.294 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.294    0.294 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.292    0.292    0.292    0.292 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+   102    0.003    0.000    0.003    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+   101    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   103    0.000    0.000    0.000    0.000 {isinstance}
+     7    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+   104    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    12    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-knn-blobs-semi-fit">
 <h2>LabelSpreading-knn-blobs-semi-fit<a class="headerlink" href="#labelspreading-knn-blobs-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -159,6 +315,129 @@
 <img alt="_images/LabelSpreading-knn-blobs-semi-fit-timing.png" src="_images/LabelSpreading-knn-blobs-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-knn-blobs-semi-fit-memory.png" src="_images/LabelSpreading-knn-blobs-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      1897 function calls (1896 primitive calls) in 0.033 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.033    0.033 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.033    0.033 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.003    0.003    0.033    0.033 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.000    0.000    0.017    0.017 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:377(_build_graph)
+     1    0.000    0.000    0.015    0.015 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.014    0.014 /tmp/vb_sklearn/sklearn/neighbors/base.py:261(kneighbors_graph)
+     1    0.000    0.000    0.014    0.014 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.014    0.014    0.014    0.014 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+    27    0.000    0.000    0.010    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    28    0.001    0.000    0.010    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+    27    0.001    0.000    0.007    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+    27    0.000    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:320(csr_matvecs)
+    27    0.003    0.000    0.003    0.000 {_csr.csr_matvecs}
+    29    0.001    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+    28    0.002    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+    93    0.001    0.000    0.002    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   154    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/graph.py:132(graph_laplacian)
+    65    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/graph.py:78(_graph_laplacian_sparse)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:576(fit)
+     1    0.001    0.001    0.001    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+    28    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+    32    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+     2    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:35(__neg__)
+    28    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:486(sum)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:115(__init__)
+   290    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+   186    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+    30    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:526(tocoo)
+    51    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:205(_check)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
+   170    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:354(_with_data)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:643(_with_data)
+    30    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:370(_mul_vector)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+    28    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:529(csr_sort_indices)
+     1    0.000    0.000    0.000    0.000 {_csr.csr_sort_indices}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+   103    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+    58    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:55(asmatrix)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:233(__new__)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
+     4    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {_coo.coo_tocsr}
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+    70    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {method 'min' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    32    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+    27    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:733(issubdtype)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.000    0.000 {method 'view' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:174(coo_matvec)
+     7    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+   4/3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:279(__array_finalize__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
+     1    0.000    0.000    0.000    0.000 {_coo.coo_matvec}
+    30    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     6    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+     1    0.000    0.000    0.000    0.000 {_csr.csr_sum_duplicates}
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     3    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:81(isintlike)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:70(expandptr)
+     3    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:111(issequence)
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {_csr.expandptr}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/unsupervised.py:85(__init__)
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     5    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:77(_init_params)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:665(issubclass_)
+     1    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 {_csr.csr_has_sorted_indices}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:597(__set_sorted)
+     1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-knn-blobs-semi-predict">
 <h2>LabelSpreading-knn-blobs-semi-predict<a class="headerlink" href="#labelspreading-knn-blobs-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -180,6 +459,39 @@
 <img alt="_images/LabelSpreading-knn-blobs-semi-predict-timing.png" src="_images/LabelSpreading-knn-blobs-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-knn-blobs-semi-predict-memory.png" src="_images/LabelSpreading-knn-blobs-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      862 function calls in 0.018 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.018    0.018 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.018    0.018 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.018    0.018 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.004    0.004    0.018    0.018 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     1    0.000    0.000    0.010    0.010 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.010    0.010 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.009    0.009    0.009    0.009 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+   201    0.001    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   202    0.002    0.000    0.002    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     7    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+   203    0.000    0.000    0.000    0.000 {isinstance}
+   204    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    12    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-rbf-arcene-semi-fit">
 <h2>LabelSpreading-rbf-arcene-semi-fit<a class="headerlink" href="#labelspreading-rbf-arcene-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -200,6 +512,60 @@
 <img alt="_images/LabelSpreading-rbf-arcene-semi-fit-timing.png" src="_images/LabelSpreading-rbf-arcene-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-rbf-arcene-semi-fit-memory.png" src="_images/LabelSpreading-rbf-arcene-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      177 function calls in 0.275 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.275    0.275 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.275    0.275 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.275    0.275 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.000    0.000    0.274    0.274 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:377(_build_graph)
+     1    0.000    0.000    0.273    0.273 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.003    0.003    0.273    0.273 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     1    0.010    0.010    0.265    0.265 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     3    0.000    0.000    0.248    0.083 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     3    0.248    0.083    0.248    0.083 {numpy.core.multiarray.dot}
+    10    0.011    0.001    0.011    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.009    0.005 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     4    0.000    0.000    0.009    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     2    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     2    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     2    0.000    0.000    0.002    0.001 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/graph.py:132(graph_laplacian)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/graph.py:113(_graph_laplacian_dense)
+    15    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    15    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+    30    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:733(issubdtype)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    17    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:665(issubclass_)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+    13    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     1    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-rbf-arcene-semi-predict">
 <h2>LabelSpreading-rbf-arcene-semi-predict<a class="headerlink" href="#labelspreading-rbf-arcene-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -221,6 +587,43 @@
 <img alt="_images/LabelSpreading-rbf-arcene-semi-predict-timing.png" src="_images/LabelSpreading-rbf-arcene-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-rbf-arcene-semi-predict-memory.png" src="_images/LabelSpreading-rbf-arcene-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      180 function calls in 0.302 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.302    0.302 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.302    0.302 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.302    0.302 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.000    0.000    0.302    0.302 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     1    0.000    0.000    0.296    0.296 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.003    0.003    0.296    0.296 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     1    0.020    0.020    0.283    0.283 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     2    0.255    0.128    0.255    0.128 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.249    0.249 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    11    0.022    0.002    0.022    0.002 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.019    0.009 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     8    0.000    0.000    0.018    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     4    0.000    0.000    0.009    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     4    0.000    0.000    0.009    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     3    0.000    0.000    0.005    0.002 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+    26    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    14    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+    16    0.000    0.000    0.000    0.000 {isinstance}
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    22    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-rbf-blobs-semi-fit">
 <h2>LabelSpreading-rbf-blobs-semi-fit<a class="headerlink" href="#labelspreading-rbf-blobs-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -241,6 +644,60 @@
 <img alt="_images/LabelSpreading-rbf-blobs-semi-fit-timing.png" src="_images/LabelSpreading-rbf-blobs-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-rbf-blobs-semi-fit-memory.png" src="_images/LabelSpreading-rbf-blobs-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      177 function calls in 0.056 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.056    0.056 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.056    0.056 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.002    0.002    0.056    0.056 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.001    0.001    0.049    0.049 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:377(_build_graph)
+     1    0.000    0.000    0.043    0.043 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.030    0.030    0.043    0.043 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     3    0.000    0.000    0.016    0.005 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     3    0.016    0.005    0.016    0.005 {numpy.core.multiarray.dot}
+     1    0.002    0.002    0.014    0.014 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     1    0.000    0.000    0.005    0.005 /tmp/vb_sklearn/sklearn/utils/graph.py:132(graph_laplacian)
+     1    0.003    0.003    0.005    0.005 /tmp/vb_sklearn/sklearn/utils/graph.py:113(_graph_laplacian_dense)
+    10    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.001    0.001    0.001    0.001 {method 'copy' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+    15    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    15    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:733(issubdtype)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+    30    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+    17    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numerictypes.py:665(issubclass_)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    13    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'mro' of 'type' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelspreading-rbf-blobs-semi-predict">
 <h2>LabelSpreading-rbf-blobs-semi-predict<a class="headerlink" href="#labelspreading-rbf-blobs-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -262,6 +719,43 @@
 <img alt="_images/LabelSpreading-rbf-blobs-semi-predict-timing.png" src="_images/LabelSpreading-rbf-blobs-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelSpreading-rbf-blobs-semi-predict-memory.png" src="_images/LabelSpreading-rbf-blobs-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      180 function calls in 0.335 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.335    0.335 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.335    0.335 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.335    0.335 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.001    0.001    0.335    0.335 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     2    0.311    0.156    0.311    0.156 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.030    0.030 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.020    0.020    0.030    0.030 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     1    0.001    0.001    0.010    0.010 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     1    0.000    0.000    0.008    0.008 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    11    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     8    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    26    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    14    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    16    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+    22    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-knn-arcene-semi-fit">
 <h2>LabelPropagation-knn-arcene-semi-fit<a class="headerlink" href="#labelpropagation-knn-arcene-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -282,6 +776,100 @@
 <img alt="_images/LabelPropagation-knn-arcene-semi-fit-timing.png" src="_images/LabelPropagation-knn-arcene-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-knn-arcene-semi-fit-memory.png" src="_images/LabelPropagation-knn-arcene-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      1133 function calls (1132 primitive calls) in 0.337 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.337    0.337 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.337    0.337 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.337    0.337 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.000    0.000    0.332    0.332 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:304(_build_graph)
+     1    0.000    0.000    0.331    0.331 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.298    0.298 /tmp/vb_sklearn/sklearn/neighbors/base.py:261(kneighbors_graph)
+     1    0.000    0.000    0.298    0.298 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.296    0.296    0.296    0.296 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+     1    0.000    0.000    0.033    0.033 /tmp/vb_sklearn/sklearn/neighbors/base.py:576(fit)
+     1    0.030    0.030    0.033    0.033 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+    20    0.005    0.000    0.005    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+    16    0.000    0.000    0.004    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    17    0.000    0.000    0.004    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+    17    0.000    0.000    0.002    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:250(_mul_vector)
+    17    0.001    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+    59    0.001    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+    92    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+    41    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:486(sum)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:302(__rmul__)
+    17    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:287(csr_matvec)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:107(transpose)
+   118    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    16    0.000    0.000    0.000    0.000 {_csr.csr_matvec}
+    17    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+   170    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+    31    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   112    0.000    0.000    0.000    0.000 {isinstance}
+    19    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    19    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+    19    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:55(asmatrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:233(__new__)
+    20    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    57    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+    17    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+   6/5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:279(__array_finalize__)
+     2    0.000    0.000    0.000    0.000 {method 'view' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/twodim_base.py:220(diag)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csc.py:183(csc_matvec)
+    17    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+    30    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:327(__mul__)
+     1    0.000    0.000    0.000    0.000 {_csc.csc_matvec}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     2    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/unsupervised.py:85(__init__)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:77(_init_params)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csc.py:173(_swap)
+     2    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:129(tocsr)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-knn-arcene-semi-predict">
 <h2>LabelPropagation-knn-arcene-semi-predict<a class="headerlink" href="#labelpropagation-knn-arcene-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -303,6 +891,39 @@
 <img alt="_images/LabelPropagation-knn-arcene-semi-predict-timing.png" src="_images/LabelPropagation-knn-arcene-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-knn-arcene-semi-predict-memory.png" src="_images/LabelPropagation-knn-arcene-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      462 function calls in 0.302 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.302    0.302 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.302    0.302 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.302    0.302 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.002    0.002    0.302    0.302 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     1    0.000    0.000    0.299    0.299 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.299    0.299 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.296    0.296    0.296    0.296 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+   102    0.003    0.000    0.003    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+   101    0.000    0.000    0.002    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   103    0.000    0.000    0.000    0.000 {isinstance}
+     7    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+   104    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    12    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-knn-blobs-semi-fit">
 <h2>LabelPropagation-knn-blobs-semi-fit<a class="headerlink" href="#labelpropagation-knn-blobs-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -323,6 +944,101 @@
 <img alt="_images/LabelPropagation-knn-blobs-semi-fit-timing.png" src="_images/LabelPropagation-knn-blobs-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-knn-blobs-semi-fit-memory.png" src="_images/LabelPropagation-knn-blobs-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      1780 function calls (1779 primitive calls) in 0.030 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.030    0.030 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.030    0.030 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.002    0.002    0.030    0.030 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.000    0.000    0.016    0.016 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:304(_build_graph)
+     1    0.000    0.000    0.015    0.015 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.014    0.014 /tmp/vb_sklearn/sklearn/neighbors/base.py:261(kneighbors_graph)
+     1    0.000    0.000    0.014    0.014 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.014    0.014    0.014    0.014 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+    29    0.000    0.000    0.010    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    30    0.001    0.000    0.009    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+    29    0.001    0.000    0.006    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+    29    0.000    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:320(csr_matvecs)
+    29    0.003    0.000    0.003    0.000 {_csr.csr_matvecs}
+    30    0.001    0.000    0.002    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+    30    0.001    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+    98    0.001    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   144    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+    67    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:576(fit)
+     1    0.001    0.001    0.001    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+    31    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:486(sum)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:302(__rmul__)
+    33    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+    31    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+   300    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+   196    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+   177    0.000    0.000    0.000    0.000 {isinstance}
+    32    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+    44    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+    32    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:107(transpose)
+    32    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:250(_mul_vector)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+    62    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+    96    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:55(asmatrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:233(__new__)
+   6/5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:279(__array_finalize__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 {method 'view' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    31    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+    30    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csc.py:183(csc_matvec)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 {_csc.csc_matvec}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/twodim_base.py:220(diag)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/matrixlib/defmatrix.py:327(__mul__)
+     2    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+    30    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     3    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/unsupervised.py:85(__init__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:77(_init_params)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csc.py:173(_swap)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     2    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:129(tocsr)
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-knn-blobs-semi-predict">
 <h2>LabelPropagation-knn-blobs-semi-predict<a class="headerlink" href="#labelpropagation-knn-blobs-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -344,6 +1060,39 @@
 <img alt="_images/LabelPropagation-knn-blobs-semi-predict-timing.png" src="_images/LabelPropagation-knn-blobs-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-knn-blobs-semi-predict-memory.png" src="_images/LabelPropagation-knn-blobs-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      862 function calls in 0.018 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.018    0.018 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.018    0.018 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.018    0.018 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.004    0.004    0.018    0.018 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     1    0.000    0.000    0.010    0.010 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.000    0.000    0.010    0.010 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.009    0.009    0.009    0.009 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+   201    0.001    0.000    0.003    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   202    0.002    0.000    0.002    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     7    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+   203    0.000    0.000    0.000    0.000 {isinstance}
+   204    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    12    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-rbf-arcene-semi-fit">
 <h2>LabelPropagation-rbf-arcene-semi-fit<a class="headerlink" href="#labelpropagation-rbf-arcene-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -364,6 +1113,53 @@
 <img alt="_images/LabelPropagation-rbf-arcene-semi-fit-timing.png" src="_images/LabelPropagation-rbf-arcene-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-rbf-arcene-semi-fit-memory.png" src="_images/LabelPropagation-rbf-arcene-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      145 function calls in 0.274 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.274    0.274 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.274    0.274 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.274    0.274 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.000    0.000    0.273    0.273 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:304(_build_graph)
+     1    0.000    0.000    0.273    0.273 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.003    0.003    0.273    0.273 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     1    0.010    0.010    0.265    0.265 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     2    0.000    0.000    0.248    0.124 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     2    0.248    0.124    0.248    0.124 {numpy.core.multiarray.dot}
+     9    0.011    0.001    0.011    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.009    0.005 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     4    0.000    0.000    0.009    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     2    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     2    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     2    0.000    0.000    0.002    0.001 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+    24    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+    14    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+    12    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-rbf-arcene-semi-predict">
 <h2>LabelPropagation-rbf-arcene-semi-predict<a class="headerlink" href="#labelpropagation-rbf-arcene-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -385,6 +1181,43 @@
 <img alt="_images/LabelPropagation-rbf-arcene-semi-predict-timing.png" src="_images/LabelPropagation-rbf-arcene-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-rbf-arcene-semi-predict-memory.png" src="_images/LabelPropagation-rbf-arcene-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      180 function calls in 0.302 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.302    0.302 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.302    0.302 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.302    0.302 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.000    0.000    0.302    0.302 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     1    0.000    0.000    0.295    0.295 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.003    0.003    0.295    0.295 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     1    0.020    0.020    0.283    0.283 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     2    0.255    0.127    0.255    0.127 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.249    0.249 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    11    0.022    0.002    0.022    0.002 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.019    0.009 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     8    0.000    0.000    0.018    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     4    0.000    0.000    0.009    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     4    0.000    0.000    0.009    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     3    0.000    0.000    0.005    0.002 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+    26    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    14    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    16    0.000    0.000    0.000    0.000 {isinstance}
+    22    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-rbf-blobs-semi-fit">
 <h2>LabelPropagation-rbf-blobs-semi-fit<a class="headerlink" href="#labelpropagation-rbf-blobs-semi-fit" title="Permalink to this headline">¶</a></h2>
@@ -405,6 +1238,53 @@
 <img alt="_images/LabelPropagation-rbf-blobs-semi-fit-timing.png" src="_images/LabelPropagation-rbf-blobs-semi-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-rbf-blobs-semi-fit-memory.png" src="_images/LabelPropagation-rbf-blobs-semi-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      145 function calls in 0.050 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.050    0.050 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.050    0.050 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.050    0.050 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:185(fit)
+     1    0.001    0.001    0.045    0.045 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:304(_build_graph)
+     1    0.000    0.000    0.044    0.044 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.030    0.030    0.044    0.044 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     2    0.000    0.000    0.014    0.007 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.002    0.002    0.013    0.013 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     2    0.013    0.007    0.013    0.007 {numpy.core.multiarray.dot}
+     9    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:70(_not_converged)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+    24    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+    14    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    12    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="labelpropagation-rbf-blobs-semi-predict">
 <h2>LabelPropagation-rbf-blobs-semi-predict<a class="headerlink" href="#labelpropagation-rbf-blobs-semi-predict" title="Permalink to this headline">¶</a></h2>
@@ -426,6 +1306,43 @@
 <img alt="_images/LabelPropagation-rbf-blobs-semi-predict-timing.png" src="_images/LabelPropagation-rbf-blobs-semi-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LabelPropagation-rbf-blobs-semi-predict-memory.png" src="_images/LabelPropagation-rbf-blobs-semi-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      180 function calls in 0.340 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.340    0.340 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.340    0.340 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.340    0.340 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:135(predict)
+     1    0.001    0.001    0.340    0.340 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:150(predict_proba)
+     2    0.317    0.158    0.317    0.158 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.029    0.029 /tmp/vb_sklearn/sklearn/semi_supervised/label_propagation.py:112(_get_kernel)
+     1    0.020    0.020    0.029    0.029 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:325(rbf_kernel)
+     1    0.001    0.001    0.009    0.009 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     1    0.000    0.000    0.007    0.007 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    11    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     8    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    13    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    26    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    14    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+    16    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+    22    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 </div>
 

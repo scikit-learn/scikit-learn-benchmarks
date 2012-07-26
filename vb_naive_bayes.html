@@ -114,6 +114,105 @@
 <img alt="_images/BernoulliNB-newsgroups-fit-timing.png" src="_images/BernoulliNB-newsgroups-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/BernoulliNB-newsgroups-fit-memory.png" src="_images/BernoulliNB-newsgroups-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      398 function calls in 1.134 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    1.134    1.134 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.004    0.004    1.134    1.134 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.466    0.466    1.130    1.130 /tmp/vb_sklearn/sklearn/naive_bayes.py:218(fit)
+     1    0.000    0.000    0.570    0.570 /tmp/vb_sklearn/sklearn/naive_bayes.py:429(_count)
+     1    0.010    0.010    0.456    0.456 /tmp/vb_sklearn/sklearn/naive_bayes.py:281(_count)
+     1    0.000    0.000    0.357    0.357 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.000    0.000    0.357    0.357 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:302(__rmul__)
+     1    0.000    0.000    0.356    0.356 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     1    0.000    0.000    0.356    0.356 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+     1    0.000    0.000    0.335    0.335 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csc.py:216(csc_matvecs)
+     1    0.335    0.335    0.335    0.335 {_csc.csc_matvecs}
+     1    0.071    0.071    0.113    0.113 /tmp/vb_sklearn/sklearn/preprocessing.py:405(binarize)
+     4    0.096    0.024    0.096    0.024 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.084    0.084 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.078    0.078 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.074    0.074 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+     1    0.000    0.000    0.052    0.052 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
+     1    0.052    0.052    0.052    0.052 {_coo.coo_tocsr}
+     1    0.000    0.000    0.042    0.042 /tmp/vb_sklearn/sklearn/utils/validation.py:95(check_arrays)
+     1    0.001    0.001    0.042    0.042 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:59(copy)
+     1    0.000    0.000    0.025    0.025 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:643(_with_data)
+     3    0.024    0.008    0.024    0.008 {method 'copy' of 'numpy.ndarray' objects}
+     2    0.022    0.011    0.022    0.011 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.021    0.021 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
+     3    0.000    0.000    0.017    0.006 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+     1    0.000    0.000    0.017    0.017 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
+     1    0.017    0.017    0.017    0.017 {_csr.csr_sum_duplicates}
+     1    0.016    0.016    0.016    0.016 {method 'astype' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/base.py:332(fit_transform)
+     1    0.006    0.006    0.008    0.008 /tmp/vb_sklearn/sklearn/preprocessing.py:708(transform)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+     1    0.004    0.004    0.004    0.004 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.004    0.004 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.004    0.004    0.004    0.004 {_csr.csr_has_sorted_indices}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/preprocessing.py:684(fit)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.001    0.001    0.001    0.001 {method 'sort' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+    10    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:107(transpose)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+    25    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:507(_is_multilabel)
+    23    0.000    0.000    0.000    0.000 {isinstance}
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     2    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/abc.py:128(__instancecheck__)
+    24    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+    56    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+     9    0.000    0.000    0.000    0.000 {hasattr}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_num_samples)
+    16    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+    21    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
+    20    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+    21    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:503(_is_label_indicator_matrix)
+     4    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/_weakrefset.py:68(__contains__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     3    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:673(__init__)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     4    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:680(_check_fitted)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:173(__len__)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csc.py:173(_swap)
+     1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:129(tocsr)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="bernoullinb-newsgroups-predict">
 <h2>BernoulliNB-newsgroups-predict<a class="headerlink" href="#bernoullinb-newsgroups-predict" title="Permalink to this headline">¶</a></h2>
@@ -135,6 +234,84 @@
 <img alt="_images/BernoulliNB-newsgroups-predict-timing.png" src="_images/BernoulliNB-newsgroups-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/BernoulliNB-newsgroups-predict-memory.png" src="_images/BernoulliNB-newsgroups-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      320 function calls in 1.314 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    1.314    1.314 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    1.314    1.314 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.003    0.003    1.314    1.314 /tmp/vb_sklearn/sklearn/naive_bayes.py:46(predict)
+     1    0.730    0.730    1.310    1.310 /tmp/vb_sklearn/sklearn/naive_bayes.py:434(_joint_log_likelihood)
+     2    0.000    0.000    0.378    0.189 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     2    0.000    0.000    0.378    0.189 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     2    0.000    0.000    0.377    0.189 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+     2    0.000    0.000    0.375    0.187 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:320(csr_matvecs)
+     2    0.375    0.187    0.375    0.187 {_csr.csr_matvecs}
+     2    0.087    0.044    0.087    0.044 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.043    0.043    0.070    0.070 /tmp/vb_sklearn/sklearn/preprocessing.py:405(binarize)
+     1    0.000    0.000    0.049    0.049 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.046    0.046 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+     1    0.000    0.000    0.032    0.032 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
+     1    0.032    0.032    0.032    0.032 {_coo.coo_tocsr}
+     1    0.000    0.000    0.027    0.027 /tmp/vb_sklearn/sklearn/utils/validation.py:95(check_arrays)
+     1    0.001    0.001    0.027    0.027 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:59(copy)
+     1    0.000    0.000    0.016    0.016 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:643(_with_data)
+     3    0.015    0.005    0.015    0.005 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.013    0.013 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
+     2    0.000    0.000    0.011    0.005 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+     1    0.010    0.010    0.010    0.010 {method 'astype' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.010    0.010 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
+     1    0.010    0.010    0.010    0.010 {_csr.csr_sum_duplicates}
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.003    0.003    0.003    0.003 {_csr.csr_has_sorted_indices}
+     2    0.002    0.001    0.002    0.001 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.001    0.001    0.001    0.001 {method 'argmax' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+     9    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    11    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+    22    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+     9    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    22    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+    30    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+    17    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     5    0.000    0.000    0.000    0.000 {hasattr}
+    37    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+    20    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_num_samples)
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     4    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     2    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
+     4    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:129(tocsr)
+     1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="bernoullinb-madelon-fit">
 <h2>BernoulliNB-madelon-fit<a class="headerlink" href="#bernoullinb-madelon-fit" title="Permalink to this headline">¶</a></h2>
@@ -155,6 +332,60 @@
 <img alt="_images/BernoulliNB-madelon-fit-timing.png" src="_images/BernoulliNB-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/BernoulliNB-madelon-fit-memory.png" src="_images/BernoulliNB-madelon-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      114 function calls in 0.249 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.249    0.249 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.249    0.249 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.249    0.249 /tmp/vb_sklearn/sklearn/naive_bayes.py:218(fit)
+     1    0.000    0.000    0.245    0.245 /tmp/vb_sklearn/sklearn/naive_bayes.py:429(_count)
+     1    0.207    0.207    0.217    0.217 /tmp/vb_sklearn/sklearn/preprocessing.py:405(binarize)
+     1    0.006    0.006    0.029    0.029 /tmp/vb_sklearn/sklearn/naive_bayes.py:281(_count)
+     1    0.000    0.000    0.020    0.020 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.020    0.020    0.020    0.020 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/utils/validation.py:95(check_arrays)
+     1    0.009    0.009    0.009    0.009 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+     1    0.003    0.003    0.003    0.003 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     4    0.002    0.001    0.002    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/base.py:332(fit_transform)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:708(transform)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:684(fit)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     6    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:507(_is_multilabel)
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+    11    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     2    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/abc.py:128(__instancecheck__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+    12    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     4    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:503(_is_label_indicator_matrix)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_num_samples)
+     4    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/_weakrefset.py:68(__contains__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     7    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+    10    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:680(_check_fitted)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:673(__init__)
+     4    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="bernoullinb-madelon-predict">
 <h2>BernoulliNB-madelon-predict<a class="headerlink" href="#bernoullinb-madelon-predict" title="Permalink to this headline">¶</a></h2>
@@ -176,6 +407,42 @@
 <img alt="_images/BernoulliNB-madelon-predict-timing.png" src="_images/BernoulliNB-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/BernoulliNB-madelon-predict-memory.png" src="_images/BernoulliNB-madelon-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      77 function calls in 0.070 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.070    0.070 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.070    0.070 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.070    0.070 /tmp/vb_sklearn/sklearn/naive_bayes.py:46(predict)
+     1    0.001    0.001    0.069    0.069 /tmp/vb_sklearn/sklearn/naive_bayes.py:434(_joint_log_likelihood)
+     1    0.062    0.062    0.065    0.065 /tmp/vb_sklearn/sklearn/preprocessing.py:405(binarize)
+     2    0.000    0.000    0.003    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     2    0.003    0.001    0.003    0.001 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:95(check_arrays)
+     1    0.003    0.003    0.003    0.003 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     2    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+    14    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     7    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_num_samples)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     4    0.000    0.000    0.000    0.000 {hasattr}
+     4    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="multinomialnb-newsgroups-fit">
 <h2>MultinomialNB-newsgroups-fit<a class="headerlink" href="#multinomialnb-newsgroups-fit" title="Permalink to this headline">¶</a></h2>
@@ -196,6 +463,94 @@
 <img alt="_images/MultinomialNB-newsgroups-fit-timing.png" src="_images/MultinomialNB-newsgroups-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MultinomialNB-newsgroups-fit-memory.png" src="_images/MultinomialNB-newsgroups-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      312 function calls in 1.012 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    1.012    1.012 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.004    0.004    1.012    1.012 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.457    0.457    1.008    1.008 /tmp/vb_sklearn/sklearn/naive_bayes.py:218(fit)
+     1    0.010    0.010    0.457    0.457 /tmp/vb_sklearn/sklearn/naive_bayes.py:281(_count)
+     1    0.000    0.000    0.358    0.358 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.000    0.000    0.358    0.358 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:302(__rmul__)
+     1    0.000    0.000    0.357    0.357 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     1    0.000    0.000    0.357    0.357 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+     1    0.000    0.000    0.336    0.336 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csc.py:216(csc_matvecs)
+     1    0.336    0.336    0.336    0.336 {_csc.csc_matvecs}
+     4    0.096    0.024    0.096    0.024 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.084    0.084 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.078    0.078 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.074    0.074 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+     1    0.000    0.000    0.052    0.052 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
+     1    0.052    0.052    0.052    0.052 {_coo.coo_tocsr}
+     2    0.022    0.011    0.022    0.011 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.021    0.021 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
+     1    0.000    0.000    0.017    0.017 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
+     1    0.017    0.017    0.017    0.017 {_csr.csr_sum_duplicates}
+     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/base.py:332(fit_transform)
+     1    0.006    0.006    0.008    0.008 /tmp/vb_sklearn/sklearn/preprocessing.py:708(transform)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+     1    0.004    0.004    0.004    0.004 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.004    0.004 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     1    0.000    0.000    0.004    0.004 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.004    0.004    0.004    0.004 {_csr.csr_has_sorted_indices}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/preprocessing.py:684(fit)
+     1    0.000    0.000    0.001    0.001 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.001    0.001    0.001    0.001 {method 'sort' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.001    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:107(transpose)
+     9    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:507(_is_multilabel)
+    18    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+    19    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+     2    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/abc.py:128(__instancecheck__)
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+    45    0.000    0.000    0.000    0.000 {len}
+    18    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+     7    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+    20    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+    12    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+    14    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     5    0.000    0.000    0.000    0.000 {hasattr}
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:503(_is_label_indicator_matrix)
+    18    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     4    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/_weakrefset.py:68(__contains__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {getattr}
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     2    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     2    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:673(__init__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:173(__len__)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:680(_check_fitted)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csc.py:173(_swap)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="multinomialnb-newsgroups-predict">
 <h2>MultinomialNB-newsgroups-predict<a class="headerlink" href="#multinomialnb-newsgroups-predict" title="Permalink to this headline">¶</a></h2>
@@ -217,6 +572,74 @@
 <img alt="_images/MultinomialNB-newsgroups-predict-timing.png" src="_images/MultinomialNB-newsgroups-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MultinomialNB-newsgroups-predict-memory.png" src="_images/MultinomialNB-newsgroups-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      184 function calls in 0.242 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.242    0.242 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.242    0.242 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.242    0.242 /tmp/vb_sklearn/sklearn/naive_bayes.py:46(predict)
+     1    0.002    0.002    0.239    0.239 /tmp/vb_sklearn/sklearn/naive_bayes.py:364(_joint_log_likelihood)
+     1    0.000    0.000    0.188    0.188 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.000    0.000    0.188    0.188 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     1    0.000    0.000    0.188    0.188 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+     1    0.000    0.000    0.187    0.187 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:320(csr_matvecs)
+     1    0.187    0.187    0.187    0.187 {_csr.csr_matvecs}
+     1    0.000    0.000    0.048    0.048 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.046    0.046 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+     1    0.000    0.000    0.032    0.032 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
+     1    0.032    0.032    0.032    0.032 {_coo.coo_tocsr}
+     1    0.000    0.000    0.013    0.013 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
+     1    0.000    0.000    0.010    0.010 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
+     1    0.010    0.010    0.010    0.010 {_csr.csr_sum_duplicates}
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
+     1    0.003    0.003    0.003    0.003 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.003    0.003    0.003    0.003 {_csr.csr_has_sorted_indices}
+     1    0.000    0.000    0.002    0.002 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.002    0.002    0.002    0.002 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.001    0.001    0.001    0.001 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+    11    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
+    20    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    26    0.000    0.000    0.000    0.000 {len}
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     8    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
+     8    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+    15    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     9    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     5    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
+     2    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
+     1    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="multinomialnb-madelon-fit">
 <h2>MultinomialNB-madelon-fit<a class="headerlink" href="#multinomialnb-madelon-fit" title="Permalink to this headline">¶</a></h2>
@@ -237,6 +660,54 @@
 <img alt="_images/MultinomialNB-madelon-fit-timing.png" src="_images/MultinomialNB-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MultinomialNB-madelon-fit-memory.png" src="_images/MultinomialNB-madelon-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      86 function calls in 0.031 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.031    0.031 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.031    0.031 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.031    0.031 /tmp/vb_sklearn/sklearn/naive_bayes.py:218(fit)
+     1    0.006    0.006    0.028    0.028 /tmp/vb_sklearn/sklearn/naive_bayes.py:281(_count)
+     1    0.000    0.000    0.020    0.020 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.020    0.020    0.020    0.020 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.003    0.003 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+     1    0.003    0.003    0.003    0.003 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     4    0.002    0.001    0.002    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/base.py:332(fit_transform)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:708(transform)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:684(fit)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:507(_is_multilabel)
+     4    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     9    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     2    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/abc.py:128(__instancecheck__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     8    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:503(_is_label_indicator_matrix)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     4    0.000    0.000    0.000    0.000 /hardmnt/goblin1/home/nivlad/stablepy/lib/python2.7/_weakrefset.py:68(__contains__)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     9    0.000    0.000    0.000    0.000 {len}
+     3    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:680(_check_fitted)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:673(__init__)
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="multinomialnb-madelon-predict">
 <h2>MultinomialNB-madelon-predict<a class="headerlink" href="#multinomialnb-madelon-predict" title="Permalink to this headline">¶</a></h2>
@@ -258,6 +729,36 @@
 <img alt="_images/MultinomialNB-madelon-predict-timing.png" src="_images/MultinomialNB-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MultinomialNB-madelon-predict-memory.png" src="_images/MultinomialNB-madelon-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      37 function calls in 0.003 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.003    0.003 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.003    0.003 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/naive_bayes.py:46(predict)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/naive_bayes.py:364(_joint_log_likelihood)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.001    0.001    0.001    0.001 {numpy.core.multiarray.dot}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:71(atleast2d_or_csr)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+     1    0.001    0.001    0.001    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     3    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     3    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     3    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="gaussiannb-arcene-fit">
 <h2>GaussianNB-arcene-fit<a class="headerlink" href="#gaussiannb-arcene-fit" title="Permalink to this headline">¶</a></h2>
@@ -278,6 +779,31 @@
 <img alt="_images/GaussianNB-arcene-fit-timing.png" src="_images/GaussianNB-arcene-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/GaussianNB-arcene-fit-memory.png" src="_images/GaussianNB-arcene-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      29 function calls in 0.172 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.172    0.172 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.172    0.172 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.131    0.131    0.172    0.172 /tmp/vb_sklearn/sklearn/naive_bayes.py:135(fit)
+     2    0.000    0.000    0.034    0.017 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
+     2    0.034    0.017    0.034    0.017 {method 'var' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.007    0.003 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+     2    0.007    0.003    0.007    0.003 {method 'mean' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="gaussiannb-arcene-predict">
 <h2>GaussianNB-arcene-predict<a class="headerlink" href="#gaussiannb-arcene-predict" title="Permalink to this headline">¶</a></h2>
@@ -299,6 +825,31 @@
 <img alt="_images/GaussianNB-arcene-predict-timing.png" src="_images/GaussianNB-arcene-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/GaussianNB-arcene-predict-memory.png" src="_images/GaussianNB-arcene-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      33 function calls in 0.089 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.089    0.089 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.089    0.089 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.089    0.089 /tmp/vb_sklearn/sklearn/naive_bayes.py:46(predict)
+     1    0.084    0.084    0.089    0.089 /tmp/vb_sklearn/sklearn/naive_bayes.py:174(_joint_log_likelihood)
+     4    0.000    0.000    0.005    0.001 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     4    0.005    0.001    0.005    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2162(size)
+     3    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="gaussiannb-madelon-fit">
 <h2>GaussianNB-madelon-fit<a class="headerlink" href="#gaussiannb-madelon-fit" title="Permalink to this headline">¶</a></h2>
@@ -319,6 +870,31 @@
 <img alt="_images/GaussianNB-madelon-fit-timing.png" src="_images/GaussianNB-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/GaussianNB-madelon-fit-memory.png" src="_images/GaussianNB-madelon-fit-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      29 function calls in 0.185 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.185    0.185 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.185    0.185 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.132    0.132    0.185    0.185 /tmp/vb_sklearn/sklearn/naive_bayes.py:135(fit)
+     2    0.000    0.000    0.042    0.021 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
+     2    0.042    0.021    0.042    0.021 {method 'var' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.010    0.005 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+     2    0.010    0.005    0.010    0.005 {method 'mean' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     2    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     2    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 <div class="section" id="gaussiannb-madelon-predict">
 <h2>GaussianNB-madelon-predict<a class="headerlink" href="#gaussiannb-madelon-predict" title="Permalink to this headline">¶</a></h2>
@@ -340,6 +916,31 @@
 <img alt="_images/GaussianNB-madelon-predict-timing.png" src="_images/GaussianNB-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/GaussianNB-madelon-predict-memory.png" src="_images/GaussianNB-madelon-predict-memory.png" style="width: 6in;" />
+<p><strong>Profiler output</strong></p>
+<div class="highlight-python"><pre>      33 function calls in 0.029 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.029    0.029 /hardmnt/goblin1/home/nivlad/balls/vbench/vbench/benchmark.py:257(f)
+     1    0.000    0.000    0.029    0.029 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.029    0.029 /tmp/vb_sklearn/sklearn/naive_bayes.py:46(predict)
+     1    0.026    0.026    0.029    0.029 /tmp/vb_sklearn/sklearn/naive_bayes.py:174(_joint_log_likelihood)
+     4    0.000    0.000    0.002    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     4    0.002    0.000    0.002    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:683(argmax)
+     1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:66(array2d)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     3    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /home/nivlad/.local/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2162(size)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
 </div>
 </div>
 
