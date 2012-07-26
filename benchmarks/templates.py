@@ -68,7 +68,7 @@ class SklBenchmark(CProfileBenchmarkMixin,
         def indent(string, spaces=4):
             dent = ' ' * spaces
             return '\n'.join([dent + x for x in string.split('\n')])
-        result = Benchmark.to_rst(self, image_paths)
+        result = PythonBenchmark.to_rst(self, image_paths)
         profile_out = ''
         if db_path:
             results = self.get_results(db_path)

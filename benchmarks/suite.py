@@ -153,6 +153,7 @@ Produced on a machine with TODO
             print >> f, '    vb_%s' % modname
             modpath = os.path.join(RST_BASE, 'vb_%s.rst' % modname)
             with open(modpath, 'w') as mh:
+                modname = 'Benchmarks for ' + modname
                 header = '%s\n%s\n\n' % (modname, '=' * len(modname))
                 print >> mh, header
 
