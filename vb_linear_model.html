@@ -8,9 +8,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>linear_model &mdash; Vbench performance benchmarks for scikit-learn</title>
+    <title>Benchmarks for linear_model &mdash; Vbench performance benchmarks for scikit-learn</title>
     
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,35 +25,67 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
-    <link rel="next" title="mixture" href="vb_mixture.html" />
-    <link rel="prev" title="gaussian_process" href="vb_gaussian_process.html" /> 
+    <link rel="next" title="Benchmarks for mixture" href="vb_mixture.html" />
+    <link rel="prev" title="Benchmarks for gaussian_process" href="vb_gaussian_process.html" />
+
+  <!-- Reference the theme's stylesheet on the Google CDN -->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/excite-bike/jquery-ui.css"
+        type="text/css" rel="Stylesheet" />
+ 
+  <!-- Reference jQuery and jQuery UI from the CDN. Remember
+       that the order of these two elements is important -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+        $(".profiler-output").accordion({collapsible: true, header: "p", active: false} );
+      });
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
   </head>
   <body>
+
     <div class="header-wrapper">
       <div class="header">
-        <h1><a href="index.html">Vbench performance benchmarks for scikit-learn</a></h1>
-        <div class="rel">
-          <a href="vb_gaussian_process.html" title="gaussian_process"
-             accesskey="P">previous</a> |
-          <a href="vb_mixture.html" title="mixture"
-             accesskey="N">next</a> |
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-       </div>
+          <p class="logo"><a href="http://scikit-learn.org/">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="index.html">Speed</a></li>
+            <li><a href="http://github.com/vene/scikit-learn-speed">Github</a></li>
+       </ul>
+</div>
+<!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
-      <div class="content">
-        <div class="sidebar">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
           <h3>Table Of Contents</h3>
           <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">covariance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">gaussian_process</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">linear_model</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">Benchmarks for cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">Benchmarks for covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">Benchmarks for decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">Benchmarks for gaussian_process</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Benchmarks for linear_model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linearregression-minimadelon-fit">LinearRegression-minimadelon-fit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linearregression-minimadelon-predict">LinearRegression-minimadelon-predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linearregression-blobs-fit">LinearRegression-blobs-fit</a></li>
@@ -92,33 +124,115 @@
 <li class="toctree-l2"><a class="reference internal" href="#logisticregression-blobs-predict">LogisticRegression-blobs-predict</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">mixture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">naive_bayes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">neighbors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">pls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">semi_supervised</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">svm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">Benchmarks for mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">Benchmarks for naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">Benchmarks for neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">Benchmarks for pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">Benchmarks for semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">Benchmarks for svm</a></li>
 </ul>
 
-          <h3 style="margin-top: 1.5em;">Search</h3>
-          <form class="search" action="search.html" method="get">
-            <input type="text" name="q" size="18" />
-            <input type="submit" value="Go" />
-            <input type="hidden" name="check_keywords" value="yes" />
-            <input type="hidden" name="area" value="default" />
-          </form>
-          <p class="searchtip" style="font-size: 90%">
-            Enter search terms or a module, class or function name.
-          </p>
-        </div>
-        <div class="document">
+          <!--
+	   <div class="rel rellarge">
+	     
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  --
+	<div class="rellink">
+	<a href="vb_gaussian_process.html" title="Benchmarks for gaussian_process"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for g...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for gaussian_process
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="vb_mixture.html" title="Benchmarks for mixture"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for m...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for mixture
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page --
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.12-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Benchmarks for linear_model</a><ul>
+<li><a class="reference internal" href="#linearregression-minimadelon-fit">LinearRegression-minimadelon-fit</a></li>
+<li><a class="reference internal" href="#linearregression-minimadelon-predict">LinearRegression-minimadelon-predict</a></li>
+<li><a class="reference internal" href="#linearregression-blobs-fit">LinearRegression-blobs-fit</a></li>
+<li><a class="reference internal" href="#linearregression-blobs-predict">LinearRegression-blobs-predict</a></li>
+<li><a class="reference internal" href="#ridge-minimadelon-fit">Ridge-minimadelon-fit</a></li>
+<li><a class="reference internal" href="#ridge-minimadelon-predict">Ridge-minimadelon-predict</a></li>
+<li><a class="reference internal" href="#ridge-madelon-fit">Ridge-madelon-fit</a></li>
+<li><a class="reference internal" href="#ridge-madelon-predict">Ridge-madelon-predict</a></li>
+<li><a class="reference internal" href="#lars-arcene-fit">Lars-arcene-fit</a></li>
+<li><a class="reference internal" href="#lars-arcene-predict">Lars-arcene-predict</a></li>
+<li><a class="reference internal" href="#lars-madelon-fit">Lars-madelon-fit</a></li>
+<li><a class="reference internal" href="#lars-madelon-predict">Lars-madelon-predict</a></li>
+<li><a class="reference internal" href="#lassolars-arcene-fit">LassoLars-arcene-fit</a></li>
+<li><a class="reference internal" href="#lassolars-arcene-predict">LassoLars-arcene-predict</a></li>
+<li><a class="reference internal" href="#lassolars-madelon-fit">LassoLars-madelon-fit</a></li>
+<li><a class="reference internal" href="#lassolars-madelon-predict">LassoLars-madelon-predict</a></li>
+<li><a class="reference internal" href="#lasso-arcene-fit">Lasso-arcene-fit</a></li>
+<li><a class="reference internal" href="#lasso-arcene-predict">Lasso-arcene-predict</a></li>
+<li><a class="reference internal" href="#lasso-madelon-fit">Lasso-madelon-fit</a></li>
+<li><a class="reference internal" href="#lasso-madelon-predict">Lasso-madelon-predict</a></li>
+<li><a class="reference internal" href="#elasticnet-arcene-fit">ElasticNet-arcene-fit</a></li>
+<li><a class="reference internal" href="#elasticnet-arcene-predict">ElasticNet-arcene-predict</a></li>
+<li><a class="reference internal" href="#elasticnet-blobs-fit">ElasticNet-blobs-fit</a></li>
+<li><a class="reference internal" href="#elasticnet-blobs-predict">ElasticNet-blobs-predict</a></li>
+<li><a class="reference internal" href="#orthogonalmatchingpursuit-minimadelon-fit">OrthogonalMatchingPursuit-minimadelon-fit</a></li>
+<li><a class="reference internal" href="#orthogonalmatchingpursuit-minimadelon-predict">OrthogonalMatchingPursuit-minimadelon-predict</a></li>
+<li><a class="reference internal" href="#orthogonalmatchingpursuit-blobs-fit">OrthogonalMatchingPursuit-blobs-fit</a></li>
+<li><a class="reference internal" href="#orthogonalmatchingpursuit-blobs-predict">OrthogonalMatchingPursuit-blobs-predict</a></li>
+<li><a class="reference internal" href="#sgdclassifier-madelon-fit">SGDClassifier-madelon-fit</a></li>
+<li><a class="reference internal" href="#sgdclassifier-madelon-predict">SGDClassifier-madelon-predict</a></li>
+<li><a class="reference internal" href="#sgdclassifier-newsgroups-fit">SGDClassifier-newsgroups-fit</a></li>
+<li><a class="reference internal" href="#sgdclassifier-newsgroups-predict">SGDClassifier-newsgroups-predict</a></li>
+<li><a class="reference internal" href="#logisticregression-minimadelon-oney-fit">LogisticRegression-minimadelon-oney-fit</a></li>
+<li><a class="reference internal" href="#logisticregression-minimadelon-oney-predict">LogisticRegression-minimadelon-oney-predict</a></li>
+<li><a class="reference internal" href="#logisticregression-blobs-fit">LogisticRegression-blobs-fit</a></li>
+<li><a class="reference internal" href="#logisticregression-blobs-predict">LogisticRegression-blobs-predict</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  -->
+    </div>
+	  </div>
+
+
+      <div class="content">
             
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="linear-model">
-<h1>linear_model<a class="headerlink" href="#linear-model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="benchmarks-for-linear-model">
+<h1>Benchmarks for linear_model<a class="headerlink" href="#benchmarks-for-linear-model" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="linearregression-minimadelon-fit">
 <h2>LinearRegression-minimadelon-fit<a class="headerlink" href="#linearregression-minimadelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -138,7 +252,10 @@
 <img alt="_images/LinearRegression-minimadelon-fit-timing.png" src="_images/LinearRegression-minimadelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LinearRegression-minimadelon-fit-memory.png" src="_images/LinearRegression-minimadelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      78 function calls in 0.006 seconds
 
 Ordered by: cumulative time
@@ -185,6 +302,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="linearregression-minimadelon-predict">
 <h2>LinearRegression-minimadelon-predict<a class="headerlink" href="#linearregression-minimadelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -205,7 +324,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LinearRegression-minimadelon-predict-timing.png" src="_images/LinearRegression-minimadelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LinearRegression-minimadelon-predict-memory.png" src="_images/LinearRegression-minimadelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -229,6 +351,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="linearregression-blobs-fit">
 <h2>LinearRegression-blobs-fit<a class="headerlink" href="#linearregression-blobs-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -248,7 +372,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LinearRegression-blobs-fit-timing.png" src="_images/LinearRegression-blobs-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LinearRegression-blobs-fit-memory.png" src="_images/LinearRegression-blobs-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      82 function calls in 0.008 seconds
 
 Ordered by: cumulative time
@@ -297,6 +424,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="linearregression-blobs-predict">
 <h2>LinearRegression-blobs-predict<a class="headerlink" href="#linearregression-blobs-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -317,7 +446,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LinearRegression-blobs-predict-timing.png" src="_images/LinearRegression-blobs-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LinearRegression-blobs-predict-memory.png" src="_images/LinearRegression-blobs-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -341,6 +473,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="ridge-minimadelon-fit">
 <h2>Ridge-minimadelon-fit<a class="headerlink" href="#ridge-minimadelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -360,7 +494,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Ridge-minimadelon-fit-timing.png" src="_images/Ridge-minimadelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Ridge-minimadelon-fit-memory.png" src="_images/Ridge-minimadelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      72 function calls in 0.003 seconds
 
 Ordered by: cumulative time
@@ -408,6 +545,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="ridge-minimadelon-predict">
 <h2>Ridge-minimadelon-predict<a class="headerlink" href="#ridge-minimadelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -428,7 +567,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Ridge-minimadelon-predict-timing.png" src="_images/Ridge-minimadelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Ridge-minimadelon-predict-memory.png" src="_images/Ridge-minimadelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -452,6 +594,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="ridge-madelon-fit">
 <h2>Ridge-madelon-fit<a class="headerlink" href="#ridge-madelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -471,7 +615,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Ridge-madelon-fit-timing.png" src="_images/Ridge-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Ridge-madelon-fit-memory.png" src="_images/Ridge-madelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      73 function calls in 6.283 seconds
 
 Ordered by: cumulative time
@@ -519,6 +666,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="ridge-madelon-predict">
 <h2>Ridge-madelon-predict<a class="headerlink" href="#ridge-madelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -539,7 +688,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Ridge-madelon-predict-timing.png" src="_images/Ridge-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Ridge-madelon-predict-memory.png" src="_images/Ridge-madelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -563,6 +715,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lars-arcene-fit">
 <h2>Lars-arcene-fit<a class="headerlink" href="#lars-arcene-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -582,7 +736,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lars-arcene-fit-timing.png" src="_images/Lars-arcene-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lars-arcene-fit-memory.png" src="_images/Lars-arcene-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      7633 function calls in 7.673 seconds
 
 Ordered by: cumulative time
@@ -639,6 +796,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lars-arcene-predict">
 <h2>Lars-arcene-predict<a class="headerlink" href="#lars-arcene-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -659,7 +818,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lars-arcene-predict-timing.png" src="_images/Lars-arcene-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lars-arcene-predict-memory.png" src="_images/Lars-arcene-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.005 seconds
 
 Ordered by: cumulative time
@@ -683,6 +845,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lars-madelon-fit">
 <h2>Lars-madelon-fit<a class="headerlink" href="#lars-madelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -702,7 +866,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lars-madelon-fit-timing.png" src="_images/Lars-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lars-madelon-fit-memory.png" src="_images/Lars-madelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      7014 function calls in 7.588 seconds
 
 Ordered by: cumulative time
@@ -759,6 +926,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lars-madelon-predict">
 <h2>Lars-madelon-predict<a class="headerlink" href="#lars-madelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -779,7 +948,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lars-madelon-predict-timing.png" src="_images/Lars-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lars-madelon-predict-memory.png" src="_images/Lars-madelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -803,6 +975,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lassolars-arcene-fit">
 <h2>LassoLars-arcene-fit<a class="headerlink" href="#lassolars-arcene-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -822,7 +996,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LassoLars-arcene-fit-timing.png" src="_images/LassoLars-arcene-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LassoLars-arcene-fit-memory.png" src="_images/LassoLars-arcene-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      8657 function calls in 3.705 seconds
 
 Ordered by: cumulative time
@@ -898,6 +1075,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lassolars-arcene-predict">
 <h2>LassoLars-arcene-predict<a class="headerlink" href="#lassolars-arcene-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -918,7 +1097,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LassoLars-arcene-predict-timing.png" src="_images/LassoLars-arcene-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LassoLars-arcene-predict-memory.png" src="_images/LassoLars-arcene-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.005 seconds
 
 Ordered by: cumulative time
@@ -942,6 +1124,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lassolars-madelon-fit">
 <h2>LassoLars-madelon-fit<a class="headerlink" href="#lassolars-madelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -961,7 +1145,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LassoLars-madelon-fit-timing.png" src="_images/LassoLars-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LassoLars-madelon-fit-memory.png" src="_images/LassoLars-madelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5360 function calls in 6.769 seconds
 
 Ordered by: cumulative time
@@ -1037,6 +1224,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lassolars-madelon-predict">
 <h2>LassoLars-madelon-predict<a class="headerlink" href="#lassolars-madelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1057,7 +1246,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LassoLars-madelon-predict-timing.png" src="_images/LassoLars-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LassoLars-madelon-predict-memory.png" src="_images/LassoLars-madelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -1081,6 +1273,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lasso-arcene-fit">
 <h2>Lasso-arcene-fit<a class="headerlink" href="#lasso-arcene-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1100,7 +1294,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lasso-arcene-fit-timing.png" src="_images/Lasso-arcene-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lasso-arcene-fit-memory.png" src="_images/Lasso-arcene-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      65 function calls in 3.842 seconds
 
 Ordered by: cumulative time
@@ -1141,6 +1338,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lasso-arcene-predict">
 <h2>Lasso-arcene-predict<a class="headerlink" href="#lasso-arcene-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1161,7 +1360,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lasso-arcene-predict-timing.png" src="_images/Lasso-arcene-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lasso-arcene-predict-memory.png" src="_images/Lasso-arcene-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      33 function calls in 0.005 seconds
 
 Ordered by: cumulative time
@@ -1186,6 +1388,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lasso-madelon-fit">
 <h2>Lasso-madelon-fit<a class="headerlink" href="#lasso-madelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1205,7 +1409,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lasso-madelon-fit-timing.png" src="_images/Lasso-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lasso-madelon-fit-memory.png" src="_images/Lasso-madelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      63 function calls in 1.845 seconds
 
 Ordered by: cumulative time
@@ -1246,6 +1453,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="lasso-madelon-predict">
 <h2>Lasso-madelon-predict<a class="headerlink" href="#lasso-madelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1266,7 +1475,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Lasso-madelon-predict-timing.png" src="_images/Lasso-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Lasso-madelon-predict-memory.png" src="_images/Lasso-madelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      33 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -1291,6 +1503,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="elasticnet-arcene-fit">
 <h2>ElasticNet-arcene-fit<a class="headerlink" href="#elasticnet-arcene-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1310,7 +1524,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ElasticNet-arcene-fit-timing.png" src="_images/ElasticNet-arcene-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ElasticNet-arcene-fit-memory.png" src="_images/ElasticNet-arcene-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      65 function calls in 3.773 seconds
 
 Ordered by: cumulative time
@@ -1351,6 +1568,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="elasticnet-arcene-predict">
 <h2>ElasticNet-arcene-predict<a class="headerlink" href="#elasticnet-arcene-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1371,7 +1590,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ElasticNet-arcene-predict-timing.png" src="_images/ElasticNet-arcene-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ElasticNet-arcene-predict-memory.png" src="_images/ElasticNet-arcene-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      33 function calls in 0.005 seconds
 
 Ordered by: cumulative time
@@ -1396,6 +1618,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="elasticnet-blobs-fit">
 <h2>ElasticNet-blobs-fit<a class="headerlink" href="#elasticnet-blobs-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1415,7 +1639,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ElasticNet-blobs-fit-timing.png" src="_images/ElasticNet-blobs-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ElasticNet-blobs-fit-memory.png" src="_images/ElasticNet-blobs-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      63 function calls in 0.004 seconds
 
 Ordered by: cumulative time
@@ -1456,6 +1683,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="elasticnet-blobs-predict">
 <h2>ElasticNet-blobs-predict<a class="headerlink" href="#elasticnet-blobs-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1476,7 +1705,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ElasticNet-blobs-predict-timing.png" src="_images/ElasticNet-blobs-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ElasticNet-blobs-predict-memory.png" src="_images/ElasticNet-blobs-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      33 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -1501,6 +1733,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="orthogonalmatchingpursuit-minimadelon-fit">
 <h2>OrthogonalMatchingPursuit-minimadelon-fit<a class="headerlink" href="#orthogonalmatchingpursuit-minimadelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1520,7 +1754,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/OrthogonalMatchingPursuit-minimadelon-fit-timing.png" src="_images/OrthogonalMatchingPursuit-minimadelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/OrthogonalMatchingPursuit-minimadelon-fit-memory.png" src="_images/OrthogonalMatchingPursuit-minimadelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      942 function calls in 0.025 seconds
 
 Ordered by: cumulative time
@@ -1572,6 +1809,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="orthogonalmatchingpursuit-minimadelon-predict">
 <h2>OrthogonalMatchingPursuit-minimadelon-predict<a class="headerlink" href="#orthogonalmatchingpursuit-minimadelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1592,7 +1831,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/OrthogonalMatchingPursuit-minimadelon-predict-timing.png" src="_images/OrthogonalMatchingPursuit-minimadelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/OrthogonalMatchingPursuit-minimadelon-predict-memory.png" src="_images/OrthogonalMatchingPursuit-minimadelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -1616,6 +1858,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="orthogonalmatchingpursuit-blobs-fit">
 <h2>OrthogonalMatchingPursuit-blobs-fit<a class="headerlink" href="#orthogonalmatchingpursuit-blobs-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1635,7 +1879,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/OrthogonalMatchingPursuit-blobs-fit-timing.png" src="_images/OrthogonalMatchingPursuit-blobs-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/OrthogonalMatchingPursuit-blobs-fit-memory.png" src="_images/OrthogonalMatchingPursuit-blobs-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      133 function calls in 0.003 seconds
 
 Ordered by: cumulative time
@@ -1688,6 +1935,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="orthogonalmatchingpursuit-blobs-predict">
 <h2>OrthogonalMatchingPursuit-blobs-predict<a class="headerlink" href="#orthogonalmatchingpursuit-blobs-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1708,7 +1957,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/OrthogonalMatchingPursuit-blobs-predict-timing.png" src="_images/OrthogonalMatchingPursuit-blobs-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/OrthogonalMatchingPursuit-blobs-predict-memory.png" src="_images/OrthogonalMatchingPursuit-blobs-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      27 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -1732,6 +1984,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="sgdclassifier-madelon-fit">
 <h2>SGDClassifier-madelon-fit<a class="headerlink" href="#sgdclassifier-madelon-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1751,7 +2005,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/SGDClassifier-madelon-fit-timing.png" src="_images/SGDClassifier-madelon-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/SGDClassifier-madelon-fit-memory.png" src="_images/SGDClassifier-madelon-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      110 function calls in 0.032 seconds
 
 Ordered by: cumulative time
@@ -1805,6 +2062,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="sgdclassifier-madelon-predict">
 <h2>SGDClassifier-madelon-predict<a class="headerlink" href="#sgdclassifier-madelon-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1825,7 +2084,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/SGDClassifier-madelon-predict-timing.png" src="_images/SGDClassifier-madelon-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/SGDClassifier-madelon-predict-memory.png" src="_images/SGDClassifier-madelon-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      44 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -1856,6 +2118,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="sgdclassifier-newsgroups-fit">
 <h2>SGDClassifier-newsgroups-fit<a class="headerlink" href="#sgdclassifier-newsgroups-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1875,7 +2139,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/SGDClassifier-newsgroups-fit-timing.png" src="_images/SGDClassifier-newsgroups-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/SGDClassifier-newsgroups-fit-memory.png" src="_images/SGDClassifier-newsgroups-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      1580 function calls (1573 primitive calls) in 3.005 seconds
 
 Ordered by: cumulative time
@@ -2000,6 +2267,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="sgdclassifier-newsgroups-predict">
 <h2>SGDClassifier-newsgroups-predict<a class="headerlink" href="#sgdclassifier-newsgroups-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2020,7 +2289,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/SGDClassifier-newsgroups-predict-timing.png" src="_images/SGDClassifier-newsgroups-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/SGDClassifier-newsgroups-predict-memory.png" src="_images/SGDClassifier-newsgroups-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      187 function calls in 0.241 seconds
 
 Ordered by: cumulative time
@@ -2089,6 +2361,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="logisticregression-minimadelon-oney-fit">
 <h2>LogisticRegression-minimadelon-oney-fit<a class="headerlink" href="#logisticregression-minimadelon-oney-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2108,7 +2382,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LogisticRegression-minimadelon-oney-fit-timing.png" src="_images/LogisticRegression-minimadelon-oney-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LogisticRegression-minimadelon-oney-fit-memory.png" src="_images/LogisticRegression-minimadelon-oney-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      41 function calls in 0.012 seconds
 
 Ordered by: cumulative time
@@ -2141,6 +2418,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="logisticregression-minimadelon-oney-predict">
 <h2>LogisticRegression-minimadelon-oney-predict<a class="headerlink" href="#logisticregression-minimadelon-oney-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2161,7 +2440,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LogisticRegression-minimadelon-oney-predict-timing.png" src="_images/LogisticRegression-minimadelon-oney-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LogisticRegression-minimadelon-oney-predict-memory.png" src="_images/LogisticRegression-minimadelon-oney-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      34 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -2193,6 +2475,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="logisticregression-blobs-fit">
 <h2>LogisticRegression-blobs-fit<a class="headerlink" href="#logisticregression-blobs-fit" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2212,7 +2496,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LogisticRegression-blobs-fit-timing.png" src="_images/LogisticRegression-blobs-fit-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LogisticRegression-blobs-fit-memory.png" src="_images/LogisticRegression-blobs-fit-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      41 function calls in 0.066 seconds
 
 Ordered by: cumulative time
@@ -2245,6 +2532,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="logisticregression-blobs-predict">
 <h2>LogisticRegression-blobs-predict<a class="headerlink" href="#logisticregression-blobs-predict" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2265,7 +2554,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/LogisticRegression-blobs-predict-timing.png" src="_images/LogisticRegression-blobs-predict-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/LogisticRegression-blobs-predict-memory.png" src="_images/LogisticRegression-blobs-predict-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      34 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -2298,40 +2590,50 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 </div>
 </div>
 </div>
+</div>
+</div>
 
 
           </div>
         </div>
       </div>
-        </div>
+
         <div class="clearer"></div>
       </div>
     </div>
+  
 
-    <div class="footer-wrapper">
-      <div class="footer">
-        <div class="left">
-          <a href="vb_gaussian_process.html" title="gaussian_process"
-             >previous</a> |
-          <a href="vb_mixture.html" title="mixture"
-             >next</a> |
-          <a href="genindex.html" title="General Index"
-             >index</a>
-            <br/>
-            <a href="_sources/vb_linear_model.txt"
-               rel="nofollow">Show Source</a>
-        </div>
-
-        <div class="right">
-          
     <div class="footer">
-        &copy; Copyright .
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="_sources/vb_linear_model.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
     </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
+     <div class="rel rellarge">
+    
+    <div class="buttonPrevious">
+      <a href="vb_gaussian_process.html">
+        Previous
+      </a>  
     </div>
-
+    <div class="buttonNext">
+      <a href="vb_mixture.html">
+        Next
+      </a>  
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+     </script>
   </body>
 </html>

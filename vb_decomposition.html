@@ -8,9 +8,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>decomposition &mdash; Vbench performance benchmarks for scikit-learn</title>
+    <title>Benchmarks for decomposition &mdash; Vbench performance benchmarks for scikit-learn</title>
     
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,33 +25,65 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
-    <link rel="next" title="gaussian_process" href="vb_gaussian_process.html" />
-    <link rel="prev" title="covariance" href="vb_covariance.html" /> 
+    <link rel="next" title="Benchmarks for gaussian_process" href="vb_gaussian_process.html" />
+    <link rel="prev" title="Benchmarks for covariance" href="vb_covariance.html" />
+
+  <!-- Reference the theme's stylesheet on the Google CDN -->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/excite-bike/jquery-ui.css"
+        type="text/css" rel="Stylesheet" />
+ 
+  <!-- Reference jQuery and jQuery UI from the CDN. Remember
+       that the order of these two elements is important -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+        $(".profiler-output").accordion({collapsible: true, header: "p", active: false} );
+      });
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
   </head>
   <body>
+
     <div class="header-wrapper">
       <div class="header">
-        <h1><a href="index.html">Vbench performance benchmarks for scikit-learn</a></h1>
-        <div class="rel">
-          <a href="vb_covariance.html" title="covariance"
-             accesskey="P">previous</a> |
-          <a href="vb_gaussian_process.html" title="gaussian_process"
-             accesskey="N">next</a> |
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-       </div>
+          <p class="logo"><a href="http://scikit-learn.org/">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="index.html">Speed</a></li>
+            <li><a href="http://github.com/vene/scikit-learn-speed">Github</a></li>
+       </ul>
+</div>
+<!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
-      <div class="content">
-        <div class="sidebar">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
           <h3>Table Of Contents</h3>
           <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">covariance</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">decomposition</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">Benchmarks for cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">Benchmarks for covariance</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Benchmarks for decomposition</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#randomizedpca-arcene-fit-unsup">RandomizedPCA-arcene-fit_unsup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#randomizedpca-arcene-transform-unsup">RandomizedPCA-arcene-transform_unsup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#randomizedpca-arcene-fit-transform">RandomizedPCA-arcene-fit_transform</a></li>
@@ -95,35 +127,122 @@
 <li class="toctree-l2"><a class="reference internal" href="#minibatchsparsepca-blobs-fit-transform">MiniBatchSparsePCA-blobs-fit_transform</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">gaussian_process</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">linear_model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">mixture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">naive_bayes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">neighbors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">pls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">semi_supervised</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">svm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">Benchmarks for gaussian_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">Benchmarks for linear_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">Benchmarks for mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">Benchmarks for naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">Benchmarks for neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">Benchmarks for pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">Benchmarks for semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">Benchmarks for svm</a></li>
 </ul>
 
-          <h3 style="margin-top: 1.5em;">Search</h3>
-          <form class="search" action="search.html" method="get">
-            <input type="text" name="q" size="18" />
-            <input type="submit" value="Go" />
-            <input type="hidden" name="check_keywords" value="yes" />
-            <input type="hidden" name="area" value="default" />
-          </form>
-          <p class="searchtip" style="font-size: 90%">
-            Enter search terms or a module, class or function name.
-          </p>
-        </div>
-        <div class="document">
+          <!--
+	   <div class="rel rellarge">
+	     
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  --
+	<div class="rellink">
+	<a href="vb_covariance.html" title="Benchmarks for covariance"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for covariance
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="vb_gaussian_process.html" title="Benchmarks for gaussian_process"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for g...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for gaussian_process
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page --
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.12-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Benchmarks for decomposition</a><ul>
+<li><a class="reference internal" href="#randomizedpca-arcene-fit-unsup">RandomizedPCA-arcene-fit_unsup</a></li>
+<li><a class="reference internal" href="#randomizedpca-arcene-transform-unsup">RandomizedPCA-arcene-transform_unsup</a></li>
+<li><a class="reference internal" href="#randomizedpca-arcene-fit-transform">RandomizedPCA-arcene-fit_transform</a></li>
+<li><a class="reference internal" href="#randomizedpca-madelon-fit-unsup">RandomizedPCA-madelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#randomizedpca-madelon-transform-unsup">RandomizedPCA-madelon-transform_unsup</a></li>
+<li><a class="reference internal" href="#randomizedpca-madelon-fit-transform">RandomizedPCA-madelon-fit_transform</a></li>
+<li><a class="reference internal" href="#probabilisticpca-minimadelon-fit-unsup">ProbabilisticPCA-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#probabilisticpca-minimadelon-transform-unsup">ProbabilisticPCA-minimadelon-transform_unsup</a></li>
+<li><a class="reference internal" href="#probabilisticpca-minimadelon-fit-transform">ProbabilisticPCA-minimadelon-fit_transform</a></li>
+<li><a class="reference internal" href="#probabilisticpca-blobs-fit-unsup">ProbabilisticPCA-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#probabilisticpca-blobs-transform-unsup">ProbabilisticPCA-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#probabilisticpca-blobs-fit-transform">ProbabilisticPCA-blobs-fit_transform</a></li>
+<li><a class="reference internal" href="#kernelpca-rbf-minimadelon-fit-unsup">KernelPCA-rbf-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-rbf-minimadelon-transform-unsup">KernelPCA-rbf-minimadelon-transform_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-rbf-minimadelon-fit-transform">KernelPCA-rbf-minimadelon-fit_transform</a></li>
+<li><a class="reference internal" href="#kernelpca-rbf-blobs-fit-unsup">KernelPCA-rbf-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-rbf-blobs-transform-unsup">KernelPCA-rbf-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-rbf-blobs-fit-transform">KernelPCA-rbf-blobs-fit_transform</a></li>
+<li><a class="reference internal" href="#kernelpca-sigmoid-minimadelon-fit-unsup">KernelPCA-sigmoid-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-sigmoid-minimadelon-transform-unsup">KernelPCA-sigmoid-minimadelon-transform_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-sigmoid-minimadelon-fit-transform">KernelPCA-sigmoid-minimadelon-fit_transform</a></li>
+<li><a class="reference internal" href="#kernelpca-sigmoid-blobs-fit-unsup">KernelPCA-sigmoid-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-sigmoid-blobs-transform-unsup">KernelPCA-sigmoid-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#kernelpca-sigmoid-blobs-fit-transform">KernelPCA-sigmoid-blobs-fit_transform</a></li>
+<li><a class="reference internal" href="#fastica-deflation-arcene-fit-unsup">FastICA-deflation-arcene-fit_unsup</a></li>
+<li><a class="reference internal" href="#fastica-deflation-arcene-transform-unsup">FastICA-deflation-arcene-transform_unsup</a></li>
+<li><a class="reference internal" href="#fastica-deflation-blobs-fit-unsup">FastICA-deflation-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#fastica-deflation-blobs-transform-unsup">FastICA-deflation-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#fastica-parallel-arcene-fit-unsup">FastICA-parallel-arcene-fit_unsup</a></li>
+<li><a class="reference internal" href="#fastica-parallel-arcene-transform-unsup">FastICA-parallel-arcene-transform_unsup</a></li>
+<li><a class="reference internal" href="#fastica-parallel-madelon-fit-unsup">FastICA-parallel-madelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#fastica-parallel-madelon-transform-unsup">FastICA-parallel-madelon-transform_unsup</a></li>
+<li><a class="reference internal" href="#nmf-blobs-fit-unsup">NMF-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#nmf-blobs-transform-unsup">NMF-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#nmf-blobs-fit-transform">NMF-blobs-fit_transform</a></li>
+<li><a class="reference internal" href="#minibatchdictionarylearning-blobs-fit-unsup">MiniBatchDictionaryLearning-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#minibatchdictionarylearning-blobs-transform-unsup">MiniBatchDictionaryLearning-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#minibatchdictionarylearning-blobs-fit-transform">MiniBatchDictionaryLearning-blobs-fit_transform</a></li>
+<li><a class="reference internal" href="#minibatchsparsepca-blobs-fit-unsup">MiniBatchSparsePCA-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#minibatchsparsepca-blobs-transform-unsup">MiniBatchSparsePCA-blobs-transform_unsup</a></li>
+<li><a class="reference internal" href="#minibatchsparsepca-blobs-fit-transform">MiniBatchSparsePCA-blobs-fit_transform</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  -->
+    </div>
+	  </div>
+
+
+      <div class="content">
             
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="decomposition">
-<h1>decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="benchmarks-for-decomposition">
+<h1>Benchmarks for decomposition<a class="headerlink" href="#benchmarks-for-decomposition" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="randomizedpca-arcene-fit-unsup">
 <h2>RandomizedPCA-arcene-fit_unsup<a class="headerlink" href="#randomizedpca-arcene-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -143,7 +262,10 @@
 <img alt="_images/RandomizedPCA-arcene-fit_unsup-timing.png" src="_images/RandomizedPCA-arcene-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/RandomizedPCA-arcene-fit_unsup-memory.png" src="_images/RandomizedPCA-arcene-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      209 function calls in 2.708 seconds
 
 Ordered by: cumulative time
@@ -198,6 +320,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="randomizedpca-arcene-transform-unsup">
 <h2>RandomizedPCA-arcene-transform_unsup<a class="headerlink" href="#randomizedpca-arcene-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -218,7 +342,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/RandomizedPCA-arcene-transform_unsup-timing.png" src="_images/RandomizedPCA-arcene-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/RandomizedPCA-arcene-transform_unsup-memory.png" src="_images/RandomizedPCA-arcene-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      16 function calls in 0.265 seconds
 
 Ordered by: cumulative time
@@ -234,6 +361,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="randomizedpca-arcene-fit-transform">
@@ -255,7 +384,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/RandomizedPCA-arcene-fit_transform-timing.png" src="_images/RandomizedPCA-arcene-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/RandomizedPCA-arcene-fit_transform-memory.png" src="_images/RandomizedPCA-arcene-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      223 function calls in 2.965 seconds
 
 Ordered by: cumulative time
@@ -312,6 +444,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="randomizedpca-madelon-fit-unsup">
 <h2>RandomizedPCA-madelon-fit_unsup<a class="headerlink" href="#randomizedpca-madelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -331,7 +465,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/RandomizedPCA-madelon-fit_unsup-timing.png" src="_images/RandomizedPCA-madelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/RandomizedPCA-madelon-fit_unsup-memory.png" src="_images/RandomizedPCA-madelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      209 function calls in 1.010 seconds
 
 Ordered by: cumulative time
@@ -386,6 +523,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="randomizedpca-madelon-transform-unsup">
 <h2>RandomizedPCA-madelon-transform_unsup<a class="headerlink" href="#randomizedpca-madelon-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -406,7 +545,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/RandomizedPCA-madelon-transform_unsup-timing.png" src="_images/RandomizedPCA-madelon-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/RandomizedPCA-madelon-transform_unsup-memory.png" src="_images/RandomizedPCA-madelon-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      16 function calls in 0.034 seconds
 
 Ordered by: cumulative time
@@ -422,6 +564,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="randomizedpca-madelon-fit-transform">
@@ -443,7 +587,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/RandomizedPCA-madelon-fit_transform-timing.png" src="_images/RandomizedPCA-madelon-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/RandomizedPCA-madelon-fit_transform-memory.png" src="_images/RandomizedPCA-madelon-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      223 function calls in 1.003 seconds
 
 Ordered by: cumulative time
@@ -500,6 +647,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="probabilisticpca-minimadelon-fit-unsup">
 <h2>ProbabilisticPCA-minimadelon-fit_unsup<a class="headerlink" href="#probabilisticpca-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -519,7 +668,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ProbabilisticPCA-minimadelon-fit_unsup-timing.png" src="_images/ProbabilisticPCA-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ProbabilisticPCA-minimadelon-fit_unsup-memory.png" src="_images/ProbabilisticPCA-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      121 function calls in 0.080 seconds
 
 Ordered by: cumulative time
@@ -568,6 +720,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="probabilisticpca-minimadelon-transform-unsup">
 <h2>ProbabilisticPCA-minimadelon-transform_unsup<a class="headerlink" href="#probabilisticpca-minimadelon-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -588,7 +742,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ProbabilisticPCA-minimadelon-transform_unsup-timing.png" src="_images/ProbabilisticPCA-minimadelon-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ProbabilisticPCA-minimadelon-transform_unsup-memory.png" src="_images/ProbabilisticPCA-minimadelon-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -599,6 +756,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/decomposition/pca.py:263(transform)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="probabilisticpca-minimadelon-fit-transform">
@@ -620,7 +779,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ProbabilisticPCA-minimadelon-fit_transform-timing.png" src="_images/ProbabilisticPCA-minimadelon-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ProbabilisticPCA-minimadelon-fit_transform-memory.png" src="_images/ProbabilisticPCA-minimadelon-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      44 function calls in 0.007 seconds
 
 Ordered by: cumulative time
@@ -659,6 +821,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="probabilisticpca-blobs-fit-unsup">
 <h2>ProbabilisticPCA-blobs-fit_unsup<a class="headerlink" href="#probabilisticpca-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -678,7 +842,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ProbabilisticPCA-blobs-fit_unsup-timing.png" src="_images/ProbabilisticPCA-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ProbabilisticPCA-blobs-fit_unsup-memory.png" src="_images/ProbabilisticPCA-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      121 function calls in 0.013 seconds
 
 Ordered by: cumulative time
@@ -727,6 +894,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="probabilisticpca-blobs-transform-unsup">
 <h2>ProbabilisticPCA-blobs-transform_unsup<a class="headerlink" href="#probabilisticpca-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -747,7 +916,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ProbabilisticPCA-blobs-transform_unsup-timing.png" src="_images/ProbabilisticPCA-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ProbabilisticPCA-blobs-transform_unsup-memory.png" src="_images/ProbabilisticPCA-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -758,6 +930,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/decomposition/pca.py:263(transform)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="probabilisticpca-blobs-fit-transform">
@@ -779,7 +953,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/ProbabilisticPCA-blobs-fit_transform-timing.png" src="_images/ProbabilisticPCA-blobs-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/ProbabilisticPCA-blobs-fit_transform-memory.png" src="_images/ProbabilisticPCA-blobs-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      44 function calls in 0.011 seconds
 
 Ordered by: cumulative time
@@ -818,6 +995,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-rbf-minimadelon-fit-unsup">
 <h2>KernelPCA-rbf-minimadelon-fit_unsup<a class="headerlink" href="#kernelpca-rbf-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -837,7 +1016,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-rbf-minimadelon-fit_unsup-timing.png" src="_images/KernelPCA-rbf-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-rbf-minimadelon-fit_unsup-memory.png" src="_images/KernelPCA-rbf-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      132 function calls in 0.003 seconds
 
 Ordered by: cumulative time
@@ -893,6 +1075,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-rbf-minimadelon-transform-unsup">
 <h2>KernelPCA-rbf-minimadelon-transform_unsup<a class="headerlink" href="#kernelpca-rbf-minimadelon-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -913,7 +1097,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-rbf-minimadelon-transform_unsup-timing.png" src="_images/KernelPCA-rbf-minimadelon-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-rbf-minimadelon-transform_unsup-memory.png" src="_images/KernelPCA-rbf-minimadelon-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      98 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -951,6 +1138,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-rbf-minimadelon-fit-transform">
 <h2>KernelPCA-rbf-minimadelon-fit_transform<a class="headerlink" href="#kernelpca-rbf-minimadelon-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -970,7 +1159,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-rbf-minimadelon-fit_transform-timing.png" src="_images/KernelPCA-rbf-minimadelon-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-rbf-minimadelon-fit_transform-memory.png" src="_images/KernelPCA-rbf-minimadelon-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      133 function calls in 0.003 seconds
 
 Ordered by: cumulative time
@@ -1027,6 +1219,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-rbf-blobs-fit-unsup">
 <h2>KernelPCA-rbf-blobs-fit_unsup<a class="headerlink" href="#kernelpca-rbf-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1046,7 +1240,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-rbf-blobs-fit_unsup-timing.png" src="_images/KernelPCA-rbf-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-rbf-blobs-fit_unsup-memory.png" src="_images/KernelPCA-rbf-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      233 function calls in 0.046 seconds
 
 Ordered by: cumulative time
@@ -1109,6 +1306,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-rbf-blobs-transform-unsup">
 <h2>KernelPCA-rbf-blobs-transform_unsup<a class="headerlink" href="#kernelpca-rbf-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1129,7 +1328,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-rbf-blobs-transform_unsup-timing.png" src="_images/KernelPCA-rbf-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-rbf-blobs-transform_unsup-memory.png" src="_images/KernelPCA-rbf-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      98 function calls in 0.030 seconds
 
 Ordered by: cumulative time
@@ -1167,6 +1369,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-rbf-blobs-fit-transform">
 <h2>KernelPCA-rbf-blobs-fit_transform<a class="headerlink" href="#kernelpca-rbf-blobs-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1186,7 +1390,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-rbf-blobs-fit_transform-timing.png" src="_images/KernelPCA-rbf-blobs-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-rbf-blobs-fit_transform-memory.png" src="_images/KernelPCA-rbf-blobs-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      234 function calls in 0.046 seconds
 
 Ordered by: cumulative time
@@ -1250,6 +1457,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-sigmoid-minimadelon-fit-unsup">
 <h2>KernelPCA-sigmoid-minimadelon-fit_unsup<a class="headerlink" href="#kernelpca-sigmoid-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1269,7 +1478,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-sigmoid-minimadelon-fit_unsup-timing.png" src="_images/KernelPCA-sigmoid-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-sigmoid-minimadelon-fit_unsup-memory.png" src="_images/KernelPCA-sigmoid-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      125 function calls in 0.003 seconds
 
 Ordered by: cumulative time
@@ -1325,6 +1537,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-sigmoid-minimadelon-transform-unsup">
 <h2>KernelPCA-sigmoid-minimadelon-transform_unsup<a class="headerlink" href="#kernelpca-sigmoid-minimadelon-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1345,7 +1559,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-sigmoid-minimadelon-transform_unsup-timing.png" src="_images/KernelPCA-sigmoid-minimadelon-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-sigmoid-minimadelon-transform_unsup-memory.png" src="_images/KernelPCA-sigmoid-minimadelon-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      91 function calls in 0.002 seconds
 
 Ordered by: cumulative time
@@ -1383,6 +1600,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-sigmoid-minimadelon-fit-transform">
 <h2>KernelPCA-sigmoid-minimadelon-fit_transform<a class="headerlink" href="#kernelpca-sigmoid-minimadelon-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1402,7 +1621,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-sigmoid-minimadelon-fit_transform-timing.png" src="_images/KernelPCA-sigmoid-minimadelon-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-sigmoid-minimadelon-fit_transform-memory.png" src="_images/KernelPCA-sigmoid-minimadelon-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      126 function calls in 0.003 seconds
 
 Ordered by: cumulative time
@@ -1459,6 +1681,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-sigmoid-blobs-fit-unsup">
 <h2>KernelPCA-sigmoid-blobs-fit_unsup<a class="headerlink" href="#kernelpca-sigmoid-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1478,7 +1702,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-sigmoid-blobs-fit_unsup-timing.png" src="_images/KernelPCA-sigmoid-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-sigmoid-blobs-fit_unsup-memory.png" src="_images/KernelPCA-sigmoid-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      186 function calls in 0.027 seconds
 
 Ordered by: cumulative time
@@ -1541,6 +1768,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-sigmoid-blobs-transform-unsup">
 <h2>KernelPCA-sigmoid-blobs-transform_unsup<a class="headerlink" href="#kernelpca-sigmoid-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1561,7 +1790,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-sigmoid-blobs-transform_unsup-timing.png" src="_images/KernelPCA-sigmoid-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-sigmoid-blobs-transform_unsup-memory.png" src="_images/KernelPCA-sigmoid-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      91 function calls in 0.019 seconds
 
 Ordered by: cumulative time
@@ -1599,6 +1831,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kernelpca-sigmoid-blobs-fit-transform">
 <h2>KernelPCA-sigmoid-blobs-fit_transform<a class="headerlink" href="#kernelpca-sigmoid-blobs-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1618,7 +1852,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KernelPCA-sigmoid-blobs-fit_transform-timing.png" src="_images/KernelPCA-sigmoid-blobs-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KernelPCA-sigmoid-blobs-fit_transform-memory.png" src="_images/KernelPCA-sigmoid-blobs-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      187 function calls in 0.027 seconds
 
 Ordered by: cumulative time
@@ -1682,6 +1919,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="fastica-deflation-arcene-fit-unsup">
 <h2>FastICA-deflation-arcene-fit_unsup<a class="headerlink" href="#fastica-deflation-arcene-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1701,7 +1940,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-deflation-arcene-fit_unsup-timing.png" src="_images/FastICA-deflation-arcene-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-deflation-arcene-fit_unsup-memory.png" src="_images/FastICA-deflation-arcene-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      1289 function calls in 1.204 seconds
 
 Ordered by: cumulative time
@@ -1747,6 +1989,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="fastica-deflation-arcene-transform-unsup">
 <h2>FastICA-deflation-arcene-transform_unsup<a class="headerlink" href="#fastica-deflation-arcene-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1767,7 +2011,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-deflation-arcene-transform_unsup-timing.png" src="_images/FastICA-deflation-arcene-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-deflation-arcene-transform_unsup-memory.png" src="_images/FastICA-deflation-arcene-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5 function calls in 0.021 seconds
 
 Ordered by: cumulative time
@@ -1778,6 +2025,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.021    0.021 /tmp/vb_sklearn/sklearn/decomposition/fastica_.py:402(transform)
      1    0.021    0.021    0.021    0.021 {numpy.core.multiarray.dot}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="fastica-deflation-blobs-fit-unsup">
@@ -1799,7 +2048,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-deflation-blobs-fit_unsup-timing.png" src="_images/FastICA-deflation-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-deflation-blobs-fit_unsup-memory.png" src="_images/FastICA-deflation-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      915 function calls in 0.038 seconds
 
 Ordered by: cumulative time
@@ -1845,6 +2097,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="fastica-deflation-blobs-transform-unsup">
 <h2>FastICA-deflation-blobs-transform_unsup<a class="headerlink" href="#fastica-deflation-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1865,7 +2119,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-deflation-blobs-transform_unsup-timing.png" src="_images/FastICA-deflation-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-deflation-blobs-transform_unsup-memory.png" src="_images/FastICA-deflation-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5 function calls in 0.000 seconds
 
 Ordered by: cumulative time
@@ -1876,6 +2133,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/decomposition/fastica_.py:402(transform)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.dot}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="fastica-parallel-arcene-fit-unsup">
@@ -1897,7 +2156,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-parallel-arcene-fit_unsup-timing.png" src="_images/FastICA-parallel-arcene-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-parallel-arcene-fit_unsup-memory.png" src="_images/FastICA-parallel-arcene-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      4746 function calls in 1.243 seconds
 
 Ordered by: cumulative time
@@ -1946,6 +2208,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="fastica-parallel-arcene-transform-unsup">
 <h2>FastICA-parallel-arcene-transform_unsup<a class="headerlink" href="#fastica-parallel-arcene-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -1966,7 +2230,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-parallel-arcene-transform_unsup-timing.png" src="_images/FastICA-parallel-arcene-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-parallel-arcene-transform_unsup-memory.png" src="_images/FastICA-parallel-arcene-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5 function calls in 0.021 seconds
 
 Ordered by: cumulative time
@@ -1977,6 +2244,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.021    0.021 /tmp/vb_sklearn/sklearn/decomposition/fastica_.py:402(transform)
      1    0.021    0.021    0.021    0.021 {numpy.core.multiarray.dot}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="fastica-parallel-madelon-fit-unsup">
@@ -1998,7 +2267,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-parallel-madelon-fit_unsup-timing.png" src="_images/FastICA-parallel-madelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-parallel-madelon-fit_unsup-memory.png" src="_images/FastICA-parallel-madelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      11826 function calls in 7.178 seconds
 
 Ordered by: cumulative time
@@ -2047,6 +2319,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="fastica-parallel-madelon-transform-unsup">
 <h2>FastICA-parallel-madelon-transform_unsup<a class="headerlink" href="#fastica-parallel-madelon-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2067,7 +2341,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/FastICA-parallel-madelon-transform_unsup-timing.png" src="_images/FastICA-parallel-madelon-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/FastICA-parallel-madelon-transform_unsup-memory.png" src="_images/FastICA-parallel-madelon-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5 function calls in 0.019 seconds
 
 Ordered by: cumulative time
@@ -2078,6 +2355,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.019    0.019 /tmp/vb_sklearn/sklearn/decomposition/fastica_.py:402(transform)
      1    0.019    0.019    0.019    0.019 {numpy.core.multiarray.dot}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="nmf-blobs-fit-unsup">
@@ -2099,7 +2378,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/NMF-blobs-fit_unsup-timing.png" src="_images/NMF-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/NMF-blobs-fit_unsup-memory.png" src="_images/NMF-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      78365 function calls in 1.400 seconds
 
 Ordered by: cumulative time
@@ -2178,6 +2460,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="nmf-blobs-transform-unsup">
 <h2>NMF-blobs-transform_unsup<a class="headerlink" href="#nmf-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2198,7 +2482,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/NMF-blobs-transform_unsup-timing.png" src="_images/NMF-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/NMF-blobs-transform_unsup-memory.png" src="_images/NMF-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      5123 function calls in 0.043 seconds
 
 Ordered by: cumulative time
@@ -2229,6 +2516,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="nmf-blobs-fit-transform">
 <h2>NMF-blobs-fit_transform<a class="headerlink" href="#nmf-blobs-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2248,7 +2537,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/NMF-blobs-fit_transform-timing.png" src="_images/NMF-blobs-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/NMF-blobs-fit_transform-memory.png" src="_images/NMF-blobs-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      78768 function calls in 1.402 seconds
 
 Ordered by: cumulative time
@@ -2326,6 +2618,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchdictionarylearning-blobs-fit-unsup">
 <h2>MiniBatchDictionaryLearning-blobs-fit_unsup<a class="headerlink" href="#minibatchdictionarylearning-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2345,7 +2639,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchDictionaryLearning-blobs-fit_unsup-timing.png" src="_images/MiniBatchDictionaryLearning-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchDictionaryLearning-blobs-fit_unsup-memory.png" src="_images/MiniBatchDictionaryLearning-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      1294265 function calls in 31.742 seconds
 
 Ordered by: cumulative time
@@ -2449,6 +2746,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchdictionarylearning-blobs-transform-unsup">
 <h2>MiniBatchDictionaryLearning-blobs-transform_unsup<a class="headerlink" href="#minibatchdictionarylearning-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2469,7 +2768,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchDictionaryLearning-blobs-transform_unsup-timing.png" src="_images/MiniBatchDictionaryLearning-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchDictionaryLearning-blobs-transform_unsup-memory.png" src="_images/MiniBatchDictionaryLearning-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      15341 function calls in 0.286 seconds
 
 Ordered by: cumulative time
@@ -2517,6 +2819,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchdictionarylearning-blobs-fit-transform">
 <h2>MiniBatchDictionaryLearning-blobs-fit_transform<a class="headerlink" href="#minibatchdictionarylearning-blobs-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2536,7 +2840,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchDictionaryLearning-blobs-fit_transform-timing.png" src="_images/MiniBatchDictionaryLearning-blobs-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchDictionaryLearning-blobs-fit_transform-memory.png" src="_images/MiniBatchDictionaryLearning-blobs-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      1507821 function calls in 34.820 seconds
 
 Ordered by: cumulative time
@@ -2648,6 +2955,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchsparsepca-blobs-fit-unsup">
 <h2>MiniBatchSparsePCA-blobs-fit_unsup<a class="headerlink" href="#minibatchsparsepca-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2667,7 +2976,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchSparsePCA-blobs-fit_unsup-timing.png" src="_images/MiniBatchSparsePCA-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchSparsePCA-blobs-fit_unsup-memory.png" src="_images/MiniBatchSparsePCA-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      28552 function calls in 0.477 seconds
 
 Ordered by: cumulative time
@@ -2751,6 +3063,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchsparsepca-blobs-transform-unsup">
 <h2>MiniBatchSparsePCA-blobs-transform_unsup<a class="headerlink" href="#minibatchsparsepca-blobs-transform-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2771,7 +3085,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchSparsePCA-blobs-transform_unsup-timing.png" src="_images/MiniBatchSparsePCA-blobs-transform_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchSparsePCA-blobs-transform_unsup-memory.png" src="_images/MiniBatchSparsePCA-blobs-transform_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      44 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -2807,6 +3124,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchsparsepca-blobs-fit-transform">
 <h2>MiniBatchSparsePCA-blobs-fit_transform<a class="headerlink" href="#minibatchsparsepca-blobs-fit-transform" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -2826,7 +3145,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchSparsePCA-blobs-fit_transform-timing.png" src="_images/MiniBatchSparsePCA-blobs-fit_transform-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchSparsePCA-blobs-fit_transform-memory.png" src="_images/MiniBatchSparsePCA-blobs-fit_transform-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      28474 function calls in 0.473 seconds
 
 Ordered by: cumulative time
@@ -2917,40 +3239,50 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 </div>
 </div>
 </div>
+</div>
+</div>
 
 
           </div>
         </div>
       </div>
-        </div>
+
         <div class="clearer"></div>
       </div>
     </div>
+  
 
-    <div class="footer-wrapper">
-      <div class="footer">
-        <div class="left">
-          <a href="vb_covariance.html" title="covariance"
-             >previous</a> |
-          <a href="vb_gaussian_process.html" title="gaussian_process"
-             >next</a> |
-          <a href="genindex.html" title="General Index"
-             >index</a>
-            <br/>
-            <a href="_sources/vb_decomposition.txt"
-               rel="nofollow">Show Source</a>
-        </div>
-
-        <div class="right">
-          
     <div class="footer">
-        &copy; Copyright .
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="_sources/vb_decomposition.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
     </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
+     <div class="rel rellarge">
+    
+    <div class="buttonPrevious">
+      <a href="vb_covariance.html">
+        Previous
+      </a>  
     </div>
-
+    <div class="buttonNext">
+      <a href="vb_gaussian_process.html">
+        Next
+      </a>  
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+     </script>
   </body>
 </html>

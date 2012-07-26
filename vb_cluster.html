@@ -8,9 +8,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>cluster &mdash; Vbench performance benchmarks for scikit-learn</title>
+    <title>Benchmarks for cluster &mdash; Vbench performance benchmarks for scikit-learn</title>
     
-    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,31 +25,63 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
-    <link rel="next" title="covariance" href="vb_covariance.html" />
-    <link rel="prev" title="Performance Benchmarks" href="index.html" /> 
+    <link rel="next" title="Benchmarks for covariance" href="vb_covariance.html" />
+    <link rel="prev" title="Performance Benchmarks" href="index.html" />
+
+  <!-- Reference the theme's stylesheet on the Google CDN -->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/excite-bike/jquery-ui.css"
+        type="text/css" rel="Stylesheet" />
+ 
+  <!-- Reference jQuery and jQuery UI from the CDN. Remember
+       that the order of these two elements is important -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+        $(".profiler-output").accordion({collapsible: true, header: "p", active: false} );
+      });
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
   </head>
   <body>
+
     <div class="header-wrapper">
       <div class="header">
-        <h1><a href="index.html">Vbench performance benchmarks for scikit-learn</a></h1>
-        <div class="rel">
-          <a href="index.html" title="Performance Benchmarks"
-             accesskey="P">previous</a> |
-          <a href="vb_covariance.html" title="covariance"
-             accesskey="N">next</a> |
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-       </div>
+          <p class="logo"><a href="http://scikit-learn.org/">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="index.html">Speed</a></li>
+            <li><a href="http://github.com/vene/scikit-learn-speed">Github</a></li>
+       </ul>
+</div>
+<!-- end navbar --></div>
     </div>
 
     <div class="content-wrapper">
-      <div class="content">
-        <div class="sidebar">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
           <h3>Table Of Contents</h3>
           <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">cluster</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Benchmarks for cluster</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#kmeans-minimadelon-fit-unsup">KMeans-minimadelon-fit_unsup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kmeans-minimadelon-predict-unsup">KMeans-minimadelon-predict_unsup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#kmeans-blobs-fit-unsup">KMeans-blobs-fit_unsup</a></li>
@@ -68,37 +100,99 @@
 <li class="toctree-l2"><a class="reference internal" href="#meanshift-blobs-fit-unsup">MeanShift-blobs-fit_unsup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">covariance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">decomposition</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">gaussian_process</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">linear_model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">mixture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">naive_bayes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">neighbors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">pls</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">semi_supervised</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">svm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">Benchmarks for covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">Benchmarks for decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">Benchmarks for gaussian_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">Benchmarks for linear_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">Benchmarks for mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">Benchmarks for naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">Benchmarks for neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">Benchmarks for pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">Benchmarks for semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">Benchmarks for svm</a></li>
 </ul>
 
-          <h3 style="margin-top: 1.5em;">Search</h3>
-          <form class="search" action="search.html" method="get">
-            <input type="text" name="q" size="18" />
-            <input type="submit" value="Go" />
-            <input type="hidden" name="check_keywords" value="yes" />
-            <input type="hidden" name="area" value="default" />
-          </form>
-          <p class="searchtip" style="font-size: 90%">
-            Enter search terms or a module, class or function name.
-          </p>
-        </div>
-        <div class="document">
+          <!--
+	   <div class="rel rellarge">
+	     
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  --
+	<div class="rellink">
+	<a href="index.html" title="Performance Benchmarks"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Performance Benc...
+	    </span>
+	    <span class="hiddenrellink">
+	    Performance Benchmarks
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="vb_covariance.html" title="Benchmarks for covariance"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for covariance
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page --
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.12-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Benchmarks for cluster</a><ul>
+<li><a class="reference internal" href="#kmeans-minimadelon-fit-unsup">KMeans-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#kmeans-minimadelon-predict-unsup">KMeans-minimadelon-predict_unsup</a></li>
+<li><a class="reference internal" href="#kmeans-blobs-fit-unsup">KMeans-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#kmeans-blobs-predict-unsup">KMeans-blobs-predict_unsup</a></li>
+<li><a class="reference internal" href="#minibatchkmeans-minimadelon-fit-unsup">MiniBatchKMeans-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#minibatchkmeans-minimadelon-predict-unsup">MiniBatchKMeans-minimadelon-predict_unsup</a></li>
+<li><a class="reference internal" href="#minibatchkmeans-madelon-fit-unsup">MiniBatchKMeans-madelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#minibatchkmeans-madelon-predict-unsup">MiniBatchKMeans-madelon-predict_unsup</a></li>
+<li><a class="reference internal" href="#spectralclustering-minimadelon-fit-unsup">SpectralClustering-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#spectralclustering-minimadelon-predict-unsup">SpectralClustering-minimadelon-predict_unsup</a></li>
+<li><a class="reference internal" href="#spectralclustering-blobs-fit-unsup">SpectralClustering-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#spectralclustering-blobs-predict-unsup">SpectralClustering-blobs-predict_unsup</a></li>
+<li><a class="reference internal" href="#ward-minimadelon-fit-unsup">Ward-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#ward-blobs-fit-unsup">Ward-blobs-fit_unsup</a></li>
+<li><a class="reference internal" href="#meanshift-minimadelon-fit-unsup">MeanShift-minimadelon-fit_unsup</a></li>
+<li><a class="reference internal" href="#meanshift-blobs-fit-unsup">MeanShift-blobs-fit_unsup</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  -->
+    </div>
+	  </div>
+
+
+      <div class="content">
             
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="cluster">
-<h1>cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="benchmarks-for-cluster">
+<h1>Benchmarks for cluster<a class="headerlink" href="#benchmarks-for-cluster" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="kmeans-minimadelon-fit-unsup">
 <h2>KMeans-minimadelon-fit_unsup<a class="headerlink" href="#kmeans-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -118,7 +212,10 @@
 <img alt="_images/KMeans-minimadelon-fit_unsup-timing.png" src="_images/KMeans-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KMeans-minimadelon-fit_unsup-memory.png" src="_images/KMeans-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      14232 function calls in 0.167 seconds
 
 Ordered by: cumulative time
@@ -180,6 +277,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kmeans-minimadelon-predict-unsup">
 <h2>KMeans-minimadelon-predict_unsup<a class="headerlink" href="#kmeans-minimadelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -200,7 +299,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KMeans-minimadelon-predict_unsup-timing.png" src="_images/KMeans-minimadelon-predict_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KMeans-minimadelon-predict_unsup-memory.png" src="_images/KMeans-minimadelon-predict_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      147 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -243,6 +345,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kmeans-blobs-fit-unsup">
 <h2>KMeans-blobs-fit_unsup<a class="headerlink" href="#kmeans-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -262,7 +366,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KMeans-blobs-fit_unsup-timing.png" src="_images/KMeans-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KMeans-blobs-fit_unsup-memory.png" src="_images/KMeans-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      14075 function calls in 0.159 seconds
 
 Ordered by: cumulative time
@@ -324,6 +431,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="kmeans-blobs-predict-unsup">
 <h2>KMeans-blobs-predict_unsup<a class="headerlink" href="#kmeans-blobs-predict-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -344,7 +453,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/KMeans-blobs-predict_unsup-timing.png" src="_images/KMeans-blobs-predict_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/KMeans-blobs-predict_unsup-memory.png" src="_images/KMeans-blobs-predict_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      147 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -387,6 +499,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchkmeans-minimadelon-fit-unsup">
 <h2>MiniBatchKMeans-minimadelon-fit_unsup<a class="headerlink" href="#minibatchkmeans-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -406,7 +520,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchKMeans-minimadelon-fit_unsup-timing.png" src="_images/MiniBatchKMeans-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchKMeans-minimadelon-fit_unsup-memory.png" src="_images/MiniBatchKMeans-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      9655 function calls in 0.351 seconds
 
 Ordered by: cumulative time
@@ -463,6 +580,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchkmeans-minimadelon-predict-unsup">
 <h2>MiniBatchKMeans-minimadelon-predict_unsup<a class="headerlink" href="#minibatchkmeans-minimadelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -483,7 +602,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchKMeans-minimadelon-predict_unsup-timing.png" src="_images/MiniBatchKMeans-minimadelon-predict_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchKMeans-minimadelon-predict_unsup-memory.png" src="_images/MiniBatchKMeans-minimadelon-predict_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      147 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -526,6 +648,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchkmeans-madelon-fit-unsup">
 <h2>MiniBatchKMeans-madelon-fit_unsup<a class="headerlink" href="#minibatchkmeans-madelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -545,7 +669,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchKMeans-madelon-fit_unsup-timing.png" src="_images/MiniBatchKMeans-madelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchKMeans-madelon-fit_unsup-memory.png" src="_images/MiniBatchKMeans-madelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      15236 function calls in 0.848 seconds
 
 Ordered by: cumulative time
@@ -602,6 +729,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="minibatchkmeans-madelon-predict-unsup">
 <h2>MiniBatchKMeans-madelon-predict_unsup<a class="headerlink" href="#minibatchkmeans-madelon-predict-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -622,7 +751,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MiniBatchKMeans-madelon-predict_unsup-timing.png" src="_images/MiniBatchKMeans-madelon-predict_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MiniBatchKMeans-madelon-predict_unsup-memory.png" src="_images/MiniBatchKMeans-madelon-predict_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      147 function calls in 0.014 seconds
 
 Ordered by: cumulative time
@@ -663,6 +795,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="spectralclustering-minimadelon-fit-unsup">
@@ -766,7 +900,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Ward-minimadelon-fit_unsup-timing.png" src="_images/Ward-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Ward-minimadelon-fit_unsup-memory.png" src="_images/Ward-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      52 function calls in 0.001 seconds
 
 Ordered by: cumulative time
@@ -807,6 +944,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="ward-blobs-fit-unsup">
 <h2>Ward-blobs-fit_unsup<a class="headerlink" href="#ward-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -826,7 +965,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/Ward-blobs-fit_unsup-timing.png" src="_images/Ward-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/Ward-blobs-fit_unsup-memory.png" src="_images/Ward-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      52 function calls in 0.050 seconds
 
 Ordered by: cumulative time
@@ -867,6 +1009,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="meanshift-minimadelon-fit-unsup">
 <h2>MeanShift-minimadelon-fit_unsup<a class="headerlink" href="#meanshift-minimadelon-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -886,7 +1030,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MeanShift-minimadelon-fit_unsup-timing.png" src="_images/MeanShift-minimadelon-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MeanShift-minimadelon-fit_unsup-memory.png" src="_images/MeanShift-minimadelon-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      6730 function calls in 0.142 seconds
 
 Ordered by: cumulative time
@@ -954,6 +1101,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 </div>
+</div>
+</div>
 <div class="section" id="meanshift-blobs-fit-unsup">
 <h2>MeanShift-blobs-fit_unsup<a class="headerlink" href="#meanshift-blobs-fit-unsup" title="Permalink to this headline">¶</a></h2>
 <p><strong>Benchmark setup</strong></p>
@@ -973,7 +1122,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <img alt="_images/MeanShift-blobs-fit_unsup-timing.png" src="_images/MeanShift-blobs-fit_unsup-timing.png" style="width: 6in;" />
 <p><strong>Memory usage</strong></p>
 <img alt="_images/MeanShift-blobs-fit_unsup-memory.png" src="_images/MeanShift-blobs-fit_unsup-memory.png" style="width: 6in;" />
-<p><strong>Profiler output</strong></p>
+<p><strong>Profile output</strong></p>
+<div class="profiler-output container">
+<div class="container">
+<p>cProfile</p>
 <div class="highlight-python"><pre>      62265 function calls in 1.233 seconds
 
 Ordered by: cumulative time
@@ -1040,40 +1192,50 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 </div>
 </div>
 </div>
+</div>
+</div>
 
 
           </div>
         </div>
       </div>
-        </div>
+
         <div class="clearer"></div>
       </div>
     </div>
+  
 
-    <div class="footer-wrapper">
-      <div class="footer">
-        <div class="left">
-          <a href="index.html" title="Performance Benchmarks"
-             >previous</a> |
-          <a href="vb_covariance.html" title="covariance"
-             >next</a> |
-          <a href="genindex.html" title="General Index"
-             >index</a>
-            <br/>
-            <a href="_sources/vb_cluster.txt"
-               rel="nofollow">Show Source</a>
-        </div>
-
-        <div class="right">
-          
     <div class="footer">
-        &copy; Copyright .
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="_sources/vb_cluster.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
     </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
+     <div class="rel rellarge">
+    
+    <div class="buttonPrevious">
+      <a href="index.html">
+        Previous
+      </a>  
     </div>
-
+    <div class="buttonNext">
+      <a href="vb_covariance.html">
+        Next
+      </a>  
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+     </script>
   </body>
 </html>
