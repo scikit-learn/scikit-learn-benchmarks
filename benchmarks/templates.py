@@ -64,6 +64,32 @@ class SklBenchmark(CProfileBenchmarkMixin,
 
         return ax
 
+    def to_rst(self, db_path=None, image_paths=None):
+        def indent(string, spaces=4):
+            dent = ' ' * spaces
+            return '\n'.join([dent + x for x in string.split('\n')])
+        result = Benchmark.to_rst(self, image_paths)
+        profile_out = ''
+        if db_path:
+            results = self.get_results(db_path)
+            profile_out = results.get('profile', [])
+            if len(profile_out) > 0:
+                profile_out = profile_out[-1]
+                result += """
+
+**Profile output**
+
+.. container:: profiler-output
+
+  .. container::
+
+    cProfile
+
+    ::
+
+""" + indent(profile_out, spaces=7)
+        return result
+
 _setup = """
 from sklearn.%(module)s import %(obj)s
 from deps import load_data
