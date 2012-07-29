@@ -10,9 +10,10 @@ BUILDDIR      ?= benchmarks/build
 
 # Internal variables.
 SKL_SPEED_ARGS ?= quick
-PAPEROPT_a4   l  = -D latex_paper_size=a4
+PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -P -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS)
+WEB_REPO_ALIAS  = origin
 
 .PHONY: help clean clean_db clean_all html rst run
 
@@ -48,6 +49,10 @@ rst:
 
 run:
 	$(PYTHON) benchmarks/run_suite.py $(SKL_SPEED_ARGS)
+
+github:
+	@echo "Send to github"
+	ghp-import -p $(BUILDDIR)/html -r ${WEB_REPO_ALIAS}
 
 # latex:
 #	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
