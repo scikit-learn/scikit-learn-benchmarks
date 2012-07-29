@@ -9,18 +9,21 @@ from vbench.benchmark import gather_benchmarks
 ###################
 # Gather benchmarks
 
-modules = ['linear_model', 'cluster', 'semi_supervised', 'naive_bayes', 'svm',
-           'decomposition', 'neighbors', 'covariance', 'gaussian_process',
-           'mixture', 'pls']
 
-by_module = {}
-benchmarks = []
-for mod in modules:
-    by_module[mod] = [b for b in gather_benchmarks(__import__(mod).__dict__)]
-    benchmarks.extend(by_module[mod])
+def gather(quick=False):
+    modules = ['linear_model'] if quick else \
+              ['linear_model', 'cluster', 'semi_supervised', 'naive_bayes',
+               'svm', 'decomposition', 'neighbors', 'covariance',
+               'gaussian_process', 'mixture', 'pls']
 
-for bm in benchmarks:
-    assert(bm.name is not None)
+    by_module = {}
+    benchmarks = []
+    for mod in modules:
+        by_module[mod] = [b for b in gather_benchmarks(
+                                                    __import__(mod).__dict__)]
+        benchmarks.extend(by_module[mod])
+
+    return benchmarks
 
 ###############
 # Configuration
