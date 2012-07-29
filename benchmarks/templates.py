@@ -93,10 +93,11 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
             for title, column in (('Traceback', 'traceback'),
                                   ('cProfile', 'profile'),
                                   ('LineProfiler', 'line_profile')):
-                out = results.get(column, [None])
-                out = out[-1]
-                if out:
-                    result += indent("""\
+                try:
+                    out = results.get(column, [None])
+                    out = out[-1]
+                    if out:
+                        result += indent("""\
 .. container::
 
 %s
@@ -104,7 +105,8 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
 ::
 
 """ % title, spaces=3) + indent(out, spaces=7)
-
+                except IndexError:
+                    pass
         return result
 
 _setup = """
