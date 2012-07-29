@@ -1,11 +1,21 @@
 from itertools import product
 
 from vbench.benchmark import BenchmarkSuite, PythonBenchmark, \
+                             LineProfilerBenchmarkMixin, \
                              CProfileBenchmarkMixin, MemoryBenchmarkMixin
 
 
-class SklBenchmark(CProfileBenchmarkMixin,
+class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
                    MemoryBenchmarkMixin, PythonBenchmark):
+    def __init__(self, *args, **kwargs):
+        super(SklBenchmark, self).__init__(*args, **kwargs)
+        if 'functions' not in kwargs:
+            # Unreadable hack to get function name:
+            import re
+            self.functions = ['.'.join((
+                          re.findall('from .+ import (.+)', self.setup)[0],
+                          self.code.split('.')[1].split('(')[0]))]
+
     def plot(self, db_path, label='time', ax=None, title=True, y='timing',
              ylabel='miliseconds'):
         import matplotlib.pyplot as plt
@@ -69,25 +79,32 @@ class SklBenchmark(CProfileBenchmarkMixin,
             dent = ' ' * spaces
             return '\n'.join([dent + x for x in string.split('\n')])
         result = PythonBenchmark.to_rst(self, image_paths)
-        profile_out = ''
-        if db_path:
-            results = self.get_results(db_path)
-            profile_out = results.get('profile', [])
-            if len(profile_out) > 0:
-                profile_out = profile_out[-1]
-                result += """
 
-**Profile output**
+        if db_path:
+            result += """\
+
+**Additional output**
 
 .. container:: profiler-output
 
-  .. container::
+"""
 
-    cProfile
+            results = self.get_results(db_path)
+            for title, column in (('Traceback', 'traceback'),
+                                  ('cProfile', 'profile'),
+                                  ('LineProfiler', 'line_profile')):
+                out = results.get(column, [None])
+                out = out[-1]
+                if out:
+                    result += indent("""\
+.. container::
 
-    ::
+%s
 
-""" + indent(profile_out, spaces=7)
+::
+
+""" % title, spaces=3) + indent(out, spaces=7)
+
         return result
 
 _setup = """
