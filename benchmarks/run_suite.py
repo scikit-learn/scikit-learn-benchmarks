@@ -8,7 +8,7 @@ if __name__ == '__main__':
     run_option = 30 if 'historical' in sys.argv else 'last'
     quick = 'quick' in sys.argv
 
-    benchmarks = gather(quick=quick)
+    benchmarks, _ = gather(quick=quick)
 
     runner = BenchmarkRunner(benchmarks, REPO_PATH, REPO_URL,
                              BUILD, DB_PATH, TMP_DIR, PREPARE,

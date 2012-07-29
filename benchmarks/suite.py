@@ -23,7 +23,7 @@ def gather(quick=False):
                                                     __import__(mod).__dict__)]
         benchmarks.extend(by_module[mod])
 
-    return benchmarks
+    return benchmarks, by_module
 
 ###############
 # Configuration
@@ -74,16 +74,17 @@ BUILD = """
 python setup.py build_ext --inplace
 """
 
-RST_BASE = '../doc'
+RST_BASE = 'doc'
 
-dependencies = ['deps.py', 'templates.py', 'data']
+dependencies = ['benchmarks/deps.py', 'benchmarks/templates.py',
+                'benchmarks/data']
 
 START_DATE = datetime.now() - timedelta(days=400)
 repo = GitRepo(REPO_PATH)
 
 
 # Helper function, move it?
-def generate_rst_files(benchmarks):
+def generate_rst_files(benchmarks, by_module):
     import matplotlib as mpl
     mpl.use('Agg')
     import matplotlib.pyplot as plt
