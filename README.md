@@ -1,7 +1,8 @@
 scikit-learn-speed
 ==================
 
-Continuous benchmark suite for the scikit-learn project.
+Continuous benchmark suite for the scikit-learn project. For more information,
+check out http://vene.github.com/scikit-learn-speed
 
 Usage
 -----
@@ -31,17 +32,13 @@ the configuration value doesn't exist, or to override skipped values.
 Specifically, this means you don't have to bother to set ``repo_url`` and
 ``tmp_dir``.
 
-4. From the ``scikit-learn-speed/benchmarks`` folder, run:
-    ```
-    python run_suite.py  # This runs the entire suite, ~10min on my machine
-    python generate_rst_files.py  # This prepares the rst documentation
-    ```
+4. From the ``scikit-learn-speed`` folder run ``make``. This will call:
 
-5. To actually generate the HTML files, change to the ``scikit-learn-speed``
-foldar and execute::
-    ```
-    python make.py
-    ```
+ - ``make run``, which runs the benchmark suite,
+ - ``make rst``, which generates the Sphinx sources for the reports,
+ - ``make html``, which builds the HTML reports from the sources.
+
+For more details see ``make help``. 
 
 6. You can view the results by opening
 ``scikit-learn-speed/benchmarks/build/html/index.html``.
