@@ -32,7 +32,7 @@ _benchmarks = [
     {
      'obj': 'LinearSVC',
      'init_params': {},
-     'datasets': ('newsgroups', 'madelon'),
+     'datasets': ('newsgroups', 'blobs'),
      'statements': ('fit', 'predict')
     },
     {

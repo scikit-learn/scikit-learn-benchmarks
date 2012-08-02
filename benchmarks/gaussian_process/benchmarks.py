@@ -5,14 +5,14 @@ _benchmarks = [
      'obj': 'GaussianProcess',
      'spec': 'cobyla',
      'init_params': {'optimizer': 'fmin_cobyla'},
-     'datasets': ('minimadelon-oney', 'blobs'),
+     'datasets': ('blobs',),
      'statements': ('fit', 'predict')
     },
     {
      'obj': 'GaussianProcess',
      'spec': 'Welch',
      'init_params': {'optimizer': 'Welch'},
-     'datasets': ('minimadelon-oney', 'blobs',),
+     'datasets': ('blobs',),
      'statements': ('fit', 'predict')
     },
 ]

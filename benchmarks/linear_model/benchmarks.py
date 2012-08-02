@@ -4,44 +4,44 @@ _benchmarks = [
     {
      'obj': 'LinearRegression',
      'init_params': {},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('minimadelon',),
      'statements': ('fit', 'predict')
     },
     {
      'obj': 'Ridge',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('minimadelon', 'madelon'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon', 'blobs'),
+     'statements': ('fit',)
     },
     {
      'obj': 'Lars',
      'init_params': {'normalize': False},
-     'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon', 'madelon'),
+     'statements': ('fit',)
     },
     {
      'obj': 'LassoLars',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon', 'madelon'),
+     'statements': ('fit',)
     },
     {
      'obj': 'Lasso',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon', 'madelon'),
+     'statements': ('fit',)
     },
     {
      'obj': 'ElasticNet',
      'init_params': {'rho': 0.5, 'alpha': 0.5},  # normalize here?
-     'datasets': ('arcene', 'blobs'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon',),
+     'statements': ('fit',)
     },
     {
      'obj': 'OrthogonalMatchingPursuit',
      'init_params': {'n_nonzero_coefs': 10},
-     'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon', 'madelon'),
+     'statements': ('fit',)
     },
     {
      'obj': 'SGDClassifier',

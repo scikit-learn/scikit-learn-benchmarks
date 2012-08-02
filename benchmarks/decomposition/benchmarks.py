@@ -11,33 +11,33 @@ _benchmarks = [
      'obj': 'RandomizedPCA',
      'init_params': {'n_components': 9},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
+     'statements': ('fit_unsup', 'fit_transform')
     },
     {
      'obj': 'ProbabilisticPCA',
      'init_params': {'n_components': 9},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
+     'statements': ('fit_unsup', 'fit_transform')
     },
     {
      'obj': 'KernelPCA',
      'init_params': {'n_components': 9, 'kernel': 'rbf'},
      'spec': 'rbf',
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('blobs',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
      'obj': 'KernelPCA',
      'init_params': {'n_components': 9, 'kernel': 'sigmoid'},
      'spec': 'sigmoid',
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('blobs',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
      'obj': 'FastICA',
      'spec': 'deflation',
      'init_params': {'n_components': 9, 'algorithm': 'deflation'},
-     'datasets': ('arcene', 'blobs'),
+     'datasets': ('blobs',),
      'statements': ('fit_unsup', 'transform_unsup')
     },
     {
@@ -56,14 +56,14 @@ _benchmarks = [
     {
      'obj': 'MiniBatchDictionaryLearning',
      'init_params': {'n_atoms': 50},
-     'datasets': ('blobs',),
+     'datasets': ('minimadelon',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
      'obj': 'MiniBatchSparsePCA',
      'init_params': {'n_components': 2},
      'datasets': ('blobs',),
-     'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
+     'statements': ('fit_unsup', 'fit_transform')
     },
 ]
 
