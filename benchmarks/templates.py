@@ -17,7 +17,7 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
                           self.code.split('.')[1].split('(')[0]))]
 
     def plot(self, db_path, label='time', ax=None, title=True, y='timing',
-             ylabel='miliseconds'):
+             ylabel='seconds'):
         import matplotlib.pyplot as plt
         from matplotlib.dates import MonthLocator, DateFormatter
 
