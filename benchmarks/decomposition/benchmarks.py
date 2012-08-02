@@ -16,14 +16,14 @@ _benchmarks = [
     {
      'obj': 'ProbabilisticPCA',
      'init_params': {'n_components': 9},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('minimadelon', 'madelon'),
      'statements': ('fit_unsup', 'fit_transform')
     },
     {
      'obj': 'KernelPCA',
      'init_params': {'n_components': 9, 'kernel': 'rbf'},
      'spec': 'rbf',
-     'datasets': ('blobs',),
+     'datasets': ('madelon',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
@@ -55,8 +55,8 @@ _benchmarks = [
     },
     {
      'obj': 'MiniBatchDictionaryLearning',
-     'init_params': {'n_atoms': 50},
-     'datasets': ('minimadelon',),
+     'init_params': {'n_atoms': 50, 'n_iter': 300},
+     'datasets': ('blobsq',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {

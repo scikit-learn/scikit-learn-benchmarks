@@ -5,20 +5,21 @@ _benchmarks = [
      'obj': 'KMeans',
      'init_params': {'n_clusters': 9},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit_unsup', 'predict_unsup')
+     'statements': ('fit_unsup',)
     },
     {
      'obj': 'MiniBatchKMeans',
      'init_params': {'n_clusters': 9},
      'datasets': ('minimadelon', 'madelon'),
-     'statements': ('fit_unsup', 'predict_unsup')
+     'statements': ('fit_unsup',)
     },
-    {
-     'obj': 'SpectralClustering',
-     'init_params': {'n_clusters': 9},
-     'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit_unsup', 'predict_unsup')
-    },
+    # For some reason failing
+    #{
+    # 'obj': 'SpectralClustering',
+    # 'init_params': {'n_clusters': 9},
+    # 'datasets': ('minimadelon', 'blobs'),
+    # 'statements': ('fit_unsup', 'predict_unsup')
+    #},
     {
      'obj': 'Ward',
      'init_params': {},

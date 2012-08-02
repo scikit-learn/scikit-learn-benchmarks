@@ -130,7 +130,7 @@ def generate_rst_files(benchmarks, by_module):
 
         # TODO: condition this as well. Maybe some benchmarks are only for mem
         image_paths.append(('Execution time',
-                            plot_benchmark(bmk, 'timing', 'miliseconds')))
+                            plot_benchmark(bmk, 'timing', 'seconds')))
 
         image_paths.append(('Memory usage',
                             plot_benchmark(bmk, 'memory', 'megabytes')))

@@ -10,13 +10,13 @@ _benchmarks = [
     {
      'obj': 'PLSCanonical',
      'init_params': {},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('arcene', 'blobs'),
      'statements': ('fit', 'transform')
     },
     {
      'obj': 'PLSRegression',
      'init_params': {},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('arcene', 'madelon'),
      'statements': ('fit', 'transform')
     }
 ]

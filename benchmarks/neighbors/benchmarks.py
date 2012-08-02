@@ -5,14 +5,14 @@ _benchmarks = [
      'obj': 'KNeighborsClassifier',
      'spec': 'brute',
      'init_params': {'n_neighbors': 5, 'algorithm': 'brute'},
-     'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit', 'predict')
+     'datasets': ('minimadelon', 'madelon'),
+     'statements': ('predict',)
     },
     {
      'obj': 'KNeighborsClassifier',
      'spec': 'ball_tree',
      'init_params': {'n_neighbors': 5, 'algorithm': 'ball_tree'},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('arcene', 'madelon'),
      'statements': ('fit', 'predict')
     },
     {
@@ -32,7 +32,7 @@ _benchmarks = [
     {
      'obj': 'NearestCentroid',
      'init_params': {},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('madelon',),
      'statements': ('fit', 'predict')
     },
 ]

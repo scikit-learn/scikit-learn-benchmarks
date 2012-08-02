@@ -1,16 +1,16 @@
 from templates import make_suite as _make_suite
 
 _benchmarks = [
-    {
-     'obj': 'LinearRegression',
-     'init_params': {},
-     'datasets': ('minimadelon',),
-     'statements': ('fit', 'predict')
-    },
+    #{
+    # 'obj': 'LinearRegression',
+    # 'init_params': {},
+    # 'datasets': ('madelon',),
+    # 'statements': ('fit',)
+    #},
     {
      'obj': 'Ridge',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('minimadelon', 'blobs'),
+     'datasets': ('arcene', 'madelon'),
      'statements': ('fit',)
     },
     {
@@ -35,7 +35,7 @@ _benchmarks = [
      'obj': 'ElasticNet',
      'init_params': {'rho': 0.5, 'alpha': 0.5},  # normalize here?
      'datasets': ('minimadelon',),
-     'statements': ('fit',)
+     'statements': ('fit', 'predict')
     },
     {
      'obj': 'OrthogonalMatchingPursuit',
@@ -52,7 +52,7 @@ _benchmarks = [
     {
      'obj': 'LogisticRegression',
      'init_params': {'C': 1e5},
-     'datasets': ('minimadelon-oney', 'blobs'),
+     'datasets': ('arcene', 'madelon'),
      'statements': ('fit', 'predict')
     }
 ]
