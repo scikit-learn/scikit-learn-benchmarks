@@ -97,7 +97,7 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
                     out = results.get(column, [None])
                     out = out[-1]
                     if out:
-                        result += indent("""\
+                        result += indent("""
 .. container::
 
 %s
