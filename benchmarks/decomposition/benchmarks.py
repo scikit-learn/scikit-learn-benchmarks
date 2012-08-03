@@ -56,7 +56,7 @@ _benchmarks = [
     {
      'obj': 'MiniBatchDictionaryLearning',
      'init_params': {'n_atoms': 50, 'n_iter': 300},
-     'datasets': ('blobsq',),
+     'datasets': ('blobs',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
