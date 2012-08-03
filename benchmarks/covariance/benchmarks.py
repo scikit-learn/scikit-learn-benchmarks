@@ -10,7 +10,7 @@ _benchmarks = [
     {
      'obj': 'MinCovDet',
      'init_params': {},
-     'datasets': ('minimadelon', 'madelon'),
+     'datasets': ('blobs',),
      'statements': ('fit_unsup',)
     },
     {

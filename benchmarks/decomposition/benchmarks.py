@@ -23,14 +23,14 @@ _benchmarks = [
      'obj': 'KernelPCA',
      'init_params': {'n_components': 9, 'kernel': 'rbf'},
      'spec': 'rbf',
-     'datasets': ('madelon',),
+     'datasets': ('minimadelon',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
      'obj': 'KernelPCA',
      'init_params': {'n_components': 9, 'kernel': 'sigmoid'},
      'spec': 'sigmoid',
-     'datasets': ('blobs',),
+     'datasets': ('minimadelon',),
      'statements': ('fit_unsup', 'transform_unsup', 'fit_transform')
     },
     {
