@@ -10,7 +10,7 @@ Dependencies
 
 In order to run the benchmarks, you must have the following packages installed:
 
-  - The development version of vbench from `Vlad's repository <https://github.com/vene/vbench/tree/abstract_benchmarks>`_.
+  - The development version of vbench from `Vlad's repository <https://github.com/vene/vbench/tree/abstract_multistep_benchmarks>`_.
   - `Numpy <http://numpy.scipy.org/>`_, `Scipy <http://scipy.org/>`_
 
 Vbench itself requires:

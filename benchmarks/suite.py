@@ -92,8 +92,8 @@ def generate_rst_files(benchmarks, by_module):
     vb_path = os.path.join(RST_BASE, 'vbench')
     fig_base_path = os.path.join(vb_path, 'figures')
 
-    def plot_benchmark(benchmark, column, label):
-        fig_filename = '%s-%s.png' % (benchmark.name, column)
+    def plot_benchmark(benchmark, step_no, column, label):
+        fig_filename = '%s-step%d-%s.png' % (benchmark.name, step_no, column)
 
         # create paths
         fig_full_path = os.path.join(fig_base_path, fig_filename)
@@ -102,7 +102,7 @@ def generate_rst_files(benchmarks, by_module):
         # plot the figure
         plt.figure(figsize=(10, 6))
         ax = plt.gca()
-        benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label)
+        benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label, step_no=step_no)
         ylo, yhi = ax.get_ylim()
         plt.ylim([0.0, 1.1 * yhi])
         start, end = ax.get_xlim()
@@ -126,14 +126,16 @@ def generate_rst_files(benchmarks, by_module):
     for bmk in benchmarks:
         print 'Generating rst file for %s' % bmk.name
         rst_path = os.path.join(RST_BASE, 'vbench/%s.txt' % bmk.name)
-        image_paths = []  # tuple of (title, full_path, rel_path)
+        image_paths = []
+        for step_no in xrange(len(bmk.code)):
+            image_path = []  # tuple of (title, full_path, rel_path)
+            # TODO: condition this as well. Maybe some benchmarks are only mem
+            image_path.append(('Execution time', plot_benchmark(bmk, step_no,
+                                                        'timing', 'seconds')))
 
-        # TODO: condition this as well. Maybe some benchmarks are only for mem
-        image_paths.append(('Execution time',
-                            plot_benchmark(bmk, 'timing', 'seconds')))
-
-        image_paths.append(('Memory usage',
-                            plot_benchmark(bmk, 'memory', 'megabytes')))
+            image_path.append(('Memory usage', plot_benchmark(bmk, step_no,
+                                                      'memory', 'megabytes')))
+            image_paths.append(image_path)
 
         rst_text = bmk.to_rst(DB_PATH, image_paths)
         with open(rst_path, 'w') as f:

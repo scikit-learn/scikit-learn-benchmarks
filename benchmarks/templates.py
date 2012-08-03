@@ -1,5 +1,3 @@
-from itertools import product
-
 from vbench.benchmark import BenchmarkSuite, PythonBenchmark, \
                              LineProfilerBenchmarkMixin, \
                              CProfileBenchmarkMixin, MemoryBenchmarkMixin
@@ -14,14 +12,15 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
             import re
             self.functions = ['.'.join((
                           re.findall('from .+ import (.+)', self.setup)[0],
-                          self.code.split('.')[1].split('(')[0]))]
+                          step.split('.')[1].split('(')[0]))
+                    for step in self.code]
 
     def plot(self, db_path, label='time', ax=None, title=True, y='timing',
-             ylabel='seconds'):
+             ylabel='seconds', step_no=0):
         import matplotlib.pyplot as plt
         from matplotlib.dates import MonthLocator, DateFormatter
 
-        results = self.get_results(db_path)
+        results = self.get_results(db_path, step_no)
 
         if ax is None:
             fig = plt.figure()
@@ -75,29 +74,60 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
         return ax
 
     def to_rst(self, db_path=None, image_paths=None):
+        """Generates rst file with a list of images
+
+        image_paths: list of tuples (title, rel_path)
+        """
+
         def indent(string, spaces=4):
             dent = ' ' * spaces
             return '\n'.join([dent + x for x in string.split('\n')])
-        result = PythonBenchmark.to_rst(self, image_paths)
 
-        if db_path:
-            result += """\
+        output = self.name
+        output += '\n' + '-' * len(self.name) + '\n\n'
+        if self.description:
+            output += self.description + '\n'
+        if self.setup:
+            output += """\
+**Benchmark setup**
+
+ .. code-block:: python
+
+%s
+
+""" % indent(self.setup)
+
+        for step_no, (step, image_path) in enumerate(zip(self.code,
+                                                         image_paths)):
+            benchmark_code = """\
+**Benchmark statement**
+
+.. code-block:: python
+
+%s
+
+""" % (indent(step))
+            output += super(PythonBenchmark, self).to_rst(
+                                                benchmark_code=benchmark_code,
+                                                image_paths=image_path)
+
+            if db_path:
+                output += """\
 
 **Additional output**
 
 .. container:: profiler-output
 
 """
-
-            results = self.get_results(db_path)
-            for title, column in (('Traceback', 'traceback'),
-                                  ('cProfile', 'profile'),
-                                  ('LineProfiler', 'line_profile')):
-                try:
-                    out = results.get(column, [None])
-                    out = out[-1]
-                    if out:
-                        result += indent("""
+                results = self.get_results(db_path, step_no)
+                for title, column in (('Traceback', 'traceback'),
+                                      ('cProfile', 'profile'),
+                                      ('LineProfiler', 'line_profile')):
+                    try:
+                        out = results.get(column, [None])
+                        out = out[-1]
+                        if out:
+                            output += indent("""
 .. container::
 
 %s
@@ -105,9 +135,11 @@ class SklBenchmark(LineProfilerBenchmarkMixin, CProfileBenchmarkMixin,
 ::
 
 """ % title, spaces=3) + indent(out, spaces=7)
-                except IndexError:
-                    pass
-        return result
+                    except IndexError:
+                        pass
+
+        return output
+
 
 _setup = """
 from sklearn.%(module)s import %(obj)s
@@ -167,17 +199,17 @@ def make_suite(config_arg_list, module=None):
                              'manually in the benchmarks file.')
     configs = [
         (
-            join_safe((arg['obj'], arg.get('spec'), data, stmt)),  # name
-            _statements[stmt],                      # statement to bench
-            _setup % {                              # setup
+            join_safe((arg['obj'], arg.get('spec'), data)),        # name
+            [_statements[stmt] for stmt in arg['statements']],     # statements
+            _setup % {                                             # setup
                 'obj': arg['obj'],
                 'init_params': str(arg['init_params']),
                 'data': data,
                 'module': module
-            } + _setup_extra[stmt]
+            }
         )
         for arg in config_arg_list
-        for data, stmt in product(arg['datasets'], arg['statements'])
+        for data in arg['datasets']
     ]
 
     return BenchmarkSuite(SklBenchmark(code, setup, name=name)
