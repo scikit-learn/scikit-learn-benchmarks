@@ -16,25 +16,25 @@ _benchmarks = [
     {
      'obj': 'Lars',
      'init_params': {'normalize': False},
-     'datasets': ('minimadelon', 'madelon'),
+     'datasets': ('minimadelon-oney', 'madelon'),
      'statements': ('fit',)
     },
     {
      'obj': 'LassoLars',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('minimadelon', 'madelon'),
+     'datasets': ('minimadelon-oney', 'madelon'),
      'statements': ('fit',)
     },
     {
      'obj': 'Lasso',
      'init_params': {'alpha': 0.1, 'normalize': False},
-     'datasets': ('minimadelon', 'madelon'),
+     'datasets': ('minimadelon-oney', 'madelon'),
      'statements': ('fit',)
     },
     {
      'obj': 'ElasticNet',
      'init_params': {'rho': 0.5, 'alpha': 0.5},  # normalize here?
-     'datasets': ('minimadelon',),
+     'datasets': ('minimadelon-oney',),
      'statements': ('fit', 'predict')
     },
     {
