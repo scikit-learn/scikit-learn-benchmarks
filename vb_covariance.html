@@ -1,0 +1,1233 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Benchmarks for covariance &mdash; Vbench performance benchmarks for scikit-learn</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.12-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
+    <link rel="next" title="Benchmarks for decomposition" href="vb_decomposition.html" />
+    <link rel="prev" title="Benchmarks for cluster" href="vb_cluster.html" />
+
+  <!-- Reference the theme's stylesheet on the Google CDN -->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/excite-bike/jquery-ui.css"
+        type="text/css" rel="Stylesheet" />
+ 
+  <!-- Reference jQuery and jQuery UI from the CDN. Remember
+       that the order of these two elements is important -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+        $(".profiler-output").accordion({collapsible: true, header: "p", active: false} );
+      });
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="http://scikit-learn.org/">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quick_start.html">Speed Quick Start</a></li>
+            <li><a href="http://scikit-learn.org/dev/user_guide.html">User's Guide</a></li>
+            <li><a href="http://scikit-learn.org/dev/developers/performance.html">Performance</a></li>
+            <li><a href="http://github.com/scikit-learn/scikit-learn">Github</a></li>
+            <li><a href="http://github.com/vene/scikit-learn-speed">Speed Github</a></li>
+       </ul>
+</div>
+<!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">Benchmarks for cluster</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Benchmarks for covariance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#graphlasso-minimadelon">GraphLasso-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graphlasso-madelon">GraphLasso-madelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mincovdet-blobs">MinCovDet-blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shrunkcovariance-minimadelon">ShrunkCovariance-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shrunkcovariance-madelon">ShrunkCovariance-madelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ledoitwolf-minimadelon">LedoitWolf-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ledoitwolf-madelon">LedoitWolf-madelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oas-minimadelon">OAS-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oas-madelon">OAS-madelon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">Benchmarks for decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">Benchmarks for gaussian_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">Benchmarks for linear_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">Benchmarks for mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">Benchmarks for naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">Benchmarks for neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">Benchmarks for pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">Benchmarks for semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">Benchmarks for svm</a></li>
+</ul>
+
+          <!--
+	   <div class="rel rellarge">
+	     
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  --
+	<div class="rellink">
+	<a href="vb_cluster.html" title="Benchmarks for cluster"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for cluster
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="vb_decomposition.html" title="Benchmarks for decomposition"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for d...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for decomposition
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page --
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.12-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Benchmarks for covariance</a><ul>
+<li><a class="reference internal" href="#graphlasso-minimadelon">GraphLasso-minimadelon</a></li>
+<li><a class="reference internal" href="#graphlasso-madelon">GraphLasso-madelon</a></li>
+<li><a class="reference internal" href="#mincovdet-blobs">MinCovDet-blobs</a></li>
+<li><a class="reference internal" href="#shrunkcovariance-minimadelon">ShrunkCovariance-minimadelon</a></li>
+<li><a class="reference internal" href="#shrunkcovariance-madelon">ShrunkCovariance-madelon</a></li>
+<li><a class="reference internal" href="#ledoitwolf-minimadelon">LedoitWolf-minimadelon</a></li>
+<li><a class="reference internal" href="#ledoitwolf-madelon">LedoitWolf-madelon</a></li>
+<li><a class="reference internal" href="#oas-minimadelon">OAS-minimadelon</a></li>
+<li><a class="reference internal" href="#oas-madelon">OAS-madelon</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  -->
+    </div>
+	  </div>
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="benchmarks-for-covariance">
+<h1>Benchmarks for covariance<a class="headerlink" href="#benchmarks-for-covariance" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="graphlasso-minimadelon">
+<h2>GraphLasso-minimadelon<a class="headerlink" href="#graphlasso-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">GraphLasso</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">GraphLasso</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/GraphLasso-minimadelon-step0-timing.png" src="_images/GraphLasso-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/GraphLasso-minimadelon-step0-memory.png" src="_images/GraphLasso-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>Traceback</p>
+<div class="highlight-python"><pre>   Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 150, in run
+    exec step in ns
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 264, in fit
+    verbose=self.verbose,
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 207, in graph_lasso
+    raise e
+FloatingPointError: Non SPD result: the system is too ill-conditioned for this solver. The system is too ill-conditioned for this solver
+Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 260, in run
+    mem_usages = magic_memit(ns, self.code, repeat=self.mem_repeat)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 672, in magic_memit
+    raise RuntimeError('ERROR: all subprocesses exited unsuccessfully.'
+RuntimeError: ERROR: all subprocesses exited unsuccessfully. Try again with the `-i` option.
+Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 293, in run
+    prof.runcall(f)
+  File "/sp/lib/python/cpython-2.7.2/lib/python2.7/cProfile.py", line 149, in runcall
+    return func(*args, **kw)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 288, in f
+    exec code in ns
+  File "&lt;f&gt;", line 1, in &lt;module&gt;
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 264, in fit
+    verbose=self.verbose,
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 207, in graph_lasso
+    raise e
+FloatingPointError: Non SPD result: the system is too ill-conditioned for this solver. The system is too ill-conditioned for this solver
+Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 351, in run
+    prof.runcall(f)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/line_profiler.py", line 137, in runcall
+    return func(*args, **kw)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 348, in f
+    exec code in ns
+  File "&lt;f&gt;", line 1, in &lt;module&gt;
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 264, in fit
+    verbose=self.verbose,
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 207, in graph_lasso
+    raise e
+FloatingPointError: Non SPD result: the system is too ill-conditioned for this solver. The system is too ill-conditioned for this solver</pre>
+</div>
+</div>
+</div>
+<div class="section" id="graphlasso-madelon">
+<h2>GraphLasso-madelon<a class="headerlink" href="#graphlasso-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">GraphLasso</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">GraphLasso</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/GraphLasso-madelon-step0-timing.png" src="_images/GraphLasso-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/GraphLasso-madelon-step0-memory.png" src="_images/GraphLasso-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>Traceback</p>
+<div class="highlight-python"><pre>   Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 150, in run
+    exec step in ns
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 264, in fit
+    verbose=self.verbose,
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 207, in graph_lasso
+    raise e
+FloatingPointError: overflow encountered in multiply. The system is too ill-conditioned for this solver
+Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 260, in run
+    mem_usages = magic_memit(ns, self.code, repeat=self.mem_repeat)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 672, in magic_memit
+    raise RuntimeError('ERROR: all subprocesses exited unsuccessfully.'
+RuntimeError: ERROR: all subprocesses exited unsuccessfully. Try again with the `-i` option.
+Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 293, in run
+    prof.runcall(f)
+  File "/sp/lib/python/cpython-2.7.2/lib/python2.7/cProfile.py", line 149, in runcall
+    return func(*args, **kw)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 288, in f
+    exec code in ns
+  File "&lt;f&gt;", line 1, in &lt;module&gt;
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 264, in fit
+    verbose=self.verbose,
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 207, in graph_lasso
+    raise e
+FloatingPointError: overflow encountered in multiply. The system is too ill-conditioned for this solver
+Traceback (most recent call last):
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 351, in run
+    prof.runcall(f)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/line_profiler.py", line 137, in runcall
+    return func(*args, **kw)
+  File "/home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py", line 348, in f
+    exec code in ns
+  File "&lt;f&gt;", line 1, in &lt;module&gt;
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 264, in fit
+    verbose=self.verbose,
+  File "/tmp/vb_sklearn/sklearn/covariance/graph_lasso_.py", line 207, in graph_lasso
+    raise e
+FloatingPointError: overflow encountered in multiply. The system is too ill-conditioned for this solver</pre>
+</div>
+</div>
+</div>
+<div class="section" id="mincovdet-blobs">
+<h2>MinCovDet-blobs<a class="headerlink" href="#mincovdet-blobs" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">MinCovDet</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MinCovDet</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MinCovDet-blobs-step0-timing.png" src="_images/MinCovDet-blobs-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MinCovDet-blobs-step0-memory.png" src="_images/MinCovDet-blobs-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         13290 function calls in 1.243 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    1.243    1.243 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.243    1.243 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    1.243    1.243 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:515(fit)
+     1    0.000    0.000    1.231    1.231 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:259(fast_mcd)
+     2    0.003    0.001    1.231    0.615 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:152(select_candidates)
+    40    0.165    0.004    1.204    0.030 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:27(c_step)
+   123    0.002    0.000    0.725    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+   123    0.667    0.005    0.707    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+   237    0.212    0.001    0.212    0.001 {numpy.core._dotblas.dot}
+   113    0.001    0.000    0.099    0.001 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+   113    0.016    0.000    0.097    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
+   142    0.001    0.000    0.054    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:39(_fast_logdet_numpy)
+   142    0.014    0.000    0.053    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:1560(slogdet)
+   370    0.031    0.000    0.042    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+  1135    0.032    0.000    0.032    0.000 {numpy.core.multiarray.array}
+   931    0.003    0.000    0.032    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   129    0.001    0.000    0.028    0.000 {map}
+   142    0.022    0.000    0.022    0.000 {numpy.linalg.lapack_lite.dgetrf}
+   227    0.012    0.000    0.012    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   900    0.010    0.000    0.010    0.000 {method 'any' of 'numpy.ndarray' objects}
+     1    0.001    0.001    0.009    0.009 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:583(reweight_covariance)
+   124    0.008    0.000    0.008    0.000 {method 'sum' of 'numpy.ndarray' objects}
+   124    0.002    0.000    0.007    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     1    0.000    0.000    0.005    0.005 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+    40    0.002    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1862(allclose)
+    30    0.005    0.000    0.005    0.000 {method 'permutation' of 'mtrand.RandomState' objects}
+    84    0.000    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
+   124    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+    84    0.004    0.000    0.004    0.000 {method 'argsort' of 'numpy.ndarray' objects}
+   142    0.001    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:139(_fastCopyAndTranspose)
+   426    0.003    0.000    0.003    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+   142    0.001    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:902(diagonal)
+   142    0.003    0.000    0.003    0.000 {numpy.core.multiarray._fastCopyAndTranspose}
+   123    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+   378    0.002    0.000    0.002    0.000 {numpy.core.multiarray.zeros}
+   142    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:99(_commonType)
+     2    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:453(isf)
+     2    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1521(isf)
+   142    0.001    0.000    0.001    0.000 {method 'diagonal' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:92(svdvals)
+     1    0.001    0.001    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:14(svd)
+   162    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+   247    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+   142    0.001    0.000    0.001    0.000 {numpy.core.multiarray.arange}
+   123    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.generic' objects}
+   920    0.001    0.000    0.001    0.000 {issubclass}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:559(correct_covariance)
+   142    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:157(_assertSquareness)
+   142    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:127(_to_native_byte_order)
+   113    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.ndarray' objects}
+   142    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:151(_assertRank2)
+   284    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:71(isComplexType)
+     2    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:603(argsreduce)
+   254    0.001    0.000    0.001    0.000 {getattr}
+    80    0.000    0.000    0.000    0.000 {abs}
+   248    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    44    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+   562    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+    40    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1579(all)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1258(extract)
+   113    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+   812    0.000    0.000    0.000    0.000 {len}
+   142    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:84(_realType)
+   124    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:592(valarray)
+    40    0.000    0.000    0.000    0.000 {method 'all' of 'numpy.ndarray' objects}
+   124    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+   126    0.000    0.000    0.000    0.000 {range}
+   142    0.000    0.000    0.000    0.000 {max}
+    16    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+    94    0.000    0.000    0.000    0.000 {isinstance}
+   113    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
+   247    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1458(product)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:2861(median)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:300(repeat)
+   142    0.000    0.000    0.000    0.000 {min}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   142    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:2543(_isf)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:490(sort)
+    11    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1173(_argcheck)
+     6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1301(place)
+    10    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:45(take)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1899(__call__)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1129(nonzero)
+     6    0.000    0.000    0.000    0.000 {numpy.lib._compiled_base._insert}
+     2    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 {zip}
+     2    0.000    0.000    0.000    0.000 {method 'prod' of 'numpy.ndarray' objects}
+    16    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+     8    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1896(freeze)
+     2    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
+     8    0.000    0.000    0.000    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:107(reshape)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:635(_fix_loc_scale)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:433(__init__)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1211(shape)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:120(get_precision)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py
+Function: fit at line 515
+Total time: 1.38042 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   515                                               def fit(self, X):
+   516                                                   """Fits a Minimum Covariance Determinant with the FastMCD algorithm.
+   517
+   518                                                   Parameters
+   519                                                   ----------
+   520                                                   X: array-like, shape = [n_samples, n_features]
+   521                                                     Training data, where n_samples is the number of samples
+   522                                                     and n_features is the number of features.
+   523
+   524                                                   Returns
+   525                                                   -------
+   526                                                   self: object
+   527                                                     Returns self.
+   528
+   529                                                   """
+   530         1           45     45.0      0.0          self.random_state = check_random_state(self.random_state)
+   531         1            5      5.0      0.0          n_samples, n_features = X.shape
+   532                                                   # check that the empirical covariance is full rank
+   533         1         2004   2004.0      0.1          if (linalg.svdvals(np.dot(X.T, X)) &gt; 1e-8).sum() != n_features:
+   534                                                       warnings.warn("The covariance matrix associated to your dataset " \
+   535                                                                         "is not full rank")
+   536                                                   # compute and store raw estimates
+   537         1            4      4.0      0.0          raw_location, raw_covariance, raw_support, raw_dist = fast_mcd(
+   538         1            4      4.0      0.0                  X, support_fraction=self.support_fraction,
+   539         1            3      3.0      0.0                  cov_computation_method=self._nonrobust_covariance,
+   540         1      1367662 1367662.0     99.1                  random_state=self.random_state)
+   541         1            4      4.0      0.0          if self.assume_centered:
+   542                                                       raw_location = np.zeros(n_features)
+   543                                                       raw_covariance = self._nonrobust_covariance(
+   544                                                               X[raw_support], assume_centered=True)
+   545                                                       raw_dist = np.sum(np.dot(X, linalg.pinv(raw_covariance)) * X, 1)
+   546         1            4      4.0      0.0          self.raw_location_ = raw_location
+   547         1            4      4.0      0.0          self.raw_covariance_ = raw_covariance
+   548         1            3      3.0      0.0          self.raw_support_ = raw_support
+   549         1            2      2.0      0.0          self.location_ = raw_location
+   550         1            2      2.0      0.0          self.support_ = raw_support
+   551         1            2      2.0      0.0          self.dist_ = raw_dist
+   552                                                   # obtain consistency at normal models
+   553         1         1194   1194.0      0.1          self.correct_covariance(X)
+   554                                                   # reweight estimator
+   555         1         9471   9471.0      0.7          self.reweight_covariance(X)
+   556
+   557         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="shrunkcovariance-minimadelon">
+<h2>ShrunkCovariance-minimadelon<a class="headerlink" href="#shrunkcovariance-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">ShrunkCovariance</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ShrunkCovariance</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ShrunkCovariance-minimadelon-step0-timing.png" src="_images/ShrunkCovariance-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ShrunkCovariance-minimadelon-step0-memory.png" src="_images/ShrunkCovariance-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         86 function calls in 0.674 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.674    0.674 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.674    0.674 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.674    0.674 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:105(fit)
+     1    0.000    0.000    0.660    0.660 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.000    0.000    0.660    0.660 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     1    0.636    0.636    0.652    0.652 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+     3    0.021    0.007    0.023    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     1    0.000    0.000    0.016    0.016 {map}
+     1    0.000    0.000    0.013    0.013 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.006    0.006    0.013    0.013 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
+     1    0.007    0.007    0.007    0.007 {numpy.core._dotblas.dot}
+     6    0.003    0.000    0.003    0.000 {method 'any' of 'numpy.ndarray' objects}
+     1    0.001    0.001    0.001    0.001 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:27(shrunk_covariance)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+    11    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+     9    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {range}
+     5    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
+Function: fit at line 105
+Total time: 0.764557 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   105                                               def fit(self, X):
+   106                                                   """ Fits the shrunk covariance model
+   107                                                   according to the given training data and parameters.
+   108
+   109                                                   Parameters
+   110                                                   ----------
+   111                                                   X : array-like, shape = [n_samples, n_features]
+   112                                                     Training data, where n_samples is the number of samples
+   113                                                     and n_features is the number of features.
+   114
+   115                                                   assume_centered: Boolean
+   116                                                     If True, data are not centered before computation.
+   117                                                     Useful to work with data whose mean is significantly equal to
+   118                                                     zero but is not exactly zero.
+   119                                                     If False, data are centered before computation.
+   120
+   121                                                   Returns
+   122                                                   -------
+   123                                                   self : object
+   124                                                       Returns self.
+   125
+   126                                                   """
+   127                                                   # Not calling the parent object to fit, to avoid a potential
+   128                                                   # matrix inversion when setting the precision
+   129         1            4      4.0      0.0          if self.assume_centered:
+   130                                                       self.location_ = np.zeros(X.shape[1])
+   131                                                   else:
+   132         1          140    140.0      0.0              self.location_ = X.mean(0)
+   133         1            3      3.0      0.0          covariance = empirical_covariance(X,
+   134         1        23834  23834.0      3.1                          assume_centered=self.assume_centered)
+   135         1          942    942.0      0.1          covariance = shrunk_covariance(covariance, self.shrinkage)
+   136         1       739630 739630.0     96.7          self._set_covariance(covariance)
+   137
+   138         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="shrunkcovariance-madelon">
+<h2>ShrunkCovariance-madelon<a class="headerlink" href="#shrunkcovariance-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">ShrunkCovariance</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ShrunkCovariance</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ShrunkCovariance-madelon-step0-timing.png" src="_images/ShrunkCovariance-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ShrunkCovariance-madelon-step0-memory.png" src="_images/ShrunkCovariance-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         86 function calls in 3.286 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    3.286    3.286 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    3.286    3.286 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    3.286    3.286 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:105(fit)
+     1    0.000    0.000    2.844    2.844 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.000    0.000    2.844    2.844 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     1    2.819    2.819    2.835    2.835 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+     1    0.000    0.000    0.411    0.411 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.009    0.009    0.411    0.411 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
+     1    0.367    0.367    0.367    0.367 {numpy.core._dotblas.dot}
+     2    0.061    0.030    0.061    0.030 {method 'mean' of 'numpy.ndarray' objects}
+     3    0.021    0.007    0.023    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     1    0.000    0.000    0.015    0.015 {map}
+    11    0.005    0.000    0.005    0.000 {numpy.core.multiarray.array}
+     6    0.003    0.000    0.003    0.000 {method 'any' of 'numpy.ndarray' objects}
+     1    0.001    0.001    0.001    0.001 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:27(shrunk_covariance)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     2    0.000    0.000    0.000    0.000 {getattr}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+     9    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     5    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
+Function: fit at line 105
+Total time: 3.3843 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   105                                               def fit(self, X):
+   106                                                   """ Fits the shrunk covariance model
+   107                                                   according to the given training data and parameters.
+   108
+   109                                                   Parameters
+   110                                                   ----------
+   111                                                   X : array-like, shape = [n_samples, n_features]
+   112                                                     Training data, where n_samples is the number of samples
+   113                                                     and n_features is the number of features.
+   114
+   115                                                   assume_centered: Boolean
+   116                                                     If True, data are not centered before computation.
+   117                                                     Useful to work with data whose mean is significantly equal to
+   118                                                     zero but is not exactly zero.
+   119                                                     If False, data are centered before computation.
+   120
+   121                                                   Returns
+   122                                                   -------
+   123                                                   self : object
+   124                                                       Returns self.
+   125
+   126                                                   """
+   127                                                   # Not calling the parent object to fit, to avoid a potential
+   128                                                   # matrix inversion when setting the precision
+   129         1            4      4.0      0.0          if self.assume_centered:
+   130                                                       self.location_ = np.zeros(X.shape[1])
+   131                                                   else:
+   132         1        30205  30205.0      0.9              self.location_ = X.mean(0)
+   133         1            3      3.0      0.0          covariance = empirical_covariance(X,
+   134         1       476786 476786.0     14.1                          assume_centered=self.assume_centered)
+   135         1          999    999.0      0.0          covariance = shrunk_covariance(covariance, self.shrinkage)
+   136         1      2876304 2876304.0     85.0          self._set_covariance(covariance)
+   137
+   138         1            3      3.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="ledoitwolf-minimadelon">
+<h2>LedoitWolf-minimadelon<a class="headerlink" href="#ledoitwolf-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">LedoitWolf</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LedoitWolf-minimadelon-step0-timing.png" src="_images/LedoitWolf-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LedoitWolf-minimadelon-step0-memory.png" src="_images/LedoitWolf-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         97 function calls in 0.740 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.740    0.740 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.740    0.740 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.740    0.740 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:365(fit)
+     1    0.000    0.000    0.712    0.712 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.000    0.000    0.712    0.712 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     1    0.688    0.688    0.704    0.704 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+     1    0.001    0.001    0.027    0.027 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:235(ledoit_wolf)
+     3    0.021    0.007    0.023    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     3    0.018    0.006    0.018    0.006 {numpy.core._dotblas.dot}
+     1    0.002    0.002    0.016    0.016 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:144(ledoit_wolf_shrinkage)
+     1    0.000    0.000    0.016    0.016 {map}
+     1    0.005    0.005    0.010    0.010 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     6    0.003    0.000    0.003    0.000 {method 'any' of 'numpy.ndarray' objects}
+     5    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     5    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     9    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+    10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     5    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     1    0.000    0.000    0.000    0.000 {min}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {range}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     8    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
+Function: fit at line 365
+Total time: 0.762355 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   365                                               def fit(self, X):
+   366                                                   """ Fits the Ledoit-Wolf shrunk covariance model
+   367                                                   according to the given training data and parameters.
+   368
+   369                                                   Parameters
+   370                                                   ----------
+   371                                                   X : array-like, shape = [n_samples, n_features]
+   372                                                     Training data, where n_samples is the number of samples
+   373                                                     and n_features is the number of features.
+   374
+   375                                                   Returns
+   376                                                   -------
+   377                                                   self : object
+   378                                                       Returns self.
+   379
+   380                                                   """
+   381                                                   # Not calling the parent object to fit, to avoid computing the
+   382                                                   # covariance matrix (and potentially the precision)
+   383         1            4      4.0      0.0          if self.assume_centered:
+   384                                                       self.location_ = np.zeros(X.shape[1])
+   385                                                   else:
+   386         1          141    141.0      0.0              self.location_ = X.mean(0)
+   387         1           87     87.0      0.0          covariance, shrinkage = ledoit_wolf(X - self.location_,
+   388         1        25280  25280.0      3.3                          assume_centered=True, block_size=self.block_size)
+   389         1            4      4.0      0.0          self.shrinkage_ = shrinkage
+   390         1       736836 736836.0     96.7          self._set_covariance(covariance)
+   391
+   392         1            3      3.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="ledoitwolf-madelon">
+<h2>LedoitWolf-madelon<a class="headerlink" href="#ledoitwolf-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">LedoitWolf</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/LedoitWolf-madelon-step0-timing.png" src="_images/LedoitWolf-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/LedoitWolf-madelon-step0-memory.png" src="_images/LedoitWolf-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         97 function calls in 4.131 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    4.131    4.131 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    4.131    4.131 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.007    0.007    4.131    4.131 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:365(fit)
+     1    0.000    0.000    2.832    2.832 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.000    0.000    2.832    2.832 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     1    2.810    2.810    2.824    2.824 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+     1    0.001    0.001    1.261    1.261 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:235(ledoit_wolf)
+     3    1.217    0.406    1.217    0.406 {numpy.core._dotblas.dot}
+     1    0.007    0.007    0.815    0.815 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:144(ledoit_wolf_shrinkage)
+     1    0.004    0.004    0.445    0.445 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     5    0.000    0.000    0.032    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     5    0.032    0.006    0.032    0.006 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.030    0.030    0.030    0.030 {method 'mean' of 'numpy.ndarray' objects}
+     3    0.019    0.006    0.021    0.007 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     1    0.000    0.000    0.014    0.014 {map}
+     6    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     9    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+    10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     5    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     1    0.000    0.000    0.000    0.000 {min}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     8    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {range}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
+Function: fit at line 365
+Total time: 4.18888 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   365                                               def fit(self, X):
+   366                                                   """ Fits the Ledoit-Wolf shrunk covariance model
+   367                                                   according to the given training data and parameters.
+   368
+   369                                                   Parameters
+   370                                                   ----------
+   371                                                   X : array-like, shape = [n_samples, n_features]
+   372                                                     Training data, where n_samples is the number of samples
+   373                                                     and n_features is the number of features.
+   374
+   375                                                   Returns
+   376                                                   -------
+   377                                                   self : object
+   378                                                       Returns self.
+   379
+   380                                                   """
+   381                                                   # Not calling the parent object to fit, to avoid computing the
+   382                                                   # covariance matrix (and potentially the precision)
+   383         1            3      3.0      0.0          if self.assume_centered:
+   384                                                       self.location_ = np.zeros(X.shape[1])
+   385                                                   else:
+   386         1        43416  43416.0      1.0              self.location_ = X.mean(0)
+   387         1         3988   3988.0      0.1          covariance, shrinkage = ledoit_wolf(X - self.location_,
+   388         1      1334526 1334526.0     31.9                          assume_centered=True, block_size=self.block_size)
+   389         1            5      5.0      0.0          self.shrinkage_ = shrinkage
+   390         1      2806944 2806944.0     67.0          self._set_covariance(covariance)
+   391
+   392         1            3      3.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="oas-minimadelon">
+<h2>OAS-minimadelon<a class="headerlink" href="#oas-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">OAS</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">OAS</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/OAS-minimadelon-step0-timing.png" src="_images/OAS-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/OAS-minimadelon-step0-memory.png" src="_images/OAS-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         77 function calls in 0.686 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.686    0.686 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.686    0.686 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.686    0.686 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:512(fit)
+     1    0.000    0.000    0.671    0.671 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.000    0.000    0.671    0.671 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     1    0.647    0.647    0.663    0.663 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+     3    0.021    0.007    0.023    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     1    0.000    0.000    0.016    0.016 {map}
+     1    0.002    0.002    0.015    0.015 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:398(oas)
+     1    0.006    0.006    0.012    0.012 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.007    0.007    0.007    0.007 {numpy.core._dotblas.dot}
+     6    0.003    0.000    0.003    0.000 {method 'any' of 'numpy.ndarray' objects}
+     2    0.001    0.000    0.001    0.000 {method 'mean' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 {min}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     7    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {range}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
+Function: fit at line 512
+Total time: 0.768824 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   512                                               def fit(self, X):
+   513                                                   """ Fits the Oracle Approximating Shrinkage covariance model
+   514                                                   according to the given training data and parameters.
+   515
+   516                                                   Parameters
+   517                                                   ----------
+   518                                                   X : array-like, shape = [n_samples, n_features]
+   519                                                     Training data, where n_samples is the number of samples
+   520                                                     and n_features is the number of features.
+   521
+   522                                                   Returns
+   523                                                   -------
+   524                                                   self : object
+   525                                                       Returns self.
+   526
+   527                                                   """
+   528                                                   # Not calling the parent object to fit, to avoid computing the
+   529                                                   # covariance matrix (and potentially the precision)
+   530         1            4      4.0      0.0          if self.assume_centered:
+   531                                                       self.location_ = np.zeros(X.shape[1])
+   532                                                   else:
+   533         1          141    141.0      0.0              self.location_ = X.mean(0)
+   534
+   535         1        25923  25923.0      3.4          covariance, shrinkage = oas(X - self.location_, assume_centered=True)
+   536         1            4      4.0      0.0          self.shrinkage_ = shrinkage
+   537         1       742748 742748.0     96.6          self._set_covariance(covariance)
+   538
+   539         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="oas-madelon">
+<h2>OAS-madelon<a class="headerlink" href="#oas-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">OAS</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">OAS</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/OAS-madelon-step0-timing.png" src="_images/OAS-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/OAS-madelon-step0-memory.png" src="_images/OAS-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         77 function calls in 3.240 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    3.240    3.240 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    3.240    3.240 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.008    0.008    3.240    3.240 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:512(fit)
+     1    0.000    0.000    2.804    2.804 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.000    0.000    2.803    2.803 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:457(pinv)
+     1    2.779    2.779    2.795    2.795 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+     1    0.002    0.002    0.399    0.399 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:398(oas)
+     1    0.005    0.005    0.396    0.396 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.392    0.392    0.392    0.392 {numpy.core._dotblas.dot}
+     2    0.031    0.016    0.031    0.016 {method 'mean' of 'numpy.ndarray' objects}
+     3    0.021    0.007    0.023    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+     1    0.000    0.000    0.016    0.016 {map}
+     6    0.003    0.000    0.003    0.000 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {min}
+     2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     7    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     4    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {range}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
+Function: fit at line 512
+Total time: 3.29323 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   512                                               def fit(self, X):
+   513                                                   """ Fits the Oracle Approximating Shrinkage covariance model
+   514                                                   according to the given training data and parameters.
+   515
+   516                                                   Parameters
+   517                                                   ----------
+   518                                                   X : array-like, shape = [n_samples, n_features]
+   519                                                     Training data, where n_samples is the number of samples
+   520                                                     and n_features is the number of features.
+   521
+   522                                                   Returns
+   523                                                   -------
+   524                                                   self : object
+   525                                                       Returns self.
+   526
+   527                                                   """
+   528                                                   # Not calling the parent object to fit, to avoid computing the
+   529                                                   # covariance matrix (and potentially the precision)
+   530         1            4      4.0      0.0          if self.assume_centered:
+   531                                                       self.location_ = np.zeros(X.shape[1])
+   532                                                   else:
+   533         1        42388  42388.0      1.3              self.location_ = X.mean(0)
+   534
+   535         1       443061 443061.0     13.5          covariance, shrinkage = oas(X - self.location_, assume_centered=True)
+   536         1            4      4.0      0.0          self.shrinkage_ = shrinkage
+   537         1      2807767 2807767.0     85.3          self._set_covariance(covariance)
+   538
+   539         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+        <div class="clearer"></div>
+      </div>
+    </div>
+  
+
+    <div class="footer">
+        &copy; .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="_sources/vb_covariance.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+     <div class="rel rellarge">
+    
+    <div class="buttonPrevious">
+      <a href="vb_cluster.html">
+        Previous
+      </a>  
+    </div>
+    <div class="buttonNext">
+      <a href="vb_decomposition.html">
+        Next
+      </a>  
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+     </script>
+  </body>
+</html>

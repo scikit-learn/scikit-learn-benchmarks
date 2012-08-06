@@ -1,0 +1,1374 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Benchmarks for cluster &mdash; Vbench performance benchmarks for scikit-learn</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.12-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
+    <link rel="next" title="Benchmarks for covariance" href="vb_covariance.html" />
+    <link rel="prev" title="Performance Benchmarks" href="index.html" />
+
+  <!-- Reference the theme's stylesheet on the Google CDN -->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/excite-bike/jquery-ui.css"
+        type="text/css" rel="Stylesheet" />
+ 
+  <!-- Reference jQuery and jQuery UI from the CDN. Remember
+       that the order of these two elements is important -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+        $(".profiler-output").accordion({collapsible: true, header: "p", active: false} );
+      });
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="http://scikit-learn.org/">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quick_start.html">Speed Quick Start</a></li>
+            <li><a href="http://scikit-learn.org/dev/user_guide.html">User's Guide</a></li>
+            <li><a href="http://scikit-learn.org/dev/developers/performance.html">Performance</a></li>
+            <li><a href="http://github.com/scikit-learn/scikit-learn">Github</a></li>
+            <li><a href="http://github.com/vene/scikit-learn-speed">Speed Github</a></li>
+       </ul>
+</div>
+<!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Benchmarks for cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#kmeans-minimadelon">KMeans-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kmeans-blobs">KMeans-blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minibatchkmeans-minimadelon">MiniBatchKMeans-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minibatchkmeans-madelon">MiniBatchKMeans-madelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ward-minimadelon">Ward-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ward-blobs">Ward-blobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meanshift-minimadelon">MeanShift-minimadelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#meanshift-blobs">MeanShift-blobs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">Benchmarks for covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">Benchmarks for decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">Benchmarks for gaussian_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">Benchmarks for linear_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">Benchmarks for mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">Benchmarks for naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">Benchmarks for neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">Benchmarks for pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">Benchmarks for semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">Benchmarks for svm</a></li>
+</ul>
+
+          <!--
+	   <div class="rel rellarge">
+	     
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  --
+	<div class="rellink">
+	<a href="index.html" title="Performance Benchmarks"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Performance Benc...
+	    </span>
+	    <span class="hiddenrellink">
+	    Performance Benchmarks
+	    </span>
+	    
+	    </a>
+	</div>
+	    <div class="spacer">
+	    &nbsp;
+	    </div>
+	
+	<div class="rellink">
+	<a href="vb_covariance.html" title="Benchmarks for covariance"
+	    accesskey="N">Next
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for c...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for covariance
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page --
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.12-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Benchmarks for cluster</a><ul>
+<li><a class="reference internal" href="#kmeans-minimadelon">KMeans-minimadelon</a></li>
+<li><a class="reference internal" href="#kmeans-blobs">KMeans-blobs</a></li>
+<li><a class="reference internal" href="#minibatchkmeans-minimadelon">MiniBatchKMeans-minimadelon</a></li>
+<li><a class="reference internal" href="#minibatchkmeans-madelon">MiniBatchKMeans-madelon</a></li>
+<li><a class="reference internal" href="#ward-minimadelon">Ward-minimadelon</a></li>
+<li><a class="reference internal" href="#ward-blobs">Ward-blobs</a></li>
+<li><a class="reference internal" href="#meanshift-minimadelon">MeanShift-minimadelon</a></li>
+<li><a class="reference internal" href="#meanshift-blobs">MeanShift-blobs</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  -->
+    </div>
+	  </div>
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="benchmarks-for-cluster">
+<h1>Benchmarks for cluster<a class="headerlink" href="#benchmarks-for-cluster" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="kmeans-minimadelon">
+<h2>KMeans-minimadelon<a class="headerlink" href="#kmeans-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/KMeans-minimadelon-step0-timing.png" src="_images/KMeans-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/KMeans-minimadelon-step0-memory.png" src="_images/KMeans-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         14077 function calls in 0.176 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.176    0.176 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.176    0.176 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.176    0.176 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
+     1    0.000    0.000    0.176    0.176 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
+    10    0.002    0.000    0.174    0.017 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
+    10    0.000    0.000    0.100    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+    10    0.019    0.002    0.100    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
+   115    0.012    0.000    0.096    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+    25    0.028    0.001    0.042    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
+   115    0.002    0.000    0.037    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+   115    0.002    0.000    0.035    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+   115    0.030    0.000    0.030    0.000 {numpy.core._dotblas.dot}
+    25    0.001    0.000    0.029    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+   346    0.002    0.000    0.028    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:67(atleast2d_or_csr)
+    25    0.005    0.000    0.028    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+   576    0.007    0.000    0.023    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+  1072    0.022    0.000    0.022    0.000 {method 'sum' of 'numpy.ndarray' objects}
+  1076    0.002    0.000    0.016    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+   230    0.001    0.000    0.016    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+  1076    0.009    0.000    0.014    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   227    0.011    0.000    0.011    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   346    0.001    0.000    0.008    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+   346    0.003    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+   140    0.001    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+  2152    0.003    0.000    0.003    0.000 {method 'split' of 'str' objects}
+   576    0.001    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   225    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+   922    0.002    0.000    0.002    0.000 {numpy.core.multiarray.array}
+   225    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
+   346    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+  1280    0.002    0.000    0.002    0.000 {isinstance}
+    80    0.002    0.000    0.002    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
+    81    0.001    0.000    0.001    0.000 {method 'copy' of 'numpy.ndarray' objects}
+    80    0.001    0.000    0.001    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
+   110    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
+    80    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
+     1    0.000    0.000    0.000    0.000 {method 'var' of 'numpy.ndarray' objects}
+  1268    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:710(_check_fit_data)
+    25    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    80    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+   346    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+    75    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+    32    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+    61    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
+    10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+    10    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/k_means_.py
+Function: fit at line 738
+Total time: 0.196606 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   738                                               def fit(self, X, y=None):
+   739                                                   """Compute k-means"""
+   740
+   741         1            5      5.0      0.0          if not self.k is None:
+   742                                                       n_clusters = self.k
+   743                                                       warnings.warn("Parameter k was renamed to n_clusters",
+   744                                                               DeprecationWarning, stacklevel=2)
+   745                                                       self.n_clusters = n_clusters
+   746                                                   else:
+   747         1            3      3.0      0.0              n_clusters = self.n_clusters
+   748
+   749         1            9      9.0      0.0          self.random_state = check_random_state(self.random_state)
+   750         1          147    147.0      0.1          X = self._check_fit_data(X)
+   751
+   752         1            3      3.0      0.0          self.cluster_centers_, self.labels_, self.inertia_ = k_means(
+   753         1            3      3.0      0.0              X, n_clusters=n_clusters, init=self.init, n_init=self.n_init,
+   754         1            2      2.0      0.0              max_iter=self.max_iter, verbose=self.verbose,
+   755         1            3      3.0      0.0              precompute_distances=self.precompute_distances,
+   756         1            3      3.0      0.0              tol=self.tol, random_state=self.random_state, copy_x=self.copy_x,
+   757         1       196425 196425.0     99.9              n_jobs=self.n_jobs)
+   758         1            3      3.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="kmeans-blobs">
+<h2>KMeans-blobs<a class="headerlink" href="#kmeans-blobs" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/KMeans-blobs-step0-timing.png" src="_images/KMeans-blobs-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/KMeans-blobs-step0-memory.png" src="_images/KMeans-blobs-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         14540 function calls in 0.170 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.170    0.170 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.170    0.170 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.170    0.170 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
+     1    0.000    0.000    0.170    0.170 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
+    10    0.001    0.000    0.169    0.017 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
+   118    0.014    0.000    0.094    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+    10    0.000    0.000    0.088    0.009 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+    10    0.011    0.001    0.088    0.009 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
+    28    0.033    0.001    0.044    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
+   118    0.001    0.000    0.035    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+    28    0.001    0.000    0.035    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+    28    0.008    0.000    0.033    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+   118    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+   118    0.028    0.000    0.028    0.000 {numpy.core._dotblas.dot}
+   355    0.002    0.000    0.027    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:67(atleast2d_or_csr)
+   591    0.007    0.000    0.022    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+  1096    0.021    0.000    0.021    0.000 {method 'sum' of 'numpy.ndarray' objects}
+  1106    0.002    0.000    0.016    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+   236    0.001    0.000    0.015    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+  1106    0.009    0.000    0.014    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   355    0.001    0.000    0.008    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+   254    0.007    0.000    0.007    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   355    0.003    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+  2212    0.003    0.000    0.003    0.000 {method 'split' of 'str' objects}
+   146    0.000    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   591    0.001    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   252    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+   946    0.002    0.000    0.002    0.000 {numpy.core.multiarray.array}
+   252    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
+  1316    0.002    0.000    0.002    0.000 {isinstance}
+   355    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    80    0.001    0.000    0.001    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
+    80    0.001    0.000    0.001    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
+   122    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+    80    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
+     1    0.000    0.000    0.000    0.000 {method 'var' of 'numpy.ndarray' objects}
+    80    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+  1301    0.000    0.000    0.000    0.000 {len}
+    28    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    88    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:710(_check_fit_data)
+    84    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+   355    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+    32    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+    67    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
+    10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+    10    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
+     1    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/k_means_.py
+Function: fit at line 738
+Total time: 0.180523 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   738                                               def fit(self, X, y=None):
+   739                                                   """Compute k-means"""
+   740
+   741         1            5      5.0      0.0          if not self.k is None:
+   742                                                       n_clusters = self.k
+   743                                                       warnings.warn("Parameter k was renamed to n_clusters",
+   744                                                               DeprecationWarning, stacklevel=2)
+   745                                                       self.n_clusters = n_clusters
+   746                                                   else:
+   747         1            3      3.0      0.0              n_clusters = self.n_clusters
+   748
+   749         1            9      9.0      0.0          self.random_state = check_random_state(self.random_state)
+   750         1          144    144.0      0.1          X = self._check_fit_data(X)
+   751
+   752         1            3      3.0      0.0          self.cluster_centers_, self.labels_, self.inertia_ = k_means(
+   753         1            3      3.0      0.0              X, n_clusters=n_clusters, init=self.init, n_init=self.n_init,
+   754         1            2      2.0      0.0              max_iter=self.max_iter, verbose=self.verbose,
+   755         1            3      3.0      0.0              precompute_distances=self.precompute_distances,
+   756         1            3      3.0      0.0              tol=self.tol, random_state=self.random_state, copy_x=self.copy_x,
+   757         1       180344 180344.0     99.9              n_jobs=self.n_jobs)
+   758         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="minibatchkmeans-minimadelon">
+<h2>MiniBatchKMeans-minimadelon<a class="headerlink" href="#minibatchkmeans-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MiniBatchKMeans-minimadelon-step0-timing.png" src="_images/MiniBatchKMeans-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MiniBatchKMeans-minimadelon-step0-memory.png" src="_images/MiniBatchKMeans-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         8049 function calls in 0.280 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.280    0.280 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.280    0.280 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.072    0.072    0.280    0.280 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:1067(fit)
+    28    0.101    0.004    0.172    0.006 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:830(_mini_batch_step)
+    59    0.007    0.000    0.069    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+    32    0.001    0.000    0.056    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+    32    0.006    0.000    0.054    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+   984    0.036    0.000    0.036    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.030    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+     3    0.006    0.002    0.030    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
+    59    0.001    0.000    0.030    0.001 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    59    0.027    0.000    0.027    0.000 {numpy.core._dotblas.dot}
+    59    0.001    0.000    0.026    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+   295    0.003    0.000    0.019    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+   305    0.001    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   177    0.001    0.000    0.017    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:67(atleast2d_or_csr)
+   118    0.001    0.000    0.013    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+   564    0.001    0.000    0.008    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+   564    0.005    0.000    0.007    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   177    0.001    0.000    0.004    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+   177    0.002    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+   881    0.002    0.000    0.002    0.000 {isinstance}
+  1128    0.002    0.000    0.002    0.000 {method 'split' of 'str' objects}
+   295    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   473    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
+   177    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    25    0.001    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:898(_mini_batch_convergence)
+    99    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+    32    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    96    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+    26    0.000    0.000    0.000    0.000 {method 'random_integers' of 'mtrand.RandomState' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
+    24    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
+   650    0.000    0.000    0.000    0.000 {len}
+    24    0.000    0.000    0.000    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:91(check_arrays)
+    24    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+   178    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+    24    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+    61    0.000    0.000    0.000    0.000 {range}
+     7    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+   100    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:289(ascontiguousarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:84(_num_samples)
+     5    0.000    0.000    0.000    0.000 {hasattr}
+     3    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
+     4    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/k_means_.py
+Function: fit at line 1067
+Total time: 0.207225 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+  1067                                               def fit(self, X, y=None):
+  1068                                                   """Compute the centroids on X by chunking it into mini-batches.
+  1069
+  1070                                                   Parameters
+  1071                                                   ----------
+  1072                                                   X: array-like, shape = [n_samples, n_features]
+  1073                                                       Coordinates of the data points to cluster
+  1074                                                   """
+  1075         1           12     12.0      0.0          self.random_state = check_random_state(self.random_state)
+  1076         1            5      5.0      0.0          X = check_arrays(X, sparse_format="csr", copy=False,
+  1077         1           94     94.0      0.0                           check_ccontiguous=True, dtype=np.float64)[0]
+  1078         1            4      4.0      0.0          n_samples, n_features = X.shape
+  1079         1            4      4.0      0.0          if n_samples &lt; self.n_clusters:
+  1080                                                       raise ValueError("Number of samples smaller than number "\
+  1081                                                                        "of clusters.")
+  1082
+  1083         1            8      8.0      0.0          if hasattr(self.init, '__array__'):
+  1084                                                       self.init = np.ascontiguousarray(self.init, dtype=np.float64)
+  1085
+  1086         1          140    140.0      0.1          x_squared_norms = _squared_norms(X)
+  1087
+  1088         1            5      5.0      0.0          if self.tol &gt; 0.0:
+  1089                                                       tol = _tolerance(X, self.tol)
+  1090
+  1091                                                       # using tol-based early stopping needs the allocation of a
+  1092                                                       # dedicated before which can be expensive for high dim data:
+  1093                                                       # hence we allocate it outside of the main loop
+  1094                                                       old_center_buffer = np.zeros(n_features, np.double)
+  1095                                                   else:
+  1096         1            4      4.0      0.0              tol = 0.0
+  1097                                                       # no need for the center buffer if tol-based early stopping is
+  1098                                                       # disabled
+  1099         1           12     12.0      0.0              old_center_buffer = np.zeros(0, np.double)
+  1100
+  1101         1           10     10.0      0.0          distances = np.zeros(self.batch_size, dtype=np.float64)
+  1102         1           23     23.0      0.0          n_batches = int(np.ceil(float(n_samples) / self.batch_size))
+  1103         1            6      6.0      0.0          n_iterations = int(self.max_iter * n_batches)
+  1104
+  1105         1            4      4.0      0.0          init_size = self.init_size
+  1106         1            4      4.0      0.0          if init_size is None:
+  1107         1            5      5.0      0.0              init_size = 3 * self.batch_size
+  1108         1            4      4.0      0.0          if init_size &gt; n_samples:
+  1109         1            3      3.0      0.0              init_size = n_samples
+  1110         1            4      4.0      0.0          self.init_size_ = init_size
+  1111
+  1112         1            5      5.0      0.0          validation_indices = self.random_state.random_integers(
+  1113         1           13     13.0      0.0                  0, n_samples - 1, init_size)
+  1114         1          836    836.0      0.4          X_valid = X[validation_indices]
+  1115         1           10     10.0      0.0          x_squared_norms_valid = x_squared_norms[validation_indices]
+  1116
+  1117                                                   # perform several inits with random sub-sets
+  1118         1            3      3.0      0.0          best_inertia = None
+  1119         4           21      5.2      0.0          for init_idx in range(self.n_init):
+  1120         3           12      4.0      0.0              if self.verbose:
+  1121                                                           print "Init %d/%d with method: %s" % (
+  1122                                                               init_idx + 1, self.n_init, self.init)
+  1123         3           52     17.3      0.0              counts = np.zeros(self.n_clusters, dtype=np.int32)
+  1124
+  1125                                                       # TODO: once the `k_means` function works with sparse input we
+  1126                                                       # should refactor the following init to use it instead.
+  1127
+  1128                                                       # Initialize the centers using only a fraction of the data as we
+  1129                                                       # expect n_samples to be very large when using MiniBatchKMeans
+  1130         3           12      4.0      0.0              cluster_centers = _init_centroids(
+  1131         3           13      4.3      0.0                  X, self.n_clusters, self.init,
+  1132         3           16      5.3      0.0                  random_state=self.random_state,
+  1133         3           12      4.0      0.0                  x_squared_norms=x_squared_norms,
+  1134         3        32735  10911.7     15.8                  init_size=init_size)
+  1135
+  1136                                                       # Compute the label assignement on the init dataset
+  1137         3           15      5.0      0.0              batch_inertia, centers_squared_diff = _mini_batch_step(
+  1138         3           42     14.0      0.0                  X_valid, x_squared_norms[validation_indices],
+  1139         3           14      4.7      0.0                  cluster_centers, counts, old_center_buffer, False,
+  1140         3         9944   3314.7      4.8                  distances=distances)
+  1141
+  1142                                                       # Keep only the best cluster centers across independent inits on
+  1143                                                       # the common validation set
+  1144         3           17      5.7      0.0              _, inertia = _labels_inertia(X_valid, x_squared_norms_valid,
+  1145         3         3959   1319.7      1.9                                           cluster_centers)
+  1146         3           17      5.7      0.0              if self.verbose:
+  1147                                                           print "Inertia for init %d/%d: %f" % (
+  1148                                                               init_idx + 1, self.n_init, inertia)
+  1149         3           14      4.7      0.0              if best_inertia is None or inertia &lt; best_inertia:
+  1150         2           10      5.0      0.0                  self.cluster_centers_ = cluster_centers
+  1151         2            8      4.0      0.0                  self.counts_ = counts
+  1152         2            8      4.0      0.0                  best_inertia = inertia
+  1153
+  1154                                                   # Empty context to be used inplace by the convergence check routine
+  1155         1            4      4.0      0.0          convergence_context = {}
+  1156
+  1157                                                   # Perform the iterative optimization untill the final convergence
+  1158                                                   # criterion
+  1159        17           86      5.1      0.0          for iteration_idx in xrange(n_iterations):
+  1160
+  1161                                                       # Sample the minibatch from the full dataset
+  1162        17          100      5.9      0.0              minibatch_indices = self.random_state.random_integers(
+  1163        17          320     18.8      0.2                  0, n_samples - 1, self.batch_size)
+  1164
+  1165                                                       # Perform the actual update step on the minibatch data
+  1166        17           72      4.2      0.0              batch_inertia, centers_squared_diff = _mini_batch_step(
+  1167        17        48790   2870.0     23.5                  X[minibatch_indices], x_squared_norms[minibatch_indices],
+  1168        17          152      8.9      0.1                  self.cluster_centers_, self.counts_,
+  1169        17       106783   6281.4     51.5                  old_center_buffer, tol &gt; 0.0, distances=distances)
+  1170
+  1171                                                       # Monitor the convergence and do early stopping if necessary
+  1172        17           95      5.6      0.0              if _mini_batch_convergence(
+  1173        17           70      4.1      0.0                  self, iteration_idx, n_iterations, tol, n_samples,
+  1174        17           64      3.8      0.0                  centers_squared_diff, batch_inertia, convergence_context,
+  1175        17         1061     62.4      0.5                  verbose=self.verbose):
+  1176         1            5      5.0      0.0                  break
+  1177
+  1178         1            5      5.0      0.0          if self.compute_labels:
+  1179         1            4      4.0      0.0              if self.verbose:
+  1180                                                           print 'Computing label assignements and total inertia'
+  1181         1            4      4.0      0.0              self.labels_, self.inertia_ = _labels_inertia(
+  1182         1         1467   1467.0      0.7                  X, x_squared_norms, self.cluster_centers_)
+  1183
+  1184         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="minibatchkmeans-madelon">
+<h2>MiniBatchKMeans-madelon<a class="headerlink" href="#minibatchkmeans-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MiniBatchKMeans</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_clusters&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MiniBatchKMeans-madelon-step0-timing.png" src="_images/MiniBatchKMeans-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MiniBatchKMeans-madelon-step0-memory.png" src="_images/MiniBatchKMeans-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         14264 function calls in 0.874 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.874    0.874 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.874    0.874 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.255    0.255    0.874    0.874 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:1067(fit)
+    66    0.270    0.004    0.442    0.007 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:830(_mini_batch_step)
+    97    0.011    0.000    0.238    0.002 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+    70    0.002    0.000    0.198    0.003 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+    70    0.014    0.000    0.194    0.003 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+    97    0.001    0.000    0.141    0.001 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    97    0.137    0.001    0.137    0.001 {numpy.core._dotblas.dot}
+  1940    0.098    0.000    0.098    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.023    0.008    0.091    0.030 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+    97    0.001    0.000    0.075    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     3    0.005    0.002    0.068    0.023 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
+   485    0.005    0.000    0.065    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+   291    0.001    0.000    0.040    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:67(atleast2d_or_csr)
+   194    0.001    0.000    0.040    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+   691    0.002    0.000    0.031    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   944    0.002    0.000    0.025    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+   944    0.008    0.000    0.023    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+  1888    0.015    0.000    0.015    0.000 {method 'split' of 'str' objects}
+     1    0.006    0.006    0.009    0.009 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
+   291    0.001    0.000    0.006    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+   291    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+  1647    0.003    0.000    0.003    0.000 {isinstance}
+   485    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   777    0.002    0.000    0.002    0.000 {numpy.core.multiarray.array}
+    63    0.002    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:898(_mini_batch_convergence)
+   291    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+   213    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+    70    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    67    0.001    0.000    0.001    0.000 {method 'random_integers' of 'mtrand.RandomState' objects}
+   210    0.001    0.000    0.001    0.000 {method 'fill' of 'numpy.ndarray' objects}
+  1068    0.000    0.000    0.000    0.000 {len}
+    24    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
+   292    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+   137    0.000    0.000    0.000    0.000 {range}
+    24    0.000    0.000    0.000    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:91(check_arrays)
+    24    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+   252    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+    24    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+     7    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+     9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:289(ascontiguousarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:84(_num_samples)
+     5    0.000    0.000    0.000    0.000 {hasattr}
+     3    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
+     4    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/k_means_.py
+Function: fit at line 1067
+Total time: 0.771581 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+  1067                                               def fit(self, X, y=None):
+  1068                                                   """Compute the centroids on X by chunking it into mini-batches.
+  1069
+  1070                                                   Parameters
+  1071                                                   ----------
+  1072                                                   X: array-like, shape = [n_samples, n_features]
+  1073                                                       Coordinates of the data points to cluster
+  1074                                                   """
+  1075         1           13     13.0      0.0          self.random_state = check_random_state(self.random_state)
+  1076         1            5      5.0      0.0          X = check_arrays(X, sparse_format="csr", copy=False,
+  1077         1           93     93.0      0.0                           check_ccontiguous=True, dtype=np.float64)[0]
+  1078         1            5      5.0      0.0          n_samples, n_features = X.shape
+  1079         1            4      4.0      0.0          if n_samples &lt; self.n_clusters:
+  1080                                                       raise ValueError("Number of samples smaller than number "\
+  1081                                                                        "of clusters.")
+  1082
+  1083         1            7      7.0      0.0          if hasattr(self.init, '__array__'):
+  1084                                                       self.init = np.ascontiguousarray(self.init, dtype=np.float64)
+  1085
+  1086         1         5679   5679.0      0.7          x_squared_norms = _squared_norms(X)
+  1087
+  1088         1            8      8.0      0.0          if self.tol &gt; 0.0:
+  1089                                                       tol = _tolerance(X, self.tol)
+  1090
+  1091                                                       # using tol-based early stopping needs the allocation of a
+  1092                                                       # dedicated before which can be expensive for high dim data:
+  1093                                                       # hence we allocate it outside of the main loop
+  1094                                                       old_center_buffer = np.zeros(n_features, np.double)
+  1095                                                   else:
+  1096         1            3      3.0      0.0              tol = 0.0
+  1097                                                       # no need for the center buffer if tol-based early stopping is
+  1098                                                       # disabled
+  1099         1           22     22.0      0.0              old_center_buffer = np.zeros(0, np.double)
+  1100
+  1101         1           12     12.0      0.0          distances = np.zeros(self.batch_size, dtype=np.float64)
+  1102         1           35     35.0      0.0          n_batches = int(np.ceil(float(n_samples) / self.batch_size))
+  1103         1            5      5.0      0.0          n_iterations = int(self.max_iter * n_batches)
+  1104
+  1105         1            4      4.0      0.0          init_size = self.init_size
+  1106         1            4      4.0      0.0          if init_size is None:
+  1107         1            4      4.0      0.0              init_size = 3 * self.batch_size
+  1108         1            4      4.0      0.0          if init_size &gt; n_samples:
+  1109                                                       init_size = n_samples
+  1110         1            5      5.0      0.0          self.init_size_ = init_size
+  1111
+  1112         1            5      5.0      0.0          validation_indices = self.random_state.random_integers(
+  1113         1           39     39.0      0.0                  0, n_samples - 1, init_size)
+  1114         1         8364   8364.0      1.1          X_valid = X[validation_indices]
+  1115         1           21     21.0      0.0          x_squared_norms_valid = x_squared_norms[validation_indices]
+  1116
+  1117                                                   # perform several inits with random sub-sets
+  1118         1            4      4.0      0.0          best_inertia = None
+  1119         4           24      6.0      0.0          for init_idx in range(self.n_init):
+  1120         3           13      4.3      0.0              if self.verbose:
+  1121                                                           print "Init %d/%d with method: %s" % (
+  1122                                                               init_idx + 1, self.n_init, self.init)
+  1123         3           40     13.3      0.0              counts = np.zeros(self.n_clusters, dtype=np.int32)
+  1124
+  1125                                                       # TODO: once the `k_means` function works with sparse input we
+  1126                                                       # should refactor the following init to use it instead.
+  1127
+  1128                                                       # Initialize the centers using only a fraction of the data as we
+  1129                                                       # expect n_samples to be very large when using MiniBatchKMeans
+  1130         3           12      4.0      0.0              cluster_centers = _init_centroids(
+  1131         3           12      4.0      0.0                  X, self.n_clusters, self.init,
+  1132         3           15      5.0      0.0                  random_state=self.random_state,
+  1133         3           11      3.7      0.0                  x_squared_norms=x_squared_norms,
+  1134         3       126698  42232.7     16.4                  init_size=init_size)
+  1135
+  1136                                                       # Compute the label assignement on the init dataset
+  1137         3           15      5.0      0.0              batch_inertia, centers_squared_diff = _mini_batch_step(
+  1138         3           51     17.0      0.0                  X_valid, x_squared_norms[validation_indices],
+  1139         3           13      4.3      0.0                  cluster_centers, counts, old_center_buffer, False,
+  1140         3        41734  13911.3      5.4                  distances=distances)
+  1141
+  1142                                                       # Keep only the best cluster centers across independent inits on
+  1143                                                       # the common validation set
+  1144         3           17      5.7      0.0              _, inertia = _labels_inertia(X_valid, x_squared_norms_valid,
+  1145         3        10960   3653.3      1.4                                           cluster_centers)
+  1146         3           18      6.0      0.0              if self.verbose:
+  1147                                                           print "Inertia for init %d/%d: %f" % (
+  1148                                                               init_idx + 1, self.n_init, inertia)
+  1149         3           15      5.0      0.0              if best_inertia is None or inertia &lt; best_inertia:
+  1150         2           11      5.5      0.0                  self.cluster_centers_ = cluster_centers
+  1151         2           11      5.5      0.0                  self.counts_ = counts
+  1152         2            7      3.5      0.0                  best_inertia = inertia
+  1153
+  1154                                                   # Empty context to be used inplace by the convergence check routine
+  1155         1            5      5.0      0.0          convergence_context = {}
+  1156
+  1157                                                   # Perform the iterative optimization untill the final convergence
+  1158                                                   # criterion
+  1159        47          207      4.4      0.0          for iteration_idx in xrange(n_iterations):
+  1160
+  1161                                                       # Sample the minibatch from the full dataset
+  1162        47          278      5.9      0.0              minibatch_indices = self.random_state.random_integers(
+  1163        47          884     18.8      0.1                  0, n_samples - 1, self.batch_size)
+  1164
+  1165                                                       # Perform the actual update step on the minibatch data
+  1166        47          256      5.4      0.0              batch_inertia, centers_squared_diff = _mini_batch_step(
+  1167        47       143247   3047.8     18.6                  X[minibatch_indices], x_squared_norms[minibatch_indices],
+  1168        47          283      6.0      0.0                  self.cluster_centers_, self.counts_,
+  1169        47       367541   7820.0     47.6                  old_center_buffer, tol &gt; 0.0, distances=distances)
+  1170
+  1171                                                       # Monitor the convergence and do early stopping if necessary
+  1172        47          263      5.6      0.0              if _mini_batch_convergence(
+  1173        47          192      4.1      0.0                  self, iteration_idx, n_iterations, tol, n_samples,
+  1174        47          176      3.7      0.0                  centers_squared_diff, batch_inertia, convergence_context,
+  1175        47         3068     65.3      0.4                  verbose=self.verbose):
+  1176         1            4      4.0      0.0                  break
+  1177
+  1178         1            5      5.0      0.0          if self.compute_labels:
+  1179         1            3      3.0      0.0              if self.verbose:
+  1180                                                           print 'Computing label assignements and total inertia'
+  1181         1            4      4.0      0.0              self.labels_, self.inertia_ = _labels_inertia(
+  1182         1        61138  61138.0      7.9                  X, x_squared_norms, self.cluster_centers_)
+  1183
+  1184         1            5      5.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="ward-minimadelon">
+<h2>Ward-minimadelon<a class="headerlink" href="#ward-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">Ward</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ward-minimadelon-step0-timing.png" src="_images/Ward-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ward-minimadelon-step0-memory.png" src="_images/Ward-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         53 function calls in 0.002 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.002    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.002    0.002 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/cluster/hierarchical.py:334(fit)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/hierarchical.py:29(ward_tree)
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/cluster/hierarchy.py:423(ward)
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/cluster/hierarchy.py:464(linkage)
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:916(pdist)
+     1    0.001    0.001    0.001    0.001 {scipy.spatial._distance_wrap.pdist_euclidean_wrap}
+     1    0.000    0.000    0.000    0.000 {scipy.cluster._hierarchy_wrap.linkage_euclid_wrap}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/hierarchical.py:229(_hc_cut)
+     2    0.000    0.000    0.000    0.000 {sklearn.cluster._hierarchical._hc_get_descendent}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/cluster/hierarchy.py:912(_convert_to_double)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {issubclass}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     6    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
+     1    0.000    0.000    0.000    0.000 {_heapq.heappush}
+     1    0.000    0.000    0.000    0.000 {max}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/externals/joblib/memory.py:490(cache)
+     4    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {_heapq.heappushpop}
+     1    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {callable}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/hierarchical.py
+Function: fit at line 334
+Total time: 0.001613 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   334                                               def fit(self, X):
+   335                                                   """Fit the hierarchical clustering on the data
+   336
+   337                                                   Parameters
+   338                                                   ----------
+   339                                                   X : array-like, shape = [n_samples, n_features]
+   340                                                       The samples a.k.a. observations.
+   341
+   342                                                   Returns
+   343                                                   -------
+   344                                                   self
+   345                                                   """
+   346         1            4      4.0      0.2          memory = self.memory
+   347         1            6      6.0      0.4          if isinstance(memory, basestring):
+   348                                                       memory = Memory(cachedir=memory)
+   349
+   350         1            4      4.0      0.2          if not self.connectivity is None:
+   351                                                       if not sparse.issparse(self.connectivity):
+   352                                                           raise TypeError("`connectivity` should be a sparse matrix or "
+   353                                                                   "None, got: %r" % type(self.connectivity))
+   354
+   355                                                       if (self.connectivity.shape[0] != X.shape[0] or
+   356                                                               self.connectivity.shape[1] != X.shape[0]):
+   357                                                           raise ValueError("`connectivity` does not have shape "
+   358                                                                   "(n_samples, n_samples)")
+   359
+   360         1            4      4.0      0.2          n_samples = len(X)
+   361         1            3      3.0      0.2          compute_full_tree = self.compute_full_tree
+   362         1            4      4.0      0.2          if self.connectivity is None:
+   363         1            3      3.0      0.2              compute_full_tree = True
+   364         1            4      4.0      0.2          if compute_full_tree == 'auto':
+   365                                                       # Early stopping is likely to give a speed up only for
+   366                                                       # a large number of clusters. The actual threshold
+   367                                                       # implemented here is heuristic
+   368                                                       compute_full_tree = self.n_clusters &gt; max(100, .02 * n_samples)
+   369         1            3      3.0      0.2          n_clusters = self.n_clusters
+   370         1            3      3.0      0.2          if compute_full_tree:
+   371         1            3      3.0      0.2              n_clusters = None
+   372
+   373                                                   # Construct the tree
+   374                                                   self.children_, self.n_components, self.n_leaves_, parents = \
+   375         1           10     10.0      0.6                  memory.cache(ward_tree)(X, self.connectivity,
+   376         1            3      3.0      0.2                              n_components=self.n_components,
+   377         1         1316   1316.0     81.6                              copy=self.copy, n_clusters=n_clusters)
+   378                                                   # Cut the tree
+   379         1            4      4.0      0.2          if compute_full_tree:
+   380         1            4      4.0      0.2              self.labels_ = _hc_cut(self.n_clusters, self.children_,
+   381         1          232    232.0     14.4                                     self.n_leaves_)
+   382                                                   else:
+   383                                                       labels = _hierarchical.hc_get_heads(parents, copy=False)
+   384                                                       # copy to avoid holding a reference on the original array
+   385                                                       labels = np.copy(labels[:n_samples])
+   386                                                       # Reasign cluster numbers
+   387                                                       self.labels_ = np.searchsorted(np.unique(labels), labels)
+   388         1            3      3.0      0.2          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="ward-blobs">
+<h2>Ward-blobs<a class="headerlink" href="#ward-blobs" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">Ward</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/Ward-blobs-step0-timing.png" src="_images/Ward-blobs-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/Ward-blobs-step0-memory.png" src="_images/Ward-blobs-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         53 function calls in 0.046 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.046    0.046 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.046    0.046 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.046    0.046 /tmp/vb_sklearn/sklearn/cluster/hierarchical.py:334(fit)
+     1    0.000    0.000    0.045    0.045 /tmp/vb_sklearn/sklearn/cluster/hierarchical.py:29(ward_tree)
+     1    0.000    0.000    0.044    0.044 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/cluster/hierarchy.py:423(ward)
+     1    0.000    0.000    0.044    0.044 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/cluster/hierarchy.py:464(linkage)
+     1    0.037    0.037    0.037    0.037 {scipy.cluster._hierarchy_wrap.linkage_euclid_wrap}
+     1    0.000    0.000    0.007    0.007 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:916(pdist)
+     1    0.006    0.006    0.006    0.006 {scipy.spatial._distance_wrap.pdist_euclidean_wrap}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/hierarchical.py:229(_hc_cut)
+     2    0.001    0.000    0.001    0.000 {sklearn.cluster._hierarchical._hc_get_descendent}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/cluster/hierarchy.py:912(_convert_to_double)
+     3    0.000    0.000    0.000    0.000 {issubclass}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+     6    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {max}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
+     1    0.000    0.000    0.000    0.000 {_heapq.heappush}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/externals/joblib/memory.py:490(cache)
+     4    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 {_heapq.heappushpop}
+     1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {callable}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/hierarchical.py
+Function: fit at line 334
+Total time: 0.044902 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   334                                               def fit(self, X):
+   335                                                   """Fit the hierarchical clustering on the data
+   336
+   337                                                   Parameters
+   338                                                   ----------
+   339                                                   X : array-like, shape = [n_samples, n_features]
+   340                                                       The samples a.k.a. observations.
+   341
+   342                                                   Returns
+   343                                                   -------
+   344                                                   self
+   345                                                   """
+   346         1            4      4.0      0.0          memory = self.memory
+   347         1            6      6.0      0.0          if isinstance(memory, basestring):
+   348                                                       memory = Memory(cachedir=memory)
+   349
+   350         1            4      4.0      0.0          if not self.connectivity is None:
+   351                                                       if not sparse.issparse(self.connectivity):
+   352                                                           raise TypeError("`connectivity` should be a sparse matrix or "
+   353                                                                   "None, got: %r" % type(self.connectivity))
+   354
+   355                                                       if (self.connectivity.shape[0] != X.shape[0] or
+   356                                                               self.connectivity.shape[1] != X.shape[0]):
+   357                                                           raise ValueError("`connectivity` does not have shape "
+   358                                                                   "(n_samples, n_samples)")
+   359
+   360         1            4      4.0      0.0          n_samples = len(X)
+   361         1            3      3.0      0.0          compute_full_tree = self.compute_full_tree
+   362         1            3      3.0      0.0          if self.connectivity is None:
+   363         1            4      4.0      0.0              compute_full_tree = True
+   364         1            5      5.0      0.0          if compute_full_tree == 'auto':
+   365                                                       # Early stopping is likely to give a speed up only for
+   366                                                       # a large number of clusters. The actual threshold
+   367                                                       # implemented here is heuristic
+   368                                                       compute_full_tree = self.n_clusters &gt; max(100, .02 * n_samples)
+   369         1            3      3.0      0.0          n_clusters = self.n_clusters
+   370         1            3      3.0      0.0          if compute_full_tree:
+   371         1            3      3.0      0.0              n_clusters = None
+   372
+   373                                                   # Construct the tree
+   374                                                   self.children_, self.n_components, self.n_leaves_, parents = \
+   375         1            9      9.0      0.0                  memory.cache(ward_tree)(X, self.connectivity,
+   376         1            3      3.0      0.0                              n_components=self.n_components,
+   377         1        43804  43804.0     97.6                              copy=self.copy, n_clusters=n_clusters)
+   378                                                   # Cut the tree
+   379         1            4      4.0      0.0          if compute_full_tree:
+   380         1            4      4.0      0.0              self.labels_ = _hc_cut(self.n_clusters, self.children_,
+   381         1         1033   1033.0      2.3                                     self.n_leaves_)
+   382                                                   else:
+   383                                                       labels = _hierarchical.hc_get_heads(parents, copy=False)
+   384                                                       # copy to avoid holding a reference on the original array
+   385                                                       labels = np.copy(labels[:n_samples])
+   386                                                       # Reasign cluster numbers
+   387                                                       self.labels_ = np.searchsorted(np.unique(labels), labels)
+   388         1            3      3.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="meanshift-minimadelon">
+<h2>MeanShift-minimadelon<a class="headerlink" href="#meanshift-minimadelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MeanShift</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;minimadelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MeanShift</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MeanShift-minimadelon-step0-timing.png" src="_images/MeanShift-minimadelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MeanShift-minimadelon-step0-memory.png" src="_images/MeanShift-minimadelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         6730 function calls in 0.136 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.136    0.136 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.136    0.136 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.136    0.136 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:265(fit)
+     1    0.073    0.073    0.135    0.135 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:51(mean_shift)
+   114    0.001    0.000    0.042    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:334(radius_neighbors)
+   124    0.001    0.000    0.022    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:67(atleast2d_or_csr)
+   236    0.001    0.000    0.018    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+   111    0.012    0.000    0.018    0.000 {method 'query_radius' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+   236    0.002    0.000    0.016    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+   823    0.016    0.000    0.016    0.000 {numpy.core.multiarray.array}
+   347    0.001    0.000    0.015    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+   112    0.000    0.000    0.010    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+   112    0.009    0.000    0.009    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   111    0.001    0.000    0.005    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:15(norm)
+   136    0.002    0.000    0.004    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+   111    0.003    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/blas.py:30(get_blas_funcs)
+     2    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+   156    0.000    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:16(estimate_bandwidth)
+     4    0.000    0.000    0.002    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:404(pairwise_distances)
+   475    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     4    0.001    0.000    0.002    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+   144    0.002    0.000    0.002    0.000 {method 'sum' of 'numpy.ndarray' objects}
+   156    0.002    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   111    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+     1    0.001    0.001    0.002    0.002 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+   112    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:576(fit)
+     4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+    12    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+   111    0.001    0.000    0.001    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+   312    0.001    0.000    0.001    0.000 {method 'split' of 'str' objects}
+     4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+   288    0.001    0.000    0.001    0.000 {isinstance}
+   112    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+  1080    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {numpy.core._dotblas.dot}
+   112    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+   458    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   111    0.000    0.000    0.000    0.000 {getattr}
+   222    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+   111    0.000    0.000    0.000    0.000 {max}
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/unsupervised.py:85(__init__)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:77(_init_params)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+     1    0.000    0.000    0.000    0.000 {sorted}
+     1    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.where}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     6    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:134(&lt;lambda&gt;)
+     1    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py
+Function: fit at line 265
+Total time: 0.143392 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   265                                               def fit(self, X):
+   266                                                   """ Compute MeanShift
+   267
+   268                                                   Parameters
+   269                                                   -----------
+   270                                                   X : array [n_samples, n_features]
+   271                                                       Input points
+   272                                                   """
+   273                                                   self.cluster_centers_, self.labels_ = \
+   274         1            4      4.0      0.0                                 mean_shift(X,
+   275         1            3      3.0      0.0                                            bandwidth=self.bandwidth,
+   276         1            2      2.0      0.0                                            seeds=self.seeds,
+   277         1            2      2.0      0.0                                            bin_seeding=self.bin_seeding,
+   278         1       143379 143379.0    100.0                                            cluster_all=self.cluster_all)
+   279         1            2      2.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="meanshift-blobs">
+<h2>MeanShift-blobs<a class="headerlink" href="#meanshift-blobs" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">MeanShift</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">MeanShift</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/MeanShift-blobs-step0-timing.png" src="_images/MeanShift-blobs-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/MeanShift-blobs-step0-memory.png" src="_images/MeanShift-blobs-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         62265 function calls in 1.433 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    1.433    1.433 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.433    1.433 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    1.433    1.433 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:265(fit)
+     1    0.884    0.884    1.433    1.433 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:51(mean_shift)
+  1121    0.019    0.000    0.342    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:334(radius_neighbors)
+  1120    0.123    0.000    0.177    0.000 {method 'query_radius' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+  1127    0.018    0.000    0.145    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:67(atleast2d_or_csr)
+  2248    0.008    0.000    0.102    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+  1121    0.003    0.000    0.098    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+  1121    0.095    0.000    0.095    0.000 {method 'mean' of 'numpy.ndarray' objects}
+  2248    0.015    0.000    0.085    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+  7868    0.076    0.000    0.076    0.000 {numpy.core.multiarray.array}
+  1120    0.022    0.000    0.073    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:15(norm)
+  3368    0.007    0.000    0.071    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+  1120    0.038    0.000    0.045    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/blas.py:30(get_blas_funcs)
+     1    0.000    0.000    0.033    0.033 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:16(estimate_bandwidth)
+     2    0.000    0.000    0.032    0.016 /tmp/vb_sklearn/sklearn/neighbors/base.py:156(kneighbors)
+     1    0.031    0.031    0.031    0.031 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+  1135    0.015    0.000    0.029    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+  4499    0.008    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+  1147    0.003    0.000    0.019    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+  1120    0.007    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+  1147    0.011    0.000    0.017    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+  1139    0.014    0.000    0.014    0.000 {method 'sum' of 'numpy.ndarray' objects}
+  1121    0.003    0.000    0.010    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+  1120    0.006    0.000    0.006    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+  2284    0.004    0.000    0.004    0.000 {isinstance}
+  1121    0.004    0.000    0.004    0.000 {method 'fill' of 'numpy.ndarray' objects}
+ 10409    0.004    0.000    0.004    0.000 {len}
+  2294    0.004    0.000    0.004    0.000 {method 'split' of 'str' objects}
+  1121    0.003    0.000    0.003    0.000 {numpy.core.multiarray.empty}
+     4    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:576(fit)
+     4    0.002    0.001    0.003    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+  4488    0.002    0.000    0.002    0.000 {method 'append' of 'list' objects}
+  1120    0.001    0.000    0.001    0.000 {getattr}
+  1120    0.001    0.000    0.001    0.000 {max}
+  2240    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+     2    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:404(pairwise_distances)
+     2    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+     8    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/unsupervised.py:85(__init__)
+     2    0.000    0.000    0.000    0.000 {numpy.core._dotblas.dot}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:173(check_random_state)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:77(_init_params)
+     1    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {sorted}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.where}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py:134(&lt;lambda&gt;)
+     1    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/cluster/mean_shift_.py
+Function: fit at line 265
+Total time: 1.61524 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   265                                               def fit(self, X):
+   266                                                   """ Compute MeanShift
+   267
+   268                                                   Parameters
+   269                                                   -----------
+   270                                                   X : array [n_samples, n_features]
+   271                                                       Input points
+   272                                                   """
+   273                                                   self.cluster_centers_, self.labels_ = \
+   274         1            3      3.0      0.0                                 mean_shift(X,
+   275         1            2      2.0      0.0                                            bandwidth=self.bandwidth,
+   276         1            3      3.0      0.0                                            seeds=self.seeds,
+   277         1            1      1.0      0.0                                            bin_seeding=self.bin_seeding,
+   278         1      1615225 1615225.0    100.0                                            cluster_all=self.cluster_all)
+   279         1            3      3.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+        <div class="clearer"></div>
+      </div>
+    </div>
+  
+
+    <div class="footer">
+        &copy; .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="_sources/vb_cluster.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+     <div class="rel rellarge">
+    
+    <div class="buttonPrevious">
+      <a href="index.html">
+        Previous
+      </a>  
+    </div>
+    <div class="buttonNext">
+      <a href="vb_covariance.html">
+        Next
+      </a>  
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+     </script>
+  </body>
+</html>

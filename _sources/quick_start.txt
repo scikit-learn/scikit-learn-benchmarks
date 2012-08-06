@@ -10,7 +10,7 @@ Dependencies
 
 In order to run the benchmarks, you must have the following packages installed:
 
-  - The development version of vbench from `Vlad's repository <https://github.com/vene/vbench/tree/abstract_benchmarks>`_.
+  - The development version of vbench from `Vlad's repository <https://github.com/vene/vbench/tree/abstract_multistep_benchmarks>`_.
   - `Numpy <http://numpy.scipy.org/>`_, `Scipy <http://scipy.org/>`_
 
 Vbench itself requires:
@@ -19,6 +19,7 @@ Vbench itself requires:
   - `Pandas <http://pandas.pydata.org/>`_ (and its dependencies)
   - `sqlalchemy <http://www.sqlalchemy.org/>`_
   - `memory_profiler <http://pypi.python.org/pypi/memory_profiler>`_ (optional, for memory usage benchmarking)
+  - `line_profiler <http://packages.python.org/line_profiler>`_ (optional, for line profiling)
 
 For building the web pages (that you are looking at right now), you
 additionally need:
@@ -60,14 +61,26 @@ Specifically, this means you don't have to bother to set ``repo_url`` and
 ``tmp_dir``.
 
 
-4. From the ``scikit-learn-speed/benchmarks`` folder, run::
+4. From the ``scikit-learn-speed`` folder, run ``make``. This will call:
 
-    python run_suite.py
+ - ``make run``, which runs the benchmark suite,
+ - ``make rst``, which generates the Sphinx sources for the reports,
+ - ``make html``, which builds the HTML reports from the sources.
+
+For more details about other ``make`` options, type ``make help``. At the
+moment, the ``quick`` flag is passed by default, which means it only runs the
+``linear_model`` benchmarks, as a test that everything works OK. Another flag
+is ``historical``, which makes vbench go behind in time and run the suite on
+more releases, but this takes a long time. To pass this kinds of flags, just
+set the ``SKL_SPEED_ARGS`` environment variable. For example::
+
+  SKL_SPEED_ARGS='quick historical' make
 
 
-You will now have a file called ``benchmarks.db`` in the ``benchmarks`` folder.
-You can look inside this file using ``sqlite3`` or (recommended) by
-instanciating a ``vbench.db.BenchmarksDB`` object, like this:
+The result of ``make run`` is a file called ``benchmarks.db`` in the 
+``benchmarks`` folder (or wherever you pointed the ``db_path`` setting to).
+You can look inside this file using ``sqlite3`` or better, by instanciating a
+``vbench.db.BenchmarksDB`` object, like this:
 
 .. code-block:: python
 
@@ -94,11 +107,11 @@ instanciating a ``vbench.db.BenchmarksDB`` object, like this:
 Generating the documentation
 ----------------------------
 
-To actually generate the HTML files, navigate to the ``scikit-learn-speed``
-folder and execute::
+To only generate the HTML files from the database, navigate to the
+``scikit-learn-speed`` folder and execute::
 
-    python make.py
-
+    make rst   # this generates the Sphinx sources
+    make html  # this builds the HTML reports
 
 You can view the results by opening
 ``scikit-learn-speed/benchmarks/build/html/index.html`` in your favourite
