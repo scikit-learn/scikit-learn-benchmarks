@@ -5,19 +5,19 @@ _benchmarks = [
      'obj': 'RandomForestClassifier',
      'init_params': {},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'statements': ('fit',)
     },
     {
      'obj': 'ExtraTreesClassifier',
      'init_params': {},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'statements': ('fit',)
     },
     {
      'obj': 'GradientBoostingClassifier',
      'init_params': {},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'statements': ('fit',)
     },
 ]
 

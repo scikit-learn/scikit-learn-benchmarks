@@ -5,13 +5,13 @@ _benchmarks = [
      'obj': 'DecisionTreeClassifier',
      'init_params': {},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'statements': ('fit',)
     },
     {
      'obj': 'ExtraTreeClassifier',
      'init_params': {},
      'datasets': ('arcene', 'madelon'),
-     'statements': ('fit', 'predict')
+     'statements': ('fit',)
     },
 ]
 

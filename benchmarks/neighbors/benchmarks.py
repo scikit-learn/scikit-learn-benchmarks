@@ -6,7 +6,7 @@ _benchmarks = [
      'spec': 'brute',
      'init_params': {'n_neighbors': 5, 'algorithm': 'brute'},
      'datasets': ('minimadelon', 'madelon'),
-     'statements': ('predict',)
+     'statements': ('fit', 'predict')
     },
     {
      'obj': 'KNeighborsClassifier',

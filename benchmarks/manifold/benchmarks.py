@@ -4,21 +4,21 @@ _benchmarks = [
     {
      'obj': 'Isomap',
      'spec': 'dense',
-     'init_params': {'solver': 'dense'},
+     'init_params': {'eigen_solver': 'dense'},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
     },
     {
      'obj': 'Isomap',
      'spec': 'arpack',
-     'init_params': {'solver': 'arpack'},
+     'init_params': {'eigen_solver': 'arpack'},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
     },
     {
      'obj': 'LocallyLinearEmbedding',
      'spec': 'arpack',
-     'init_params': {'solver': 'arpack', 'method': 'standard',
+     'init_params': {'eigen_solver': 'arpack', 'method': 'standard',
                      'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
@@ -26,7 +26,7 @@ _benchmarks = [
     {
      'obj': 'LocallyLinearEmbedding',
      'spec': 'arpack',
-     'init_params': {'solver': 'arpack', 'method': 'hessian',
+     'init_params': {'eigen_solver': 'arpack', 'method': 'hessian',
                      'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
@@ -34,7 +34,7 @@ _benchmarks = [
     {
      'obj': 'LocallyLinearEmbedding',
      'spec': 'arpack',
-     'init_params': {'solver': 'arpack', 'method': 'modified',
+     'init_params': {'eigen_solver': 'arpack', 'method': 'modified',
                      'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
@@ -42,7 +42,7 @@ _benchmarks = [
     {
      'obj': 'LocallyLinearEmbedding',
      'spec': 'arpack',
-     'init_params': {'solver': 'arpack', 'method': 'ltsa'},
+     'init_params': {'eigen_solver': 'arpack', 'method': 'ltsa'},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
     },
@@ -50,7 +50,7 @@ _benchmarks = [
      'obj': 'MDS',
      'init_params': {},
      'datasets': ('minimadelon', 'blobs'),
-     'statements': ('fit_unsup', 'transform_unsup')
+     'statements': ('fit_unsup',)
     }
 ]
 
