@@ -13,8 +13,8 @@ from vbench.benchmark import gather_benchmarks
 def gather(quick=False):
     modules = ['linear_model'] if quick else \
               ['linear_model', 'cluster', 'semi_supervised', 'naive_bayes',
-               'svm', 'decomposition', 'neighbors', 'covariance',
-               'gaussian_process', 'mixture', 'pls']
+               'svm', 'decomposition', 'neighbors', 'covariance', 'manifold',
+               'gaussian_process', 'mixture', 'pls', 'tree', 'ensemble']
 
     by_module = {}
     benchmarks = []
