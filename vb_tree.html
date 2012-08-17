@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Benchmarks for tree &mdash; Vbench performance benchmarks for scikit-learn</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.12-git',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Vbench performance benchmarks for scikit-learn" href="index.html" />
+    <link rel="prev" title="Benchmarks for svm" href="vb_svm.html" />
+
+  <!-- Reference the theme's stylesheet on the Google CDN -->
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/excite-bike/jquery-ui.css"
+        type="text/css" rel="Stylesheet" />
+ 
+  <!-- Reference jQuery and jQuery UI from the CDN. Remember
+       that the order of these two elements is important -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+      $(function(){
+        $(".profiler-output").accordion({collapsible: true, header: "p", active: false} );
+      });
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22606712-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </head>
+  <body>
+
+    <div class="header-wrapper">
+      <div class="header">
+          <p class="logo"><a href="http://scikit-learn.org/">
+            <img src="_static/scikit-learn-logo-small.png" alt="Logo"/>
+          </a>
+          </p><div class="navbar">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quick_start.html">Speed Quick Start</a></li>
+            <li><a href="http://scikit-learn.org/dev/user_guide.html">User's Guide</a></li>
+            <li><a href="http://scikit-learn.org/dev/developers/performance.html">Performance</a></li>
+            <li><a href="http://github.com/scikit-learn/scikit-learn">Github</a></li>
+            <li><a href="http://github.com/vene/scikit-learn-speed">Speed Github</a></li>
+       </ul>
+</div>
+<!-- end navbar --></div>
+    </div>
+
+    <div class="content-wrapper">
+
+      <div class="sphinxsidebar">
+	<div class="sphinxsidebarwrapper">
+          <h3>Table Of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vb_cluster.html">Benchmarks for cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_covariance.html">Benchmarks for covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_decomposition.html">Benchmarks for decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_ensemble.html">Benchmarks for ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_gaussian_process.html">Benchmarks for gaussian_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_linear_model.html">Benchmarks for linear_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_manifold.html">Benchmarks for manifold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_mixture.html">Benchmarks for mixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_naive_bayes.html">Benchmarks for naive_bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_neighbors.html">Benchmarks for neighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_pls.html">Benchmarks for pls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_semi_supervised.html">Benchmarks for semi_supervised</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vb_svm.html">Benchmarks for svm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Benchmarks for tree</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#decisiontreeclassifier-arcene">DecisionTreeClassifier-arcene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decisiontreeclassifier-madelon">DecisionTreeClassifier-madelon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extratreeclassifier-arcene">ExtraTreeClassifier-arcene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extratreeclassifier-madelon">ExtraTreeClassifier-madelon</a></li>
+</ul>
+</li>
+</ul>
+
+          <!--
+	   <div class="rel rellarge">
+	     
+	<!-- rellinks[1:] is an ugly hack to avoid link to module
+	    index  --
+	<div class="rellink">
+	<a href="vb_svm.html" title="Benchmarks for svm"
+	    accesskey="P">Previous
+	    <br>
+	    <span class="smallrellink">
+	    Benchmarks for s...
+	    </span>
+	    <span class="hiddenrellink">
+	    Benchmarks for svm
+	    </span>
+	    
+	    </a>
+	</div>
+	<!-- Ad a link to the 'up' page --
+    </div>
+    <p style="text-align: center; background-color: #FFE4E4">This documentation is
+    for scikit-learn <strong>version 0.12-git</strong>
+    &mdash; <a href="http://scikit-learn.org/stable/support.html#documentation-resources">Other versions</a></p>
+    
+    <h3>Citing</h3>
+    <p>If you use the software, please consider
+    <a href="about.html#citing-scikit-learn">citing scikit-learn</a>.</p>
+    <h3>This page</h3>
+	<ul>
+<li><a class="reference internal" href="#">Benchmarks for tree</a><ul>
+<li><a class="reference internal" href="#decisiontreeclassifier-arcene">DecisionTreeClassifier-arcene</a></li>
+<li><a class="reference internal" href="#decisiontreeclassifier-madelon">DecisionTreeClassifier-madelon</a></li>
+<li><a class="reference internal" href="#extratreeclassifier-arcene">ExtraTreeClassifier-arcene</a></li>
+<li><a class="reference internal" href="#extratreeclassifier-madelon">ExtraTreeClassifier-madelon</a></li>
+</ul>
+</li>
+</ul>
+
+    
+  -->
+    </div>
+	  </div>
+
+
+      <div class="content">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="benchmarks-for-tree">
+<h1>Benchmarks for tree<a class="headerlink" href="#benchmarks-for-tree" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="decisiontreeclassifier-arcene">
+<h2>DecisionTreeClassifier-arcene<a class="headerlink" href="#decisiontreeclassifier-arcene" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/DecisionTreeClassifier-arcene-step0-timing.png" src="_images/DecisionTreeClassifier-arcene-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/DecisionTreeClassifier-arcene-step0-memory.png" src="_images/DecisionTreeClassifier-arcene-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         68 function calls in 0.428 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.428    0.428 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.428    0.428 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.428    0.428 /tmp/vb_sklearn/sklearn/tree/tree.py:171(fit)
+     1    0.334    0.334    0.416    0.416 {method 'build' of 'sklearn.tree._tree.Tree' objects}
+     2    0.000    0.000    0.082    0.041 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
+     2    0.082    0.041    0.082    0.041 {method 'argsort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.011    0.011 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     8    0.011    0.001    0.011    0.001 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.011    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:325(asfortranarray)
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:289(ascontiguousarray)
+     2    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     6    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {max}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/tree/tree.py
+Function: fit at line 171
+Total time: 0.487225 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   171                                               def fit(self, X, y, sample_mask=None, X_argsorted=None):
+   172                                                   """Build a decision tree from the training set (X, y).
+   173
+   174                                                   Parameters
+   175                                                   ----------
+   176                                                   X : array-like of shape = [n_samples, n_features]
+   177                                                       The training input samples. Use ``dtype=np.float32``
+   178                                                       and ``order='F'`` for maximum efficiency.
+   179
+   180                                                   y : array-like, shape = [n_samples] or [n_samples, n_outputs]
+   181                                                       The target values (integers that correspond to classes in
+   182                                                       classification, real numbers in regression).
+   183                                                       Use ``dtype=np.float64`` and ``order='C'`` for maximum
+   184                                                       efficiency.
+   185
+   186                                                   Returns
+   187                                                   -------
+   188                                                   self : object
+   189                                                       Returns self.
+   190                                                   """
+   191                                                   # set min_samples_split sensibly
+   192         1            6      6.0      0.0          self.min_samples_split = max(self.min_samples_split,
+   193         1            8      8.0      0.0                                       2 * self.min_samples_leaf)
+   194
+   195                                                   # Convert data
+   196         1            9      9.0      0.0          if getattr(X, "dtype", None) != DTYPE or \
+   197                                                      X.ndim != 2 or not X.flags.fortran:
+   198         1         9216   9216.0      1.9              X = array2d(X, dtype=DTYPE, order="F")
+   199
+   200         1           10     10.0      0.0          n_samples, self.n_features_ = X.shape
+   201
+   202         1           12     12.0      0.0          is_classification = isinstance(self, ClassifierMixin)
+   203
+   204         1           39     39.0      0.0          y = np.atleast_1d(y)
+   205         1            5      5.0      0.0          if y.ndim == 1:
+   206         1           16     16.0      0.0              y = y[:, np.newaxis]
+   207
+   208         1            6      6.0      0.0          self.classes_ = []
+   209         1            5      5.0      0.0          self.n_classes_ = []
+   210         1            5      5.0      0.0          self.n_outputs_ = y.shape[1]
+   211
+   212         1            3      3.0      0.0          if is_classification:
+   213         1           28     28.0      0.0              y = np.copy(y)
+   214
+   215         2           14      7.0      0.0              for k in xrange(self.n_outputs_):
+   216         1          118    118.0      0.0                  unique = np.unique(y[:, k])
+   217         1            6      6.0      0.0                  self.classes_.append(unique)
+   218         1            5      5.0      0.0                  self.n_classes_.append(unique.shape[0])
+   219         1           31     31.0      0.0                  y[:, k] = np.searchsorted(unique, y[:, k])
+   220
+   221                                                   else:
+   222                                                       self.classes_ = [None] * self.n_outputs_
+   223                                                       self.n_classes_ = [1] * self.n_outputs_
+   224
+   225         1            9      9.0      0.0          if getattr(y, "dtype", None) != DOUBLE or not y.flags.contiguous:
+   226         1           18     18.0      0.0              y = np.ascontiguousarray(y, dtype=DOUBLE)
+   227
+   228         1            4      4.0      0.0          if is_classification:
+   229         1            6      6.0      0.0              criterion = CLASSIFICATION[self.criterion](self.n_outputs_,
+   230         1            9      9.0      0.0                                                         self.n_classes_)
+   231                                                   else:
+   232                                                       criterion = REGRESSION[self.criterion](self.n_outputs_)
+   233
+   234                                                   # Check parameters
+   235         1            8      8.0      0.0          max_depth = np.inf if self.max_depth is None else self.max_depth
+   236
+   237         1            8      8.0      0.0          if isinstance(self.max_features, basestring):
+   238                                                       if self.max_features == "auto":
+   239                                                           if is_classification:
+   240                                                               max_features = max(1, int(np.sqrt(self.n_features_)))
+   241                                                           else:
+   242                                                               max_features = self.n_features_
+   243                                                       elif self.max_features == "sqrt":
+   244                                                           max_features = max(1, int(np.sqrt(self.n_features_)))
+   245                                                       elif self.max_features == "log2":
+   246                                                           max_features = max(1, int(np.log2(self.n_features_)))
+   247                                                       else:
+   248                                                           raise ValueError(
+   249                                                               'Invalid value for max_features. Allowed string '
+   250                                                               'values are "auto", "sqrt" or "log2".')
+   251         1            5      5.0      0.0          elif self.max_features is None:
+   252         1            4      4.0      0.0              max_features = self.n_features_
+   253                                                   else:
+   254                                                       max_features = self.max_features
+   255
+   256         1            5      5.0      0.0          if len(y) != n_samples:
+   257                                                       raise ValueError("Number of labels=%d does not match "
+   258                                                                        "number of samples=%d" % (len(y), n_samples))
+   259         1            4      4.0      0.0          if self.min_samples_split &lt;= 0:
+   260                                                       raise ValueError("min_samples_split must be greater than zero.")
+   261         1            4      4.0      0.0          if self.min_samples_leaf &lt;= 0:
+   262                                                       raise ValueError("min_samples_leaf must be greater than zero.")
+   263         1            5      5.0      0.0          if max_depth &lt;= 0:
+   264                                                       raise ValueError("max_depth must be greater than zero. ")
+   265         1            5      5.0      0.0          if self.min_density &lt; 0.0 or self.min_density &gt; 1.0:
+   266                                                       raise ValueError("min_density must be in [0, 1]")
+   267         1            5      5.0      0.0          if not (0 &lt; max_features &lt;= self.n_features_):
+   268                                                       raise ValueError("max_features must be in (0, n_features]")
+   269         1            5      5.0      0.0          if sample_mask is not None and len(sample_mask) != n_samples:
+   270                                                       raise ValueError("Length of sample_mask=%d does not match "
+   271                                                                        "number of samples=%d" % (len(sample_mask),
+   272                                                                                                  n_samples))
+   273         1            4      4.0      0.0          if X_argsorted is not None and len(X_argsorted) != n_samples:
+   274                                                       raise ValueError("Length of X_argsorted=%d does not match "
+   275                                                                        "number of samples=%d" % (len(X_argsorted),
+   276                                                                                                  n_samples))
+   277
+   278                                                   # Build tree
+   279         1            6      6.0      0.0          self.tree_ = _tree.Tree(self.n_features_, self.n_classes_,
+   280         1            4      4.0      0.0                                  self.n_outputs_, criterion, max_depth,
+   281         1            5      5.0      0.0                                  self.min_samples_split, self.min_samples_leaf,
+   282         1            4      4.0      0.0                                  self.min_density, max_features,
+   283         1          102    102.0      0.0                                  self.find_split_, self.random_state)
+   284
+   285         1            6      6.0      0.0          self.tree_.build(X, y, sample_mask=sample_mask,
+   286         1       477437 477437.0     98.0                           X_argsorted=X_argsorted)
+   287
+   288         1            7      7.0      0.0          if self.compute_importances:
+   289                                                       self.feature_importances_ = \
+   290                                                           self.tree_.compute_feature_importances()
+   291
+   292         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="decisiontreeclassifier-madelon">
+<h2>DecisionTreeClassifier-madelon<a class="headerlink" href="#decisiontreeclassifier-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/DecisionTreeClassifier-madelon-step0-timing.png" src="_images/DecisionTreeClassifier-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/DecisionTreeClassifier-madelon-step0-memory.png" src="_images/DecisionTreeClassifier-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         376 function calls in 1.546 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    1.546    1.546 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.546    1.546 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    1.546    1.546 /tmp/vb_sklearn/sklearn/tree/tree.py:171(fit)
+     1    1.247    1.247    1.535    1.535 {method 'build' of 'sklearn.tree._tree.Tree' objects}
+    46    0.000    0.000    0.287    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
+    46    0.287    0.006    0.287    0.006 {method 'argsort' of 'numpy.ndarray' objects}
+    52    0.010    0.000    0.010    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.010    0.010 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     2    0.000    0.000    0.010    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    46    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    46    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:325(asfortranarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+    46    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+    46    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:289(ascontiguousarray)
+     3    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     6    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {max}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/tree/tree.py
+Function: fit at line 171
+Total time: 1.62936 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   171                                               def fit(self, X, y, sample_mask=None, X_argsorted=None):
+   172                                                   """Build a decision tree from the training set (X, y).
+   173
+   174                                                   Parameters
+   175                                                   ----------
+   176                                                   X : array-like of shape = [n_samples, n_features]
+   177                                                       The training input samples. Use ``dtype=np.float32``
+   178                                                       and ``order='F'`` for maximum efficiency.
+   179
+   180                                                   y : array-like, shape = [n_samples] or [n_samples, n_outputs]
+   181                                                       The target values (integers that correspond to classes in
+   182                                                       classification, real numbers in regression).
+   183                                                       Use ``dtype=np.float64`` and ``order='C'`` for maximum
+   184                                                       efficiency.
+   185
+   186                                                   Returns
+   187                                                   -------
+   188                                                   self : object
+   189                                                       Returns self.
+   190                                                   """
+   191                                                   # set min_samples_split sensibly
+   192         1            6      6.0      0.0          self.min_samples_split = max(self.min_samples_split,
+   193         1            7      7.0      0.0                                       2 * self.min_samples_leaf)
+   194
+   195                                                   # Convert data
+   196         1            8      8.0      0.0          if getattr(X, "dtype", None) != DTYPE or \
+   197                                                      X.ndim != 2 or not X.flags.fortran:
+   198         1         8394   8394.0      0.5              X = array2d(X, dtype=DTYPE, order="F")
+   199
+   200         1           11     11.0      0.0          n_samples, self.n_features_ = X.shape
+   201
+   202         1           11     11.0      0.0          is_classification = isinstance(self, ClassifierMixin)
+   203
+   204         1           41     41.0      0.0          y = np.atleast_1d(y)
+   205         1            5      5.0      0.0          if y.ndim == 1:
+   206         1           16     16.0      0.0              y = y[:, np.newaxis]
+   207
+   208         1            4      4.0      0.0          self.classes_ = []
+   209         1            5      5.0      0.0          self.n_classes_ = []
+   210         1            5      5.0      0.0          self.n_outputs_ = y.shape[1]
+   211
+   212         1            4      4.0      0.0          if is_classification:
+   213         1           30     30.0      0.0              y = np.copy(y)
+   214
+   215         2           14      7.0      0.0              for k in xrange(self.n_outputs_):
+   216         1          209    209.0      0.0                  unique = np.unique(y[:, k])
+   217         1            6      6.0      0.0                  self.classes_.append(unique)
+   218         1            6      6.0      0.0                  self.n_classes_.append(unique.shape[0])
+   219         1           97     97.0      0.0                  y[:, k] = np.searchsorted(unique, y[:, k])
+   220
+   221                                                   else:
+   222                                                       self.classes_ = [None] * self.n_outputs_
+   223                                                       self.n_classes_ = [1] * self.n_outputs_
+   224
+   225         1            9      9.0      0.0          if getattr(y, "dtype", None) != DOUBLE or not y.flags.contiguous:
+   226         1           21     21.0      0.0              y = np.ascontiguousarray(y, dtype=DOUBLE)
+   227
+   228         1            4      4.0      0.0          if is_classification:
+   229         1            6      6.0      0.0              criterion = CLASSIFICATION[self.criterion](self.n_outputs_,
+   230         1            9      9.0      0.0                                                         self.n_classes_)
+   231                                                   else:
+   232                                                       criterion = REGRESSION[self.criterion](self.n_outputs_)
+   233
+   234                                                   # Check parameters
+   235         1            9      9.0      0.0          max_depth = np.inf if self.max_depth is None else self.max_depth
+   236
+   237         1           12     12.0      0.0          if isinstance(self.max_features, basestring):
+   238                                                       if self.max_features == "auto":
+   239                                                           if is_classification:
+   240                                                               max_features = max(1, int(np.sqrt(self.n_features_)))
+   241                                                           else:
+   242                                                               max_features = self.n_features_
+   243                                                       elif self.max_features == "sqrt":
+   244                                                           max_features = max(1, int(np.sqrt(self.n_features_)))
+   245                                                       elif self.max_features == "log2":
+   246                                                           max_features = max(1, int(np.log2(self.n_features_)))
+   247                                                       else:
+   248                                                           raise ValueError(
+   249                                                               'Invalid value for max_features. Allowed string '
+   250                                                               'values are "auto", "sqrt" or "log2".')
+   251         1            5      5.0      0.0          elif self.max_features is None:
+   252         1            4      4.0      0.0              max_features = self.n_features_
+   253                                                   else:
+   254                                                       max_features = self.max_features
+   255
+   256         1            5      5.0      0.0          if len(y) != n_samples:
+   257                                                       raise ValueError("Number of labels=%d does not match "
+   258                                                                        "number of samples=%d" % (len(y), n_samples))
+   259         1            5      5.0      0.0          if self.min_samples_split &lt;= 0:
+   260                                                       raise ValueError("min_samples_split must be greater than zero.")
+   261         1            4      4.0      0.0          if self.min_samples_leaf &lt;= 0:
+   262                                                       raise ValueError("min_samples_leaf must be greater than zero.")
+   263         1            5      5.0      0.0          if max_depth &lt;= 0:
+   264                                                       raise ValueError("max_depth must be greater than zero. ")
+   265         1            5      5.0      0.0          if self.min_density &lt; 0.0 or self.min_density &gt; 1.0:
+   266                                                       raise ValueError("min_density must be in [0, 1]")
+   267         1            5      5.0      0.0          if not (0 &lt; max_features &lt;= self.n_features_):
+   268                                                       raise ValueError("max_features must be in (0, n_features]")
+   269         1            4      4.0      0.0          if sample_mask is not None and len(sample_mask) != n_samples:
+   270                                                       raise ValueError("Length of sample_mask=%d does not match "
+   271                                                                        "number of samples=%d" % (len(sample_mask),
+   272                                                                                                  n_samples))
+   273         1            4      4.0      0.0          if X_argsorted is not None and len(X_argsorted) != n_samples:
+   274                                                       raise ValueError("Length of X_argsorted=%d does not match "
+   275                                                                        "number of samples=%d" % (len(X_argsorted),
+   276                                                                                                  n_samples))
+   277
+   278                                                   # Build tree
+   279         1            6      6.0      0.0          self.tree_ = _tree.Tree(self.n_features_, self.n_classes_,
+   280         1            4      4.0      0.0                                  self.n_outputs_, criterion, max_depth,
+   281         1            4      4.0      0.0                                  self.min_samples_split, self.min_samples_leaf,
+   282         1            4      4.0      0.0                                  self.min_density, max_features,
+   283         1          107    107.0      0.0                                  self.find_split_, self.random_state)
+   284
+   285         1            5      5.0      0.0          self.tree_.build(X, y, sample_mask=sample_mask,
+   286         1      1620224 1620224.0     99.4                           X_argsorted=X_argsorted)
+   287
+   288         1            7      7.0      0.0          if self.compute_importances:
+   289                                                       self.feature_importances_ = \
+   290                                                           self.tree_.compute_feature_importances()
+   291
+   292         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="extratreeclassifier-arcene">
+<h2>ExtraTreeClassifier-arcene<a class="headerlink" href="#extratreeclassifier-arcene" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">ExtraTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;arcene&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ExtraTreeClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ExtraTreeClassifier-arcene-step0-timing.png" src="_images/ExtraTreeClassifier-arcene-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ExtraTreeClassifier-arcene-step0-memory.png" src="_images/ExtraTreeClassifier-arcene-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         97 function calls in 0.228 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.228    0.228 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.228    0.228 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.228    0.228 /tmp/vb_sklearn/sklearn/tree/tree.py:171(fit)
+     1    0.126    0.126    0.216    0.216 {method 'build' of 'sklearn.tree._tree.Tree' objects}
+     6    0.000    0.000    0.090    0.015 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
+     6    0.090    0.015    0.090    0.015 {method 'argsort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.011    0.011 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+    12    0.011    0.001    0.011    0.001 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.011    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:325(asfortranarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     6    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:289(ascontiguousarray)
+     3    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     2    0.000    0.000    0.000    0.000 {max}
+     6    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/tree/tree.py
+Function: fit at line 171
+Total time: 0.209574 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   171                                               def fit(self, X, y, sample_mask=None, X_argsorted=None):
+   172                                                   """Build a decision tree from the training set (X, y).
+   173
+   174                                                   Parameters
+   175                                                   ----------
+   176                                                   X : array-like of shape = [n_samples, n_features]
+   177                                                       The training input samples. Use ``dtype=np.float32``
+   178                                                       and ``order='F'`` for maximum efficiency.
+   179
+   180                                                   y : array-like, shape = [n_samples] or [n_samples, n_outputs]
+   181                                                       The target values (integers that correspond to classes in
+   182                                                       classification, real numbers in regression).
+   183                                                       Use ``dtype=np.float64`` and ``order='C'`` for maximum
+   184                                                       efficiency.
+   185
+   186                                                   Returns
+   187                                                   -------
+   188                                                   self : object
+   189                                                       Returns self.
+   190                                                   """
+   191                                                   # set min_samples_split sensibly
+   192         1            6      6.0      0.0          self.min_samples_split = max(self.min_samples_split,
+   193         1            7      7.0      0.0                                       2 * self.min_samples_leaf)
+   194
+   195                                                   # Convert data
+   196         1            8      8.0      0.0          if getattr(X, "dtype", None) != DTYPE or \
+   197                                                      X.ndim != 2 or not X.flags.fortran:
+   198         1         9175   9175.0      4.4              X = array2d(X, dtype=DTYPE, order="F")
+   199
+   200         1           10     10.0      0.0          n_samples, self.n_features_ = X.shape
+   201
+   202         1           11     11.0      0.0          is_classification = isinstance(self, ClassifierMixin)
+   203
+   204         1           40     40.0      0.0          y = np.atleast_1d(y)
+   205         1            5      5.0      0.0          if y.ndim == 1:
+   206         1           16     16.0      0.0              y = y[:, np.newaxis]
+   207
+   208         1            4      4.0      0.0          self.classes_ = []
+   209         1            5      5.0      0.0          self.n_classes_ = []
+   210         1            5      5.0      0.0          self.n_outputs_ = y.shape[1]
+   211
+   212         1            4      4.0      0.0          if is_classification:
+   213         1           27     27.0      0.0              y = np.copy(y)
+   214
+   215         2           14      7.0      0.0              for k in xrange(self.n_outputs_):
+   216         1          116    116.0      0.1                  unique = np.unique(y[:, k])
+   217         1            6      6.0      0.0                  self.classes_.append(unique)
+   218         1            6      6.0      0.0                  self.n_classes_.append(unique.shape[0])
+   219         1           32     32.0      0.0                  y[:, k] = np.searchsorted(unique, y[:, k])
+   220
+   221                                                   else:
+   222                                                       self.classes_ = [None] * self.n_outputs_
+   223                                                       self.n_classes_ = [1] * self.n_outputs_
+   224
+   225         1            9      9.0      0.0          if getattr(y, "dtype", None) != DOUBLE or not y.flags.contiguous:
+   226         1           18     18.0      0.0              y = np.ascontiguousarray(y, dtype=DOUBLE)
+   227
+   228         1            5      5.0      0.0          if is_classification:
+   229         1            6      6.0      0.0              criterion = CLASSIFICATION[self.criterion](self.n_outputs_,
+   230         1            9      9.0      0.0                                                         self.n_classes_)
+   231                                                   else:
+   232                                                       criterion = REGRESSION[self.criterion](self.n_outputs_)
+   233
+   234                                                   # Check parameters
+   235         1            5      5.0      0.0          max_depth = np.inf if self.max_depth is None else self.max_depth
+   236
+   237         1            6      6.0      0.0          if isinstance(self.max_features, basestring):
+   238         1            4      4.0      0.0              if self.max_features == "auto":
+   239         1            4      4.0      0.0                  if is_classification:
+   240         1           32     32.0      0.0                      max_features = max(1, int(np.sqrt(self.n_features_)))
+   241                                                           else:
+   242                                                               max_features = self.n_features_
+   243                                                       elif self.max_features == "sqrt":
+   244                                                           max_features = max(1, int(np.sqrt(self.n_features_)))
+   245                                                       elif self.max_features == "log2":
+   246                                                           max_features = max(1, int(np.log2(self.n_features_)))
+   247                                                       else:
+   248                                                           raise ValueError(
+   249                                                               'Invalid value for max_features. Allowed string '
+   250                                                               'values are "auto", "sqrt" or "log2".')
+   251                                                   elif self.max_features is None:
+   252                                                       max_features = self.n_features_
+   253                                                   else:
+   254                                                       max_features = self.max_features
+   255
+   256         1            6      6.0      0.0          if len(y) != n_samples:
+   257                                                       raise ValueError("Number of labels=%d does not match "
+   258                                                                        "number of samples=%d" % (len(y), n_samples))
+   259         1            5      5.0      0.0          if self.min_samples_split &lt;= 0:
+   260                                                       raise ValueError("min_samples_split must be greater than zero.")
+   261         1            4      4.0      0.0          if self.min_samples_leaf &lt;= 0:
+   262                                                       raise ValueError("min_samples_leaf must be greater than zero.")
+   263         1            5      5.0      0.0          if max_depth &lt;= 0:
+   264                                                       raise ValueError("max_depth must be greater than zero. ")
+   265         1            4      4.0      0.0          if self.min_density &lt; 0.0 or self.min_density &gt; 1.0:
+   266                                                       raise ValueError("min_density must be in [0, 1]")
+   267         1            5      5.0      0.0          if not (0 &lt; max_features &lt;= self.n_features_):
+   268                                                       raise ValueError("max_features must be in (0, n_features]")
+   269         1            4      4.0      0.0          if sample_mask is not None and len(sample_mask) != n_samples:
+   270                                                       raise ValueError("Length of sample_mask=%d does not match "
+   271                                                                        "number of samples=%d" % (len(sample_mask),
+   272                                                                                                  n_samples))
+   273         1            4      4.0      0.0          if X_argsorted is not None and len(X_argsorted) != n_samples:
+   274                                                       raise ValueError("Length of X_argsorted=%d does not match "
+   275                                                                        "number of samples=%d" % (len(X_argsorted),
+   276                                                                                                  n_samples))
+   277
+   278                                                   # Build tree
+   279         1            5      5.0      0.0          self.tree_ = _tree.Tree(self.n_features_, self.n_classes_,
+   280         1            4      4.0      0.0                                  self.n_outputs_, criterion, max_depth,
+   281         1            5      5.0      0.0                                  self.min_samples_split, self.min_samples_leaf,
+   282         1            4      4.0      0.0                                  self.min_density, max_features,
+   283         1           96     96.0      0.0                                  self.find_split_, self.random_state)
+   284
+   285         1            5      5.0      0.0          self.tree_.build(X, y, sample_mask=sample_mask,
+   286         1       199812 199812.0     95.3                           X_argsorted=X_argsorted)
+   287
+   288         1            7      7.0      0.0          if self.compute_importances:
+   289                                                       self.feature_importances_ = \
+   290                                                           self.tree_.compute_feature_importances()
+   291
+   292         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+<div class="section" id="extratreeclassifier-madelon">
+<h2>ExtraTreeClassifier-madelon<a class="headerlink" href="#extratreeclassifier-madelon" title="Permalink to this headline">¶</a></h2>
+<p><strong>Benchmark setup</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">ExtraTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;madelon&#39;</span><span class="p">)</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">ExtraTreeClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Benchmark statement</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Execution time</strong></p>
+<img alt="_images/ExtraTreeClassifier-madelon-step0-timing.png" src="_images/ExtraTreeClassifier-madelon-step0-timing.png" style="width: 6in;" />
+<p><strong>Memory usage</strong></p>
+<img alt="_images/ExtraTreeClassifier-madelon-step0-memory.png" src="_images/ExtraTreeClassifier-madelon-step0-memory.png" style="width: 6in;" />
+<p><strong>Additional output</strong></p>
+<div class="profiler-output container">
+<p>cProfile</p>
+<div class="highlight-python"><pre>         1112 function calls in 0.599 seconds
+
+Ordered by: cumulative time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     1    0.000    0.000    0.599    0.599 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.599    0.599 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.599    0.599 /tmp/vb_sklearn/sklearn/tree/tree.py:171(fit)
+     1    0.326    0.326    0.589    0.589 {method 'build' of 'sklearn.tree._tree.Tree' objects}
+   151    0.001    0.000    0.261    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
+   151    0.260    0.002    0.260    0.002 {method 'argsort' of 'numpy.ndarray' objects}
+   157    0.010    0.000    0.010    0.000 {numpy.core.multiarray.array}
+     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/utils/validation.py:62(array2d)
+     2    0.000    0.000    0.009    0.004 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   151    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+   151    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:325(asfortranarray)
+   151    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+   151    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:781(copy)
+     4    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:289(ascontiguousarray)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {getattr}
+     2    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     6    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 {max}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+</div>
+<p>LineProfiler</p>
+<div class="highlight-python"><pre>   Timer unit: 1e-06 s
+
+File: /tmp/vb_sklearn/sklearn/tree/tree.py
+Function: fit at line 171
+Total time: 0.677983 s
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   171                                               def fit(self, X, y, sample_mask=None, X_argsorted=None):
+   172                                                   """Build a decision tree from the training set (X, y).
+   173
+   174                                                   Parameters
+   175                                                   ----------
+   176                                                   X : array-like of shape = [n_samples, n_features]
+   177                                                       The training input samples. Use ``dtype=np.float32``
+   178                                                       and ``order='F'`` for maximum efficiency.
+   179
+   180                                                   y : array-like, shape = [n_samples] or [n_samples, n_outputs]
+   181                                                       The target values (integers that correspond to classes in
+   182                                                       classification, real numbers in regression).
+   183                                                       Use ``dtype=np.float64`` and ``order='C'`` for maximum
+   184                                                       efficiency.
+   185
+   186                                                   Returns
+   187                                                   -------
+   188                                                   self : object
+   189                                                       Returns self.
+   190                                                   """
+   191                                                   # set min_samples_split sensibly
+   192         1            6      6.0      0.0          self.min_samples_split = max(self.min_samples_split,
+   193         1            7      7.0      0.0                                       2 * self.min_samples_leaf)
+   194
+   195                                                   # Convert data
+   196         1            7      7.0      0.0          if getattr(X, "dtype", None) != DTYPE or \
+   197                                                      X.ndim != 2 or not X.flags.fortran:
+   198         1         8210   8210.0      1.2              X = array2d(X, dtype=DTYPE, order="F")
+   199
+   200         1           11     11.0      0.0          n_samples, self.n_features_ = X.shape
+   201
+   202         1           11     11.0      0.0          is_classification = isinstance(self, ClassifierMixin)
+   203
+   204         1           38     38.0      0.0          y = np.atleast_1d(y)
+   205         1            5      5.0      0.0          if y.ndim == 1:
+   206         1           16     16.0      0.0              y = y[:, np.newaxis]
+   207
+   208         1            4      4.0      0.0          self.classes_ = []
+   209         1            4      4.0      0.0          self.n_classes_ = []
+   210         1            5      5.0      0.0          self.n_outputs_ = y.shape[1]
+   211
+   212         1            3      3.0      0.0          if is_classification:
+   213         1           28     28.0      0.0              y = np.copy(y)
+   214
+   215         2           14      7.0      0.0              for k in xrange(self.n_outputs_):
+   216         1          191    191.0      0.0                  unique = np.unique(y[:, k])
+   217         1            5      5.0      0.0                  self.classes_.append(unique)
+   218         1            5      5.0      0.0                  self.n_classes_.append(unique.shape[0])
+   219         1           90     90.0      0.0                  y[:, k] = np.searchsorted(unique, y[:, k])
+   220
+   221                                                   else:
+   222                                                       self.classes_ = [None] * self.n_outputs_
+   223                                                       self.n_classes_ = [1] * self.n_outputs_
+   224
+   225         1            8      8.0      0.0          if getattr(y, "dtype", None) != DOUBLE or not y.flags.contiguous:
+   226         1           20     20.0      0.0              y = np.ascontiguousarray(y, dtype=DOUBLE)
+   227
+   228         1            4      4.0      0.0          if is_classification:
+   229         1            5      5.0      0.0              criterion = CLASSIFICATION[self.criterion](self.n_outputs_,
+   230         1            8      8.0      0.0                                                         self.n_classes_)
+   231                                                   else:
+   232                                                       criterion = REGRESSION[self.criterion](self.n_outputs_)
+   233
+   234                                                   # Check parameters
+   235         1            4      4.0      0.0          max_depth = np.inf if self.max_depth is None else self.max_depth
+   236
+   237         1            7      7.0      0.0          if isinstance(self.max_features, basestring):
+   238         1            4      4.0      0.0              if self.max_features == "auto":
+   239         1            4      4.0      0.0                  if is_classification:
+   240         1           30     30.0      0.0                      max_features = max(1, int(np.sqrt(self.n_features_)))
+   241                                                           else:
+   242                                                               max_features = self.n_features_
+   243                                                       elif self.max_features == "sqrt":
+   244                                                           max_features = max(1, int(np.sqrt(self.n_features_)))
+   245                                                       elif self.max_features == "log2":
+   246                                                           max_features = max(1, int(np.log2(self.n_features_)))
+   247                                                       else:
+   248                                                           raise ValueError(
+   249                                                               'Invalid value for max_features. Allowed string '
+   250                                                               'values are "auto", "sqrt" or "log2".')
+   251                                                   elif self.max_features is None:
+   252                                                       max_features = self.n_features_
+   253                                                   else:
+   254                                                       max_features = self.max_features
+   255
+   256         1            4      4.0      0.0          if len(y) != n_samples:
+   257                                                       raise ValueError("Number of labels=%d does not match "
+   258                                                                        "number of samples=%d" % (len(y), n_samples))
+   259         1            4      4.0      0.0          if self.min_samples_split &lt;= 0:
+   260                                                       raise ValueError("min_samples_split must be greater than zero.")
+   261         1            4      4.0      0.0          if self.min_samples_leaf &lt;= 0:
+   262                                                       raise ValueError("min_samples_leaf must be greater than zero.")
+   263         1            5      5.0      0.0          if max_depth &lt;= 0:
+   264                                                       raise ValueError("max_depth must be greater than zero. ")
+   265         1            4      4.0      0.0          if self.min_density &lt; 0.0 or self.min_density &gt; 1.0:
+   266                                                       raise ValueError("min_density must be in [0, 1]")
+   267         1            4      4.0      0.0          if not (0 &lt; max_features &lt;= self.n_features_):
+   268                                                       raise ValueError("max_features must be in (0, n_features]")
+   269         1            4      4.0      0.0          if sample_mask is not None and len(sample_mask) != n_samples:
+   270                                                       raise ValueError("Length of sample_mask=%d does not match "
+   271                                                                        "number of samples=%d" % (len(sample_mask),
+   272                                                                                                  n_samples))
+   273         1            4      4.0      0.0          if X_argsorted is not None and len(X_argsorted) != n_samples:
+   274                                                       raise ValueError("Length of X_argsorted=%d does not match "
+   275                                                                        "number of samples=%d" % (len(X_argsorted),
+   276                                                                                                  n_samples))
+   277
+   278                                                   # Build tree
+   279         1            5      5.0      0.0          self.tree_ = _tree.Tree(self.n_features_, self.n_classes_,
+   280         1            3      3.0      0.0                                  self.n_outputs_, criterion, max_depth,
+   281         1           13     13.0      0.0                                  self.min_samples_split, self.min_samples_leaf,
+   282         1            4      4.0      0.0                                  self.min_density, max_features,
+   283         1           92     92.0      0.0                                  self.find_split_, self.random_state)
+   284
+   285         1            5      5.0      0.0          self.tree_.build(X, y, sample_mask=sample_mask,
+   286         1       669064 669064.0     98.7                           X_argsorted=X_argsorted)
+   287
+   288         1            6      6.0      0.0          if self.compute_importances:
+   289                                                       self.feature_importances_ = \
+   290                                                           self.tree_.compute_feature_importances()
+   291
+   292         1            4      4.0      0.0          return self</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+        <div class="clearer"></div>
+      </div>
+    </div>
+  
+
+    <div class="footer">
+        &copy; .
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3. Design by <a href="http://desgrana.es">Desgrana</a>.
+    <span style="padding-left: 5ex;">
+    <a href="_sources/vb_tree.txt"
+	    rel="nofollow">Show this page source</a>
+    </span>
+    </div>
+     <div class="rel rellarge">
+    
+    <div class="buttonPrevious">
+      <a href="vb_svm.html">
+        Previous
+      </a>  
+    </div>
+    
+     </div>
+     <script type="text/javascript">
+       $("div.buttonNext, div.buttonPrevious").hover(
+           function () {
+               $(this).css('background-color', '#FF9C34');
+           },
+           function () {
+               $(this).css('background-color', '#A7D6E2');
+           }
+       );
+     </script>
+  </body>
+</html>
