@@ -147,9 +147,16 @@ Performance Benchmarks
 ======================
 
 These historical benchmark graphs were produced with `vbench
-<http://github.com/pydata/vbench>`__.
+<http://github.com/pydata/vbench>`_.
 
-Produced on a machine with TODO
+The suite has been running periodically
+since August 20, 2012.
+
+Produced on a `Shining Panda <https://www.shiningpanda-ci.com/>`_ `Debian 6
+instance
+<https://www.shiningpanda-ci.com/docs/buildenvs/debian6-squeeze.html>`_.
+
+Click on a module from the list on the left in order to see the results.
 
 .. toctree::
     :hidden:

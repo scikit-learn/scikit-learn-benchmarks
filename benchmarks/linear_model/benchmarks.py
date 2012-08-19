@@ -58,7 +58,7 @@ _benchmarks = [
     {
      'obj': 'ARDRegression',
      'init_params': {},
-     'datasets': ('arcene', 'madelon'),
+     'datasets': ('minimadelon-oney', 'blobs'),
      'statements': ('fit',)
     },
     {
