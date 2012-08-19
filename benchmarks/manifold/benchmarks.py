@@ -17,7 +17,7 @@ _benchmarks = [
     },
     {
      'obj': 'LocallyLinearEmbedding',
-     'spec': 'standard',
+     'spec': 'standard-arpack',
      'init_params': {'eigen_solver': 'arpack', 'method': 'standard',
                      'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
@@ -25,23 +25,23 @@ _benchmarks = [
     },
     {
      'obj': 'LocallyLinearEmbedding',
-     'spec': 'hessian',
-     'init_params': {'eigen_solver': 'arpack', 'method': 'hessian',
+     'spec': 'hessian-dense',
+     'init_params': {'eigen_solver': 'dense', 'method': 'hessian',
                      'random_state': 0, 'n_neighbors': 6},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
     },
     {
      'obj': 'LocallyLinearEmbedding',
-     'spec': 'modified',
-     'init_params': {'eigen_solver': 'arpack', 'method': 'modified',
+     'spec': 'modified-dense',
+     'init_params': {'eigen_solver': 'dense', 'method': 'modified',
                      'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
     },
     {
      'obj': 'LocallyLinearEmbedding',
-     'spec': 'ltsa',
+     'spec': 'ltsa-arpack',
      'init_params': {'eigen_solver': 'arpack', 'method': 'ltsa'},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')

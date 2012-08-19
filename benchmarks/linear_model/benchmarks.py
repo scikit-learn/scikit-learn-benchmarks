@@ -54,6 +54,18 @@ _benchmarks = [
      'init_params': {'C': 1e5},
      'datasets': ('arcene', 'madelon'),
      'statements': ('fit', 'predict')
+    },
+    {
+     'obj': 'ARDRegression',
+     'init_params': {},
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit',)
+    },
+    {
+     'obj': 'BayesianRidge',
+     'init_params': {},
+     'datasets': ('arcene', 'madelon'),
+     'statements': ('fit',)
     }
 ]
 

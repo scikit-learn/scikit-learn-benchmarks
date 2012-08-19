@@ -5,28 +5,28 @@ _benchmarks = [
      'obj': 'SVC',
      'spec': 'linear',
      'init_params': {'kernel': 'linear'},
-     'datasets': ('minimadelon-oney', 'blobs'),
+     'datasets': ('minimadelon-oney',),
      'statements': ('fit',)
     },
     {
      'obj': 'SVC',
      'spec': 'poly',
      'init_params': {'kernel': 'poly'},
-     'datasets': ('minimadelon-oney', 'blobs'),
+     'datasets': ('minimadelon-oney',),
      'statements': ('fit',)
     },
     {
      'obj': 'SVC',
      'spec': 'rbf',
      'init_params': {'kernel': 'rbf'},
-     'datasets': ('minimadelon-oney', 'blobs'),
+     'datasets': ('minimadelon-oney', 'madelon'),
      'statements': ('fit', 'predict')
     },
     {
      'obj': 'SVC',
      'spec': 'sigmoid',
      'init_params': {'kernel': 'sigmoid'},
-     'datasets': ('minimadelon-oney', 'blobs'),
+     'datasets': ('minimadelon-oney',),
      'statements': ('fit',)
     },
     {
