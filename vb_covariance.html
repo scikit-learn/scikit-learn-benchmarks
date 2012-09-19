@@ -347,59 +347,58 @@ FloatingPointError: overflow encountered in multiply. The system is too ill-cond
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         11196 function calls in 0.720 seconds
+<div class="highlight-python"><pre>         11196 function calls in 0.683 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.720    0.720 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.720    0.720 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.720    0.720 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:517(fit)
-     1    0.000    0.000    0.711    0.711 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:259(fast_mcd)
-     2    0.002    0.001    0.711    0.355 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:152(select_candidates)
-    40    0.126    0.003    0.684    0.017 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:27(c_step)
-    82    0.009    0.000    0.226    0.003 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-   317    0.210    0.001    0.210    0.001 {numpy.core._dotblas.dot}
-    82    0.161    0.002    0.186    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-   112    0.001    0.000    0.078    0.001 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
-   112    0.015    0.000    0.076    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
-    30    0.051    0.002    0.051    0.002 {method 'permutation' of 'mtrand.RandomState' objects}
-   141    0.001    0.000    0.048    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:38(_fast_logdet_numpy)
-   141    0.013    0.000    0.047    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:1560(slogdet)
+     1    0.000    0.000    0.683    0.683 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.683    0.683 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.683    0.683 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:527(fit)
+     1    0.000    0.000    0.672    0.672 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:259(fast_mcd)
+     2    0.002    0.001    0.672    0.336 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:152(select_candidates)
+    40    0.146    0.004    0.646    0.016 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:27(c_step)
+    82    0.010    0.000    0.213    0.003 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+   317    0.187    0.001    0.187    0.001 {numpy.core._dotblas.dot}
+    82    0.154    0.002    0.168    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+   112    0.001    0.000    0.102    0.001 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+   112    0.017    0.000    0.100    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
+   141    0.002    0.000    0.067    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:38(_fast_logdet_numpy)
+   141    0.014    0.000    0.066    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:1560(slogdet)
+   141    0.035    0.000    0.035    0.000 {numpy.linalg.lapack_lite.dgetrf}
    885    0.028    0.000    0.028    0.000 {numpy.core.multiarray.array}
    682    0.002    0.000    0.027    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-   141    0.019    0.000    0.019    0.000 {numpy.linalg.lapack_lite.dgetrf}
-   165    0.013    0.000    0.017    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
-    83    0.001    0.000    0.016    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
-    83    0.001    0.000    0.015    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-    83    0.013    0.000    0.013    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
-   225    0.011    0.000    0.011    0.000 {method 'mean' of 'numpy.ndarray' objects}
-   123    0.007    0.000    0.007    0.000 {method 'sum' of 'numpy.ndarray' objects}
-     1    0.001    0.001    0.007    0.007 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:587(reweight_covariance)
-   490    0.004    0.000    0.004    0.000 {method 'any' of 'numpy.ndarray' objects}
-    40    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1862(allclose)
-    83    0.000    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
+   165    0.014    0.000    0.019    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+   225    0.012    0.000    0.012    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   123    0.008    0.000    0.008    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.001    0.001    0.007    0.007 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:597(reweight_covariance)
+   490    0.005    0.000    0.005    0.000 {method 'any' of 'numpy.ndarray' objects}
+    40    0.002    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1862(allclose)
+    30    0.005    0.000    0.005    0.000 {method 'permutation' of 'mtrand.RandomState' objects}
+    83    0.001    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+    83    0.000    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:598(argsort)
     83    0.003    0.000    0.003    0.000 {method 'argsort' of 'numpy.ndarray' objects}
    141    0.001    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:139(_fastCopyAndTranspose)
    423    0.003    0.000    0.003    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+   141    0.001    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:902(diagonal)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
-   141    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:902(diagonal)
-   141    0.002    0.000    0.002    0.000 {numpy.core.multiarray._fastCopyAndTranspose}
+   141    0.003    0.000    0.003    0.000 {numpy.core.multiarray._fastCopyAndTranspose}
    141    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:99(_commonType)
    244    0.002    0.000    0.002    0.000 {abs}
-     2    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:453(isf)
-     2    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1521(isf)
-   253    0.001    0.000    0.001    0.000 {numpy.core.multiarray.zeros}
-   162    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
-    82    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
-   141    0.001    0.000    0.001    0.000 {method 'diagonal' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:563(correct_covariance)
+    83    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:92(svdvals)
      1    0.001    0.001    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:14(svd)
+   253    0.001    0.000    0.001    0.000 {numpy.core.multiarray.zeros}
+    82    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
+     2    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:453(isf)
+     2    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1521(isf)
+   162    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+   141    0.001    0.000    0.001    0.000 {method 'diagonal' of 'numpy.ndarray' objects}
     82    0.001    0.000    0.001    0.000 {method 'max' of 'numpy.ndarray' objects}
+    82    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
     82    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
-    82    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
    141    0.001    0.000    0.001    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py:573(correct_covariance)
    671    0.001    0.000    0.001    0.000 {issubclass}
    141    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:127(_to_native_byte_order)
     82    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
@@ -407,62 +406,63 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
    141    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:151(_assertRank2)
    112    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.ndarray' objects}
    282    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:71(isComplexType)
-     2    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:603(argsreduce)
    223    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
-    40    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1579(all)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:603(argsreduce)
+    83    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
     44    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
-    82    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
    172    0.000    0.000    0.000    0.000 {getattr}
+    40    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1579(all)
+    82    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
     82    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
-   112    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
-    40    0.000    0.000    0.000    0.000 {method 'all' of 'numpy.ndarray' objects}
-     6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
-   141    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:84(_realType)
-     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1258(extract)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:592(valarray)
    168    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-   604    0.000    0.000    0.000    0.000 {len}
+   141    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/linalg/linalg.py:84(_realType)
+   112    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:32(_wrapit)
+    40    0.000    0.000    0.000    0.000 {method 'all' of 'numpy.ndarray' objects}
    356    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:592(valarray)
+   604    0.000    0.000    0.000    0.000 {len}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1258(extract)
    141    0.000    0.000    0.000    0.000 {max}
     95    0.000    0.000    0.000    0.000 {isinstance}
    112    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
     85    0.000    0.000    0.000    0.000 {range}
     83    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
-    16    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1458(product)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
+    16    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:2861(median)
     82    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-    83    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:300(repeat)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
    141    0.000    0.000    0.000    0.000 {min}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:300(repeat)
+    83    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1899(__call__)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:2543(_isf)
     83    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1896(freeze)
-     6    0.000    0.000    0.000    0.000 {map}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:2543(_isf)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:490(sort)
+     6    0.000    0.000    0.000    0.000 {map}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1173(_argcheck)
     11    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1301(place)
-     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:45(take)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:45(take)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1899(__call__)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1129(nonzero)
+     6    0.000    0.000    0.000    0.000 {numpy.lib._compiled_base._insert}
      2    0.000    0.000    0.000    0.000 {zip}
      2    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.generic' objects}
-     6    0.000    0.000    0.000    0.000 {numpy.lib._compiled_base._insert}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
      2    0.000    0.000    0.000    0.000 {method 'prod' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
      8    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:1896(freeze)
     16    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     8    0.000    0.000    0.000    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      2    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
+     8    0.000    0.000    0.000    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:107(reshape)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:635(_fix_loc_scale)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/distributions.py:433(__init__)
@@ -475,56 +475,56 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/covariance/robust_covariance.py
-Function: fit at line 517
-Total time: 0.864207 s
+Function: fit at line 527
+Total time: 0.869891 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   517                                               def fit(self, X):
-   518                                                   """Fits a Minimum Covariance Determinant with the FastMCD algorithm.
-   519
-   520                                                   Parameters
-   521                                                   ----------
-   522                                                   X: array-like, shape = [n_samples, n_features]
-   523                                                     Training data, where n_samples is the number of samples
-   524                                                     and n_features is the number of features.
-   525
-   526                                                   Returns
-   527                                                   -------
-   528                                                   self: object
-   529                                                     Returns self.
-   530
-   531                                                   """
-   532         1           12     12.0      0.0          self.random_state = check_random_state(self.random_state)
-   533         1            5      5.0      0.0          n_samples, n_features = X.shape
-   534                                                   # check that the empirical covariance is full rank
-   535         1         2073   2073.0      0.2          if (linalg.svdvals(np.dot(X.T, X)) &gt; 1e-8).sum() != n_features:
-   536                                                       warnings.warn("The covariance matrix associated to your dataset " \
-   537                                                                         "is not full rank")
-   538                                                   # compute and store raw estimates
-   539         1            3      3.0      0.0          raw_location, raw_covariance, raw_support, raw_dist = fast_mcd(
-   540         1            3      3.0      0.0                  X, support_fraction=self.support_fraction,
-   541         1            3      3.0      0.0                  cov_computation_method=self._nonrobust_covariance,
-   542         1       841431 841431.0     97.4                  random_state=self.random_state)
-   543         1            4      4.0      0.0          if self.assume_centered:
-   544                                                       raw_location = np.zeros(n_features)
-   545                                                       raw_covariance = self._nonrobust_covariance(
-   546                                                               X[raw_support], assume_centered=True)
-   547                                                       # get precision matrix in an optimized way
-   548                                                       precision = pinvh(raw_covariance)
-   549                                                       raw_dist = np.sum(np.dot(X, precision) * X, 1)
-   550         1            4      4.0      0.0          self.raw_location_ = raw_location
-   551         1            6      6.0      0.0          self.raw_covariance_ = raw_covariance
-   552         1            3      3.0      0.0          self.raw_support_ = raw_support
-   553         1            3      3.0      0.0          self.location_ = raw_location
-   554         1            3      3.0      0.0          self.support_ = raw_support
-   555         1            4      4.0      0.0          self.dist_ = raw_dist
-   556                                                   # obtain consistency at normal models
-   557         1         1144   1144.0      0.1          self.correct_covariance(X)
-   558                                                   # reweight estimator
-   559         1        19503  19503.0      2.3          self.reweight_covariance(X)
-   560
-   561         1            3      3.0      0.0          return self</pre>
+   527                                               def fit(self, X):
+   528                                                   """Fits a Minimum Covariance Determinant with the FastMCD algorithm.
+   529
+   530                                                   Parameters
+   531                                                   ----------
+   532                                                   X: array-like, shape = [n_samples, n_features]
+   533                                                     Training data, where n_samples is the number of samples
+   534                                                     and n_features is the number of features.
+   535
+   536                                                   Returns
+   537                                                   -------
+   538                                                   self: object
+   539                                                     Returns self.
+   540
+   541                                                   """
+   542         1           27     27.0      0.0          self.random_state = check_random_state(self.random_state)
+   543         1            4      4.0      0.0          n_samples, n_features = X.shape
+   544                                                   # check that the empirical covariance is full rank
+   545         1         2159   2159.0      0.2          if (linalg.svdvals(np.dot(X.T, X)) &gt; 1e-8).sum() != n_features:
+   546                                                       warnings.warn("The covariance matrix associated to your dataset " \
+   547                                                                         "is not full rank")
+   548                                                   # compute and store raw estimates
+   549         1            3      3.0      0.0          raw_location, raw_covariance, raw_support, raw_dist = fast_mcd(
+   550         1            3      3.0      0.0                  X, support_fraction=self.support_fraction,
+   551         1            3      3.0      0.0                  cov_computation_method=self._nonrobust_covariance,
+   552         1       859376 859376.0     98.8                  random_state=self.random_state)
+   553         1            4      4.0      0.0          if self.assume_centered:
+   554                                                       raw_location = np.zeros(n_features)
+   555                                                       raw_covariance = self._nonrobust_covariance(
+   556                                                               X[raw_support], assume_centered=True)
+   557                                                       # get precision matrix in an optimized way
+   558                                                       precision = pinvh(raw_covariance)
+   559                                                       raw_dist = np.sum(np.dot(X, precision) * X, 1)
+   560         1            4      4.0      0.0          self.raw_location_ = raw_location
+   561         1            4      4.0      0.0          self.raw_covariance_ = raw_covariance
+   562         1            2      2.0      0.0          self.raw_support_ = raw_support
+   563         1            2      2.0      0.0          self.location_ = raw_location
+   564         1            3      3.0      0.0          self.support_ = raw_support
+   565         1            3      3.0      0.0          self.dist_ = raw_dist
+   566                                                   # obtain consistency at normal models
+   567         1         1173   1173.0      0.1          self.correct_covariance(X)
+   568                                                   # reweight estimator
+   569         1         7118   7118.0      0.8          self.reweight_covariance(X)
+   570
+   571         1            3      3.0      0.0          return self</pre>
 </div>
 </div>
 </div>
@@ -562,8 +562,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.406    0.406 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:105(fit)
      1    0.000    0.000    0.392    0.392 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
      1    0.002    0.002    0.392    0.392 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-     1    0.286    0.286    0.294    0.294 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-     2    0.095    0.047    0.095    0.047 {numpy.core._dotblas.dot}
+     1    0.288    0.288    0.295    0.295 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+     2    0.094    0.047    0.094    0.047 {numpy.core._dotblas.dot}
      2    0.014    0.007    0.016    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
      1    0.000    0.000    0.013    0.013 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
      1    0.006    0.006    0.013    0.013 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
@@ -574,34 +574,34 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
     10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      2    0.000    0.000    0.000    0.000 {abs}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
      6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
-     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
-     8    0.000    0.000    0.000    0.000 {len}
      2    0.000    0.000    0.000    0.000 {isinstance}
      3    0.000    0.000    0.000    0.000 {issubclass}
+     8    0.000    0.000    0.000    0.000 {len}
      4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {range}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
@@ -611,7 +611,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
 Function: fit at line 105
-Total time: 0.421243 s
+Total time: 0.447805 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -642,11 +642,11 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    129         1            4      4.0      0.0          if self.assume_centered:
    130                                                       self.location_ = np.zeros(X.shape[1])
    131                                                   else:
-   132         1          147    147.0      0.0              self.location_ = X.mean(0)
+   132         1          145    145.0      0.0              self.location_ = X.mean(0)
    133         1            2      2.0      0.0          covariance = empirical_covariance(X,
-   134         1        10839  10839.0      2.6                          assume_centered=self.assume_centered)
-   135         1          911    911.0      0.2          covariance = shrunk_covariance(covariance, self.shrinkage)
-   136         1       409338 409338.0     97.2          self._set_covariance(covariance)
+   134         1        10807  10807.0      2.4                          assume_centered=self.assume_centered)
+   135         1          936    936.0      0.2          covariance = shrunk_covariance(covariance, self.shrinkage)
+   136         1       435909 435909.0     97.3          self._set_covariance(covariance)
    137
    138         1            2      2.0      0.0          return self</pre>
 </div>
@@ -676,58 +676,58 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         94 function calls in 0.956 seconds
+<div class="highlight-python"><pre>         94 function calls in 0.976 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.956    0.956 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.956    0.956 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.956    0.956 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:105(fit)
-     1    0.000    0.000    0.512    0.512 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
-     1    0.002    0.002    0.512    0.512 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-     2    0.465    0.233    0.465    0.233 {numpy.core._dotblas.dot}
-     1    0.000    0.000    0.413    0.413 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
-     1    0.008    0.008    0.412    0.412 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
-     1    0.397    0.397    0.405    0.405 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+     1    0.000    0.000    0.976    0.976 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.976    0.976 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.976    0.976 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:105(fit)
+     1    0.000    0.000    0.529    0.529 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.002    0.002    0.529    0.529 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+     2    0.483    0.241    0.483    0.241 {numpy.core._dotblas.dot}
+     1    0.000    0.000    0.415    0.415 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.009    0.009    0.415    0.415 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
+     1    0.387    0.387    0.407    0.407 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
      2    0.061    0.030    0.061    0.030 {method 'mean' of 'numpy.ndarray' objects}
-     2    0.014    0.007    0.016    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
-    10    0.005    0.001    0.005    0.001 {numpy.core.multiarray.array}
+     2    0.026    0.013    0.028    0.014 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+    10    0.006    0.001    0.006    0.001 {numpy.core.multiarray.array}
      4    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
      1    0.001    0.001    0.001    0.001 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:27(shrunk_covariance)
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
      1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
      2    0.000    0.000    0.000    0.000 {abs}
-     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
-     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      2    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
      8    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
-     1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
      3    0.000    0.000    0.000    0.000 {issubclass}
      4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -735,7 +735,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
 Function: fit at line 105
-Total time: 1.0289 s
+Total time: 1.06698 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -763,16 +763,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    126                                                   """
    127                                                   # Not calling the parent object to fit, to avoid a potential
    128                                                   # matrix inversion when setting the precision
-   129         1            3      3.0      0.0          if self.assume_centered:
+   129         1            4      4.0      0.0          if self.assume_centered:
    130                                                       self.location_ = np.zeros(X.shape[1])
    131                                                   else:
-   132         1        43363  43363.0      4.2              self.location_ = X.mean(0)
+   132         1        43512  43512.0      4.1              self.location_ = X.mean(0)
    133         1            4      4.0      0.0          covariance = empirical_covariance(X,
-   134         1       472400 472400.0     45.9                          assume_centered=self.assume_centered)
-   135         1          941    941.0      0.1          covariance = shrunk_covariance(covariance, self.shrinkage)
-   136         1       512187 512187.0     49.8          self._set_covariance(covariance)
+   134         1       484502 484502.0     45.4                          assume_centered=self.assume_centered)
+   135         1          958    958.0      0.1          covariance = shrunk_covariance(covariance, self.shrinkage)
+   136         1       537992 537992.0     50.4          self._set_covariance(covariance)
    137
-   138         1            3      3.0      0.0          return self</pre>
+   138         1            4      4.0      0.0          return self</pre>
 </div>
 </div>
 </div>
@@ -800,25 +800,25 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         100 function calls in 0.418 seconds
+<div class="highlight-python"><pre>         100 function calls in 0.443 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.418    0.418 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.418    0.418 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.418    0.418 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:365(fit)
-     1    0.000    0.000    0.390    0.390 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
-     1    0.002    0.002    0.390    0.390 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-     1    0.286    0.286    0.294    0.294 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-     4    0.105    0.026    0.105    0.026 {numpy.core._dotblas.dot}
-     1    0.001    0.001    0.027    0.027 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:235(ledoit_wolf)
-     1    0.002    0.002    0.016    0.016 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:144(ledoit_wolf_shrinkage)
+     1    0.000    0.000    0.443    0.443 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.443    0.443 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.443    0.443 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:365(fit)
+     1    0.000    0.000    0.414    0.414 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.002    0.002    0.414    0.414 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+     1    0.298    0.298    0.306    0.306 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+     4    0.117    0.029    0.117    0.029 {numpy.core._dotblas.dot}
+     1    0.001    0.001    0.028    0.028 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:235(ledoit_wolf)
+     1    0.002    0.002    0.017    0.017 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:144(ledoit_wolf_shrinkage)
      2    0.014    0.007    0.016    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
      1    0.005    0.005    0.010    0.010 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
      4    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
-     5    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-     5    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     5    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     5    0.002    0.000    0.002    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
@@ -826,31 +826,31 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     6    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      2    0.000    0.000    0.000    0.000 {abs}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
-     6    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.generic' objects}
      1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
-     2    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {min}
+     2    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
-     7    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {range}
-     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      3    0.000    0.000    0.000    0.000 {issubclass}
+     7    0.000    0.000    0.000    0.000 {len}
+     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
@@ -861,7 +861,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
 Function: fit at line 365
-Total time: 0.461267 s
+Total time: 0.491468 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -883,16 +883,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    380                                                   """
    381                                                   # Not calling the parent object to fit, to avoid computing the
    382                                                   # covariance matrix (and potentially the precision)
-   383         1            5      5.0      0.0          if self.assume_centered:
+   383         1            3      3.0      0.0          if self.assume_centered:
    384                                                       self.location_ = np.zeros(X.shape[1])
    385                                                   else:
-   386         1          146    146.0      0.0              self.location_ = X.mean(0)
-   387         1           86     86.0      0.0          covariance, shrinkage = ledoit_wolf(X - self.location_,
-   388         1        25203  25203.0      5.5                          assume_centered=True, block_size=self.block_size)
-   389         1            4      4.0      0.0          self.shrinkage_ = shrinkage
-   390         1       435820 435820.0     94.5          self._set_covariance(covariance)
+   386         1          143    143.0      0.0              self.location_ = X.mean(0)
+   387         1           85     85.0      0.0          covariance, shrinkage = ledoit_wolf(X - self.location_,
+   388         1        27107  27107.0      5.5                          assume_centered=True, block_size=self.block_size)
+   389         1            6      6.0      0.0          self.shrinkage_ = shrinkage
+   390         1       464120 464120.0     94.4          self._set_covariance(covariance)
    391
-   392         1            3      3.0      0.0          return self</pre>
+   392         1            4      4.0      0.0          return self</pre>
 </div>
 </div>
 </div>
@@ -920,21 +920,21 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         100 function calls in 1.843 seconds
+<div class="highlight-python"><pre>         100 function calls in 1.841 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    1.843    1.843 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    1.843    1.843 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.008    0.008    1.843    1.843 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:365(fit)
-     4    1.330    0.332    1.330    0.332 {numpy.core._dotblas.dot}
-     1    0.001    0.001    1.266    1.266 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:235(ledoit_wolf)
-     1    0.007    0.007    0.830    0.830 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:144(ledoit_wolf_shrinkage)
-     1    0.000    0.000    0.539    0.539 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
-     1    0.002    0.002    0.539    0.539 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-     1    0.005    0.005    0.435    0.435 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
-     1    0.412    0.412    0.420    0.420 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+     1    0.000    0.000    1.841    1.841 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.841    1.841 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.008    0.008    1.841    1.841 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:365(fit)
+     4    1.343    0.336    1.343    0.336 {numpy.core._dotblas.dot}
+     1    0.001    0.001    1.281    1.281 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:235(ledoit_wolf)
+     1    0.007    0.007    0.840    0.840 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:144(ledoit_wolf_shrinkage)
+     1    0.000    0.000    0.522    0.522 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.002    0.002    0.522    0.522 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+     1    0.005    0.005    0.440    0.440 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.397    0.397    0.405    0.405 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
      5    0.000    0.000    0.032    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      5    0.032    0.006    0.032    0.006 {method 'sum' of 'numpy.ndarray' objects}
      1    0.030    0.030    0.030    0.030 {method 'mean' of 'numpy.ndarray' objects}
@@ -947,8 +947,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     6    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+     6    0.000    0.000    0.000    0.000 {isinstance}
      9    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
@@ -956,23 +956,23 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.generic' objects}
-     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      1    0.000    0.000    0.000    0.000 {min}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     2    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
-     7    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
      3    0.000    0.000    0.000    0.000 {issubclass}
-     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     7    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {range}
+     3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
@@ -981,7 +981,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
 Function: fit at line 365
-Total time: 1.89816 s
+Total time: 1.90686 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1006,11 +1006,11 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    383         1            4      4.0      0.0          if self.assume_centered:
    384                                                       self.location_ = np.zeros(X.shape[1])
    385                                                   else:
-   386         1        42408  42408.0      2.2              self.location_ = X.mean(0)
-   387         1         4047   4047.0      0.2          covariance, shrinkage = ledoit_wolf(X - self.location_,
-   388         1      1324200 1324200.0     69.8                          assume_centered=True, block_size=self.block_size)
-   389         1            5      5.0      0.0          self.shrinkage_ = shrinkage
-   390         1       527490 527490.0     27.8          self._set_covariance(covariance)
+   386         1        30145  30145.0      1.6              self.location_ = X.mean(0)
+   387         1        16315  16315.0      0.9          covariance, shrinkage = ledoit_wolf(X - self.location_,
+   388         1      1337175 1337175.0     70.1                          assume_centered=True, block_size=self.block_size)
+   389         1            4      4.0      0.0          self.shrinkage_ = shrinkage
+   390         1       523219 523219.0     27.4          self._set_covariance(covariance)
    391
    392         1            3      3.0      0.0          return self</pre>
 </div>
@@ -1050,8 +1050,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.408    0.408 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:512(fit)
      1    0.000    0.000    0.393    0.393 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
      1    0.002    0.002    0.393    0.393 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-     1    0.286    0.286    0.294    0.294 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-     2    0.095    0.047    0.095    0.047 {numpy.core._dotblas.dot}
+     1    0.288    0.288    0.296    0.296 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+     2    0.093    0.047    0.093    0.047 {numpy.core._dotblas.dot}
      2    0.014    0.007    0.016    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
      1    0.002    0.002    0.015    0.015 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:398(oas)
      1    0.006    0.006    0.012    0.012 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
@@ -1059,21 +1059,21 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      2    0.001    0.000    0.001    0.000 {method 'mean' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
-     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     2    0.000    0.000    0.000    0.000 {abs}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 {abs}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
-     8    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
+     8    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
      1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
@@ -1081,16 +1081,16 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {min}
      2    0.000    0.000    0.000    0.000 {getattr}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
-     6    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
      3    0.000    0.000    0.000    0.000 {issubclass}
-     1    0.000    0.000    0.000    0.000 {range}
+     6    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {isinstance}
      3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1098,7 +1098,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
 Function: fit at line 512
-Total time: 0.436006 s
+Total time: 0.430487 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1123,13 +1123,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    530         1            3      3.0      0.0          if self.assume_centered:
    531                                                       self.location_ = np.zeros(X.shape[1])
    532                                                   else:
-   533         1          211    211.0      0.0              self.location_ = X.mean(0)
+   533         1          143    143.0      0.0              self.location_ = X.mean(0)
    534
-   535         1        12874  12874.0      3.0          covariance, shrinkage = oas(X - self.location_, assume_centered=True)
-   536         1            3      3.0      0.0          self.shrinkage_ = shrinkage
-   537         1       422912 422912.0     97.0          self._set_covariance(covariance)
+   535         1        12855  12855.0      3.0          covariance, shrinkage = oas(X - self.location_, assume_centered=True)
+   536         1            4      4.0      0.0          self.shrinkage_ = shrinkage
+   537         1       417480 417480.0     97.0          self._set_covariance(covariance)
    538
-   539         1            3      3.0      0.0          return self</pre>
+   539         1            2      2.0      0.0          return self</pre>
 </div>
 </div>
 </div>
@@ -1157,20 +1157,20 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         80 function calls in 0.925 seconds
+<div class="highlight-python"><pre>         80 function calls in 0.934 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.925    0.925 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.925    0.925 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.008    0.008    0.925    0.925 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:512(fit)
-     1    0.000    0.000    0.512    0.512 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
-     1    0.002    0.002    0.512    0.512 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-     2    0.476    0.238    0.476    0.238 {numpy.core._dotblas.dot}
-     1    0.386    0.386    0.394    0.394 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-     1    0.002    0.002    0.375    0.375 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:398(oas)
-     1    0.005    0.005    0.372    0.372 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
+     1    0.000    0.000    0.934    0.934 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.934    0.934 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.009    0.009    0.934    0.934 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:512(fit)
+     1    0.000    0.000    0.515    0.515 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:98(_set_covariance)
+     1    0.002    0.002    0.515    0.515 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+     2    0.482    0.241    0.482    0.241 {numpy.core._dotblas.dot}
+     1    0.387    0.387    0.395    0.395 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+     1    0.002    0.002    0.380    0.380 /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py:398(oas)
+     1    0.005    0.005    0.378    0.378 /tmp/vb_sklearn/sklearn/covariance/empirical_covariance_.py:37(empirical_covariance)
      2    0.031    0.016    0.031    0.016 {method 'mean' of 'numpy.ndarray' objects}
      2    0.014    0.007    0.016    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
      4    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
@@ -1178,33 +1178,33 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
-     2    0.000    0.000    0.000    0.000 {abs}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-     1    0.000    0.000    0.000    0.000 {method 'trace' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      8    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     2    0.000    0.000    0.000    0.000 {abs}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
-     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+     1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
-     1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      4    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     1    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      1    0.000    0.000    0.000    0.000 {min}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      2    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
+     1    0.000    0.000    0.000    0.000 {isinstance}
      3    0.000    0.000    0.000    0.000 {issubclass}
      6    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
-     1    0.000    0.000    0.000    0.000 {isinstance}
-     1    0.000    0.000    0.000    0.000 {range}
      3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
@@ -1215,7 +1215,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/covariance/shrunk_covariance_.py
 Function: fit at line 512
-Total time: 0.998784 s
+Total time: 1.03726 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1240,13 +1240,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    530         1            4      4.0      0.0          if self.assume_centered:
    531                                                       self.location_ = np.zeros(X.shape[1])
    532                                                   else:
-   533         1        30761  30761.0      3.1              self.location_ = X.mean(0)
+   533         1        30148  30148.0      2.9              self.location_ = X.mean(0)
    534
-   535         1       442904 442904.0     44.3          covariance, shrinkage = oas(X - self.location_, assume_centered=True)
+   535         1       446160 446160.0     43.0          covariance, shrinkage = oas(X - self.location_, assume_centered=True)
    536         1            5      5.0      0.0          self.shrinkage_ = shrinkage
-   537         1       525106 525106.0     52.6          self._set_covariance(covariance)
+   537         1       560937 560937.0     54.1          self._set_covariance(covariance)
    538
-   539         1            4      4.0      0.0          return self</pre>
+   539         1            3      3.0      0.0          return self</pre>
 </div>
 </div>
 </div>
