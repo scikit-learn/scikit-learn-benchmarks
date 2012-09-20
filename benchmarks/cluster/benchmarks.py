@@ -3,13 +3,13 @@ from templates import make_suite as _make_suite
 _benchmarks = [
     {
      'obj': 'KMeans',
-     'init_params': {'n_clusters': 9},
+     'init_params': {'n_clusters': 9, 'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup',)
     },
     {
      'obj': 'MiniBatchKMeans',
-     'init_params': {'n_clusters': 9},
+     'init_params': {'n_clusters': 9, 'random_state': 0},
      'datasets': ('minimadelon', 'madelon'),
      'statements': ('fit_unsup',)
     },

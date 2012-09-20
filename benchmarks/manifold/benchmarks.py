@@ -42,7 +42,8 @@ _benchmarks = [
     {
      'obj': 'LocallyLinearEmbedding',
      'spec': 'ltsa-arpack',
-     'init_params': {'eigen_solver': 'arpack', 'method': 'ltsa'},
+     'init_params': {'eigen_solver': 'arpack', 'method': 'ltsa',
+                     'random_state': 0},
      'datasets': ('minimadelon', 'blobs'),
      'statements': ('fit_unsup', 'transform_unsup')
     },

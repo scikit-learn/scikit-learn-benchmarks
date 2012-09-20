@@ -9,7 +9,7 @@ _benchmarks = [
     },
     {
      'obj': 'MinCovDet',
-     'init_params': {},
+     'init_params': {'random_state': 0},
      'datasets': ('blobs',),
      'statements': ('fit_unsup',)
     },
