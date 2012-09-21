@@ -180,7 +180,7 @@
 <div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcess</span>
 <span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
 
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;optimizer&#39;</span><span class="p">:</span> <span class="s">&#39;fmin_cobyla&#39;</span><span class="p">}</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;optimizer&#39;</span><span class="p">:</span> <span class="s">&#39;fmin_cobyla&#39;</span><span class="p">}</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">GaussianProcess</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
@@ -197,19 +197,19 @@
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         642 function calls in 0.147 seconds
+<div class="highlight-python"><pre>         643 function calls in 0.143 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.147    0.147 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.147    0.147 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.001    0.001    0.147    0.147 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:250(fit)
-     1    0.058    0.058    0.073    0.073 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:28(l1_cross_distances)
-     1    0.016    0.016    0.063    0.063 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:522(reduced_likelihood_function)
+     1    0.000    0.000    0.143    0.143 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.143    0.143 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.143    0.143 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:250(fit)
+     1    0.059    0.059    0.074    0.074 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:28(l1_cross_distances)
+     1    0.012    0.012    0.059    0.059 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:522(reduced_likelihood_function)
      1    0.018    0.018    0.026    0.026 /tmp/vb_sklearn/sklearn/gaussian_process/correlation_models.py:58(squared_exponential)
-     2    0.000    0.000    0.017    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-     4    0.017    0.004    0.017    0.004 {method 'sum' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.015    0.007 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     4    0.015    0.004    0.015    0.004 {method 'sum' of 'numpy.ndarray' objects}
      3    0.013    0.004    0.013    0.004 {numpy.core.multiarray.zeros}
     11    0.010    0.001    0.012    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
      4    0.002    0.000    0.011    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:72(solve_triangular)
@@ -218,61 +218,61 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      4    0.000    0.000    0.009    0.002 {map}
     24    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
    301    0.002    0.000    0.002    0.000 {numpy.core.multiarray.arange}
-     2    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2377(std)
-     2    0.000    0.000    0.000    0.000 {method 'std' of 'numpy.ndarray' objects}
+     2    0.001    0.000    0.001    0.000 {method 'std' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
      8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_qr.py:16(qr)
      9    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1836(amin)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:169(eye)
-     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-     1    0.000    0.000    0.000    0.000 {method 'min' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:822(_check_params)
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:169(eye)
+     1    0.000    0.000    0.000    0.000 {method 'min' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:14(svd)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
      2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
-    21    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/special_matrices.py:98(triu)
+    21    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     24    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/special_matrices.py:20(tri)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
     13    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/regression_models.py:16(constant)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
-    22    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
     10    0.000    0.000    0.000    0.000 {range}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+    22    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
     12    0.000    0.000    0.000    0.000 {getattr}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:220(diag)
-    26    0.000    0.000    0.000    0.000 {issubclass}
      1    0.000    0.000    0.000    0.000 {method 'outer' of 'numpy.ufunc' objects}
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     5    0.000    0.000    0.000    0.000 {isinstance}
-     2    0.000    0.000    0.000    0.000 {numpy.core._dotblas.dot}
+    26    0.000    0.000    0.000    0.000 {issubclass}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     6    0.000    0.000    0.000    0.000 {isinstance}
      9    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 {numpy.core._dotblas.dot}
+     9    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      2    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
     24    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     9    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
+     1    0.000    0.000    0.000    0.000 {method 'prod' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
     27    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {method 'prod' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      4    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 {callable}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     2    0.000    0.000    0.000    0.000 {callable}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: fit at line 250
-Total time: 0.143604 s
+Total time: 0.143328 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -296,15 +296,15 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    267                                                       A fitted Gaussian Process model object awaiting data to perform
    268                                                       predictions.
    269                                                   """
-   270         1           14     14.0      0.0          self.random_state = check_random_state(self.random_state)
+   270         1           27     27.0      0.0          self.random_state = check_random_state(self.random_state)
    271
    272                                                   # Force data to 2D numpy.array
    273         1           63     63.0      0.0          X = array2d(X)
-   274         1           20     20.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
+   274         1           21     21.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
    275
    276                                                   # Check shapes of DOE &amp; observations
    277         1            5      5.0      0.0          n_samples_X, n_features = X.shape
-   278         1            5      5.0      0.0          n_samples_y = y.shape[0]
+   278         1            6      6.0      0.0          n_samples_y = y.shape[0]
    279
    280         1            4      4.0      0.0          if n_samples_X != n_samples_y:
    281                                                       raise ValueError("X and y must have the same number of rows.")
@@ -312,19 +312,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    283         1            4      4.0      0.0              n_samples = n_samples_X
    284
    285                                                   # Run input checks
-   286         1          177    177.0      0.1          self._check_params(n_samples)
+   286         1          178    178.0      0.1          self._check_params(n_samples)
    287
    288                                                   # Normalize data or don't
    289         1            5      5.0      0.0          if self.normalize:
-   290         1           88     88.0      0.1              X_mean = np.mean(X, axis=0)
-   291         1          330    330.0      0.2              X_std = np.std(X, axis=0)
-   292         1           45     45.0      0.0              y_mean = np.mean(y, axis=0)
-   293         1           85     85.0      0.1              y_std = np.std(y, axis=0)
-   294         1           23     23.0      0.0              X_std[X_std == 0.] = 1.
+   290         1           87     87.0      0.1              X_mean = np.mean(X, axis=0)
+   291         1          308    308.0      0.2              X_std = np.std(X, axis=0)
+   292         1           44     44.0      0.0              y_mean = np.mean(y, axis=0)
+   293         1           87     87.0      0.1              y_std = np.std(y, axis=0)
+   294         1           24     24.0      0.0              X_std[X_std == 0.] = 1.
    295         1           17     17.0      0.0              y_std[y_std == 0.] = 1.
    296                                                       # center and scale X if necessary
-   297         1          398    398.0      0.3              X = (X - X_mean) / X_std
-   298         1           84     84.0      0.1              y = (y - y_mean) / y_std
+   297         1          396    396.0      0.3              X = (X - X_mean) / X_std
+   298         1          143    143.0      0.1              y = (y - y_mean) / y_std
    299                                                   else:
    300                                                       X_mean = np.zeros(1)
    301                                                       X_std = np.ones(1)
@@ -332,8 +332,8 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    303                                                       y_std = np.ones(1)
    304
    305                                                   # Calculate matrix of distances D between samples
-   306         1        74657  74657.0     52.0          D, ij = l1_cross_distances(X)
-   307         1         7654   7654.0      5.3          if np.min(np.sum(D, axis=1)) == 0. \
+   306         1        74915  74915.0     52.3          D, ij = l1_cross_distances(X)
+   307         1         7655   7655.0      5.3          if np.min(np.sum(D, axis=1)) == 0. \
    308                                                                               and self.corr != correlation.pure_nugget:
    309                                                       raise Exception("Multiple input features cannot have the same"
    310                                                               " value")
@@ -341,30 +341,30 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    312                                                   # Regression matrix and parameters
    313         1           51     51.0      0.0          F = self.regr(X)
    314         1            5      5.0      0.0          n_samples_F = F.shape[0]
-   315         1            5      5.0      0.0          if F.ndim &gt; 1:
-   316         1            5      5.0      0.0              p = F.shape[1]
+   315         1            6      6.0      0.0          if F.ndim &gt; 1:
+   316         1            4      4.0      0.0              p = F.shape[1]
    317                                                   else:
    318                                                       p = 1
    319         1            5      5.0      0.0          if n_samples_F != n_samples:
    320                                                       raise Exception("Number of rows in F and X do not match. Most "
    321                                                                     + "likely something is going wrong with the "
    322                                                                     + "regression model.")
-   323         1            4      4.0      0.0          if p &gt; n_samples_F:
+   323         1            5      5.0      0.0          if p &gt; n_samples_F:
    324                                                       raise Exception(("Ordinary least squares problem is undetermined "
    325                                                                      + "n_samples=%d must be greater than the "
    326                                                                      + "regression model size p=%d.") % (n_samples, p))
-   327         1            5      5.0      0.0          if self.beta0 is not None:
+   327         1            6      6.0      0.0          if self.beta0 is not None:
    328                                                       if self.beta0.shape[0] != p:
    329                                                           raise Exception("Shapes of beta0 and F do not match.")
    330
    331                                                   # Set attributes
-   332         1            7      7.0      0.0          self.X = X
+   332         1            6      6.0      0.0          self.X = X
    333         1            5      5.0      0.0          self.y = y
-   334         1            5      5.0      0.0          self.D = D
+   334         1            4      4.0      0.0          self.D = D
    335         1            4      4.0      0.0          self.ij = ij
    336         1            4      4.0      0.0          self.F = F
-   337         1            5      5.0      0.0          self.X_mean, self.X_std = X_mean, X_std
-   338         1            7      7.0      0.0          self.y_mean, self.y_std = y_mean, y_std
+   337         1            6      6.0      0.0          self.X_mean, self.X_std = X_mean, X_std
+   338         1            8      8.0      0.0          self.y_mean, self.y_std = y_mean, y_std
    339
    340                                                   # Determine Gaussian Process model parameters
    341         1            5      5.0      0.0          if self.thetaL is not None and self.thetaU is not None:
@@ -380,21 +380,21 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    351
    352                                                   else:
    353                                                       # Given parameters
-   354         1            4      4.0      0.0              if self.verbose:
+   354         1            5      5.0      0.0              if self.verbose:
    355                                                           print("Given autocorrelation parameters. "
    356                                                               + "Computing Gaussian Process model parameters...")
-   357         1            5      5.0      0.0              self.theta_ = self.theta0
+   357         1            6      6.0      0.0              self.theta_ = self.theta0
    358                                                       self.reduced_likelihood_function_value_, par = \
-   359         1        59737  59737.0     41.6                  self.reduced_likelihood_function()
+   359         1        59142  59142.0     41.3                  self.reduced_likelihood_function()
    360         1           20     20.0      0.0              if np.isinf(self.reduced_likelihood_function_value_):
    361                                                           raise Exception("Bad point. Try increasing theta0.")
    362
    363         1            6      6.0      0.0          self.beta = par['beta']
-   364         1            5      5.0      0.0          self.gamma = par['gamma']
+   364         1            6      6.0      0.0          self.gamma = par['gamma']
    365         1            5      5.0      0.0          self.sigma2 = par['sigma2']
-   366         1            4      4.0      0.0          self.C = par['C']
-   367         1            5      5.0      0.0          self.Ft = par['Ft']
-   368         1            5      5.0      0.0          self.G = par['G']
+   366         1            5      5.0      0.0          self.C = par['C']
+   367         1            7      7.0      0.0          self.Ft = par['Ft']
+   368         1            4      4.0      0.0          self.G = par['G']
    369
    370         1            5      5.0      0.0          if self.storage_mode == 'light':
    371                                                       # Delete heavy data (it will be computed again if required)
@@ -409,7 +409,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    380                                                       self.Ft = None
    381                                                       self.G = None
    382
-   383         1            3      3.0      0.0          return self
+   383         1            4      4.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: predict at line 385
@@ -574,7 +574,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.099    0.099 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.099    0.099 &lt;f&gt;:1(&lt;module&gt;)
      1    0.000    0.000    0.099    0.099 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:385(predict)
-     1    0.074    0.074    0.075    0.075 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:188(manhattan_distances)
+     1    0.074    0.074    0.074    0.074 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:188(manhattan_distances)
      1    0.014    0.014    0.024    0.024 /tmp/vb_sklearn/sklearn/gaussian_process/correlation_models.py:58(squared_exponential)
      5    0.010    0.002    0.010    0.002 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.010    0.010 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
@@ -593,26 +593,26 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
     14    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
      2    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
-     4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      9    0.000    0.000    0.000    0.000 {isinstance}
+     4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+    16    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
-    16    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
     14    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 {callable}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     2    0.000    0.000    0.000    0.000 {callable}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: fit at line 250
-Total time: 0.143604 s
+Total time: 0.143328 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -636,15 +636,15 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    267                                                       A fitted Gaussian Process model object awaiting data to perform
    268                                                       predictions.
    269                                                   """
-   270         1           14     14.0      0.0          self.random_state = check_random_state(self.random_state)
+   270         1           27     27.0      0.0          self.random_state = check_random_state(self.random_state)
    271
    272                                                   # Force data to 2D numpy.array
    273         1           63     63.0      0.0          X = array2d(X)
-   274         1           20     20.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
+   274         1           21     21.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
    275
    276                                                   # Check shapes of DOE &amp; observations
    277         1            5      5.0      0.0          n_samples_X, n_features = X.shape
-   278         1            5      5.0      0.0          n_samples_y = y.shape[0]
+   278         1            6      6.0      0.0          n_samples_y = y.shape[0]
    279
    280         1            4      4.0      0.0          if n_samples_X != n_samples_y:
    281                                                       raise ValueError("X and y must have the same number of rows.")
@@ -652,19 +652,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    283         1            4      4.0      0.0              n_samples = n_samples_X
    284
    285                                                   # Run input checks
-   286         1          177    177.0      0.1          self._check_params(n_samples)
+   286         1          178    178.0      0.1          self._check_params(n_samples)
    287
    288                                                   # Normalize data or don't
    289         1            5      5.0      0.0          if self.normalize:
-   290         1           88     88.0      0.1              X_mean = np.mean(X, axis=0)
-   291         1          330    330.0      0.2              X_std = np.std(X, axis=0)
-   292         1           45     45.0      0.0              y_mean = np.mean(y, axis=0)
-   293         1           85     85.0      0.1              y_std = np.std(y, axis=0)
-   294         1           23     23.0      0.0              X_std[X_std == 0.] = 1.
+   290         1           87     87.0      0.1              X_mean = np.mean(X, axis=0)
+   291         1          308    308.0      0.2              X_std = np.std(X, axis=0)
+   292         1           44     44.0      0.0              y_mean = np.mean(y, axis=0)
+   293         1           87     87.0      0.1              y_std = np.std(y, axis=0)
+   294         1           24     24.0      0.0              X_std[X_std == 0.] = 1.
    295         1           17     17.0      0.0              y_std[y_std == 0.] = 1.
    296                                                       # center and scale X if necessary
-   297         1          398    398.0      0.3              X = (X - X_mean) / X_std
-   298         1           84     84.0      0.1              y = (y - y_mean) / y_std
+   297         1          396    396.0      0.3              X = (X - X_mean) / X_std
+   298         1          143    143.0      0.1              y = (y - y_mean) / y_std
    299                                                   else:
    300                                                       X_mean = np.zeros(1)
    301                                                       X_std = np.ones(1)
@@ -672,8 +672,8 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    303                                                       y_std = np.ones(1)
    304
    305                                                   # Calculate matrix of distances D between samples
-   306         1        74657  74657.0     52.0          D, ij = l1_cross_distances(X)
-   307         1         7654   7654.0      5.3          if np.min(np.sum(D, axis=1)) == 0. \
+   306         1        74915  74915.0     52.3          D, ij = l1_cross_distances(X)
+   307         1         7655   7655.0      5.3          if np.min(np.sum(D, axis=1)) == 0. \
    308                                                                               and self.corr != correlation.pure_nugget:
    309                                                       raise Exception("Multiple input features cannot have the same"
    310                                                               " value")
@@ -681,30 +681,30 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    312                                                   # Regression matrix and parameters
    313         1           51     51.0      0.0          F = self.regr(X)
    314         1            5      5.0      0.0          n_samples_F = F.shape[0]
-   315         1            5      5.0      0.0          if F.ndim &gt; 1:
-   316         1            5      5.0      0.0              p = F.shape[1]
+   315         1            6      6.0      0.0          if F.ndim &gt; 1:
+   316         1            4      4.0      0.0              p = F.shape[1]
    317                                                   else:
    318                                                       p = 1
    319         1            5      5.0      0.0          if n_samples_F != n_samples:
    320                                                       raise Exception("Number of rows in F and X do not match. Most "
    321                                                                     + "likely something is going wrong with the "
    322                                                                     + "regression model.")
-   323         1            4      4.0      0.0          if p &gt; n_samples_F:
+   323         1            5      5.0      0.0          if p &gt; n_samples_F:
    324                                                       raise Exception(("Ordinary least squares problem is undetermined "
    325                                                                      + "n_samples=%d must be greater than the "
    326                                                                      + "regression model size p=%d.") % (n_samples, p))
-   327         1            5      5.0      0.0          if self.beta0 is not None:
+   327         1            6      6.0      0.0          if self.beta0 is not None:
    328                                                       if self.beta0.shape[0] != p:
    329                                                           raise Exception("Shapes of beta0 and F do not match.")
    330
    331                                                   # Set attributes
-   332         1            7      7.0      0.0          self.X = X
+   332         1            6      6.0      0.0          self.X = X
    333         1            5      5.0      0.0          self.y = y
-   334         1            5      5.0      0.0          self.D = D
+   334         1            4      4.0      0.0          self.D = D
    335         1            4      4.0      0.0          self.ij = ij
    336         1            4      4.0      0.0          self.F = F
-   337         1            5      5.0      0.0          self.X_mean, self.X_std = X_mean, X_std
-   338         1            7      7.0      0.0          self.y_mean, self.y_std = y_mean, y_std
+   337         1            6      6.0      0.0          self.X_mean, self.X_std = X_mean, X_std
+   338         1            8      8.0      0.0          self.y_mean, self.y_std = y_mean, y_std
    339
    340                                                   # Determine Gaussian Process model parameters
    341         1            5      5.0      0.0          if self.thetaL is not None and self.thetaU is not None:
@@ -720,21 +720,21 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    351
    352                                                   else:
    353                                                       # Given parameters
-   354         1            4      4.0      0.0              if self.verbose:
+   354         1            5      5.0      0.0              if self.verbose:
    355                                                           print("Given autocorrelation parameters. "
    356                                                               + "Computing Gaussian Process model parameters...")
-   357         1            5      5.0      0.0              self.theta_ = self.theta0
+   357         1            6      6.0      0.0              self.theta_ = self.theta0
    358                                                       self.reduced_likelihood_function_value_, par = \
-   359         1        59737  59737.0     41.6                  self.reduced_likelihood_function()
+   359         1        59142  59142.0     41.3                  self.reduced_likelihood_function()
    360         1           20     20.0      0.0              if np.isinf(self.reduced_likelihood_function_value_):
    361                                                           raise Exception("Bad point. Try increasing theta0.")
    362
    363         1            6      6.0      0.0          self.beta = par['beta']
-   364         1            5      5.0      0.0          self.gamma = par['gamma']
+   364         1            6      6.0      0.0          self.gamma = par['gamma']
    365         1            5      5.0      0.0          self.sigma2 = par['sigma2']
-   366         1            4      4.0      0.0          self.C = par['C']
-   367         1            5      5.0      0.0          self.Ft = par['Ft']
-   368         1            5      5.0      0.0          self.G = par['G']
+   366         1            5      5.0      0.0          self.C = par['C']
+   367         1            7      7.0      0.0          self.Ft = par['Ft']
+   368         1            4      4.0      0.0          self.G = par['G']
    369
    370         1            5      5.0      0.0          if self.storage_mode == 'light':
    371                                                       # Delete heavy data (it will be computed again if required)
@@ -749,11 +749,11 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    380                                                       self.Ft = None
    381                                                       self.G = None
    382
-   383         1            3      3.0      0.0          return self
+   383         1            4      4.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: predict at line 385
-Total time: 0.099591 s
+Total time: 0.09533 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -790,14 +790,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    415                                                   """
    416
    417                                                   # Check input shapes
-   418         1           70     70.0      0.1          X = array2d(X)
+   418         1           71     71.0      0.1          X = array2d(X)
    419         1            5      5.0      0.0          n_eval, n_features_X = X.shape
-   420         1            6      6.0      0.0          n_samples, n_features = self.X.shape
+   420         1            5      5.0      0.0          n_samples, n_features = self.X.shape
    421
    422                                                   # Run input checks
-   423         1          184    184.0      0.2          self._check_params(n_samples)
+   423         1          186    186.0      0.2          self._check_params(n_samples)
    424
-   425         1            5      5.0      0.0          if n_features_X != n_features:
+   425         1            4      4.0      0.0          if n_features_X != n_features:
    426                                                       raise ValueError(("The number of features in X (X.shape[1] = %d) "
    427                                                                      + "should match the sample size used for fit() "
    428                                                                      + "which is %d.") % (n_features_X, n_features))
@@ -807,27 +807,27 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    432                                                       # (evaluates all given points in a single batch run)
    433
    434                                                       # Normalize input
-   435         1          312    312.0      0.3              X = (X - self.X_mean) / self.X_std
+   435         1          287    287.0      0.3              X = (X - self.X_mean) / self.X_std
    436
    437                                                       # Initialize output
-   438         1           15     15.0      0.0              y = np.zeros(n_eval)
-   439         1            4      4.0      0.0              if eval_MSE:
+   438         1           14     14.0      0.0              y = np.zeros(n_eval)
+   439         1            5      5.0      0.0              if eval_MSE:
    440                                                           MSE = np.zeros(n_eval)
    441
    442                                                       # Get pairwise componentwise L1-distances to the input training set
-   443         1        75051  75051.0     75.4              dx = manhattan_distances(X, Y=self.X, sum_over_features=False)
+   443         1        74205  74205.0     77.8              dx = manhattan_distances(X, Y=self.X, sum_over_features=False)
    444                                                       # Get regression function and correlation
    445         1           56     56.0      0.1              f = self.regr(X)
-   446         1        23686  23686.0     23.8              r = self.corr(self.theta_, dx).reshape(n_eval, n_samples)
+   446         1        20370  20370.0     21.4              r = self.corr(self.theta_, dx).reshape(n_eval, n_samples)
    447
    448                                                       # Scaled predictor
-   449         1          146    146.0      0.1              y_ = np.dot(f, self.beta) + np.dot(r, self.gamma)
+   449         1           87     87.0      0.1              y_ = np.dot(f, self.beta) + np.dot(r, self.gamma)
    450
    451                                                       # Predictor
-   452         1           39     39.0      0.0              y = (self.y_mean + self.y_std * y_).ravel()
+   452         1           26     26.0      0.0              y = (self.y_mean + self.y_std * y_).ravel()
    453
    454                                                       # Mean Squared Error
-   455         1            5      5.0      0.0              if eval_MSE:
+   455         1            3      3.0      0.0              if eval_MSE:
    456                                                           C = self.C
    457                                                           if C is None:
    458                                                               # Light storage mode (need to recompute C, F, Ft and G)
@@ -862,7 +862,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    487
    488                                                       else:
    489
-   490         1            3      3.0      0.0                  return y
+   490         1            2      2.0      0.0                  return y
    491
    492                                                   else:
    493                                                       # Memory management
@@ -903,7 +903,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcess</span>
 <span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
 
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;optimizer&#39;</span><span class="p">:</span> <span class="s">&#39;Welch&#39;</span><span class="p">}</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;optimizer&#39;</span><span class="p">:</span> <span class="s">&#39;Welch&#39;</span><span class="p">}</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">GaussianProcess</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
@@ -920,18 +920,18 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         642 function calls in 0.142 seconds
+<div class="highlight-python"><pre>         643 function calls in 0.143 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.142    0.142 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.142    0.142 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.001    0.001    0.142    0.142 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:250(fit)
-     1    0.058    0.058    0.073    0.073 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:28(l1_cross_distances)
-     1    0.011    0.011    0.059    0.059 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:522(reduced_likelihood_function)
+     1    0.000    0.000    0.143    0.143 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.143    0.143 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    0.143    0.143 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:250(fit)
+     1    0.059    0.059    0.074    0.074 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:28(l1_cross_distances)
+     1    0.012    0.012    0.059    0.059 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:522(reduced_likelihood_function)
      1    0.018    0.018    0.026    0.026 /tmp/vb_sklearn/sklearn/gaussian_process/correlation_models.py:58(squared_exponential)
-     2    0.000    0.000    0.015    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     2    0.000    0.000    0.015    0.007 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      4    0.015    0.004    0.015    0.004 {method 'sum' of 'numpy.ndarray' objects}
      3    0.013    0.004    0.013    0.004 {numpy.core.multiarray.zeros}
     11    0.010    0.001    0.012    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
@@ -939,63 +939,63 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.010    0.010 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_cholesky.py:30(cholesky)
      1    0.007    0.007    0.010    0.010 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_cholesky.py:13(_cholesky)
      4    0.000    0.000    0.009    0.002 {map}
-    24    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
    301    0.002    0.000    0.002    0.000 {numpy.core.multiarray.arange}
-     2    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.ndarray' objects}
-     8    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
-     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_qr.py:16(qr)
-     2    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2377(std)
-     2    0.001    0.000    0.001    0.000 {method 'std' of 'numpy.ndarray' objects}
+    24    0.002    0.000    0.002    0.000 {method 'any' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2377(std)
+     2    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+     2    0.000    0.000    0.000    0.000 {method 'std' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_qr.py:16(qr)
      9    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:169(eye)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1836(amin)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:822(_check_params)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:14(svd)
      1    0.000    0.000    0.000    0.000 {method 'min' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:822(_check_params)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:169(eye)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_svd.py:14(svd)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
-    13    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      2    0.000    0.000    0.000    0.000 {method 'mean' of 'numpy.ndarray' objects}
     21    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/special_matrices.py:98(triu)
-    26    0.000    0.000    0.000    0.000 {issubclass}
     24    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/special_matrices.py:20(tri)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+    13    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/regression_models.py:16(constant)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
     10    0.000    0.000    0.000    0.000 {range}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
     22    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
     12    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:220(diag)
      1    0.000    0.000    0.000    0.000 {method 'outer' of 'numpy.ufunc' objects}
+    26    0.000    0.000    0.000    0.000 {issubclass}
      9    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
+     6    0.000    0.000    0.000    0.000 {isinstance}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      2    0.000    0.000    0.000    0.000 {numpy.core._dotblas.dot}
-     5    0.000    0.000    0.000    0.000 {isinstance}
+    24    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      9    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
      2    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.generic' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
-    24    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
-    27    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'prod' of 'numpy.ndarray' objects}
+    27    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
-     2    0.000    0.000    0.000    0.000 {callable}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     2    0.000    0.000    0.000    0.000 {callable}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: fit at line 250
-Total time: 0.143771 s
+Total time: 0.143348 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1019,32 +1019,32 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    267                                                       A fitted Gaussian Process model object awaiting data to perform
    268                                                       predictions.
    269                                                   """
-   270         1           13     13.0      0.0          self.random_state = check_random_state(self.random_state)
+   270         1           28     28.0      0.0          self.random_state = check_random_state(self.random_state)
    271
    272                                                   # Force data to 2D numpy.array
-   273         1           63     63.0      0.0          X = array2d(X)
-   274         1           19     19.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
+   273         1           64     64.0      0.0          X = array2d(X)
+   274         1           20     20.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
    275
    276                                                   # Check shapes of DOE &amp; observations
    277         1            5      5.0      0.0          n_samples_X, n_features = X.shape
-   278         1            4      4.0      0.0          n_samples_y = y.shape[0]
+   278         1            5      5.0      0.0          n_samples_y = y.shape[0]
    279
    280         1            4      4.0      0.0          if n_samples_X != n_samples_y:
    281                                                       raise ValueError("X and y must have the same number of rows.")
    282                                                   else:
-   283         1            5      5.0      0.0              n_samples = n_samples_X
+   283         1            4      4.0      0.0              n_samples = n_samples_X
    284
    285                                                   # Run input checks
-   286         1          177    177.0      0.1          self._check_params(n_samples)
+   286         1          181    181.0      0.1          self._check_params(n_samples)
    287
    288                                                   # Normalize data or don't
    289         1            5      5.0      0.0          if self.normalize:
-   290         1           88     88.0      0.1              X_mean = np.mean(X, axis=0)
-   291         1          281    281.0      0.2              X_std = np.std(X, axis=0)
-   292         1           54     54.0      0.0              y_mean = np.mean(y, axis=0)
-   293         1           89     89.0      0.1              y_std = np.std(y, axis=0)
-   294         1           31     31.0      0.0              X_std[X_std == 0.] = 1.
-   295         1           17     17.0      0.0              y_std[y_std == 0.] = 1.
+   290         1           86     86.0      0.1              X_mean = np.mean(X, axis=0)
+   291         1          284    284.0      0.2              X_std = np.std(X, axis=0)
+   292         1           45     45.0      0.0              y_mean = np.mean(y, axis=0)
+   293         1          135    135.0      0.1              y_std = np.std(y, axis=0)
+   294         1           30     30.0      0.0              X_std[X_std == 0.] = 1.
+   295         1           18     18.0      0.0              y_std[y_std == 0.] = 1.
    296                                                       # center and scale X if necessary
    297         1          400    400.0      0.3              X = (X - X_mean) / X_std
    298         1           41     41.0      0.0              y = (y - y_mean) / y_std
@@ -1055,15 +1055,15 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    303                                                       y_std = np.ones(1)
    304
    305                                                   # Calculate matrix of distances D between samples
-   306         1        74808  74808.0     52.0          D, ij = l1_cross_distances(X)
-   307         1         7666   7666.0      5.3          if np.min(np.sum(D, axis=1)) == 0. \
+   306         1        74626  74626.0     52.1          D, ij = l1_cross_distances(X)
+   307         1         7772   7772.0      5.4          if np.min(np.sum(D, axis=1)) == 0. \
    308                                                                               and self.corr != correlation.pure_nugget:
    309                                                       raise Exception("Multiple input features cannot have the same"
    310                                                               " value")
    311
    312                                                   # Regression matrix and parameters
    313         1           51     51.0      0.0          F = self.regr(X)
-   314         1            6      6.0      0.0          n_samples_F = F.shape[0]
+   314         1            5      5.0      0.0          n_samples_F = F.shape[0]
    315         1            6      6.0      0.0          if F.ndim &gt; 1:
    316         1            5      5.0      0.0              p = F.shape[1]
    317                                                   else:
@@ -1076,18 +1076,18 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    324                                                       raise Exception(("Ordinary least squares problem is undetermined "
    325                                                                      + "n_samples=%d must be greater than the "
    326                                                                      + "regression model size p=%d.") % (n_samples, p))
-   327         1            4      4.0      0.0          if self.beta0 is not None:
+   327         1            5      5.0      0.0          if self.beta0 is not None:
    328                                                       if self.beta0.shape[0] != p:
    329                                                           raise Exception("Shapes of beta0 and F do not match.")
    330
    331                                                   # Set attributes
-   332         1            7      7.0      0.0          self.X = X
+   332         1            6      6.0      0.0          self.X = X
    333         1            5      5.0      0.0          self.y = y
-   334         1            4      4.0      0.0          self.D = D
+   334         1            5      5.0      0.0          self.D = D
    335         1            5      5.0      0.0          self.ij = ij
    336         1            4      4.0      0.0          self.F = F
    337         1            5      5.0      0.0          self.X_mean, self.X_std = X_mean, X_std
-   338         1            7      7.0      0.0          self.y_mean, self.y_std = y_mean, y_std
+   338         1            9      9.0      0.0          self.y_mean, self.y_std = y_mean, y_std
    339
    340                                                   # Determine Gaussian Process model parameters
    341         1            5      5.0      0.0          if self.thetaL is not None and self.thetaU is not None:
@@ -1103,19 +1103,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    351
    352                                                   else:
    353                                                       # Given parameters
-   354         1            4      4.0      0.0              if self.verbose:
+   354         1            5      5.0      0.0              if self.verbose:
    355                                                           print("Given autocorrelation parameters. "
    356                                                               + "Computing Gaussian Process model parameters...")
-   357         1            5      5.0      0.0              self.theta_ = self.theta0
+   357         1            6      6.0      0.0              self.theta_ = self.theta0
    358                                                       self.reduced_likelihood_function_value_, par = \
-   359         1        59807  59807.0     41.6                  self.reduced_likelihood_function()
-   360         1           21     21.0      0.0              if np.isinf(self.reduced_likelihood_function_value_):
+   359         1        59398  59398.0     41.4                  self.reduced_likelihood_function()
+   360         1           20     20.0      0.0              if np.isinf(self.reduced_likelihood_function_value_):
    361                                                           raise Exception("Bad point. Try increasing theta0.")
    362
-   363         1            6      6.0      0.0          self.beta = par['beta']
+   363         1            5      5.0      0.0          self.beta = par['beta']
    364         1            5      5.0      0.0          self.gamma = par['gamma']
-   365         1            5      5.0      0.0          self.sigma2 = par['sigma2']
-   366         1            6      6.0      0.0          self.C = par['C']
+   365         1            7      7.0      0.0          self.sigma2 = par['sigma2']
+   366         1            5      5.0      0.0          self.C = par['C']
    367         1            5      5.0      0.0          self.Ft = par['Ft']
    368         1            5      5.0      0.0          self.G = par['G']
    369
@@ -1289,21 +1289,21 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         133 function calls in 0.100 seconds
+<div class="highlight-python"><pre>         133 function calls in 0.099 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.100    0.100 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.100    0.100 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.100    0.100 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:385(predict)
-     1    0.075    0.075    0.075    0.075 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:188(manhattan_distances)
+     1    0.000    0.000    0.099    0.099 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.099    0.099 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.099    0.099 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:385(predict)
+     1    0.074    0.074    0.074    0.074 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:188(manhattan_distances)
      1    0.014    0.014    0.024    0.024 /tmp/vb_sklearn/sklearn/gaussian_process/correlation_models.py:58(squared_exponential)
      5    0.010    0.002    0.010    0.002 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.010    0.010 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
-     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
      4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py:822(_check_params)
@@ -1311,23 +1311,23 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      2    0.000    0.000    0.000    0.000 {numpy.core._dotblas.dot}
      8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/regression_models.py:16(constant)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/gaussian_process/regression_models.py:16(constant)
     14    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
      2    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
     16    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      9    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
     14    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      2    0.000    0.000    0.000    0.000 {callable}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1335,7 +1335,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: fit at line 250
-Total time: 0.143771 s
+Total time: 0.143348 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1359,32 +1359,32 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    267                                                       A fitted Gaussian Process model object awaiting data to perform
    268                                                       predictions.
    269                                                   """
-   270         1           13     13.0      0.0          self.random_state = check_random_state(self.random_state)
+   270         1           28     28.0      0.0          self.random_state = check_random_state(self.random_state)
    271
    272                                                   # Force data to 2D numpy.array
-   273         1           63     63.0      0.0          X = array2d(X)
-   274         1           19     19.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
+   273         1           64     64.0      0.0          X = array2d(X)
+   274         1           20     20.0      0.0          y = np.asarray(y).ravel()[:, np.newaxis]
    275
    276                                                   # Check shapes of DOE &amp; observations
    277         1            5      5.0      0.0          n_samples_X, n_features = X.shape
-   278         1            4      4.0      0.0          n_samples_y = y.shape[0]
+   278         1            5      5.0      0.0          n_samples_y = y.shape[0]
    279
    280         1            4      4.0      0.0          if n_samples_X != n_samples_y:
    281                                                       raise ValueError("X and y must have the same number of rows.")
    282                                                   else:
-   283         1            5      5.0      0.0              n_samples = n_samples_X
+   283         1            4      4.0      0.0              n_samples = n_samples_X
    284
    285                                                   # Run input checks
-   286         1          177    177.0      0.1          self._check_params(n_samples)
+   286         1          181    181.0      0.1          self._check_params(n_samples)
    287
    288                                                   # Normalize data or don't
    289         1            5      5.0      0.0          if self.normalize:
-   290         1           88     88.0      0.1              X_mean = np.mean(X, axis=0)
-   291         1          281    281.0      0.2              X_std = np.std(X, axis=0)
-   292         1           54     54.0      0.0              y_mean = np.mean(y, axis=0)
-   293         1           89     89.0      0.1              y_std = np.std(y, axis=0)
-   294         1           31     31.0      0.0              X_std[X_std == 0.] = 1.
-   295         1           17     17.0      0.0              y_std[y_std == 0.] = 1.
+   290         1           86     86.0      0.1              X_mean = np.mean(X, axis=0)
+   291         1          284    284.0      0.2              X_std = np.std(X, axis=0)
+   292         1           45     45.0      0.0              y_mean = np.mean(y, axis=0)
+   293         1          135    135.0      0.1              y_std = np.std(y, axis=0)
+   294         1           30     30.0      0.0              X_std[X_std == 0.] = 1.
+   295         1           18     18.0      0.0              y_std[y_std == 0.] = 1.
    296                                                       # center and scale X if necessary
    297         1          400    400.0      0.3              X = (X - X_mean) / X_std
    298         1           41     41.0      0.0              y = (y - y_mean) / y_std
@@ -1395,15 +1395,15 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    303                                                       y_std = np.ones(1)
    304
    305                                                   # Calculate matrix of distances D between samples
-   306         1        74808  74808.0     52.0          D, ij = l1_cross_distances(X)
-   307         1         7666   7666.0      5.3          if np.min(np.sum(D, axis=1)) == 0. \
+   306         1        74626  74626.0     52.1          D, ij = l1_cross_distances(X)
+   307         1         7772   7772.0      5.4          if np.min(np.sum(D, axis=1)) == 0. \
    308                                                                               and self.corr != correlation.pure_nugget:
    309                                                       raise Exception("Multiple input features cannot have the same"
    310                                                               " value")
    311
    312                                                   # Regression matrix and parameters
    313         1           51     51.0      0.0          F = self.regr(X)
-   314         1            6      6.0      0.0          n_samples_F = F.shape[0]
+   314         1            5      5.0      0.0          n_samples_F = F.shape[0]
    315         1            6      6.0      0.0          if F.ndim &gt; 1:
    316         1            5      5.0      0.0              p = F.shape[1]
    317                                                   else:
@@ -1416,18 +1416,18 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    324                                                       raise Exception(("Ordinary least squares problem is undetermined "
    325                                                                      + "n_samples=%d must be greater than the "
    326                                                                      + "regression model size p=%d.") % (n_samples, p))
-   327         1            4      4.0      0.0          if self.beta0 is not None:
+   327         1            5      5.0      0.0          if self.beta0 is not None:
    328                                                       if self.beta0.shape[0] != p:
    329                                                           raise Exception("Shapes of beta0 and F do not match.")
    330
    331                                                   # Set attributes
-   332         1            7      7.0      0.0          self.X = X
+   332         1            6      6.0      0.0          self.X = X
    333         1            5      5.0      0.0          self.y = y
-   334         1            4      4.0      0.0          self.D = D
+   334         1            5      5.0      0.0          self.D = D
    335         1            5      5.0      0.0          self.ij = ij
    336         1            4      4.0      0.0          self.F = F
    337         1            5      5.0      0.0          self.X_mean, self.X_std = X_mean, X_std
-   338         1            7      7.0      0.0          self.y_mean, self.y_std = y_mean, y_std
+   338         1            9      9.0      0.0          self.y_mean, self.y_std = y_mean, y_std
    339
    340                                                   # Determine Gaussian Process model parameters
    341         1            5      5.0      0.0          if self.thetaL is not None and self.thetaU is not None:
@@ -1443,19 +1443,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    351
    352                                                   else:
    353                                                       # Given parameters
-   354         1            4      4.0      0.0              if self.verbose:
+   354         1            5      5.0      0.0              if self.verbose:
    355                                                           print("Given autocorrelation parameters. "
    356                                                               + "Computing Gaussian Process model parameters...")
-   357         1            5      5.0      0.0              self.theta_ = self.theta0
+   357         1            6      6.0      0.0              self.theta_ = self.theta0
    358                                                       self.reduced_likelihood_function_value_, par = \
-   359         1        59807  59807.0     41.6                  self.reduced_likelihood_function()
-   360         1           21     21.0      0.0              if np.isinf(self.reduced_likelihood_function_value_):
+   359         1        59398  59398.0     41.4                  self.reduced_likelihood_function()
+   360         1           20     20.0      0.0              if np.isinf(self.reduced_likelihood_function_value_):
    361                                                           raise Exception("Bad point. Try increasing theta0.")
    362
-   363         1            6      6.0      0.0          self.beta = par['beta']
+   363         1            5      5.0      0.0          self.beta = par['beta']
    364         1            5      5.0      0.0          self.gamma = par['gamma']
-   365         1            5      5.0      0.0          self.sigma2 = par['sigma2']
-   366         1            6      6.0      0.0          self.C = par['C']
+   365         1            7      7.0      0.0          self.sigma2 = par['sigma2']
+   366         1            5      5.0      0.0          self.C = par['C']
    367         1            5      5.0      0.0          self.Ft = par['Ft']
    368         1            5      5.0      0.0          self.G = par['G']
    369
@@ -1476,7 +1476,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 
 File: /tmp/vb_sklearn/sklearn/gaussian_process/gaussian_process.py
 Function: predict at line 385
-Total time: 0.099153 s
+Total time: 0.099006 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1514,11 +1514,11 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    416
    417                                                   # Check input shapes
    418         1           70     70.0      0.1          X = array2d(X)
-   419         1            4      4.0      0.0          n_eval, n_features_X = X.shape
+   419         1            5      5.0      0.0          n_eval, n_features_X = X.shape
    420         1            5      5.0      0.0          n_samples, n_features = self.X.shape
    421
    422                                                   # Run input checks
-   423         1          184    184.0      0.2          self._check_params(n_samples)
+   423         1          186    186.0      0.2          self._check_params(n_samples)
    424
    425         1            5      5.0      0.0          if n_features_X != n_features:
    426                                                       raise ValueError(("The number of features in X (X.shape[1] = %d) "
@@ -1530,27 +1530,27 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    432                                                       # (evaluates all given points in a single batch run)
    433
    434                                                       # Normalize input
-   435         1          337    337.0      0.3              X = (X - self.X_mean) / self.X_std
+   435         1          286    286.0      0.3              X = (X - self.X_mean) / self.X_std
    436
    437                                                       # Initialize output
    438         1           14     14.0      0.0              y = np.zeros(n_eval)
-   439         1            4      4.0      0.0              if eval_MSE:
+   439         1            5      5.0      0.0              if eval_MSE:
    440                                                           MSE = np.zeros(n_eval)
    441
    442                                                       # Get pairwise componentwise L1-distances to the input training set
-   443         1        74534  74534.0     75.2              dx = manhattan_distances(X, Y=self.X, sum_over_features=False)
+   443         1        74491  74491.0     75.2              dx = manhattan_distances(X, Y=self.X, sum_over_features=False)
    444                                                       # Get regression function and correlation
-   445         1           59     59.0      0.1              f = self.regr(X)
-   446         1        23736  23736.0     23.9              r = self.corr(self.theta_, dx).reshape(n_eval, n_samples)
+   445         1           56     56.0      0.1              f = self.regr(X)
+   446         1        23519  23519.0     23.8              r = self.corr(self.theta_, dx).reshape(n_eval, n_samples)
    447
    448                                                       # Scaled predictor
-   449         1          148    148.0      0.1              y_ = np.dot(f, self.beta) + np.dot(r, self.gamma)
+   449         1          308    308.0      0.3              y_ = np.dot(f, self.beta) + np.dot(r, self.gamma)
    450
    451                                                       # Predictor
-   452         1           41     41.0      0.0              y = (self.y_mean + self.y_std * y_).ravel()
+   452         1           43     43.0      0.0              y = (self.y_mean + self.y_std * y_).ravel()
    453
    454                                                       # Mean Squared Error
-   455         1            4      4.0      0.0              if eval_MSE:
+   455         1            5      5.0      0.0              if eval_MSE:
    456                                                           C = self.C
    457                                                           if C is None:
    458                                                               # Light storage mode (need to recompute C, F, Ft and G)

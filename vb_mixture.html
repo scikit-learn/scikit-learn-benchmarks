@@ -182,7 +182,7 @@
 <div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">DPGMM</span>
 <span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
 
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;covariance_type&#39;</span><span class="p">:</span> <span class="s">&#39;full&#39;</span><span class="p">}</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;covariance_type&#39;</span><span class="p">:</span> <span class="s">&#39;full&#39;</span><span class="p">}</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">DPGMM</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
@@ -199,136 +199,136 @@
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         39359 function calls in 1.484 seconds
+<div class="highlight-python"><pre>         39533 function calls in 1.505 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    1.484    1.484 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    1.484    1.484 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.001    0.001    1.484    1.484 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:472(fit)
-    10    0.000    0.000    1.039    0.104 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:372(_do_mstep)
-    10    0.012    0.001    0.529    0.053 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:284(_update_means)
-   100    0.489    0.005    0.508    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
-    10    0.058    0.006    0.442    0.044 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:303(_update_precisions)
-    10    0.001    0.000    0.238    0.024 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:224(eval)
-   100    0.066    0.001    0.232    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-    10    0.003    0.000    0.228    0.023 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
-   100    0.002    0.000    0.225    0.002 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
-   100    0.004    0.000    0.222    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
-   100    0.209    0.002    0.209    0.002 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
-     1    0.000    0.000    0.165    0.165 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
-     1    0.000    0.000    0.165    0.165 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
-    10    0.001    0.000    0.163    0.016 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
-   420    0.162    0.000    0.162    0.000 {numpy.core._dotblas.dot}
-   100    0.124    0.001    0.136    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-    10    0.000    0.000    0.103    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+     1    0.000    0.000    1.505    1.505 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.505    1.505 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    1.505    1.505 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:472(fit)
+    10    0.000    0.000    1.014    0.101 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:372(_do_mstep)
+    10    0.028    0.003    0.528    0.053 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:284(_update_means)
+   100    0.463    0.005    0.489    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+    10    0.042    0.004    0.485    0.048 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:303(_update_precisions)
+    10    0.002    0.000    0.266    0.027 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:224(eval)
+   100    0.012    0.000    0.261    0.003 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+    10    0.004    0.000    0.254    0.025 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
+   100    0.003    0.000    0.249    0.002 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
+   100    0.005    0.000    0.246    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
+   100    0.230    0.002    0.230    0.002 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
+   100    0.191    0.002    0.207    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+   421    0.184    0.000    0.184    0.000 {numpy.core._dotblas.dot}
+     1    0.000    0.000    0.169    0.169 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
+     1    0.000    0.000    0.169    0.169 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
+    10    0.001    0.000    0.168    0.017 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
+    10    0.000    0.000    0.104    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
     10    0.013    0.001    0.103    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
-   120    0.014    0.000    0.100    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
-    10    0.067    0.007    0.068    0.007 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:275(_update_concentration)
-    10    0.000    0.000    0.040    0.004 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:450(_logprior)
-   120    0.001    0.000    0.039    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
-   500    0.027    0.000    0.038    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
-   120    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:69(safe_sparse_dot)
-   361    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
-    20    0.024    0.001    0.032    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
-  1972    0.032    0.000    0.032    0.000 {method 'sum' of 'numpy.ndarray' objects}
-    10    0.000    0.000    0.031    0.003 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:414(_bound_precisions)
-   100    0.002    0.000    0.031    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:68(_bound_wishart)
-    20    0.000    0.000    0.026    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
-    20    0.006    0.000    0.025    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
-   100    0.012    0.000    0.023    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:336(det)
-   601    0.007    0.000    0.023    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
-  1478    0.003    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-   200    0.011    0.000    0.019    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:58(wishart_logz)
-  1478    0.012    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-   210    0.007    0.000    0.016    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:48(wishart_log_det)
-   970    0.003    0.000    0.016    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-   240    0.001    0.000    0.015    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
-   361    0.002    0.000    0.012    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-   100    0.000    0.000    0.012    0.000 {map}
-  1832    0.003    0.000    0.010    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-  1200    0.010    0.000    0.010    0.000 {method 'any' of 'numpy.ndarray' objects}
-   430    0.007    0.000    0.009    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
-  2194    0.008    0.000    0.008    0.000 {numpy.core.multiarray.array}
-   200    0.002    0.000    0.008    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
-   240    0.005    0.000    0.006    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:32(gammaln)
-   202    0.006    0.000    0.006    0.000 {method 'mean' of 'numpy.ndarray' objects}
-    10    0.002    0.000    0.006    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
-   300    0.001    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
-   361    0.003    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
-   300    0.001    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
-   790    0.003    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
-   300    0.001    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
-  3356    0.004    0.000    0.004    0.000 {method 'split' of 'str' objects}
-   320    0.003    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
-  3524    0.004    0.000    0.004    0.000 {isinstance}
-    10    0.002    0.000    0.004    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:437(_bound_proportions)
-   210    0.001    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
-   200    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-    10    0.001    0.000    0.004    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:390(_bound_concentration)
-   600    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
-   810    0.003    0.000    0.003    0.000 {method 'get' of 'dict' objects}
+   121    0.014    0.000    0.102    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+    10    0.000    0.000    0.052    0.005 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:450(_logprior)
+   500    0.036    0.000    0.051    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+    10    0.000    0.000    0.041    0.004 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:414(_bound_precisions)
+   100    0.002    0.000    0.040    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:68(_bound_wishart)
+   121    0.001    0.000    0.039    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+  1980    0.035    0.000    0.035    0.000 {method 'sum' of 'numpy.ndarray' objects}
+    21    0.025    0.001    0.034    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
+   121    0.002    0.000    0.034    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:69(safe_sparse_dot)
+   364    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
+   100    0.017    0.000    0.032    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:336(det)
+    21    0.000    0.000    0.028    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+    21    0.006    0.000    0.027    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+   200    0.014    0.000    0.025    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:58(wishart_logz)
+   606    0.007    0.000    0.024    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+   210    0.010    0.000    0.023    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:48(wishart_log_det)
+  1491    0.003    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+   972    0.003    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+  1491    0.012    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   100    0.001    0.000    0.016    0.000 {map}
+   242    0.001    0.000    0.016    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+   430    0.009    0.000    0.014    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
+  1210    0.014    0.000    0.014    0.000 {method 'any' of 'numpy.ndarray' objects}
+   364    0.002    0.000    0.013    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
+  1837    0.004    0.000    0.012    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   200    0.003    0.000    0.010    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+  2202    0.009    0.000    0.009    0.000 {numpy.core.multiarray.array}
+   240    0.006    0.000    0.008    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:32(gammaln)
+   790    0.003    0.000    0.008    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
+    10    0.003    0.000    0.008    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
+   300    0.001    0.000    0.007    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
+   300    0.001    0.000    0.007    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
+   212    0.006    0.000    0.006    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   300    0.001    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
+   320    0.004    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+   364    0.003    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+   210    0.001    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+    10    0.003    0.000    0.005    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:437(_bound_proportions)
+   200    0.003    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
+    10    0.002    0.000    0.005    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:390(_bound_concentration)
+  3540    0.005    0.000    0.005    0.000 {isinstance}
+   810    0.005    0.000    0.005    0.000 {method 'get' of 'dict' objects}
+  3382    0.005    0.000    0.005    0.000 {method 'split' of 'str' objects}
+   600    0.003    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
    210    0.003    0.000    0.003    0.000 {method 'trace' of 'numpy.ndarray' objects}
-    10    0.002    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
-   451    0.002    0.000    0.002    0.000 {numpy.core.multiarray.zeros}
-   200    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
-   361    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-   100    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/flinalg.py:24(get_flinalg_funcs)
+    10    0.002    0.000    0.003    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
+   451    0.003    0.000    0.003    0.000 {numpy.core.multiarray.zeros}
+   100    0.002    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/flinalg.py:24(get_flinalg_funcs)
    120    0.002    0.000    0.002    0.000 {method 'max' of 'numpy.ndarray' objects}
-   410    0.002    0.000    0.002    0.000 {numpy.core.multiarray.arange}
+   210    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
   1600    0.002    0.000    0.002    0.000 {issubclass}
-   209    0.001    0.000    0.001    0.000 {abs}
+   410    0.002    0.000    0.002    0.000 {numpy.core.multiarray.arange}
+   364    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+   209    0.002    0.000    0.002    0.000 {abs}
+   100    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
    100    0.001    0.000    0.001    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
-   100    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
    500    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
    300    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
    100    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
    620    0.001    0.000    0.001    0.000 {getattr}
    202    0.001    0.000    0.001    0.000 {method 'reshape' of 'numpy.ndarray' objects}
-    90    0.001    0.000    0.001    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
-  2224    0.001    0.000    0.001    0.000 {len}
    100    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
-   174    0.001    0.000    0.001    0.000 {method 'fill' of 'numpy.ndarray' objects}
+    10    0.001    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:275(_update_concentration)
+    90    0.001    0.000    0.001    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
+  2235    0.001    0.000    0.001    0.000 {len}
     10    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:407(_bound_means)
-     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
-    90    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
-   361    0.001    0.000    0.001    0.000 {range}
-   104    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
-  1081    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+   177    0.001    0.000    0.001    0.000 {method 'fill' of 'numpy.ndarray' objects}
+   363    0.001    0.000    0.001    0.000 {range}
+  1084    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
     10    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:24(sqnorm)
    100    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.generic' objects}
-     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
     10    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:14(norm)
-     1    0.001    0.001    0.001    0.001 {method 'var' of 'numpy.ndarray' objects}
-    74    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
-    90    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
-    24    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+   108    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+    90    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
+     1    0.000    0.000    0.000    0.000 {method 'var' of 'numpy.ndarray' objects}
+    77    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
    300    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
+    90    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+    25    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/blas.py:30(get_blas_funcs)
    200    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
    100    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
-    10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/blas.py:30(get_blas_funcs)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:710(_check_fit_data)
    400    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
-    33    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:710(_check_fit_data)
     20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
+    33    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
    200    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
    100    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/flinalg.py:19(has_column_major_storage)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:766(tile)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:386(_initialize_gamma)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:397(swapaxes)
+    10    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+   100    0.000    0.000    0.000    0.000 {callable}
+    40    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:359(_monitor)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:690(__init__)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
-    40    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:359(_monitor)
-   100    0.000    0.000    0.000    0.000 {callable}
     10    0.000    0.000    0.000    0.000 {method 'swapaxes' of 'numpy.ndarray' objects}
-    10    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
-    10    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
     12    0.000    0.000    0.000    0.000 {max}
+    10    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
      2    0.000    0.000    0.000    0.000 {hasattr}
     10    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
@@ -339,7 +339,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/mixture/dpgmm.py
 Function: fit at line 472
-Total time: 1.80659 s
+Total time: 1.80255 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -362,8 +362,8 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    488                                                       List of n_features-dimensional data points.  Each row
    489                                                       corresponds to a single data point.
    490                                                   """
-   491         1            9      9.0      0.0          self.random_state = check_random_state(self.random_state)
-   492         1            3      3.0      0.0          if kwargs:
+   491         1           24     24.0      0.0          self.random_state = check_random_state(self.random_state)
+   492         1            5      5.0      0.0          if kwargs:
    493                                                       warnings.warn("Setting parameters in the 'fit' method is"
    494                                                               "deprecated. Set it on initialization instead.",
    495                                                                DeprecationWarning)
@@ -377,36 +377,36 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    503                                                           self.init_params = kwargs['init_params']
    504
    505                                                   ## initialization step
-   506         1            8      8.0      0.0          X = np.asarray(X)
-   507         1            3      3.0      0.0          if X.ndim == 1:
+   506         1           12     12.0      0.0          X = np.asarray(X)
+   507         1            5      5.0      0.0          if X.ndim == 1:
    508                                                       X = X[:, np.newaxis]
    509
-   510         1            3      3.0      0.0          n_features = X.shape[1]
-   511         1           15     15.0      0.0          z = np.ones((X.shape[0], self.n_components))
-   512         1           46     46.0      0.0          z /= self.n_components
+   510         1            5      5.0      0.0          n_features = X.shape[1]
+   511         1           22     22.0      0.0          z = np.ones((X.shape[0], self.n_components))
+   512         1           72     72.0      0.0          z /= self.n_components
    513
-   514         1           14     14.0      0.0          self._initial_bound = - 0.5 * n_features * np.log(2 * np.pi)
-   515         1            9      9.0      0.0          self._initial_bound -= np.log(2 * np.pi * np.e)
+   514         1           22     22.0      0.0          self._initial_bound = - 0.5 * n_features * np.log(2 * np.pi)
+   515         1           14     14.0      0.0          self._initial_bound -= np.log(2 * np.pi * np.e)
    516
-   517         1            4      4.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
-   518         1           20     20.0      0.0              self._initialize_gamma()
+   517         1            5      5.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
+   518         1           32     32.0      0.0              self._initialize_gamma()
    519
-   520         1            3      3.0      0.0          if 'm' in self.init_params or not hasattr(self, 'means_'):
-   521         1            2      2.0      0.0              self.means_ = cluster.KMeans(
-   522         1            2      2.0      0.0                  n_clusters=self.n_components,
-   523         1       286581 286581.0     15.9                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
+   520         1            6      6.0      0.0          if 'm' in self.init_params or not hasattr(self, 'means_'):
+   521         1            4      4.0      0.0              self.means_ = cluster.KMeans(
+   522         1            4      4.0      0.0                  n_clusters=self.n_components,
+   523         1       216210 216210.0     12.0                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
    524
    525         1            6      6.0      0.0          if 'w' in self.init_params or not hasattr(self, 'weights_'):
-   526         1          119    119.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
+   526         1           90     90.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
    527
    528         1            5      5.0      0.0          if 'c' in self.init_params or not hasattr(self, 'precs_'):
-   529         1            5      5.0      0.0              if self.covariance_type == 'spherical':
+   529         1            4      4.0      0.0              if self.covariance_type == 'spherical':
    530                                                           self.dof_ = np.ones(self.n_components)
    531                                                           self.scale_ = np.ones(self.n_components)
    532                                                           self.precs_ = np.ones((self.n_components, n_features))
    533                                                           self.bound_prec_ = 0.5 * n_features * (
    534                                                               digamma(self.dof_) - np.log(self.scale_))
-   535         1            5      5.0      0.0              elif self.covariance_type == 'diag':
+   535         1            4      4.0      0.0              elif self.covariance_type == 'diag':
    536                                                           self.dof_ = 1 + 0.5 * n_features
    537                                                           self.dof_ *= np.ones((self.n_components, n_features))
    538                                                           self.scale_ = np.ones((self.n_components, n_features))
@@ -422,60 +422,60 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    548                                                           self.bound_prec_ = 0.5 * wishart_log_det(
    549                                                               self.dof_, self.scale_, self.det_scale_, n_features)
    550                                                           self.bound_prec_ -= 0.5 * self.dof_ * np.trace(self.scale_)
-   551         1            5      5.0      0.0              elif self.covariance_type == 'full':
+   551         1            4      4.0      0.0              elif self.covariance_type == 'full':
    552         1            7      7.0      0.0                  self.dof_ = (1 + self.n_components + X.shape[0])
-   553         1           44     44.0      0.0                  self.dof_ *= np.ones(self.n_components)
+   553         1           38     38.0      0.0                  self.dof_ *= np.ones(self.n_components)
    554         1            5      5.0      0.0                  self.scale_ = [2 * np.identity(n_features)
-   555        11          454     41.3      0.0                             for i in xrange(self.n_components)]
+   555        11          416     37.8      0.0                             for i in xrange(self.n_components)]
    556         1            5      5.0      0.0                  self.precs_ = [np.identity(n_features)
-   557        11          210     19.1      0.0                                  for i in xrange(self.n_components)]
-   558         1           20     20.0      0.0                  self.det_scale_ = np.ones(self.n_components)
-   559         1           10     10.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
-   560        11           61      5.5      0.0                  for k in xrange(self.n_components):
-   561        10           46      4.6      0.0                      self.bound_prec_[k] = wishart_log_det(
-   562        10           63      6.3      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
-   563        10         1169    116.9      0.1                          n_features)
-   564        10           68      6.8      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
-   565        10          344     34.4      0.0                                              np.trace(self.scale_[k]))
-   566         1           17     17.0      0.0                  self.bound_prec_ *= 0.5
+   557        11          194     17.6      0.0                                  for i in xrange(self.n_components)]
+   558         1           44     44.0      0.0                  self.det_scale_ = np.ones(self.n_components)
+   559         1            9      9.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
+   560        11           55      5.0      0.0                  for k in xrange(self.n_components):
+   561        10           42      4.2      0.0                      self.bound_prec_[k] = wishart_log_det(
+   562        10           57      5.7      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
+   563        10         1044    104.4      0.1                          n_features)
+   564        10           60      6.0      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
+   565        10          322     32.2      0.0                                              np.trace(self.scale_[k]))
+   566         1           16     16.0      0.0                  self.bound_prec_ *= 0.5
    567
-   568         1            5      5.0      0.0          logprob = []
+   568         1            4      4.0      0.0          logprob = []
    569                                                   # reset self.converged_ to False
-   570         1            5      5.0      0.0          self.converged_ = False
+   570         1            6      6.0      0.0          self.converged_ = False
    571        11           68      6.2      0.0          for i in xrange(self.n_iter):
    572                                                       # Expectation step
-   573        10       310483  31048.3     17.2              curr_logprob, z = self.eval(X)
-   574        10        60727   6072.7      3.4              logprob.append(curr_logprob.sum() + self._logprior(z))
+   573        10       318623  31862.3     17.7              curr_logprob, z = self.eval(X)
+   574        10        73316   7331.6      4.1              logprob.append(curr_logprob.sum() + self._logprior(z))
    575
    576                                                       # Check for convergence.
-   577        10          134     13.4      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
+   577        10          135     13.5      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
    578                                                           self.converged_ = True
    579                                                           break
    580
    581                                                       # Maximization step
-   582        10      1145772 114577.2     63.4              self._do_mstep(X, z, self.params)
+   582        10      1191523 119152.3     66.1              self._do_mstep(X, z, self.params)
    583
-   584         1            5      5.0      0.0          return self
+   584         1            4      4.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: predict at line 353
+Function: predict at line 328
 Total time: 0 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   353                                               def predict(self, X):
-   354                                                   """Predict label for data.
-   355
-   356                                                   Parameters
-   357                                                   ----------
-   358                                                   X : array-like, shape = [n_samples, n_features]
-   359
-   360                                                   Returns
-   361                                                   -------
-   362                                                   C : array, shape = (n_samples,)
-   363                                                   """
-   364                                                   logprob, responsibilities = self.eval(X)
-   365                                                   return responsibilities.argmax(axis=1)</pre>
+   328                                               def predict(self, X):
+   329                                                   """Predict label for data.
+   330
+   331                                                   Parameters
+   332                                                   ----------
+   333                                                   X : array-like, shape = [n_samples, n_features]
+   334
+   335                                                   Returns
+   336                                                   -------
+   337                                                   C : array, shape = (n_samples,)
+   338                                                   """
+   339                                                   logprob, responsibilities = self.eval(X)
+   340                                                   return responsibilities.argmax(axis=1)</pre>
 </div>
 </div>
 <p><strong>Benchmark statement</strong></p>
@@ -489,34 +489,34 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         615 function calls in 0.010 seconds
+<div class="highlight-python"><pre>         615 function calls in 0.026 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.010    0.010 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.010    0.010 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.010    0.010 /tmp/vb_sklearn/sklearn/mixture/gmm.py:353(predict)
-     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:224(eval)
-     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
-    10    0.000    0.000    0.009    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
-    10    0.000    0.000    0.008    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
-    10    0.007    0.001    0.007    0.001 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
-    30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
-    30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
-    30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
+     1    0.000    0.000    0.026    0.026 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.026    0.026 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.026    0.026 /tmp/vb_sklearn/sklearn/mixture/gmm.py:328(predict)
+     1    0.000    0.000    0.026    0.026 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:224(eval)
+     1    0.000    0.000    0.025    0.025 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
+    10    0.000    0.000    0.025    0.002 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
+    10    0.000    0.000    0.024    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
+    10    0.023    0.002    0.023    0.002 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
+    30    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
+    30    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
+    30    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
     60    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
-    13    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
+    13    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
     31    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     90    0.000    0.000    0.000    0.000 {issubclass}
-    31    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
     50    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
+    31    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
     14    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-   103    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
+   103    0.000    0.000    0.000    0.000 {isinstance}
      3    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
     12    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
@@ -524,16 +524,16 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
      1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
-    10    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:397(swapaxes)
+    10    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-    20    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
     10    0.000    0.000    0.000    0.000 {callable}
-     1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {range}
+    20    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'swapaxes' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -541,7 +541,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/mixture/dpgmm.py
 Function: fit at line 472
-Total time: 1.80659 s
+Total time: 1.80255 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -564,8 +564,8 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    488                                                       List of n_features-dimensional data points.  Each row
    489                                                       corresponds to a single data point.
    490                                                   """
-   491         1            9      9.0      0.0          self.random_state = check_random_state(self.random_state)
-   492         1            3      3.0      0.0          if kwargs:
+   491         1           24     24.0      0.0          self.random_state = check_random_state(self.random_state)
+   492         1            5      5.0      0.0          if kwargs:
    493                                                       warnings.warn("Setting parameters in the 'fit' method is"
    494                                                               "deprecated. Set it on initialization instead.",
    495                                                                DeprecationWarning)
@@ -579,36 +579,36 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    503                                                           self.init_params = kwargs['init_params']
    504
    505                                                   ## initialization step
-   506         1            8      8.0      0.0          X = np.asarray(X)
-   507         1            3      3.0      0.0          if X.ndim == 1:
+   506         1           12     12.0      0.0          X = np.asarray(X)
+   507         1            5      5.0      0.0          if X.ndim == 1:
    508                                                       X = X[:, np.newaxis]
    509
-   510         1            3      3.0      0.0          n_features = X.shape[1]
-   511         1           15     15.0      0.0          z = np.ones((X.shape[0], self.n_components))
-   512         1           46     46.0      0.0          z /= self.n_components
+   510         1            5      5.0      0.0          n_features = X.shape[1]
+   511         1           22     22.0      0.0          z = np.ones((X.shape[0], self.n_components))
+   512         1           72     72.0      0.0          z /= self.n_components
    513
-   514         1           14     14.0      0.0          self._initial_bound = - 0.5 * n_features * np.log(2 * np.pi)
-   515         1            9      9.0      0.0          self._initial_bound -= np.log(2 * np.pi * np.e)
+   514         1           22     22.0      0.0          self._initial_bound = - 0.5 * n_features * np.log(2 * np.pi)
+   515         1           14     14.0      0.0          self._initial_bound -= np.log(2 * np.pi * np.e)
    516
-   517         1            4      4.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
-   518         1           20     20.0      0.0              self._initialize_gamma()
+   517         1            5      5.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
+   518         1           32     32.0      0.0              self._initialize_gamma()
    519
-   520         1            3      3.0      0.0          if 'm' in self.init_params or not hasattr(self, 'means_'):
-   521         1            2      2.0      0.0              self.means_ = cluster.KMeans(
-   522         1            2      2.0      0.0                  n_clusters=self.n_components,
-   523         1       286581 286581.0     15.9                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
+   520         1            6      6.0      0.0          if 'm' in self.init_params or not hasattr(self, 'means_'):
+   521         1            4      4.0      0.0              self.means_ = cluster.KMeans(
+   522         1            4      4.0      0.0                  n_clusters=self.n_components,
+   523         1       216210 216210.0     12.0                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
    524
    525         1            6      6.0      0.0          if 'w' in self.init_params or not hasattr(self, 'weights_'):
-   526         1          119    119.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
+   526         1           90     90.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
    527
    528         1            5      5.0      0.0          if 'c' in self.init_params or not hasattr(self, 'precs_'):
-   529         1            5      5.0      0.0              if self.covariance_type == 'spherical':
+   529         1            4      4.0      0.0              if self.covariance_type == 'spherical':
    530                                                           self.dof_ = np.ones(self.n_components)
    531                                                           self.scale_ = np.ones(self.n_components)
    532                                                           self.precs_ = np.ones((self.n_components, n_features))
    533                                                           self.bound_prec_ = 0.5 * n_features * (
    534                                                               digamma(self.dof_) - np.log(self.scale_))
-   535         1            5      5.0      0.0              elif self.covariance_type == 'diag':
+   535         1            4      4.0      0.0              elif self.covariance_type == 'diag':
    536                                                           self.dof_ = 1 + 0.5 * n_features
    537                                                           self.dof_ *= np.ones((self.n_components, n_features))
    538                                                           self.scale_ = np.ones((self.n_components, n_features))
@@ -624,60 +624,60 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    548                                                           self.bound_prec_ = 0.5 * wishart_log_det(
    549                                                               self.dof_, self.scale_, self.det_scale_, n_features)
    550                                                           self.bound_prec_ -= 0.5 * self.dof_ * np.trace(self.scale_)
-   551         1            5      5.0      0.0              elif self.covariance_type == 'full':
+   551         1            4      4.0      0.0              elif self.covariance_type == 'full':
    552         1            7      7.0      0.0                  self.dof_ = (1 + self.n_components + X.shape[0])
-   553         1           44     44.0      0.0                  self.dof_ *= np.ones(self.n_components)
+   553         1           38     38.0      0.0                  self.dof_ *= np.ones(self.n_components)
    554         1            5      5.0      0.0                  self.scale_ = [2 * np.identity(n_features)
-   555        11          454     41.3      0.0                             for i in xrange(self.n_components)]
+   555        11          416     37.8      0.0                             for i in xrange(self.n_components)]
    556         1            5      5.0      0.0                  self.precs_ = [np.identity(n_features)
-   557        11          210     19.1      0.0                                  for i in xrange(self.n_components)]
-   558         1           20     20.0      0.0                  self.det_scale_ = np.ones(self.n_components)
-   559         1           10     10.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
-   560        11           61      5.5      0.0                  for k in xrange(self.n_components):
-   561        10           46      4.6      0.0                      self.bound_prec_[k] = wishart_log_det(
-   562        10           63      6.3      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
-   563        10         1169    116.9      0.1                          n_features)
-   564        10           68      6.8      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
-   565        10          344     34.4      0.0                                              np.trace(self.scale_[k]))
-   566         1           17     17.0      0.0                  self.bound_prec_ *= 0.5
+   557        11          194     17.6      0.0                                  for i in xrange(self.n_components)]
+   558         1           44     44.0      0.0                  self.det_scale_ = np.ones(self.n_components)
+   559         1            9      9.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
+   560        11           55      5.0      0.0                  for k in xrange(self.n_components):
+   561        10           42      4.2      0.0                      self.bound_prec_[k] = wishart_log_det(
+   562        10           57      5.7      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
+   563        10         1044    104.4      0.1                          n_features)
+   564        10           60      6.0      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
+   565        10          322     32.2      0.0                                              np.trace(self.scale_[k]))
+   566         1           16     16.0      0.0                  self.bound_prec_ *= 0.5
    567
-   568         1            5      5.0      0.0          logprob = []
+   568         1            4      4.0      0.0          logprob = []
    569                                                   # reset self.converged_ to False
-   570         1            5      5.0      0.0          self.converged_ = False
+   570         1            6      6.0      0.0          self.converged_ = False
    571        11           68      6.2      0.0          for i in xrange(self.n_iter):
    572                                                       # Expectation step
-   573        10       310483  31048.3     17.2              curr_logprob, z = self.eval(X)
-   574        10        60727   6072.7      3.4              logprob.append(curr_logprob.sum() + self._logprior(z))
+   573        10       318623  31862.3     17.7              curr_logprob, z = self.eval(X)
+   574        10        73316   7331.6      4.1              logprob.append(curr_logprob.sum() + self._logprior(z))
    575
    576                                                       # Check for convergence.
-   577        10          134     13.4      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
+   577        10          135     13.5      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
    578                                                           self.converged_ = True
    579                                                           break
    580
    581                                                       # Maximization step
-   582        10      1145772 114577.2     63.4              self._do_mstep(X, z, self.params)
+   582        10      1191523 119152.3     66.1              self._do_mstep(X, z, self.params)
    583
-   584         1            5      5.0      0.0          return self
+   584         1            4      4.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: predict at line 353
-Total time: 0.018857 s
+Function: predict at line 328
+Total time: 0.019062 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   353                                               def predict(self, X):
-   354                                                   """Predict label for data.
-   355
-   356                                                   Parameters
-   357                                                   ----------
-   358                                                   X : array-like, shape = [n_samples, n_features]
-   359
-   360                                                   Returns
-   361                                                   -------
-   362                                                   C : array, shape = (n_samples,)
-   363                                                   """
-   364         1        18818  18818.0     99.8          logprob, responsibilities = self.eval(X)
-   365         1           39     39.0      0.2          return responsibilities.argmax(axis=1)</pre>
+   328                                               def predict(self, X):
+   329                                                   """Predict label for data.
+   330
+   331                                                   Parameters
+   332                                                   ----------
+   333                                                   X : array-like, shape = [n_samples, n_features]
+   334
+   335                                                   Returns
+   336                                                   -------
+   337                                                   C : array, shape = (n_samples,)
+   338                                                   """
+   339         1        19021  19021.0     99.8          logprob, responsibilities = self.eval(X)
+   340         1           41     41.0      0.2          return responsibilities.argmax(axis=1)</pre>
 </div>
 </div>
 </div>
@@ -688,7 +688,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GMM</span>
 <span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
 
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;covariance_type&#39;</span><span class="p">:</span> <span class="s">&#39;full&#39;</span><span class="p">}</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;covariance_type&#39;</span><span class="p">:</span> <span class="s">&#39;full&#39;</span><span class="p">}</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">GMM</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
@@ -705,98 +705,98 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         19571 function calls in 0.304 seconds
+<div class="highlight-python"><pre>         19398 function calls in 0.313 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.304    0.304 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.304    0.304 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.304    0.304 /tmp/vb_sklearn/sklearn/mixture/gmm.py:434(fit)
-     1    0.000    0.000    0.172    0.172 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
-     1    0.000    0.000    0.171    0.171 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
-    10    0.001    0.000    0.170    0.017 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
-    10    0.000    0.000    0.107    0.011 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
-    10    0.013    0.001    0.106    0.011 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
-   121    0.014    0.000    0.105    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
-     4    0.001    0.000    0.092    0.023 /tmp/vb_sklearn/sklearn/mixture/gmm.py:275(eval)
-     4    0.000    0.000    0.089    0.022 /tmp/vb_sklearn/sklearn/mixture/gmm.py:23(log_multivariate_normal_density)
-     4    0.011    0.003    0.089    0.022 /tmp/vb_sklearn/sklearn/mixture/gmm.py:635(_log_multivariate_normal_density_full)
-   185    0.062    0.000    0.062    0.000 {numpy.core._dotblas.dot}
-    40    0.030    0.001    0.061    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:72(solve_triangular)
-     3    0.000    0.000    0.039    0.013 /tmp/vb_sklearn/sklearn/mixture/gmm.py:536(_do_mstep)
-   121    0.001    0.000    0.039    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
-     3    0.008    0.003    0.038    0.013 /tmp/vb_sklearn/sklearn/mixture/gmm.py:738(_covar_mstep_full)
-   121    0.002    0.000    0.037    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:69(safe_sparse_dot)
-    21    0.025    0.001    0.034    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
-   120    0.025    0.000    0.033    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
-   364    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
-    40    0.000    0.000    0.028    0.001 {map}
-    21    0.000    0.000    0.027    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
-    21    0.006    0.000    0.026    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
-  1264    0.026    0.000    0.026    0.000 {method 'sum' of 'numpy.ndarray' objects}
-   606    0.007    0.000    0.023    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
-  1491    0.003    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-  1491    0.012    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-   242    0.001    0.000    0.015    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     1    0.000    0.000    0.313    0.313 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.313    0.313 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.312    0.312 /tmp/vb_sklearn/sklearn/mixture/gmm.py:399(fit)
+     1    0.000    0.000    0.177    0.177 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
+     1    0.000    0.000    0.177    0.177 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
+    10    0.001    0.000    0.175    0.018 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
+   120    0.014    0.000    0.111    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+    10    0.000    0.000    0.109    0.011 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+    10    0.013    0.001    0.109    0.011 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
+     4    0.001    0.000    0.094    0.023 /tmp/vb_sklearn/sklearn/mixture/gmm.py:275(eval)
+     4    0.000    0.000    0.091    0.023 /tmp/vb_sklearn/sklearn/mixture/gmm.py:23(log_multivariate_normal_density)
+     4    0.011    0.003    0.091    0.023 /tmp/vb_sklearn/sklearn/mixture/gmm.py:582(_log_multivariate_normal_density_full)
+   184    0.068    0.000    0.068    0.000 {numpy.core._dotblas.dot}
+    40    0.032    0.001    0.063    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:72(solve_triangular)
+   120    0.002    0.000    0.043    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:69(safe_sparse_dot)
+     3    0.000    0.000    0.040    0.013 /tmp/vb_sklearn/sklearn/mixture/gmm.py:483(_do_mstep)
+   120    0.001    0.000    0.039    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+     3    0.008    0.003    0.039    0.013 /tmp/vb_sklearn/sklearn/mixture/gmm.py:685(_covar_mstep_full)
+   120    0.025    0.000    0.034    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+    20    0.025    0.001    0.033    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
+   361    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
+    20    0.000    0.000    0.031    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+    20    0.006    0.000    0.030    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+    40    0.000    0.000    0.029    0.001 {map}
+  1256    0.026    0.000    0.026    0.000 {method 'sum' of 'numpy.ndarray' objects}
+   601    0.007    0.000    0.024    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+  1478    0.003    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+  1478    0.012    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   240    0.001    0.000    0.016    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
     40    0.000    0.000    0.013    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_cholesky.py:30(cholesky)
     40    0.006    0.000    0.013    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_cholesky.py:13(_cholesky)
-   364    0.002    0.000    0.012    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-   450    0.009    0.000    0.009    0.000 {method 'any' of 'numpy.ndarray' objects}
-   226    0.001    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-   213    0.006    0.000    0.006    0.000 {method 'mean' of 'numpy.ndarray' objects}
-   364    0.003    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
-  3142    0.004    0.000    0.004    0.000 {method 'split' of 'str' objects}
+   361    0.002    0.000    0.012    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
+   440    0.010    0.000    0.010    0.000 {method 'any' of 'numpy.ndarray' objects}
+   224    0.001    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   203    0.006    0.000    0.006    0.000 {method 'mean' of 'numpy.ndarray' objects}
+   361    0.003    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+  3116    0.004    0.000    0.004    0.000 {method 'split' of 'str' objects}
     80    0.001    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
-   772    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-  1139    0.003    0.000    0.003    0.000 {numpy.core.multiarray.array}
-  1781    0.003    0.000    0.003    0.000 {isinstance}
+   767    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+  1131    0.003    0.000    0.003    0.000 {numpy.core.multiarray.array}
+  1766    0.003    0.000    0.003    0.000 {isinstance}
     80    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-   210    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
-   364    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     4    0.001    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
+   200    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+   361    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     4    0.001    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
      1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:1888(cov)
     90    0.001    0.000    0.001    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
     40    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:902(diagonal)
-    90    0.001    0.000    0.001    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
     31    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/twodim_base.py:169(eye)
+    90    0.001    0.000    0.001    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
     90    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
-   102    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
    120    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
-     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
     30    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:2036(seterr)
-  1500    0.000    0.000    0.000    0.000 {len}
+    98    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
+  1489    0.001    0.000    0.001    0.000 {len}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
      1    0.000    0.000    0.000    0.000 {method 'var' of 'numpy.ndarray' objects}
+   565    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
     90    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
     40    0.000    0.000    0.000    0.000 {method 'diagonal' of 'numpy.ndarray' objects}
-   568    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-    67    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
-   138    0.000    0.000    0.000    0.000 {range}
-    21    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+    64    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+   136    0.000    0.000    0.000    0.000 {range}
     41    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
-    32    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
-   120    0.000    0.000    0.000    0.000 {getattr}
+    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:766(tile)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:710(_check_fit_data)
    240    0.000    0.000    0.000    0.000 {issubclass}
-    63    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+    60    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:766(tile)
+   120    0.000    0.000    0.000    0.000 {getattr}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/gmm.py:651(distribute_covar_matrix_to_match_covariance_type)
     30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:2132(geterr)
+    32    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
+     2    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
     80    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
     80    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/gmm.py:704(distribute_covar_matrix_to_match_covariance_type)
-    80    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
-     2    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
+    80    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
     30    0.000    0.000    0.000    0.000 {numpy.core.umath.seterrobj}
     60    0.000    0.000    0.000    0.000 {numpy.core.umath.geterrobj}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/ufunclike.py:113(isneginf)
-    40    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:690(__init__)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+    40    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      6    0.000    0.000    0.000    0.000 {hasattr}
     10    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
      4    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
@@ -806,139 +806,121 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      4    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'squeeze' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {abs}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-     1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'conj' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: predict at line 353
+Function: predict at line 328
 Total time: 0 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   353                                               def predict(self, X):
-   354                                                   """Predict label for data.
-   355
-   356                                                   Parameters
-   357                                                   ----------
-   358                                                   X : array-like, shape = [n_samples, n_features]
-   359
-   360                                                   Returns
-   361                                                   -------
-   362                                                   C : array, shape = (n_samples,)
-   363                                                   """
-   364                                                   logprob, responsibilities = self.eval(X)
-   365                                                   return responsibilities.argmax(axis=1)
+   328                                               def predict(self, X):
+   329                                                   """Predict label for data.
+   330
+   331                                                   Parameters
+   332                                                   ----------
+   333                                                   X : array-like, shape = [n_samples, n_features]
+   334
+   335                                                   Returns
+   336                                                   -------
+   337                                                   C : array, shape = (n_samples,)
+   338                                                   """
+   339                                                   logprob, responsibilities = self.eval(X)
+   340                                                   return responsibilities.argmax(axis=1)
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: fit at line 434
-Total time: 0.322511 s
+Function: fit at line 399
+Total time: 0.319428 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   434                                               def fit(self, X, **kwargs):
-   435                                                   """Estimate model parameters with the expectation-maximization
-   436                                                   algorithm.
-   437
-   438                                                   A initialization step is performed before entering the em
-   439                                                   algorithm. If you want to avoid this step, set the keyword
-   440                                                   argument init_params to the empty string '' when creating the
-   441                                                   GMM object. Likewise, if you would like just to do an
-   442                                                   initialization, set n_iter=0.
-   443
-   444                                                   Parameters
-   445                                                   ----------
-   446                                                   X : array_like, shape (n, n_features)
-   447                                                       List of n_features-dimensional data points.  Each row
-   448                                                       corresponds to a single data point.
-   449                                                   """
-   450                                                   ## initialization step
-   451         1           16     16.0      0.0          X = np.asarray(X, dtype=np.float)
-   452         1            6      6.0      0.0          if X.ndim == 1:
-   453                                                       X = X[:, np.newaxis]
-   454         1            6      6.0      0.0          if X.shape[0] &lt; self.n_components:
-   455                                                       raise ValueError(
-   456                                                           'GMM estimation with %s components, but got only %s samples' %
-   457                                                           (self.n_components, X.shape[0]))
-   458         1            4      4.0      0.0          if kwargs:
-   459                                                       warnings.warn("Setting parameters in the 'fit' method is"
-   460                                                                     "deprecated and will be removed in 0.13. Set it on "
-   461                                                                     "initialization instead.", DeprecationWarning,
-   462                                                                     stacklevel=2)
-   463                                                       # initialisations for in case the user still adds parameters to fit
-   464                                                       # so things don't break
-   465                                                       if 'n_iter' in kwargs:
-   466                                                           self.n_iter = kwargs['n_iter']
-   467                                                       if 'n_init' in kwargs:
-   468                                                           if kwargs['n_init'] &lt; 1:
-   469                                                               raise ValueError('GMM estimation requires n_init &gt; 0.')
-   470                                                           else:
-   471                                                               self.n_init = kwargs['n_init']
-   472                                                       if 'params' in kwargs:
-   473                                                           self.params = kwargs['params']
-   474                                                       if 'init_params' in kwargs:
-   475                                                           self.init_params = kwargs['init_params']
-   476
-   477         1            5      5.0      0.0          max_log_prob = -np.infty
-   478
-   479         2           13      6.5      0.0          for _ in range(self.n_init):
-   480         1            5      5.0      0.0              if 'm' in self.init_params or not hasattr(self, 'means_'):
-   481         1            5      5.0      0.0                  self.means_ = cluster.KMeans(
-   482         1       184623 184623.0     57.2                      n_clusters=self.n_components).fit(X).cluster_centers_
-   483
-   484         1            6      6.0      0.0              if 'w' in self.init_params or not hasattr(self, 'weights_'):
-   485         1            7      7.0      0.0                  self.weights_ = np.tile(1.0 / self.n_components,
-   486         1           88     88.0      0.0                                          self.n_components)
-   487
-   488         1            5      5.0      0.0              if 'c' in self.init_params or not hasattr(self, 'covars_'):
-   489         1         1291   1291.0      0.4                  cv = np.cov(X.T) + self.min_covar * np.eye(X.shape[1])
-   490         1            6      6.0      0.0                  if not cv.shape:
-   491                                                               cv.shape = (1, 1)
-   492                                                           self.covars_ = \
-   493         1            4      4.0      0.0                      distribute_covar_matrix_to_match_covariance_type(
-   494         1          117    117.0      0.0                      cv, self.covariance_type, self.n_components)
-   495
-   496                                                       # EM algorithms
-   497         1            5      5.0      0.0              log_likelihood = []
-   498                                                       # reset self.converged_ to False
-   499         1            5      5.0      0.0              self.converged_ = False
-   500         4           24      6.0      0.0              for i in xrange(self.n_iter):
-   501                                                           # Expectation step
-   502         4        96020  24005.0     29.8                  curr_log_likelihood, responsibilities = self.eval(X)
-   503         4           75     18.8      0.0                  log_likelihood.append(curr_log_likelihood.sum())
-   504
-   505                                                           # Check for convergence.
-   506         4           31      7.8      0.0                  if i &gt; 0 and abs(log_likelihood[-1] - log_likelihood[-2]) &lt; \
-   507         3           31     10.3      0.0                          self.thresh:
-   508         1            5      5.0      0.0                      self.converged_ = True
-   509         1            5      5.0      0.0                      break
-   510
-   511                                                           # Maximization step
-   512         3           15      5.0      0.0                  self._do_mstep(X, responsibilities, self.params,
-   513         3        39966  13322.0     12.4                          self.min_covar)
-   514
-   515                                                       # if the results are better, keep it
-   516         1            5      5.0      0.0              if self.n_iter:
-   517         1            7      7.0      0.0                  if log_likelihood[-1] &gt; max_log_prob:
-   518         1            4      4.0      0.0                      max_log_prob = log_likelihood[-1]
-   519         1            5      5.0      0.0                      best_params = {'weights': self.weights_,
-   520         1            4      4.0      0.0                                     'means': self.means_,
-   521         1            5      5.0      0.0                                     'covars': self.covars_}
-   522                                                   # check the existence of an init param that was not subject to
-   523                                                   # likelihood computation issue.
-   524         1           68     68.0      0.0          if np.isneginf(max_log_prob) and self.n_iter:
-   525                                                       raise RuntimeError(
-   526                                                           "EM algorithm was never able to compute a valid likelihood " +
-   527                                                           "given initial parameters. Try different init parameters " +
-   528                                                           "(or increasing n_init) or check for degenerate data.")
-   529                                                   # self.n_iter == 0 occurs when using GMM within HMM
-   530         1            5      5.0      0.0          if self.n_iter:
-   531         1            5      5.0      0.0              self.covars_ = best_params['covars']
-   532         1            5      5.0      0.0              self.means_ = best_params['means']
-   533         1            5      5.0      0.0              self.weights_ = best_params['weights']
-   534         1            4      4.0      0.0          return self</pre>
+   399                                               def fit(self, X):
+   400                                                   """Estimate model parameters with the expectation-maximization
+   401                                                   algorithm.
+   402
+   403                                                   A initialization step is performed before entering the em
+   404                                                   algorithm. If you want to avoid this step, set the keyword
+   405                                                   argument init_params to the empty string '' when creating the
+   406                                                   GMM object. Likewise, if you would like just to do an
+   407                                                   initialization, set n_iter=0.
+   408
+   409                                                   Parameters
+   410                                                   ----------
+   411                                                   X : array_like, shape (n, n_features)
+   412                                                       List of n_features-dimensional data points.  Each row
+   413                                                       corresponds to a single data point.
+   414                                                   """
+   415                                                   ## initialization step
+   416         1           16     16.0      0.0          X = np.asarray(X, dtype=np.float)
+   417         1            6      6.0      0.0          if X.ndim == 1:
+   418                                                       X = X[:, np.newaxis]
+   419         1            5      5.0      0.0          if X.shape[0] &lt; self.n_components:
+   420                                                       raise ValueError(
+   421                                                           'GMM estimation with %s components, but got only %s samples' %
+   422                                                           (self.n_components, X.shape[0]))
+   423
+   424         1            5      5.0      0.0          max_log_prob = -np.infty
+   425
+   426         2            9      4.5      0.0          for _ in range(self.n_init):
+   427         1            5      5.0      0.0              if 'm' in self.init_params or not hasattr(self, 'means_'):
+   428         1           15     15.0      0.0                  self.means_ = cluster.KMeans(
+   429         1       186125 186125.0     58.3                      n_clusters=self.n_components).fit(X).cluster_centers_
+   430
+   431         1            6      6.0      0.0              if 'w' in self.init_params or not hasattr(self, 'weights_'):
+   432         1            6      6.0      0.0                  self.weights_ = np.tile(1.0 / self.n_components,
+   433         1           83     83.0      0.0                                          self.n_components)
+   434
+   435         1            4      4.0      0.0              if 'c' in self.init_params or not hasattr(self, 'covars_'):
+   436         1         1212   1212.0      0.4                  cv = np.cov(X.T) + self.min_covar * np.eye(X.shape[1])
+   437         1            6      6.0      0.0                  if not cv.shape:
+   438                                                               cv.shape = (1, 1)
+   439                                                           self.covars_ = \
+   440         1            4      4.0      0.0                      distribute_covar_matrix_to_match_covariance_type(
+   441         1          115    115.0      0.0                      cv, self.covariance_type, self.n_components)
+   442
+   443                                                       # EM algorithms
+   444         1            5      5.0      0.0              log_likelihood = []
+   445                                                       # reset self.converged_ to False
+   446         1            5      5.0      0.0              self.converged_ = False
+   447         4           20      5.0      0.0              for i in xrange(self.n_iter):
+   448                                                           # Expectation step
+   449         4        91280  22820.0     28.6                  curr_log_likelihood, responsibilities = self.eval(X)
+   450         4           65     16.2      0.0                  log_likelihood.append(curr_log_likelihood.sum())
+   451
+   452                                                           # Check for convergence.
+   453         4           29      7.2      0.0                  if i &gt; 0 and abs(log_likelihood[-1] - log_likelihood[-2]) &lt; \
+   454         3           24      8.0      0.0                          self.thresh:
+   455         1            2      2.0      0.0                      self.converged_ = True
+   456         1            2      2.0      0.0                      break
+   457
+   458                                                           # Maximization step
+   459         3           16      5.3      0.0                  self._do_mstep(X, responsibilities, self.params,
+   460         3        40275  13425.0     12.6                          self.min_covar)
+   461
+   462                                                       # if the results are better, keep it
+   463         1            2      2.0      0.0              if self.n_iter:
+   464         1            3      3.0      0.0                  if log_likelihood[-1] &gt; max_log_prob:
+   465         1            3      3.0      0.0                      max_log_prob = log_likelihood[-1]
+   466         1            2      2.0      0.0                      best_params = {'weights': self.weights_,
+   467         1            3      3.0      0.0                                     'means': self.means_,
+   468         1            2      2.0      0.0                                     'covars': self.covars_}
+   469                                                   # check the existence of an init param that was not subject to
+   470                                                   # likelihood computation issue.
+   471         1           55     55.0      0.0          if np.isneginf(max_log_prob) and self.n_iter:
+   472                                                       raise RuntimeError(
+   473                                                           "EM algorithm was never able to compute a valid likelihood " +
+   474                                                           "given initial parameters. Try different init parameters " +
+   475                                                           "(or increasing n_init) or check for degenerate data.")
+   476                                                   # self.n_iter == 0 occurs when using GMM within HMM
+   477         1            3      3.0      0.0          if self.n_iter:
+   478         1            3      3.0      0.0              self.covars_ = best_params['covars']
+   479         1            2      2.0      0.0              self.means_ = best_params['means']
+   480         1            3      3.0      0.0              self.weights_ = best_params['weights']
+   481         1            2      2.0      0.0          return self</pre>
 </div>
 </div>
 <p><strong>Benchmark statement</strong></p>
@@ -959,12 +941,12 @@ Ordered by: cumulative time
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.019    0.019 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.019    0.019 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.019    0.019 /tmp/vb_sklearn/sklearn/mixture/gmm.py:353(predict)
+     1    0.000    0.000    0.018    0.018 /tmp/vb_sklearn/sklearn/mixture/gmm.py:328(predict)
      1    0.000    0.000    0.018    0.018 /tmp/vb_sklearn/sklearn/mixture/gmm.py:275(eval)
      1    0.000    0.000    0.018    0.018 /tmp/vb_sklearn/sklearn/mixture/gmm.py:23(log_multivariate_normal_density)
-     1    0.002    0.002    0.018    0.018 /tmp/vb_sklearn/sklearn/mixture/gmm.py:635(_log_multivariate_normal_density_full)
+     1    0.002    0.002    0.018    0.018 /tmp/vb_sklearn/sklearn/mixture/gmm.py:582(_log_multivariate_normal_density_full)
     10    0.006    0.001    0.011    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:72(solve_triangular)
-    30    0.005    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+    30    0.005    0.000    0.007    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
     10    0.000    0.000    0.005    0.001 {map}
     10    0.000    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_cholesky.py:30(cholesky)
     10    0.002    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp_cholesky.py:13(_cholesky)
@@ -976,160 +958,142 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
     41    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:902(diagonal)
-    41    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
     30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+    41    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
     10    0.000    0.000    0.000    0.000 {method 'diagonal' of 'numpy.ndarray' objects}
+    40    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
     21    0.000    0.000    0.000    0.000 {isinstance}
     60    0.000    0.000    0.000    0.000 {issubclass}
-    40    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
     30    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
     21    0.000    0.000    0.000    0.000 {range}
-    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
     20    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
+    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
     50    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
     41    0.000    0.000    0.000    0.000 {len}
     20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
     10    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      1    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: predict at line 353
-Total time: 0.019389 s
+Function: predict at line 328
+Total time: 0.01111 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   353                                               def predict(self, X):
-   354                                                   """Predict label for data.
-   355
-   356                                                   Parameters
-   357                                                   ----------
-   358                                                   X : array-like, shape = [n_samples, n_features]
-   359
-   360                                                   Returns
-   361                                                   -------
-   362                                                   C : array, shape = (n_samples,)
-   363                                                   """
-   364         1        19360  19360.0     99.9          logprob, responsibilities = self.eval(X)
-   365         1           29     29.0      0.1          return responsibilities.argmax(axis=1)
+   328                                               def predict(self, X):
+   329                                                   """Predict label for data.
+   330
+   331                                                   Parameters
+   332                                                   ----------
+   333                                                   X : array-like, shape = [n_samples, n_features]
+   334
+   335                                                   Returns
+   336                                                   -------
+   337                                                   C : array, shape = (n_samples,)
+   338                                                   """
+   339         1        11094  11094.0     99.9          logprob, responsibilities = self.eval(X)
+   340         1           16     16.0      0.1          return responsibilities.argmax(axis=1)
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: fit at line 434
-Total time: 0.322511 s
+Function: fit at line 399
+Total time: 0.319428 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   434                                               def fit(self, X, **kwargs):
-   435                                                   """Estimate model parameters with the expectation-maximization
-   436                                                   algorithm.
-   437
-   438                                                   A initialization step is performed before entering the em
-   439                                                   algorithm. If you want to avoid this step, set the keyword
-   440                                                   argument init_params to the empty string '' when creating the
-   441                                                   GMM object. Likewise, if you would like just to do an
-   442                                                   initialization, set n_iter=0.
-   443
-   444                                                   Parameters
-   445                                                   ----------
-   446                                                   X : array_like, shape (n, n_features)
-   447                                                       List of n_features-dimensional data points.  Each row
-   448                                                       corresponds to a single data point.
-   449                                                   """
-   450                                                   ## initialization step
-   451         1           16     16.0      0.0          X = np.asarray(X, dtype=np.float)
-   452         1            6      6.0      0.0          if X.ndim == 1:
-   453                                                       X = X[:, np.newaxis]
-   454         1            6      6.0      0.0          if X.shape[0] &lt; self.n_components:
-   455                                                       raise ValueError(
-   456                                                           'GMM estimation with %s components, but got only %s samples' %
-   457                                                           (self.n_components, X.shape[0]))
-   458         1            4      4.0      0.0          if kwargs:
-   459                                                       warnings.warn("Setting parameters in the 'fit' method is"
-   460                                                                     "deprecated and will be removed in 0.13. Set it on "
-   461                                                                     "initialization instead.", DeprecationWarning,
-   462                                                                     stacklevel=2)
-   463                                                       # initialisations for in case the user still adds parameters to fit
-   464                                                       # so things don't break
-   465                                                       if 'n_iter' in kwargs:
-   466                                                           self.n_iter = kwargs['n_iter']
-   467                                                       if 'n_init' in kwargs:
-   468                                                           if kwargs['n_init'] &lt; 1:
-   469                                                               raise ValueError('GMM estimation requires n_init &gt; 0.')
-   470                                                           else:
-   471                                                               self.n_init = kwargs['n_init']
-   472                                                       if 'params' in kwargs:
-   473                                                           self.params = kwargs['params']
-   474                                                       if 'init_params' in kwargs:
-   475                                                           self.init_params = kwargs['init_params']
-   476
-   477         1            5      5.0      0.0          max_log_prob = -np.infty
-   478
-   479         2           13      6.5      0.0          for _ in range(self.n_init):
-   480         1            5      5.0      0.0              if 'm' in self.init_params or not hasattr(self, 'means_'):
-   481         1            5      5.0      0.0                  self.means_ = cluster.KMeans(
-   482         1       184623 184623.0     57.2                      n_clusters=self.n_components).fit(X).cluster_centers_
-   483
-   484         1            6      6.0      0.0              if 'w' in self.init_params or not hasattr(self, 'weights_'):
-   485         1            7      7.0      0.0                  self.weights_ = np.tile(1.0 / self.n_components,
-   486         1           88     88.0      0.0                                          self.n_components)
-   487
-   488         1            5      5.0      0.0              if 'c' in self.init_params or not hasattr(self, 'covars_'):
-   489         1         1291   1291.0      0.4                  cv = np.cov(X.T) + self.min_covar * np.eye(X.shape[1])
-   490         1            6      6.0      0.0                  if not cv.shape:
-   491                                                               cv.shape = (1, 1)
-   492                                                           self.covars_ = \
-   493         1            4      4.0      0.0                      distribute_covar_matrix_to_match_covariance_type(
-   494         1          117    117.0      0.0                      cv, self.covariance_type, self.n_components)
-   495
-   496                                                       # EM algorithms
-   497         1            5      5.0      0.0              log_likelihood = []
-   498                                                       # reset self.converged_ to False
-   499         1            5      5.0      0.0              self.converged_ = False
-   500         4           24      6.0      0.0              for i in xrange(self.n_iter):
-   501                                                           # Expectation step
-   502         4        96020  24005.0     29.8                  curr_log_likelihood, responsibilities = self.eval(X)
-   503         4           75     18.8      0.0                  log_likelihood.append(curr_log_likelihood.sum())
-   504
-   505                                                           # Check for convergence.
-   506         4           31      7.8      0.0                  if i &gt; 0 and abs(log_likelihood[-1] - log_likelihood[-2]) &lt; \
-   507         3           31     10.3      0.0                          self.thresh:
-   508         1            5      5.0      0.0                      self.converged_ = True
-   509         1            5      5.0      0.0                      break
-   510
-   511                                                           # Maximization step
-   512         3           15      5.0      0.0                  self._do_mstep(X, responsibilities, self.params,
-   513         3        39966  13322.0     12.4                          self.min_covar)
-   514
-   515                                                       # if the results are better, keep it
-   516         1            5      5.0      0.0              if self.n_iter:
-   517         1            7      7.0      0.0                  if log_likelihood[-1] &gt; max_log_prob:
-   518         1            4      4.0      0.0                      max_log_prob = log_likelihood[-1]
-   519         1            5      5.0      0.0                      best_params = {'weights': self.weights_,
-   520         1            4      4.0      0.0                                     'means': self.means_,
-   521         1            5      5.0      0.0                                     'covars': self.covars_}
-   522                                                   # check the existence of an init param that was not subject to
-   523                                                   # likelihood computation issue.
-   524         1           68     68.0      0.0          if np.isneginf(max_log_prob) and self.n_iter:
-   525                                                       raise RuntimeError(
-   526                                                           "EM algorithm was never able to compute a valid likelihood " +
-   527                                                           "given initial parameters. Try different init parameters " +
-   528                                                           "(or increasing n_init) or check for degenerate data.")
-   529                                                   # self.n_iter == 0 occurs when using GMM within HMM
-   530         1            5      5.0      0.0          if self.n_iter:
-   531         1            5      5.0      0.0              self.covars_ = best_params['covars']
-   532         1            5      5.0      0.0              self.means_ = best_params['means']
-   533         1            5      5.0      0.0              self.weights_ = best_params['weights']
-   534         1            4      4.0      0.0          return self</pre>
+   399                                               def fit(self, X):
+   400                                                   """Estimate model parameters with the expectation-maximization
+   401                                                   algorithm.
+   402
+   403                                                   A initialization step is performed before entering the em
+   404                                                   algorithm. If you want to avoid this step, set the keyword
+   405                                                   argument init_params to the empty string '' when creating the
+   406                                                   GMM object. Likewise, if you would like just to do an
+   407                                                   initialization, set n_iter=0.
+   408
+   409                                                   Parameters
+   410                                                   ----------
+   411                                                   X : array_like, shape (n, n_features)
+   412                                                       List of n_features-dimensional data points.  Each row
+   413                                                       corresponds to a single data point.
+   414                                                   """
+   415                                                   ## initialization step
+   416         1           16     16.0      0.0          X = np.asarray(X, dtype=np.float)
+   417         1            6      6.0      0.0          if X.ndim == 1:
+   418                                                       X = X[:, np.newaxis]
+   419         1            5      5.0      0.0          if X.shape[0] &lt; self.n_components:
+   420                                                       raise ValueError(
+   421                                                           'GMM estimation with %s components, but got only %s samples' %
+   422                                                           (self.n_components, X.shape[0]))
+   423
+   424         1            5      5.0      0.0          max_log_prob = -np.infty
+   425
+   426         2            9      4.5      0.0          for _ in range(self.n_init):
+   427         1            5      5.0      0.0              if 'm' in self.init_params or not hasattr(self, 'means_'):
+   428         1           15     15.0      0.0                  self.means_ = cluster.KMeans(
+   429         1       186125 186125.0     58.3                      n_clusters=self.n_components).fit(X).cluster_centers_
+   430
+   431         1            6      6.0      0.0              if 'w' in self.init_params or not hasattr(self, 'weights_'):
+   432         1            6      6.0      0.0                  self.weights_ = np.tile(1.0 / self.n_components,
+   433         1           83     83.0      0.0                                          self.n_components)
+   434
+   435         1            4      4.0      0.0              if 'c' in self.init_params or not hasattr(self, 'covars_'):
+   436         1         1212   1212.0      0.4                  cv = np.cov(X.T) + self.min_covar * np.eye(X.shape[1])
+   437         1            6      6.0      0.0                  if not cv.shape:
+   438                                                               cv.shape = (1, 1)
+   439                                                           self.covars_ = \
+   440         1            4      4.0      0.0                      distribute_covar_matrix_to_match_covariance_type(
+   441         1          115    115.0      0.0                      cv, self.covariance_type, self.n_components)
+   442
+   443                                                       # EM algorithms
+   444         1            5      5.0      0.0              log_likelihood = []
+   445                                                       # reset self.converged_ to False
+   446         1            5      5.0      0.0              self.converged_ = False
+   447         4           20      5.0      0.0              for i in xrange(self.n_iter):
+   448                                                           # Expectation step
+   449         4        91280  22820.0     28.6                  curr_log_likelihood, responsibilities = self.eval(X)
+   450         4           65     16.2      0.0                  log_likelihood.append(curr_log_likelihood.sum())
+   451
+   452                                                           # Check for convergence.
+   453         4           29      7.2      0.0                  if i &gt; 0 and abs(log_likelihood[-1] - log_likelihood[-2]) &lt; \
+   454         3           24      8.0      0.0                          self.thresh:
+   455         1            2      2.0      0.0                      self.converged_ = True
+   456         1            2      2.0      0.0                      break
+   457
+   458                                                           # Maximization step
+   459         3           16      5.3      0.0                  self._do_mstep(X, responsibilities, self.params,
+   460         3        40275  13425.0     12.6                          self.min_covar)
+   461
+   462                                                       # if the results are better, keep it
+   463         1            2      2.0      0.0              if self.n_iter:
+   464         1            3      3.0      0.0                  if log_likelihood[-1] &gt; max_log_prob:
+   465         1            3      3.0      0.0                      max_log_prob = log_likelihood[-1]
+   466         1            2      2.0      0.0                      best_params = {'weights': self.weights_,
+   467         1            3      3.0      0.0                                     'means': self.means_,
+   468         1            2      2.0      0.0                                     'covars': self.covars_}
+   469                                                   # check the existence of an init param that was not subject to
+   470                                                   # likelihood computation issue.
+   471         1           55     55.0      0.0          if np.isneginf(max_log_prob) and self.n_iter:
+   472                                                       raise RuntimeError(
+   473                                                           "EM algorithm was never able to compute a valid likelihood " +
+   474                                                           "given initial parameters. Try different init parameters " +
+   475                                                           "(or increasing n_init) or check for degenerate data.")
+   476                                                   # self.n_iter == 0 occurs when using GMM within HMM
+   477         1            3      3.0      0.0          if self.n_iter:
+   478         1            3      3.0      0.0              self.covars_ = best_params['covars']
+   479         1            2      2.0      0.0              self.means_ = best_params['means']
+   480         1            3      3.0      0.0              self.weights_ = best_params['weights']
+   481         1            2      2.0      0.0          return self</pre>
 </div>
 </div>
 </div>
@@ -1140,7 +1104,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <div><div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">VBGMM</span>
 <span class="kn">from</span> <span class="nn">deps</span> <span class="kn">import</span> <span class="n">load_data</span>
 
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;covariance_type&#39;</span><span class="p">:</span> <span class="s">&#39;full&#39;</span><span class="p">}</span>
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;random_state&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;covariance_type&#39;</span><span class="p">:</span> <span class="s">&#39;full&#39;</span><span class="p">}</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="s">&#39;blobs&#39;</span><span class="p">)</span>
 <span class="n">obj</span> <span class="o">=</span> <span class="n">VBGMM</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
@@ -1157,138 +1121,138 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         39139 function calls in 1.420 seconds
+<div class="highlight-python"><pre>         39313 function calls in 1.388 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    1.420    1.420 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    1.420    1.420 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.001    0.001    1.420    1.420 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:472(fit)
-    10    0.000    0.000    0.961    0.096 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:372(_do_mstep)
-    10    0.012    0.001    0.551    0.055 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:284(_update_means)
-   100    0.511    0.005    0.531    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
-    10    0.079    0.008    0.408    0.041 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:303(_update_precisions)
-    10    0.001    0.000    0.256    0.026 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:663(eval)
-    10    0.004    0.000    0.248    0.025 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
-   100    0.002    0.000    0.244    0.002 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
-   100    0.004    0.000    0.241    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
-   100    0.009    0.000    0.234    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
-   100    0.229    0.002    0.229    0.002 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
-   100    0.182    0.002    0.194    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
-     1    0.000    0.000    0.165    0.165 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
-     1    0.000    0.000    0.164    0.164 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
-    10    0.001    0.000    0.163    0.016 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
-   420    0.106    0.000    0.106    0.000 {numpy.core._dotblas.dot}
-    10    0.000    0.000    0.102    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
-    10    0.013    0.001    0.102    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
-   120    0.014    0.000    0.100    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
-   120    0.001    0.000    0.039    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
-   500    0.027    0.000    0.038    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
-    10    0.000    0.000    0.037    0.004 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:450(_logprior)
-   120    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:69(safe_sparse_dot)
-    20    0.024    0.001    0.033    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
-   361    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
-  2062    0.032    0.000    0.032    0.000 {method 'sum' of 'numpy.ndarray' objects}
-    10    0.000    0.000    0.031    0.003 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:414(_bound_precisions)
-   100    0.002    0.000    0.031    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:68(_bound_wishart)
-    20    0.000    0.000    0.027    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
-    20    0.006    0.000    0.026    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
-   601    0.007    0.000    0.023    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
-   100    0.012    0.000    0.023    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:336(det)
-  1478    0.003    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-   200    0.011    0.000    0.019    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:58(wishart_logz)
-  1478    0.011    0.000    0.017    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-   210    0.007    0.000    0.017    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:48(wishart_log_det)
-  1060    0.003    0.000    0.016    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-   240    0.001    0.000    0.015    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
+     1    0.000    0.000    1.388    1.388 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.388    1.388 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.001    0.001    1.388    1.388 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:472(fit)
+    10    0.000    0.000    0.922    0.092 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:372(_do_mstep)
+    10    0.025    0.003    0.550    0.055 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:284(_update_means)
+   100    0.495    0.005    0.516    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:365(lstsq)
+    10    0.025    0.002    0.370    0.037 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:303(_update_precisions)
+    10    0.001    0.000    0.254    0.025 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:663(eval)
+    10    0.003    0.000    0.246    0.025 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
+   100    0.002    0.000    0.242    0.002 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
+   100    0.004    0.000    0.239    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
+   100    0.226    0.002    0.226    0.002 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
+   100    0.010    0.000    0.193    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:302(pinvh)
+     1    0.000    0.000    0.170    0.170 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:738(fit)
+     1    0.000    0.000    0.170    0.170 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:151(k_means)
+    10    0.001    0.000    0.169    0.017 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:303(_kmeans_single)
+   421    0.161    0.000    0.161    0.000 {numpy.core._dotblas.dot}
+   100    0.136    0.001    0.149    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/decomp.py:196(eigh)
+    10    0.000    0.000    0.104    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:525(_init_centroids)
+    10    0.013    0.001    0.104    0.010 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:36(_k_init)
+   121    0.014    0.000    0.103    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:101(euclidean_distances)
+   500    0.029    0.000    0.041    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/function_base.py:526(asarray_chkfinite)
+   121    0.001    0.000    0.040    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:52(check_pairwise_arrays)
+    10    0.000    0.000    0.039    0.004 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:450(_logprior)
+    21    0.025    0.001    0.034    0.002 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:478(_centers)
+   364    0.002    0.000    0.034    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:95(atleast2d_or_csr)
+   121    0.002    0.000    0.034    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:69(safe_sparse_dot)
+    10    0.000    0.000    0.033    0.003 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:414(_bound_precisions)
+   100    0.002    0.000    0.033    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:68(_bound_wishart)
+  2070    0.033    0.000    0.033    0.000 {method 'sum' of 'numpy.ndarray' objects}
+    21    0.000    0.000    0.028    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:431(_labels_inertia)
+    21    0.006    0.000    0.027    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:414(_labels_inertia_precompute_dense)
+   100    0.013    0.000    0.026    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/basic.py:336(det)
+   606    0.007    0.000    0.024    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:10(assert_all_finite)
+  1491    0.003    0.000    0.021    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+   200    0.011    0.000    0.020    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:58(wishart_logz)
+  1491    0.012    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+   210    0.008    0.000    0.018    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:48(wishart_log_det)
+  1062    0.003    0.000    0.017    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+   242    0.001    0.000    0.016    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:23(safe_asarray)
    100    0.001    0.000    0.013    0.000 {map}
-   361    0.002    0.000    0.012    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
-  1200    0.010    0.000    0.010    0.000 {method 'any' of 'numpy.ndarray' objects}
-  1832    0.003    0.000    0.010    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-   200    0.002    0.000    0.008    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
-  2194    0.008    0.000    0.008    0.000 {numpy.core.multiarray.array}
-   270    0.005    0.000    0.007    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
+   364    0.002    0.000    0.013    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:64(array2d)
+  1210    0.011    0.000    0.011    0.000 {method 'any' of 'numpy.ndarray' objects}
+  1837    0.004    0.000    0.011    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+   200    0.003    0.000    0.008    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:60(get_lapack_funcs)
+  2202    0.008    0.000    0.008    0.000 {numpy.core.multiarray.array}
+   270    0.006    0.000    0.008    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
    240    0.005    0.000    0.007    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:32(gammaln)
-    10    0.002    0.000    0.006    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
-   202    0.006    0.000    0.006    0.000 {method 'mean' of 'numpy.ndarray' objects}
+    10    0.003    0.000    0.006    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
+   212    0.006    0.000    0.006    0.000 {method 'mean' of 'numpy.ndarray' objects}
    300    0.001    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
-   361    0.003    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+   364    0.003    0.000    0.006    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
    300    0.001    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
    300    0.001    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
    630    0.002    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/getlimits.py:91(__new__)
-  3614    0.004    0.000    0.004    0.000 {isinstance}
-  3356    0.004    0.000    0.004    0.000 {method 'split' of 'str' objects}
-   320    0.003    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
-   210    0.001    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+  3382    0.005    0.000    0.005    0.000 {method 'split' of 'str' objects}
+   320    0.003    0.000    0.005    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1830(identity)
+  3630    0.004    0.000    0.004    0.000 {isinstance}
    200    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:45(find_best_lapack_type)
-   600    0.002    0.000    0.003    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
-    10    0.002    0.000    0.003    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:714(_bound_proportions)
+   210    0.001    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:986(trace)
+   600    0.002    0.000    0.004    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
    210    0.003    0.000    0.003    0.000 {method 'trace' of 'numpy.ndarray' objects}
-    10    0.002    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
-   650    0.002    0.000    0.002    0.000 {method 'get' of 'dict' objects}
+    10    0.002    0.000    0.003    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:714(_bound_proportions)
+    10    0.002    0.000    0.003    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
+   650    0.003    0.000    0.003    0.000 {method 'get' of 'dict' objects}
+   210    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
    461    0.002    0.000    0.002    0.000 {numpy.core.multiarray.zeros}
-   200    0.000    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1508(any)
+   364    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
     10    0.000    0.000    0.002    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:723(_bound_concentration)
-   361    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
    100    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/flinalg.py:24(get_flinalg_funcs)
    120    0.002    0.000    0.002    0.000 {method 'max' of 'numpy.ndarray' objects}
-   410    0.002    0.000    0.002    0.000 {numpy.core.multiarray.arange}
   1600    0.002    0.000    0.002    0.000 {issubclass}
-   209    0.001    0.000    0.001    0.000 {abs}
+   410    0.002    0.000    0.002    0.000 {numpy.core.multiarray.arange}
+   209    0.002    0.000    0.002    0.000 {abs}
     10    0.001    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:707(_update_concentration)
    100    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1774(amax)
-    90    0.001    0.000    0.001    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
-   500    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
    300    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/lapack.py:23(cast_to_lapack_prefix)
+    90    0.001    0.000    0.001    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
    100    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:65(zeros_like)
+   500    0.001    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
    620    0.001    0.000    0.001    0.000 {getattr}
    212    0.001    0.000    0.001    0.000 {method 'reshape' of 'numpy.ndarray' objects}
     90    0.001    0.000    0.001    0.000 {method 'random_sample' of 'mtrand.RandomState' objects}
    100    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/type_check.py:235(iscomplexobj)
-  2224    0.001    0.000    0.001    0.000 {len}
-   164    0.001    0.000    0.001    0.000 {method 'fill' of 'numpy.ndarray' objects}
-    90    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+  2235    0.001    0.000    0.001    0.000 {len}
     10    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:407(_bound_means)
-   361    0.001    0.000    0.001    0.000 {range}
-  1081    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
-   104    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
-   100    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.generic' objects}
-     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
+   167    0.001    0.000    0.001    0.000 {method 'fill' of 'numpy.ndarray' objects}
+   363    0.001    0.000    0.001    0.000 {range}
+  1084    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
     10    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:24(sqnorm)
+   108    0.001    0.000    0.001    0.000 {numpy.core.multiarray.empty}
+    90    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:757(searchsorted)
+   100    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.generic' objects}
     10    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:14(norm)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:142(_tolerance)
+    25    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2470(var)
+    77    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'var' of 'numpy.ndarray' objects}
-    74    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
     90    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
-    24    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
    300    0.000    0.000    0.000    0.000 {method 'sort' of 'list' objects}
-   200    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
    100    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty_like}
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/blas.py:30(get_blas_funcs)
+   200    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:449(isfortran)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:710(_check_fit_data)
    400    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/misc.py:22(_datacopied)
     33    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:209(check_random_state)
-    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:404(_squared_norms)
-   100    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/flinalg.py:19(has_column_major_storage)
    200    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
+   100    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/linalg/flinalg.py:19(has_column_major_storage)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(as_float_array)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:766(tile)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:397(swapaxes)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:711(_initialize_gamma)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/cluster/k_means_.py:690(__init__)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2299(mean)
+    40    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:733(_monitor)
    100    0.000    0.000    0.000    0.000 {callable}
     10    0.000    0.000    0.000    0.000 {method 'swapaxes' of 'numpy.ndarray' objects}
-    40    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:733(_monitor)
     10    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
     10    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
     12    0.000    0.000    0.000    0.000 {max}
      2    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'repeat' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1296,7 +1260,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/mixture/dpgmm.py
 Function: fit at line 472
-Total time: 1.7782 s
+Total time: 1.7752 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1319,8 +1283,8 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    488                                                       List of n_features-dimensional data points.  Each row
    489                                                       corresponds to a single data point.
    490                                                   """
-   491         1            8      8.0      0.0          self.random_state = check_random_state(self.random_state)
-   492         1            2      2.0      0.0          if kwargs:
+   491         1           17     17.0      0.0          self.random_state = check_random_state(self.random_state)
+   492         1            3      3.0      0.0          if kwargs:
    493                                                       warnings.warn("Setting parameters in the 'fit' method is"
    494                                                               "deprecated. Set it on initialization instead.",
    495                                                                DeprecationWarning)
@@ -1335,35 +1299,35 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    504
    505                                                   ## initialization step
    506         1            8      8.0      0.0          X = np.asarray(X)
-   507         1            4      4.0      0.0          if X.ndim == 1:
+   507         1            3      3.0      0.0          if X.ndim == 1:
    508                                                       X = X[:, np.newaxis]
    509
-   510         1            4      4.0      0.0          n_features = X.shape[1]
+   510         1            3      3.0      0.0          n_features = X.shape[1]
    511         1           15     15.0      0.0          z = np.ones((X.shape[0], self.n_components))
    512         1           46     46.0      0.0          z /= self.n_components
    513
    514         1           14     14.0      0.0          self._initial_bound = - 0.5 * n_features * np.log(2 * np.pi)
    515         1            9      9.0      0.0          self._initial_bound -= np.log(2 * np.pi * np.e)
    516
-   517         1            3      3.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
-   518         1           20     20.0      0.0              self._initialize_gamma()
+   517         1            4      4.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
+   518         1           21     21.0      0.0              self._initialize_gamma()
    519
    520         1            3      3.0      0.0          if 'm' in self.init_params or not hasattr(self, 'means_'):
    521         1            3      3.0      0.0              self.means_ = cluster.KMeans(
-   522         1            2      2.0      0.0                  n_clusters=self.n_components,
-   523         1       264342 264342.0     14.9                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
+   522         1            3      3.0      0.0                  n_clusters=self.n_components,
+   523         1       284053 284053.0     16.0                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
    524
-   525         1            6      6.0      0.0          if 'w' in self.init_params or not hasattr(self, 'weights_'):
-   526         1          136    136.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
+   525         1            4      4.0      0.0          if 'w' in self.init_params or not hasattr(self, 'weights_'):
+   526         1           53     53.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
    527
-   528         1            6      6.0      0.0          if 'c' in self.init_params or not hasattr(self, 'precs_'):
-   529         1            5      5.0      0.0              if self.covariance_type == 'spherical':
+   528         1            4      4.0      0.0          if 'c' in self.init_params or not hasattr(self, 'precs_'):
+   529         1            3      3.0      0.0              if self.covariance_type == 'spherical':
    530                                                           self.dof_ = np.ones(self.n_components)
    531                                                           self.scale_ = np.ones(self.n_components)
    532                                                           self.precs_ = np.ones((self.n_components, n_features))
    533                                                           self.bound_prec_ = 0.5 * n_features * (
    534                                                               digamma(self.dof_) - np.log(self.scale_))
-   535         1            5      5.0      0.0              elif self.covariance_type == 'diag':
+   535         1            3      3.0      0.0              elif self.covariance_type == 'diag':
    536                                                           self.dof_ = 1 + 0.5 * n_features
    537                                                           self.dof_ *= np.ones((self.n_components, n_features))
    538                                                           self.scale_ = np.ones((self.n_components, n_features))
@@ -1371,7 +1335,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    540                                                           self.bound_prec_ = 0.5 * (np.sum(digamma(self.dof_) -
    541                                                                                            np.log(self.scale_), 1))
    542                                                           self.bound_prec_ -= 0.5 * np.sum(self.precs_, 1)
-   543         1            4      4.0      0.0              elif self.covariance_type == 'tied':
+   543         1            3      3.0      0.0              elif self.covariance_type == 'tied':
    544                                                           self.dof_ = 1.
    545                                                           self.scale_ = np.identity(n_features)
    546                                                           self.precs_ = np.identity(n_features)
@@ -1379,60 +1343,60 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    548                                                           self.bound_prec_ = 0.5 * wishart_log_det(
    549                                                               self.dof_, self.scale_, self.det_scale_, n_features)
    550                                                           self.bound_prec_ -= 0.5 * self.dof_ * np.trace(self.scale_)
-   551         1            5      5.0      0.0              elif self.covariance_type == 'full':
-   552         1            8      8.0      0.0                  self.dof_ = (1 + self.n_components + X.shape[0])
-   553         1           43     43.0      0.0                  self.dof_ *= np.ones(self.n_components)
-   554         1            5      5.0      0.0                  self.scale_ = [2 * np.identity(n_features)
-   555        11          429     39.0      0.0                             for i in xrange(self.n_components)]
-   556         1            5      5.0      0.0                  self.precs_ = [np.identity(n_features)
-   557        11          203     18.5      0.0                                  for i in xrange(self.n_components)]
-   558         1           20     20.0      0.0                  self.det_scale_ = np.ones(self.n_components)
-   559         1            9      9.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
-   560        11           60      5.5      0.0                  for k in xrange(self.n_components):
-   561        10           47      4.7      0.0                      self.bound_prec_[k] = wishart_log_det(
-   562        10           63      6.3      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
-   563        10         1145    114.5      0.1                          n_features)
-   564        10           69      6.9      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
-   565        10          356     35.6      0.0                                              np.trace(self.scale_[k]))
-   566         1           17     17.0      0.0                  self.bound_prec_ *= 0.5
+   551         1            3      3.0      0.0              elif self.covariance_type == 'full':
+   552         1            5      5.0      0.0                  self.dof_ = (1 + self.n_components + X.shape[0])
+   553         1           24     24.0      0.0                  self.dof_ *= np.ones(self.n_components)
+   554         1            3      3.0      0.0                  self.scale_ = [2 * np.identity(n_features)
+   555        11          259     23.5      0.0                             for i in xrange(self.n_components)]
+   556         1            2      2.0      0.0                  self.precs_ = [np.identity(n_features)
+   557        11          119     10.8      0.0                                  for i in xrange(self.n_components)]
+   558         1           12     12.0      0.0                  self.det_scale_ = np.ones(self.n_components)
+   559         1            5      5.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
+   560        11           30      2.7      0.0                  for k in xrange(self.n_components):
+   561        10           27      2.7      0.0                      self.bound_prec_[k] = wishart_log_det(
+   562        10           39      3.9      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
+   563        10          666     66.6      0.0                          n_features)
+   564        10           39      3.9      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
+   565        10          211     21.1      0.0                                              np.trace(self.scale_[k]))
+   566         1            9      9.0      0.0                  self.bound_prec_ *= 0.5
    567
-   568         1            5      5.0      0.0          logprob = []
+   568         1            3      3.0      0.0          logprob = []
    569                                                   # reset self.converged_ to False
-   570         1            6      6.0      0.0          self.converged_ = False
-   571        11           68      6.2      0.0          for i in xrange(self.n_iter):
+   570         1            3      3.0      0.0          self.converged_ = False
+   571        11           74      6.7      0.0          for i in xrange(self.n_iter):
    572                                                       # Expectation step
-   573        10       315145  31514.5     17.7              curr_logprob, z = self.eval(X)
-   574        10        68201   6820.1      3.8              logprob.append(curr_logprob.sum() + self._logprior(z))
+   573        10       259039  25903.9     14.6              curr_logprob, z = self.eval(X)
+   574        10        73000   7300.0      4.1              logprob.append(curr_logprob.sum() + self._logprior(z))
    575
    576                                                       # Check for convergence.
-   577        10          134     13.4      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
+   577        10          138     13.8      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
    578                                                           self.converged_ = True
    579                                                           break
    580
    581                                                       # Maximization step
-   582        10      1127507 112750.7     63.4              self._do_mstep(X, z, self.params)
+   582        10      1157208 115720.8     65.2              self._do_mstep(X, z, self.params)
    583
-   584         1            4      4.0      0.0          return self
+   584         1            5      5.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: predict at line 353
+Function: predict at line 328
 Total time: 0 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   353                                               def predict(self, X):
-   354                                                   """Predict label for data.
-   355
-   356                                                   Parameters
-   357                                                   ----------
-   358                                                   X : array-like, shape = [n_samples, n_features]
-   359
-   360                                                   Returns
-   361                                                   -------
-   362                                                   C : array, shape = (n_samples,)
-   363                                                   """
-   364                                                   logprob, responsibilities = self.eval(X)
-   365                                                   return responsibilities.argmax(axis=1)</pre>
+   328                                               def predict(self, X):
+   329                                                   """Predict label for data.
+   330
+   331                                                   Parameters
+   332                                                   ----------
+   333                                                   X : array-like, shape = [n_samples, n_features]
+   334
+   335                                                   Returns
+   336                                                   -------
+   337                                                   C : array, shape = (n_samples,)
+   338                                                   """
+   339                                                   logprob, responsibilities = self.eval(X)
+   340                                                   return responsibilities.argmax(axis=1)</pre>
 </div>
 </div>
 <p><strong>Benchmark statement</strong></p>
@@ -1453,26 +1417,26 @@ Ordered by: cumulative time
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.009    0.009 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.009    0.009 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/mixture/gmm.py:353(predict)
+     1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/mixture/gmm.py:328(predict)
      1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:663(eval)
      1    0.000    0.000    0.009    0.009 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:92(_bound_state_log_lik)
     10    0.000    0.000    0.009    0.001 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:86(_sym_quad_form)
     10    0.000    0.000    0.008    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:1693(cdist)
-    10    0.008    0.001    0.008    0.001 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
+    10    0.007    0.001    0.007    0.001 {scipy.spatial._distance_wrap.cdist_mahalanobis_wrap}
     30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:132(_copy_arrays_if_base_present)
     30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:120(_copy_array_if_base_present)
-    30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:36(log_normalize)
+    30    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:703(issubsctype)
     60    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numerictypes.py:608(obj2sctype)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/extmath.py:202(logsumexp)
     31    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     90    0.000    0.000    0.000    0.000 {issubclass}
-    50    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
     31    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+    50    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/spatial/distance.py:151(_convert_to_double)
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      2    0.000    0.000    0.000    0.000 {method 'max' of 'numpy.ndarray' objects}
-   104    0.000    0.000    0.000    0.000 {isinstance}
      4    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+   104    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/mixture/dpgmm.py:28(digamma)
     10    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
     13    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
@@ -1481,16 +1445,16 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1069(rollaxis)
      3    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
      1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
-    20    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:397(swapaxes)
     10    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
-    10    0.000    0.000    0.000    0.000 {callable}
+    20    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      1    0.000    0.000    0.000    0.000 {method 'swapaxes' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+    10    0.000    0.000    0.000    0.000 {callable}
+     1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {range}
      1    0.000    0.000    0.000    0.000 {method 'transpose' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1498,7 +1462,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/mixture/dpgmm.py
 Function: fit at line 472
-Total time: 1.7782 s
+Total time: 1.7752 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1521,8 +1485,8 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    488                                                       List of n_features-dimensional data points.  Each row
    489                                                       corresponds to a single data point.
    490                                                   """
-   491         1            8      8.0      0.0          self.random_state = check_random_state(self.random_state)
-   492         1            2      2.0      0.0          if kwargs:
+   491         1           17     17.0      0.0          self.random_state = check_random_state(self.random_state)
+   492         1            3      3.0      0.0          if kwargs:
    493                                                       warnings.warn("Setting parameters in the 'fit' method is"
    494                                                               "deprecated. Set it on initialization instead.",
    495                                                                DeprecationWarning)
@@ -1537,35 +1501,35 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    504
    505                                                   ## initialization step
    506         1            8      8.0      0.0          X = np.asarray(X)
-   507         1            4      4.0      0.0          if X.ndim == 1:
+   507         1            3      3.0      0.0          if X.ndim == 1:
    508                                                       X = X[:, np.newaxis]
    509
-   510         1            4      4.0      0.0          n_features = X.shape[1]
+   510         1            3      3.0      0.0          n_features = X.shape[1]
    511         1           15     15.0      0.0          z = np.ones((X.shape[0], self.n_components))
    512         1           46     46.0      0.0          z /= self.n_components
    513
    514         1           14     14.0      0.0          self._initial_bound = - 0.5 * n_features * np.log(2 * np.pi)
    515         1            9      9.0      0.0          self._initial_bound -= np.log(2 * np.pi * np.e)
    516
-   517         1            3      3.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
-   518         1           20     20.0      0.0              self._initialize_gamma()
+   517         1            4      4.0      0.0          if (self.init_params != '') or not hasattr(self, 'gamma_'):
+   518         1           21     21.0      0.0              self._initialize_gamma()
    519
    520         1            3      3.0      0.0          if 'm' in self.init_params or not hasattr(self, 'means_'):
    521         1            3      3.0      0.0              self.means_ = cluster.KMeans(
-   522         1            2      2.0      0.0                  n_clusters=self.n_components,
-   523         1       264342 264342.0     14.9                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
+   522         1            3      3.0      0.0                  n_clusters=self.n_components,
+   523         1       284053 284053.0     16.0                  random_state=self.random_state).fit(X).cluster_centers_[::-1]
    524
-   525         1            6      6.0      0.0          if 'w' in self.init_params or not hasattr(self, 'weights_'):
-   526         1          136    136.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
+   525         1            4      4.0      0.0          if 'w' in self.init_params or not hasattr(self, 'weights_'):
+   526         1           53     53.0      0.0              self.weights_ = np.tile(1.0 / self.n_components, self.n_components)
    527
-   528         1            6      6.0      0.0          if 'c' in self.init_params or not hasattr(self, 'precs_'):
-   529         1            5      5.0      0.0              if self.covariance_type == 'spherical':
+   528         1            4      4.0      0.0          if 'c' in self.init_params or not hasattr(self, 'precs_'):
+   529         1            3      3.0      0.0              if self.covariance_type == 'spherical':
    530                                                           self.dof_ = np.ones(self.n_components)
    531                                                           self.scale_ = np.ones(self.n_components)
    532                                                           self.precs_ = np.ones((self.n_components, n_features))
    533                                                           self.bound_prec_ = 0.5 * n_features * (
    534                                                               digamma(self.dof_) - np.log(self.scale_))
-   535         1            5      5.0      0.0              elif self.covariance_type == 'diag':
+   535         1            3      3.0      0.0              elif self.covariance_type == 'diag':
    536                                                           self.dof_ = 1 + 0.5 * n_features
    537                                                           self.dof_ *= np.ones((self.n_components, n_features))
    538                                                           self.scale_ = np.ones((self.n_components, n_features))
@@ -1573,7 +1537,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    540                                                           self.bound_prec_ = 0.5 * (np.sum(digamma(self.dof_) -
    541                                                                                            np.log(self.scale_), 1))
    542                                                           self.bound_prec_ -= 0.5 * np.sum(self.precs_, 1)
-   543         1            4      4.0      0.0              elif self.covariance_type == 'tied':
+   543         1            3      3.0      0.0              elif self.covariance_type == 'tied':
    544                                                           self.dof_ = 1.
    545                                                           self.scale_ = np.identity(n_features)
    546                                                           self.precs_ = np.identity(n_features)
@@ -1581,60 +1545,60 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    548                                                           self.bound_prec_ = 0.5 * wishart_log_det(
    549                                                               self.dof_, self.scale_, self.det_scale_, n_features)
    550                                                           self.bound_prec_ -= 0.5 * self.dof_ * np.trace(self.scale_)
-   551         1            5      5.0      0.0              elif self.covariance_type == 'full':
-   552         1            8      8.0      0.0                  self.dof_ = (1 + self.n_components + X.shape[0])
-   553         1           43     43.0      0.0                  self.dof_ *= np.ones(self.n_components)
-   554         1            5      5.0      0.0                  self.scale_ = [2 * np.identity(n_features)
-   555        11          429     39.0      0.0                             for i in xrange(self.n_components)]
-   556         1            5      5.0      0.0                  self.precs_ = [np.identity(n_features)
-   557        11          203     18.5      0.0                                  for i in xrange(self.n_components)]
-   558         1           20     20.0      0.0                  self.det_scale_ = np.ones(self.n_components)
-   559         1            9      9.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
-   560        11           60      5.5      0.0                  for k in xrange(self.n_components):
-   561        10           47      4.7      0.0                      self.bound_prec_[k] = wishart_log_det(
-   562        10           63      6.3      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
-   563        10         1145    114.5      0.1                          n_features)
-   564        10           69      6.9      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
-   565        10          356     35.6      0.0                                              np.trace(self.scale_[k]))
-   566         1           17     17.0      0.0                  self.bound_prec_ *= 0.5
+   551         1            3      3.0      0.0              elif self.covariance_type == 'full':
+   552         1            5      5.0      0.0                  self.dof_ = (1 + self.n_components + X.shape[0])
+   553         1           24     24.0      0.0                  self.dof_ *= np.ones(self.n_components)
+   554         1            3      3.0      0.0                  self.scale_ = [2 * np.identity(n_features)
+   555        11          259     23.5      0.0                             for i in xrange(self.n_components)]
+   556         1            2      2.0      0.0                  self.precs_ = [np.identity(n_features)
+   557        11          119     10.8      0.0                                  for i in xrange(self.n_components)]
+   558         1           12     12.0      0.0                  self.det_scale_ = np.ones(self.n_components)
+   559         1            5      5.0      0.0                  self.bound_prec_ = np.zeros(self.n_components)
+   560        11           30      2.7      0.0                  for k in xrange(self.n_components):
+   561        10           27      2.7      0.0                      self.bound_prec_[k] = wishart_log_det(
+   562        10           39      3.9      0.0                          self.dof_[k], self.scale_[k], self.det_scale_[k],
+   563        10          666     66.6      0.0                          n_features)
+   564        10           39      3.9      0.0                      self.bound_prec_[k] -= (self.dof_[k] *
+   565        10          211     21.1      0.0                                              np.trace(self.scale_[k]))
+   566         1            9      9.0      0.0                  self.bound_prec_ *= 0.5
    567
-   568         1            5      5.0      0.0          logprob = []
+   568         1            3      3.0      0.0          logprob = []
    569                                                   # reset self.converged_ to False
-   570         1            6      6.0      0.0          self.converged_ = False
-   571        11           68      6.2      0.0          for i in xrange(self.n_iter):
+   570         1            3      3.0      0.0          self.converged_ = False
+   571        11           74      6.7      0.0          for i in xrange(self.n_iter):
    572                                                       # Expectation step
-   573        10       315145  31514.5     17.7              curr_logprob, z = self.eval(X)
-   574        10        68201   6820.1      3.8              logprob.append(curr_logprob.sum() + self._logprior(z))
+   573        10       259039  25903.9     14.6              curr_logprob, z = self.eval(X)
+   574        10        73000   7300.0      4.1              logprob.append(curr_logprob.sum() + self._logprior(z))
    575
    576                                                       # Check for convergence.
-   577        10          134     13.4      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
+   577        10          138     13.8      0.0              if i &gt; 0 and abs(logprob[-1] - logprob[-2]) &lt; self.thresh:
    578                                                           self.converged_ = True
    579                                                           break
    580
    581                                                       # Maximization step
-   582        10      1127507 112750.7     63.4              self._do_mstep(X, z, self.params)
+   582        10      1157208 115720.8     65.2              self._do_mstep(X, z, self.params)
    583
-   584         1            4      4.0      0.0          return self
+   584         1            5      5.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/mixture/gmm.py
-Function: predict at line 353
-Total time: 0.018603 s
+Function: predict at line 328
+Total time: 0.018581 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   353                                               def predict(self, X):
-   354                                                   """Predict label for data.
-   355
-   356                                                   Parameters
-   357                                                   ----------
-   358                                                   X : array-like, shape = [n_samples, n_features]
-   359
-   360                                                   Returns
-   361                                                   -------
-   362                                                   C : array, shape = (n_samples,)
-   363                                                   """
-   364         1        18563  18563.0     99.8          logprob, responsibilities = self.eval(X)
-   365         1           40     40.0      0.2          return responsibilities.argmax(axis=1)</pre>
+   328                                               def predict(self, X):
+   329                                                   """Predict label for data.
+   330
+   331                                                   Parameters
+   332                                                   ----------
+   333                                                   X : array-like, shape = [n_samples, n_features]
+   334
+   335                                                   Returns
+   336                                                   -------
+   337                                                   C : array, shape = (n_samples,)
+   338                                                   """
+   339         1        18541  18541.0     99.8          logprob, responsibilities = self.eval(X)
+   340         1           40     40.0      0.2          return responsibilities.argmax(axis=1)</pre>
 </div>
 </div>
 </div>
