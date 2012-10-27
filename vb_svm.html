@@ -220,40 +220,40 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
      1    0.002    0.002    0.002    0.002 {sklearn.svm.libsvm.fit}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      3    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      5    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
+     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:214(_warn_from_fit_status)
-     1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 0.002309 s
+Total time: 0.002312 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -288,7 +288,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    149                                                   """
    150
    151         1            5      5.0      0.2          if self.sparse == "auto":
-   152         1           28     28.0      1.2              self._sparse = sp.isspmatrix(X) and not self._pairwise
+   152         1           27     27.0      1.2              self._sparse = sp.isspmatrix(X) and not self._pairwise
    153                                                   else:
    154                                                       self._sparse = self.sparse
    155
@@ -297,18 +297,18 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1          149    149.0      6.5          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
-   162         1           28     28.0      1.2          y = np.asarray(y, dtype=np.float64, order='C')
+   161         1          151    151.0      6.5          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   162         1           26     26.0      1.1          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1           93     93.0      4.0          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1           90     90.0      3.9          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           29     29.0      1.3          sample_weight = np.asarray([] if sample_weight is None
+   168         1           28     28.0      1.2          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
    170         1            6      6.0      0.3          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
-   172         1           55     55.0      2.4                       _get_class_weight(self.class_weight, y)
+   172         1           54     54.0      2.3                       _get_class_weight(self.class_weight, y)
    173
    174                                                   # input validation
    175         1            6      6.0      0.3          if solver_type != 2 and X.shape[0] != y.shape[0]:
@@ -330,25 +330,25 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    191                                                       # if custom gamma is not provided ...
    192                                                       self._gamma = 1.0 / X.shape[1]
    193                                                   else:
-   194         1            3      3.0      0.1              self._gamma = self.gamma
+   194         1            4      4.0      0.2              self._gamma = self.gamma
    195
-   196         1            3      3.0      0.1          kernel = self.kernel
-   197         1            7      7.0      0.3          if hasattr(kernel, '__call__'):
+   196         1            4      4.0      0.2          kernel = self.kernel
+   197         1            8      8.0      0.3          if hasattr(kernel, '__call__'):
    198                                                       kernel = 'precomputed'
    199
    200         1            4      4.0      0.2          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            4      4.0      0.2          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1         1821   1821.0     78.9          fit(X, y, sample_weight, solver_type, kernel)
+   203         1         1828   1828.0     79.1          fit(X, y, sample_weight, solver_type, kernel)
    204
-   205         1            6      6.0      0.3          self.shape_fit_ = X.shape
+   205         1            7      7.0      0.3          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
-   209         1           11     11.0      0.5          self._intercept_ = self.intercept_.copy()
+   209         1           10     10.0      0.4          self._intercept_ = self.intercept_.copy()
    210         1            6      6.0      0.3          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           26     26.0      1.1              self.intercept_ *= -1
-   212         1            3      3.0      0.1          return self</pre>
+   211         1           24     24.0      1.0              self.intercept_ *= -1
+   212         1            4      4.0      0.2          return self</pre>
 </div>
 </div>
 </div>
@@ -383,44 +383,44 @@ Ordered by: cumulative time
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.003    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.003    0.003 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
      1    0.002    0.002    0.002    0.002 {sklearn.svm.libsvm.fit}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
-     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      3    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
-     3    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
      5    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:214(_warn_from_fit_status)
-     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 0.002098 s
+Total time: 0.002131 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -464,18 +464,18 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1          148    148.0      7.1          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   161         1          150    150.0      7.0          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
    162         1           25     25.0      1.2          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1           90     90.0      4.3          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1           93     93.0      4.4          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           36     36.0      1.7          sample_weight = np.asarray([] if sample_weight is None
+   168         1           29     29.0      1.4          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
-   170         1            8      8.0      0.4          solver_type = LIBSVM_IMPL.index(self.impl)
+   170         1            7      7.0      0.3          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
-   172         1           56     56.0      2.7                       _get_class_weight(self.class_weight, y)
+   172         1           55     55.0      2.6                       _get_class_weight(self.class_weight, y)
    173
    174                                                   # input validation
    175         1            6      6.0      0.3          if solver_type != 2 and X.shape[0] != y.shape[0]:
@@ -483,7 +483,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    177                                                                        "X has %s samples, but y has %s." %
    178                                                                        (X.shape[0], y.shape[0]))
    179
-   180         1            5      5.0      0.2          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
+   180         1            4      4.0      0.2          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
    181                                                       raise ValueError("X.shape[0] should be equal to X.shape[1]")
    182
    183         1            4      4.0      0.2          if sample_weight.shape[0] &gt; 0 and sample_weight.shape[0] != X.shape[0]:
@@ -495,27 +495,27 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    189
    190         1            5      5.0      0.2          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
    191                                                       # if custom gamma is not provided ...
-   192         1            6      6.0      0.3              self._gamma = 1.0 / X.shape[1]
+   192         1            5      5.0      0.2              self._gamma = 1.0 / X.shape[1]
    193                                                   else:
    194                                                       self._gamma = self.gamma
    195
-   196         1            3      3.0      0.1          kernel = self.kernel
-   197         1            7      7.0      0.3          if hasattr(kernel, '__call__'):
+   196         1            4      4.0      0.2          kernel = self.kernel
+   197         1            8      8.0      0.4          if hasattr(kernel, '__call__'):
    198                                                       kernel = 'precomputed'
    199
    200         1            4      4.0      0.2          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            4      4.0      0.2          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1         1603   1603.0     76.4          fit(X, y, sample_weight, solver_type, kernel)
+   203         1         1643   1643.0     77.1          fit(X, y, sample_weight, solver_type, kernel)
    204
    205         1            6      6.0      0.3          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
    209         1            9      9.0      0.4          self._intercept_ = self.intercept_.copy()
-   210         1            6      6.0      0.3          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           26     26.0      1.2              self.intercept_ *= -1
-   212         1            4      4.0      0.2          return self</pre>
+   210         1            5      5.0      0.2          if len(self.label_) == 2 and self.impl != 'one_class':
+   211         1           25     25.0      1.2              self.intercept_ *= -1
+   212         1            3      3.0      0.1          return self</pre>
 </div>
 </div>
 </div>
@@ -557,37 +557,37 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
-     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-     3    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
-     5    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:214(_warn_from_fit_status)
+     5    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 0.002225 s
+Total time: 0.002163 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -622,7 +622,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    149                                                   """
    150
    151         1            5      5.0      0.2          if self.sparse == "auto":
-   152         1           28     28.0      1.3              self._sparse = sp.isspmatrix(X) and not self._pairwise
+   152         1           29     29.0      1.3              self._sparse = sp.isspmatrix(X) and not self._pairwise
    153                                                   else:
    154                                                       self._sparse = self.sparse
    155
@@ -631,14 +631,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1          150    150.0      6.7          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   161         1          149    149.0      6.9          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
    162         1           28     28.0      1.3          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1           91     91.0      4.1          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1           91     91.0      4.2          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           29     29.0      1.3          sample_weight = np.asarray([] if sample_weight is None
+   168         1           28     28.0      1.3          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
    170         1            6      6.0      0.3          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
@@ -650,7 +650,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    177                                                                        "X has %s samples, but y has %s." %
    178                                                                        (X.shape[0], y.shape[0]))
    179
-   180         1            5      5.0      0.2          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
+   180         1            4      4.0      0.2          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
    181                                                       raise ValueError("X.shape[0] should be equal to X.shape[1]")
    182
    183         1            4      4.0      0.2          if sample_weight.shape[0] &gt; 0 and sample_weight.shape[0] != X.shape[0]:
@@ -662,7 +662,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    189
    190         1            5      5.0      0.2          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
    191                                                       # if custom gamma is not provided ...
-   192         1            6      6.0      0.3              self._gamma = 1.0 / X.shape[1]
+   192         1            5      5.0      0.2              self._gamma = 1.0 / X.shape[1]
    193                                                   else:
    194                                                       self._gamma = self.gamma
    195
@@ -673,16 +673,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    200         1            5      5.0      0.2          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            5      5.0      0.2          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1         1730   1730.0     77.8          fit(X, y, sample_weight, solver_type, kernel)
+   203         1         1672   1672.0     77.3          fit(X, y, sample_weight, solver_type, kernel)
    204
    205         1            6      6.0      0.3          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
-   209         1           10     10.0      0.4          self._intercept_ = self.intercept_.copy()
+   209         1           10     10.0      0.5          self._intercept_ = self.intercept_.copy()
    210         1            6      6.0      0.3          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           26     26.0      1.2              self.intercept_ *= -1
-   212         1            3      3.0      0.1          return self
+   211         1           24     24.0      1.1              self.intercept_ *= -1
+   212         1            4      4.0      0.2          return self
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: predict at line 283
@@ -738,27 +738,27 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
-     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:356(_compute_kernel)
      3    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      3    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 0.002225 s
+Total time: 0.002163 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -793,7 +793,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    149                                                   """
    150
    151         1            5      5.0      0.2          if self.sparse == "auto":
-   152         1           28     28.0      1.3              self._sparse = sp.isspmatrix(X) and not self._pairwise
+   152         1           29     29.0      1.3              self._sparse = sp.isspmatrix(X) and not self._pairwise
    153                                                   else:
    154                                                       self._sparse = self.sparse
    155
@@ -802,14 +802,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1          150    150.0      6.7          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   161         1          149    149.0      6.9          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
    162         1           28     28.0      1.3          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1           91     91.0      4.1          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1           91     91.0      4.2          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           29     29.0      1.3          sample_weight = np.asarray([] if sample_weight is None
+   168         1           28     28.0      1.3          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
    170         1            6      6.0      0.3          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
@@ -821,7 +821,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    177                                                                        "X has %s samples, but y has %s." %
    178                                                                        (X.shape[0], y.shape[0]))
    179
-   180         1            5      5.0      0.2          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
+   180         1            4      4.0      0.2          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
    181                                                       raise ValueError("X.shape[0] should be equal to X.shape[1]")
    182
    183         1            4      4.0      0.2          if sample_weight.shape[0] &gt; 0 and sample_weight.shape[0] != X.shape[0]:
@@ -833,7 +833,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    189
    190         1            5      5.0      0.2          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
    191                                                       # if custom gamma is not provided ...
-   192         1            6      6.0      0.3              self._gamma = 1.0 / X.shape[1]
+   192         1            5      5.0      0.2              self._gamma = 1.0 / X.shape[1]
    193                                                   else:
    194                                                       self._gamma = self.gamma
    195
@@ -844,20 +844,20 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    200         1            5      5.0      0.2          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            5      5.0      0.2          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1         1730   1730.0     77.8          fit(X, y, sample_weight, solver_type, kernel)
+   203         1         1672   1672.0     77.3          fit(X, y, sample_weight, solver_type, kernel)
    204
    205         1            6      6.0      0.3          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
-   209         1           10     10.0      0.4          self._intercept_ = self.intercept_.copy()
+   209         1           10     10.0      0.5          self._intercept_ = self.intercept_.copy()
    210         1            6      6.0      0.3          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           26     26.0      1.2              self.intercept_ *= -1
-   212         1            3      3.0      0.1          return self
+   211         1           24     24.0      1.1              self.intercept_ *= -1
+   212         1            4      4.0      0.2          return self
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: predict at line 283
-Total time: 0.001135 s
+Total time: 0.001113 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -878,9 +878,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    297                                                   -------
    298                                                   y_pred : array, shape = [n_samples]
    299                                                   """
-   300         1          173    173.0     15.2          X = self._validate_for_predict(X)
-   301         1            3      3.0      0.3          predict = self._sparse_predict if self._sparse else self._dense_predict
-   302         1          959    959.0     84.5          return predict(X)</pre>
+   300         1          177    177.0     15.9          X = self._validate_for_predict(X)
+   301         1            2      2.0      0.2          predict = self._sparse_predict if self._sparse else self._dense_predict
+   302         1          934    934.0     83.9          return predict(X)</pre>
 </div>
 </div>
 </div>
@@ -908,42 +908,42 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         59 function calls in 7.025 seconds
+<div class="highlight-python"><pre>         59 function calls in 6.979 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    7.025    7.025 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    7.025    7.025 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    7.025    7.025 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
-     1    0.000    0.000    7.022    7.022 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
-     1    7.021    7.021    7.021    7.021 {sklearn.svm.libsvm.fit}
+     1    0.000    0.000    6.979    6.979 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    6.979    6.979 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    6.979    6.979 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
+     1    0.000    0.000    6.975    6.975 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
+     1    6.975    6.975    6.975    6.975 {sklearn.svm.libsvm.fit}
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
-     1    0.003    0.003    0.003    0.003 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.002    0.002    0.002    0.002 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      3    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     5    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:214(_warn_from_fit_status)
      1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
+     5    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
@@ -952,7 +952,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 6.99179 s
+Total time: 7.04588 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -991,31 +991,31 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    153                                                   else:
    154                                                       self._sparse = self.sparse
    155
-   156         1            3      3.0      0.0          if self._sparse and self._pairwise:
+   156         1            4      4.0      0.0          if self._sparse and self._pairwise:
    157                                                       raise ValueError("Sparse precomputed kernels are not supported. "
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1         2847   2847.0      0.0          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
-   162         1           34     34.0      0.0          y = np.asarray(y, dtype=np.float64, order='C')
+   161         1        16000  16000.0      0.2          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   162         1           33     33.0      0.0          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1          262    262.0      0.0          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1          300    300.0      0.0          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           29     29.0      0.0          sample_weight = np.asarray([] if sample_weight is None
+   168         1           35     35.0      0.0          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
-   170         1            6      6.0      0.0          solver_type = LIBSVM_IMPL.index(self.impl)
+   170         1            8      8.0      0.0          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
-   172         1           58     58.0      0.0                       _get_class_weight(self.class_weight, y)
+   172         1           60     60.0      0.0                       _get_class_weight(self.class_weight, y)
    173
    174                                                   # input validation
-   175         1            7      7.0      0.0          if solver_type != 2 and X.shape[0] != y.shape[0]:
+   175         1            6      6.0      0.0          if solver_type != 2 and X.shape[0] != y.shape[0]:
    176                                                       raise ValueError("X and y have incompatible shapes.\n" +
    177                                                                        "X has %s samples, but y has %s." %
    178                                                                        (X.shape[0], y.shape[0]))
    179
-   180         1            6      6.0      0.0          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
+   180         1            5      5.0      0.0          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
    181                                                       raise ValueError("X.shape[0] should be equal to X.shape[1]")
    182
    183         1            4      4.0      0.0          if sample_weight.shape[0] &gt; 0 and sample_weight.shape[0] != X.shape[0]:
@@ -1027,27 +1027,27 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    189
    190         1            6      6.0      0.0          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
    191                                                       # if custom gamma is not provided ...
-   192         1            5      5.0      0.0              self._gamma = 1.0 / X.shape[1]
+   192         1            6      6.0      0.0              self._gamma = 1.0 / X.shape[1]
    193                                                   else:
    194                                                       self._gamma = self.gamma
    195
-   196         1            3      3.0      0.0          kernel = self.kernel
+   196         1            4      4.0      0.0          kernel = self.kernel
    197         1           10     10.0      0.0          if hasattr(kernel, '__call__'):
    198                                                       kernel = 'precomputed'
    199
-   200         1            6      6.0      0.0          fit = self._sparse_fit if self._sparse else self._dense_fit
+   200         1            5      5.0      0.0          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            5      5.0      0.0          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1      6988385 6988385.0    100.0          fit(X, y, sample_weight, solver_type, kernel)
+   203         1      7029271 7029271.0     99.8          fit(X, y, sample_weight, solver_type, kernel)
    204
    205         1            8      8.0      0.0          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
-   209         1           14     14.0      0.0          self._intercept_ = self.intercept_.copy()
-   210         1            7      7.0      0.0          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           40     40.0      0.0              self.intercept_ *= -1
-   212         1            4      4.0      0.0          return self
+   209         1           15     15.0      0.0          self._intercept_ = self.intercept_.copy()
+   210         1            8      8.0      0.0          if len(self.label_) == 2 and self.impl != 'one_class':
+   211         1           41     41.0      0.0              self.intercept_ *= -1
+   212         1            3      3.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: predict at line 283
@@ -1088,16 +1088,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         39 function calls in 2.072 seconds
+<div class="highlight-python"><pre>         39 function calls in 2.061 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    2.072    2.072 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    2.072    2.072 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    2.072    2.072 /tmp/vb_sklearn/sklearn/svm/base.py:283(predict)
-     1    0.000    0.000    2.071    2.071 /tmp/vb_sklearn/sklearn/svm/base.py:304(_dense_predict)
-     1    2.071    2.071    2.071    2.071 {sklearn.svm.libsvm.predict}
+     1    0.000    0.000    2.061    2.061 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    2.061    2.061 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    2.061    2.061 /tmp/vb_sklearn/sklearn/svm/base.py:283(predict)
+     1    0.000    0.000    2.060    2.060 /tmp/vb_sklearn/sklearn/svm/base.py:304(_dense_predict)
+     1    2.060    2.060    2.060    2.060 {sklearn.svm.libsvm.predict}
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/svm/base.py:409(_validate_for_predict)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
@@ -1111,19 +1111,19 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:356(_compute_kernel)
      2    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      3    0.000    0.000    0.000    0.000 {isinstance}
-     3    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
      1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     3    0.000    0.000    0.000    0.000 {len}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 6.99179 s
+Total time: 7.04588 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1162,31 +1162,31 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    153                                                   else:
    154                                                       self._sparse = self.sparse
    155
-   156         1            3      3.0      0.0          if self._sparse and self._pairwise:
+   156         1            4      4.0      0.0          if self._sparse and self._pairwise:
    157                                                       raise ValueError("Sparse precomputed kernels are not supported. "
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1         2847   2847.0      0.0          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
-   162         1           34     34.0      0.0          y = np.asarray(y, dtype=np.float64, order='C')
+   161         1        16000  16000.0      0.2          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   162         1           33     33.0      0.0          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1          262    262.0      0.0          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1          300    300.0      0.0          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           29     29.0      0.0          sample_weight = np.asarray([] if sample_weight is None
+   168         1           35     35.0      0.0          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
-   170         1            6      6.0      0.0          solver_type = LIBSVM_IMPL.index(self.impl)
+   170         1            8      8.0      0.0          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
-   172         1           58     58.0      0.0                       _get_class_weight(self.class_weight, y)
+   172         1           60     60.0      0.0                       _get_class_weight(self.class_weight, y)
    173
    174                                                   # input validation
-   175         1            7      7.0      0.0          if solver_type != 2 and X.shape[0] != y.shape[0]:
+   175         1            6      6.0      0.0          if solver_type != 2 and X.shape[0] != y.shape[0]:
    176                                                       raise ValueError("X and y have incompatible shapes.\n" +
    177                                                                        "X has %s samples, but y has %s." %
    178                                                                        (X.shape[0], y.shape[0]))
    179
-   180         1            6      6.0      0.0          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
+   180         1            5      5.0      0.0          if self.kernel == "precomputed" and X.shape[0] != X.shape[1]:
    181                                                       raise ValueError("X.shape[0] should be equal to X.shape[1]")
    182
    183         1            4      4.0      0.0          if sample_weight.shape[0] &gt; 0 and sample_weight.shape[0] != X.shape[0]:
@@ -1198,31 +1198,31 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    189
    190         1            6      6.0      0.0          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
    191                                                       # if custom gamma is not provided ...
-   192         1            5      5.0      0.0              self._gamma = 1.0 / X.shape[1]
+   192         1            6      6.0      0.0              self._gamma = 1.0 / X.shape[1]
    193                                                   else:
    194                                                       self._gamma = self.gamma
    195
-   196         1            3      3.0      0.0          kernel = self.kernel
+   196         1            4      4.0      0.0          kernel = self.kernel
    197         1           10     10.0      0.0          if hasattr(kernel, '__call__'):
    198                                                       kernel = 'precomputed'
    199
-   200         1            6      6.0      0.0          fit = self._sparse_fit if self._sparse else self._dense_fit
+   200         1            5      5.0      0.0          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            5      5.0      0.0          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1      6988385 6988385.0    100.0          fit(X, y, sample_weight, solver_type, kernel)
+   203         1      7029271 7029271.0     99.8          fit(X, y, sample_weight, solver_type, kernel)
    204
    205         1            8      8.0      0.0          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
-   209         1           14     14.0      0.0          self._intercept_ = self.intercept_.copy()
-   210         1            7      7.0      0.0          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           40     40.0      0.0              self.intercept_ *= -1
-   212         1            4      4.0      0.0          return self
+   209         1           15     15.0      0.0          self._intercept_ = self.intercept_.copy()
+   210         1            8      8.0      0.0          if len(self.label_) == 2 and self.impl != 'one_class':
+   211         1           41     41.0      0.0              self.intercept_ *= -1
+   212         1            3      3.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: predict at line 283
-Total time: 2.06378 s
+Total time: 2.061 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1243,9 +1243,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    297                                                   -------
    298                                                   y_pred : array, shape = [n_samples]
    299                                                   """
-   300         1          963    963.0      0.0          X = self._validate_for_predict(X)
+   300         1         1007   1007.0      0.0          X = self._validate_for_predict(X)
    301         1            3      3.0      0.0          predict = self._sparse_predict if self._sparse else self._dense_predict
-   302         1      2062815 2062815.0    100.0          return predict(X)</pre>
+   302         1      2059995 2059995.0    100.0          return predict(X)</pre>
 </div>
 </div>
 </div>
@@ -1282,42 +1282,42 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.002    0.002 &lt;f&gt;:1(&lt;module&gt;)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
-     1    0.001    0.001    0.001    0.001 {sklearn.svm.libsvm.fit}
+     1    0.001    0.001    0.002    0.002 {sklearn.svm.libsvm.fit}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      3    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     5    0.000    0.000    0.000    0.000 {len}
      3    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:214(_warn_from_fit_status)
-     5    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 121
-Total time: 0.001869 s
+Total time: 0.001908 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1352,7 +1352,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    149                                                   """
    150
    151         1            5      5.0      0.3          if self.sparse == "auto":
-   152         1           29     29.0      1.6              self._sparse = sp.isspmatrix(X) and not self._pairwise
+   152         1           29     29.0      1.5              self._sparse = sp.isspmatrix(X) and not self._pairwise
    153                                                   else:
    154                                                       self._sparse = self.sparse
    155
@@ -1361,18 +1361,18 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    158                                                               "Using sparse data and dense kernels is possible by not "
    159                                                               "using the ``sparse`` parameter")
    160
-   161         1          148    148.0      7.9          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
-   162         1           26     26.0      1.4          y = np.asarray(y, dtype=np.float64, order='C')
+   161         1          203    203.0     10.6          X = atleast2d_or_csr(X, dtype=np.float64, order='C')
+   162         1           29     29.0      1.5          y = np.asarray(y, dtype=np.float64, order='C')
    163
-   164         1           91     91.0      4.9          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
+   164         1           91     91.0      4.8          if self.impl != "one_class" and len(np.unique(y)) &lt; 2:
    165                                                       raise ValueError("The number of classes has to be greater than"
    166                                                               " one.")
    167
-   168         1           29     29.0      1.6          sample_weight = np.asarray([] if sample_weight is None
+   168         1           28     28.0      1.5          sample_weight = np.asarray([] if sample_weight is None
    169                                                                                 else sample_weight, dtype=np.float64)
    170         1            6      6.0      0.3          solver_type = LIBSVM_IMPL.index(self.impl)
    171                                                   self.class_weight_, self.class_weight_label_ = \
-   172         1           54     54.0      2.9                       _get_class_weight(self.class_weight, y)
+   172         1           75     75.0      3.9                       _get_class_weight(self.class_weight, y)
    173
    174                                                   # input validation
    175         1            6      6.0      0.3          if solver_type != 2 and X.shape[0] != y.shape[0]:
@@ -1390,11 +1390,11 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    187                                                                        "boolean masks (use `indices=True` in CV)."
    188                                                                        % (sample_weight.shape, X.shape))
    189
-   190         1            3      3.0      0.2          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
+   190         1            4      4.0      0.2          if (self.kernel in ['poly', 'rbf']) and (self.gamma == 0):
    191                                                       # if custom gamma is not provided ...
    192                                                       self._gamma = 1.0 / X.shape[1]
    193                                                   else:
-   194         1            4      4.0      0.2              self._gamma = self.gamma
+   194         1            3      3.0      0.2              self._gamma = self.gamma
    195
    196         1            4      4.0      0.2          kernel = self.kernel
    197         1            8      8.0      0.4          if hasattr(kernel, '__call__'):
@@ -1403,15 +1403,15 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    200         1            5      5.0      0.3          fit = self._sparse_fit if self._sparse else self._dense_fit
    201         1            5      5.0      0.3          if self.verbose:
    202                                                       print '[LibSVM]',
-   203         1         1382   1382.0     73.9          fit(X, y, sample_weight, solver_type, kernel)
+   203         1         1346   1346.0     70.5          fit(X, y, sample_weight, solver_type, kernel)
    204
-   205         1            7      7.0      0.4          self.shape_fit_ = X.shape
+   205         1            6      6.0      0.3          self.shape_fit_ = X.shape
    206
    207                                                   # In binary case, we need to flip the sign of coef, intercept and
    208                                                   # decision function. Use self._intercept_ internally.
-   209         1           10     10.0      0.5          self._intercept_ = self.intercept_.copy()
+   209         1            9      9.0      0.5          self._intercept_ = self.intercept_.copy()
    210         1            5      5.0      0.3          if len(self.label_) == 2 and self.impl != 'one_class':
-   211         1           25     25.0      1.3              self.intercept_ *= -1
+   211         1           24     24.0      1.3              self.intercept_ *= -1
    212         1            4      4.0      0.2          return self</pre>
 </div>
 </div>
@@ -1440,28 +1440,28 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         166 function calls in 11.820 seconds
+<div class="highlight-python"><pre>         166 function calls in 11.743 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000   11.820   11.820 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000   11.820   11.820 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000   11.820   11.820 /tmp/vb_sklearn/sklearn/svm/base.py:643(fit)
-     1   11.755   11.755   11.755   11.755 {sklearn.svm.liblinear.csr_train_wrap}
-     1    0.000    0.000    0.061    0.061 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
-     1    0.000    0.000    0.056    0.056 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
+     1    0.000    0.000   11.743   11.743 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000   11.743   11.743 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000   11.743   11.743 /tmp/vb_sklearn/sklearn/svm/base.py:643(fit)
+     1   11.678   11.678   11.678   11.678 {sklearn.svm.liblinear.csr_train_wrap}
+     1    0.000    0.000    0.060    0.060 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
+     1    0.000    0.000    0.055    0.055 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
      1    0.000    0.000    0.040    0.040 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
      1    0.040    0.040    0.040    0.040 {_coo.coo_tocsr}
      1    0.000    0.000    0.015    0.015 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
      1    0.000    0.000    0.010    0.010 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
-     1    0.009    0.009    0.009    0.009 {_csr.csr_sum_duplicates}
-     1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+     1    0.010    0.010    0.010    0.010 {_csr.csr_sum_duplicates}
      1    0.000    0.000    0.005    0.005 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
-     1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
      1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
-     1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
      1    0.005    0.005    0.005    0.005 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
+     1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
+     1    0.000    0.000    0.005    0.005 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
      1    0.005    0.005    0.005    0.005 {_csr.csr_has_sorted_indices}
      1    0.000    0.000    0.004    0.004 /tmp/vb_sklearn/sklearn/preprocessing.py:662(fit_transform)
      1    0.001    0.001    0.004    0.004 /tmp/vb_sklearn/sklearn/utils/fixes.py:61(_unique)
@@ -1475,37 +1475,37 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      6    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:610(_get_solver_type)
-     1    0.000    0.000    0.000    0.000 {hasattr}
-     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:610(_get_solver_type)
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
      8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
-    27    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:207(check_random_state)
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:207(check_random_state)
     15    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+    27    0.000    0.000    0.000    0.000 {len}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
     10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
-     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
      4    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.liblinear.set_verbosity_wrap}
-     1    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:715(_get_bias)
+     2    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
@@ -1540,7 +1540,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 643
-Total time: 11.9449 s
+Total time: 11.9732 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1565,17 +1565,17 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    661                                                   self : object
    662                                                       Returns self.
    663                                                   """
-   664         1           10     10.0      0.0          self._enc = LabelEncoder()
-   665         1         3812   3812.0      0.0          y = self._enc.fit_transform(y)
-   666         1           11     11.0      0.0          if len(self.classes_) &lt; 2:
+   664         1            6      6.0      0.0          self._enc = LabelEncoder()
+   665         1         3740   3740.0      0.0          y = self._enc.fit_transform(y)
+   666         1           10     10.0      0.0          if len(self.classes_) &lt; 2:
    667                                                       raise ValueError("The number of classes has to be greater than"
    668                                                               " one.")
    669
-   670         1        72758  72758.0      0.6          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
+   670         1        72647  72647.0      0.6          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
    671         1           74     74.0      0.0          y = np.asarray(y, dtype=np.float64).ravel()
    672
    673                                                   self.class_weight_, self.class_weight_label_ = \
-   674         1           79     79.0      0.0                       _get_class_weight(self.class_weight, y)
+   674         1           77     77.0      0.0                       _get_class_weight(self.class_weight, y)
    675
    676         1           14     14.0      0.0          if X.shape[0] != y.shape[0]:
    677                                                       raise ValueError("X and y have incompatible shapes.\n" +
@@ -1584,22 +1584,22 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    680
    681         1            7      7.0      0.0          liblinear.set_verbosity_wrap(self.verbose)
    682
-   683         1           33     33.0      0.0          if sp.isspmatrix(X):
-   684         1            3      3.0      0.0              train = liblinear.csr_train_wrap
+   683         1           34     34.0      0.0          if sp.isspmatrix(X):
+   684         1            4      4.0      0.0              train = liblinear.csr_train_wrap
    685                                                   else:
    686                                                       train = liblinear.train_wrap
    687
    688         1           10     10.0      0.0          rnd = check_random_state(self.random_state)
-   689         1            4      4.0      0.0          if self.verbose:
+   689         1            3      3.0      0.0          if self.verbose:
    690                                                       print '[LibLinear]',
-   691         1           32     32.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
-   692         1            7      7.0      0.0                                 self._get_bias(), self.C,
-   693         1            4      4.0      0.0                                 self.class_weight_label_, self.class_weight_,
-   694         1     11867875 11867875.0     99.4                                 rnd.randint(1000))
+   691         1           38     38.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
+   692         1            8      8.0      0.0                                 self._get_bias(), self.C,
+   693         1            3      3.0      0.0                                 self.class_weight_label_, self.class_weight_,
+   694         1     11896464 11896464.0     99.4                                 rnd.randint(1000))
    695
    696         1            6      6.0      0.0          if self.fit_intercept:
-   697         1           26     26.0      0.0              self.coef_ = self.raw_coef_[:, :-1]
-   698         1          101    101.0      0.0              self.intercept_ = self.intercept_scaling * self.raw_coef_[:, -1]
+   697         1           24     24.0      0.0              self.coef_ = self.raw_coef_[:, :-1]
+   698         1           55     55.0      0.0              self.intercept_ = self.intercept_scaling * self.raw_coef_[:, -1]
    699                                                   else:
    700                                                       self.coef_ = self.raw_coef_
    701                                                       self.intercept_ = 0.
@@ -1618,69 +1618,69 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         186 function calls in 0.156 seconds
+<div class="highlight-python"><pre>         186 function calls in 0.153 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.156    0.156 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.156    0.156 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.156    0.156 /tmp/vb_sklearn/sklearn/linear_model/base.py:183(predict)
-     1    0.001    0.001    0.155    0.155 /tmp/vb_sklearn/sklearn/linear_model/base.py:156(decision_function)
-     1    0.000    0.000    0.110    0.110 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
-     1    0.000    0.000    0.110    0.110 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
-     1    0.000    0.000    0.110    0.110 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
-     1    0.000    0.000    0.109    0.109 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:320(csr_matvecs)
-     1    0.109    0.109    0.109    0.109 {_csr.csr_matvecs}
-     1    0.000    0.000    0.044    0.044 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
+     1    0.000    0.000    0.153    0.153 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.153    0.153 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.153    0.153 /tmp/vb_sklearn/sklearn/linear_model/base.py:183(predict)
+     1    0.001    0.001    0.152    0.152 /tmp/vb_sklearn/sklearn/linear_model/base.py:156(decision_function)
+     1    0.000    0.000    0.120    0.120 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.000    0.000    0.120    0.120 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:229(__mul__)
+     1    0.000    0.000    0.120    0.120 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:263(_mul_multivector)
+     1    0.000    0.000    0.120    0.120 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:320(csr_matvecs)
+     1    0.120    0.120    0.120    0.120 {_csr.csr_matvecs}
+     1    0.000    0.000    0.031    0.031 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
      1    0.000    0.000    0.028    0.028 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/coo.py:281(tocsr)
      1    0.000    0.000    0.018    0.018 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/coo.py:75(coo_tocsr)
      1    0.018    0.018    0.018    0.018 {_coo.coo_tocsr}
-     1    0.000    0.000    0.016    0.016 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
-     1    0.000    0.000    0.016    0.016 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
-     1    0.016    0.016    0.016    0.016 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.009    0.009 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:567(sum_duplicates)
      1    0.000    0.000    0.006    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:567(csr_sum_duplicates)
      1    0.006    0.006    0.006    0.006 {_csr.csr_sum_duplicates}
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.000    0.000    0.003    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:613(sort_indices)
      1    0.000    0.000    0.003    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:581(__get_sorted)
      1    0.000    0.000    0.003    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sparsetools/csr.py:85(csr_has_sorted_indices)
+     1    0.000    0.000    0.003    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:310(sum)
      1    0.003    0.003    0.003    0.003 {_csr.csr_has_sorted_indices}
+     1    0.003    0.003    0.003    0.003 {method 'sum' of 'numpy.ndarray' objects}
      1    0.001    0.001    0.001    0.001 {method 'argmax' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:20(__init__)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:101(check_format)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:622(prune)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:18(upcast)
-    11    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+    11    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/coo.py:194(getnnz)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:77(isscalarlike)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/data.py:17(__init__)
      8    0.000    0.000    0.000    0.000 {isinstance}
     10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
     20    0.000    0.000    0.000    0.000 {numpy.core.multiarray.can_cast}
+     3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1574(isscalar)
+     1    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:96(isshape)
     27    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {hasattr}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
-     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-    15    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:50(to_native)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:124(isdense)
+    15    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:2116(rank)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:81(get_shape)
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/compressed.py:85(getnnz)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:59(set_shape)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/csr.py:180(_swap)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:51(__init__)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:370(__getattr__)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:54(getdtype)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/data.py:20(_get_dtype)
      2    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      1    0.000    0.000    0.000    0.000 {method 'newbyteorder' of 'numpy.dtype' objects}
      1    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
@@ -1690,7 +1690,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/linear_model/base.py
 Function: predict at line 183
-Total time: 0.157084 s
+Total time: 0.166577 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1707,16 +1707,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    193                                                   C : array, shape = [n_samples]
    194                                                       Predicted class label per sample.
    195                                                   """
-   196         1       155395 155395.0     98.9          scores = self.decision_function(X)
-   197         1            6      6.0      0.0          if len(scores.shape) == 1:
+   196         1       164933 164933.0     99.0          scores = self.decision_function(X)
+   197         1            5      5.0      0.0          if len(scores.shape) == 1:
    198                                                       indices = (scores &gt; 0).astype(np.int)
    199                                                   else:
-   200         1         1528   1528.0      1.0              indices = scores.argmax(axis=1)
-   201         1          155    155.0      0.1          return self.classes_[indices]
+   200         1         1486   1486.0      0.9              indices = scores.argmax(axis=1)
+   201         1          153    153.0      0.1          return self.classes_[indices]
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 643
-Total time: 11.9449 s
+Total time: 11.9732 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1741,17 +1741,17 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    661                                                   self : object
    662                                                       Returns self.
    663                                                   """
-   664         1           10     10.0      0.0          self._enc = LabelEncoder()
-   665         1         3812   3812.0      0.0          y = self._enc.fit_transform(y)
-   666         1           11     11.0      0.0          if len(self.classes_) &lt; 2:
+   664         1            6      6.0      0.0          self._enc = LabelEncoder()
+   665         1         3740   3740.0      0.0          y = self._enc.fit_transform(y)
+   666         1           10     10.0      0.0          if len(self.classes_) &lt; 2:
    667                                                       raise ValueError("The number of classes has to be greater than"
    668                                                               " one.")
    669
-   670         1        72758  72758.0      0.6          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
+   670         1        72647  72647.0      0.6          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
    671         1           74     74.0      0.0          y = np.asarray(y, dtype=np.float64).ravel()
    672
    673                                                   self.class_weight_, self.class_weight_label_ = \
-   674         1           79     79.0      0.0                       _get_class_weight(self.class_weight, y)
+   674         1           77     77.0      0.0                       _get_class_weight(self.class_weight, y)
    675
    676         1           14     14.0      0.0          if X.shape[0] != y.shape[0]:
    677                                                       raise ValueError("X and y have incompatible shapes.\n" +
@@ -1760,22 +1760,22 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    680
    681         1            7      7.0      0.0          liblinear.set_verbosity_wrap(self.verbose)
    682
-   683         1           33     33.0      0.0          if sp.isspmatrix(X):
-   684         1            3      3.0      0.0              train = liblinear.csr_train_wrap
+   683         1           34     34.0      0.0          if sp.isspmatrix(X):
+   684         1            4      4.0      0.0              train = liblinear.csr_train_wrap
    685                                                   else:
    686                                                       train = liblinear.train_wrap
    687
    688         1           10     10.0      0.0          rnd = check_random_state(self.random_state)
-   689         1            4      4.0      0.0          if self.verbose:
+   689         1            3      3.0      0.0          if self.verbose:
    690                                                       print '[LibLinear]',
-   691         1           32     32.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
-   692         1            7      7.0      0.0                                 self._get_bias(), self.C,
-   693         1            4      4.0      0.0                                 self.class_weight_label_, self.class_weight_,
-   694         1     11867875 11867875.0     99.4                                 rnd.randint(1000))
+   691         1           38     38.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
+   692         1            8      8.0      0.0                                 self._get_bias(), self.C,
+   693         1            3      3.0      0.0                                 self.class_weight_label_, self.class_weight_,
+   694         1     11896464 11896464.0     99.4                                 rnd.randint(1000))
    695
    696         1            6      6.0      0.0          if self.fit_intercept:
-   697         1           26     26.0      0.0              self.coef_ = self.raw_coef_[:, :-1]
-   698         1          101    101.0      0.0              self.intercept_ = self.intercept_scaling * self.raw_coef_[:, -1]
+   697         1           24     24.0      0.0              self.coef_ = self.raw_coef_[:, :-1]
+   698         1           55     55.0      0.0              self.intercept_ = self.intercept_scaling * self.raw_coef_[:, -1]
    699                                                   else:
    700                                                       self.coef_ = self.raw_coef_
    701                                                       self.intercept_ = 0.
@@ -1808,45 +1808,45 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         58 function calls in 0.116 seconds
+<div class="highlight-python"><pre>         58 function calls in 0.115 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.116    0.116 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.116    0.116 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.116    0.116 /tmp/vb_sklearn/sklearn/svm/base.py:643(fit)
-     1    0.115    0.115    0.115    0.115 {sklearn.svm.liblinear.train_wrap}
+     1    0.000    0.000    0.115    0.115 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.115    0.115 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.115    0.115 /tmp/vb_sklearn/sklearn/svm/base.py:643(fit)
+     1    0.114    0.114    0.114    0.114 {sklearn.svm.liblinear.train_wrap}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/preprocessing.py:662(fit_transform)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/fixes.py:61(_unique)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:68(array2d)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      5    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:610(_get_solver_type)
-     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:207(check_random_state)
-     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
+     6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'randint' of 'mtrand.RandomState' objects}
      1    0.000    0.000    0.000    0.000 {sklearn.svm.liblinear.set_verbosity_wrap}
-     1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:715(_get_bias)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      2    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:715(_get_bias)
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1880,7 +1880,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 643
-Total time: 0.114241 s
+Total time: 0.114092 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1906,36 +1906,36 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    662                                                       Returns self.
    663                                                   """
    664         1            6      6.0      0.0          self._enc = LabelEncoder()
-   665         1          257    257.0      0.2          y = self._enc.fit_transform(y)
-   666         1           10     10.0      0.0          if len(self.classes_) &lt; 2:
+   665         1          232    232.0      0.2          y = self._enc.fit_transform(y)
+   666         1            9      9.0      0.0          if len(self.classes_) &lt; 2:
    667                                                       raise ValueError("The number of classes has to be greater than"
    668                                                               " one.")
    669
-   670         1          179    179.0      0.2          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
-   671         1           23     23.0      0.0          y = np.asarray(y, dtype=np.float64).ravel()
+   670         1          220    220.0      0.2          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
+   671         1           24     24.0      0.0          y = np.asarray(y, dtype=np.float64).ravel()
    672
    673                                                   self.class_weight_, self.class_weight_label_ = \
-   674         1           62     62.0      0.1                       _get_class_weight(self.class_weight, y)
+   674         1           71     71.0      0.1                       _get_class_weight(self.class_weight, y)
    675
-   676         1            5      5.0      0.0          if X.shape[0] != y.shape[0]:
+   676         1            6      6.0      0.0          if X.shape[0] != y.shape[0]:
    677                                                       raise ValueError("X and y have incompatible shapes.\n" +
    678                                                                        "X has %s samples, but y has %s." % \
    679                                                                        (X.shape[0], y.shape[0]))
    680
-   681         1            4      4.0      0.0          liblinear.set_verbosity_wrap(self.verbose)
+   681         1            5      5.0      0.0          liblinear.set_verbosity_wrap(self.verbose)
    682
-   683         1           25     25.0      0.0          if sp.isspmatrix(X):
+   683         1           24     24.0      0.0          if sp.isspmatrix(X):
    684                                                       train = liblinear.csr_train_wrap
    685                                                   else:
    686         1            3      3.0      0.0              train = liblinear.train_wrap
    687
-   688         1            8      8.0      0.0          rnd = check_random_state(self.random_state)
-   689         1            4      4.0      0.0          if self.verbose:
+   688         1            9      9.0      0.0          rnd = check_random_state(self.random_state)
+   689         1            3      3.0      0.0          if self.verbose:
    690                                                       print '[LibLinear]',
-   691         1           23     23.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
-   692         1            6      6.0      0.0                                 self._get_bias(), self.C,
+   691         1           24     24.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
+   692         1            7      7.0      0.0                                 self._get_bias(), self.C,
    693         1            3      3.0      0.0                                 self.class_weight_label_, self.class_weight_,
-   694         1       113572 113572.0     99.4                                 rnd.randint(1000))
+   694         1       113395 113395.0     99.4                                 rnd.randint(1000))
    695
    696         1            4      4.0      0.0          if self.fit_intercept:
    697         1           11     11.0      0.0              self.coef_ = self.raw_coef_[:, :-1]
@@ -1983,8 +1983,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      4    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      4    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:705(classes_)
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1992,7 +1992,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/linear_model/base.py
 Function: predict at line 183
-Total time: 0.00057 s
+Total time: 0.000579 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -2009,16 +2009,16 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    193                                                   C : array, shape = [n_samples]
    194                                                       Predicted class label per sample.
    195                                                   """
-   196         1          514    514.0     90.2          scores = self.decision_function(X)
+   196         1          521    521.0     90.0          scores = self.decision_function(X)
    197         1            4      4.0      0.7          if len(scores.shape) == 1:
    198                                                       indices = (scores &gt; 0).astype(np.int)
    199                                                   else:
-   200         1           35     35.0      6.1              indices = scores.argmax(axis=1)
-   201         1           17     17.0      3.0          return self.classes_[indices]
+   200         1           36     36.0      6.2              indices = scores.argmax(axis=1)
+   201         1           18     18.0      3.1          return self.classes_[indices]
 
 File: /tmp/vb_sklearn/sklearn/svm/base.py
 Function: fit at line 643
-Total time: 0.114241 s
+Total time: 0.114092 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -2044,36 +2044,36 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    662                                                       Returns self.
    663                                                   """
    664         1            6      6.0      0.0          self._enc = LabelEncoder()
-   665         1          257    257.0      0.2          y = self._enc.fit_transform(y)
-   666         1           10     10.0      0.0          if len(self.classes_) &lt; 2:
+   665         1          232    232.0      0.2          y = self._enc.fit_transform(y)
+   666         1            9      9.0      0.0          if len(self.classes_) &lt; 2:
    667                                                       raise ValueError("The number of classes has to be greater than"
    668                                                               " one.")
    669
-   670         1          179    179.0      0.2          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
-   671         1           23     23.0      0.0          y = np.asarray(y, dtype=np.float64).ravel()
+   670         1          220    220.0      0.2          X = atleast2d_or_csr(X, dtype=np.float64, order="C")
+   671         1           24     24.0      0.0          y = np.asarray(y, dtype=np.float64).ravel()
    672
    673                                                   self.class_weight_, self.class_weight_label_ = \
-   674         1           62     62.0      0.1                       _get_class_weight(self.class_weight, y)
+   674         1           71     71.0      0.1                       _get_class_weight(self.class_weight, y)
    675
-   676         1            5      5.0      0.0          if X.shape[0] != y.shape[0]:
+   676         1            6      6.0      0.0          if X.shape[0] != y.shape[0]:
    677                                                       raise ValueError("X and y have incompatible shapes.\n" +
    678                                                                        "X has %s samples, but y has %s." % \
    679                                                                        (X.shape[0], y.shape[0]))
    680
-   681         1            4      4.0      0.0          liblinear.set_verbosity_wrap(self.verbose)
+   681         1            5      5.0      0.0          liblinear.set_verbosity_wrap(self.verbose)
    682
-   683         1           25     25.0      0.0          if sp.isspmatrix(X):
+   683         1           24     24.0      0.0          if sp.isspmatrix(X):
    684                                                       train = liblinear.csr_train_wrap
    685                                                   else:
    686         1            3      3.0      0.0              train = liblinear.train_wrap
    687
-   688         1            8      8.0      0.0          rnd = check_random_state(self.random_state)
-   689         1            4      4.0      0.0          if self.verbose:
+   688         1            9      9.0      0.0          rnd = check_random_state(self.random_state)
+   689         1            3      3.0      0.0          if self.verbose:
    690                                                       print '[LibLinear]',
-   691         1           23     23.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
-   692         1            6      6.0      0.0                                 self._get_bias(), self.C,
+   691         1           24     24.0      0.0          self.raw_coef_ = train(X, y, self._get_solver_type(), self.tol,
+   692         1            7      7.0      0.0                                 self._get_bias(), self.C,
    693         1            3      3.0      0.0                                 self.class_weight_label_, self.class_weight_,
-   694         1       113572 113572.0     99.4                                 rnd.randint(1000))
+   694         1       113395 113395.0     99.4                                 rnd.randint(1000))
    695
    696         1            4      4.0      0.0          if self.fit_intercept:
    697         1           11     11.0      0.0              self.coef_ = self.raw_coef_[:, :-1]
@@ -2110,17 +2110,17 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         52 function calls in 1.640 seconds
+<div class="highlight-python"><pre>         52 function calls in 1.646 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    1.640    1.640 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    1.640    1.640 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    1.640    1.640 /tmp/vb_sklearn/sklearn/svm/classes.py:683(fit)
-     1    0.000    0.000    1.640    1.640 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
-     1    0.000    0.000    1.637    1.637 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
-     1    1.637    1.637    1.637    1.637 {sklearn.svm.libsvm.fit}
+     1    0.000    0.000    1.646    1.646 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    1.646    1.646 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    1.646    1.646 /tmp/vb_sklearn/sklearn/svm/classes.py:683(fit)
+     1    0.000    0.000    1.646    1.646 /tmp/vb_sklearn/sklearn/svm/base.py:121(fit)
+     1    0.000    0.000    1.643    1.643 /tmp/vb_sklearn/sklearn/svm/base.py:226(_dense_fit)
+     1    1.642    1.642    1.642    1.642 {sklearn.svm.libsvm.fit}
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:96(atleast2d_or_csr)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:14(assert_all_finite)
      1    0.003    0.003    0.003    0.003 {method 'sum' of 'numpy.ndarray' objects}
@@ -2132,14 +2132,14 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:18(_get_class_weight)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
-     3    0.000    0.000    0.000    0.000 {hasattr}
      6    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
+     3    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {sklearn.svm.libsvm.set_verbosity_wrap}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/svm/base.py:214(_warn_from_fit_status)
-     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
      4    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
@@ -2148,7 +2148,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/svm/classes.py
 Function: fit at line 683
-Total time: 1.72977 s
+Total time: 1.70922 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -2173,7 +2173,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    701
    702                                                   """
    703         1            6      6.0      0.0          super(OneClassSVM, self).fit(X, [], sample_weight=sample_weight,
-   704         1      1729760 1729760.0    100.0                  **params)
+   704         1      1709210 1709210.0    100.0                  **params)
    705         1            3      3.0      0.0          return self</pre>
 </div>
 </div>
