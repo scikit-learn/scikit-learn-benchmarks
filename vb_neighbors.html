@@ -235,16 +235,16 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
-     6    0.000    0.000    0.000    0.000 {hasattr}
      3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
-     1    0.000    0.000    0.000    0.000 {getattr}
+     6    0.000    0.000    0.000    0.000 {hasattr}
      5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
-     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {len}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -252,7 +252,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.000718 s
+Total time: 0.000766 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -268,9 +268,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          234    234.0     32.6          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          217    217.0     30.2          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          267    267.0     37.2          return self._fit(X)
+   572         1          327    327.0     42.7          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          225    225.0     29.4          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          214    214.0     27.9          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
@@ -317,20 +317,20 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         176 function calls in 0.002 seconds
+<div class="highlight-python"><pre>         176 function calls in 0.003 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.002    0.002 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.002    0.002 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
+     1    0.000    0.000    0.003    0.003 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.003    0.003 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/neighbors/base.py:160(kneighbors)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:98(euclidean_distances)
      4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
      4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
-     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/extmath.py:71(safe_sparse_dot)
      1    0.001    0.001    0.001    0.001 {numpy.core._dotblas.dot}
     12    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
@@ -345,23 +345,23 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
     24    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     12    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
-    16    0.000    0.000    0.000    0.000 {isinstance}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+    16    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
      2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+    12    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
-     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
-    12    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
@@ -371,7 +371,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.000718 s
+Total time: 0.000766 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -387,13 +387,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          234    234.0     32.6          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          217    217.0     30.2          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          267    267.0     37.2          return self._fit(X)
+   572         1          327    327.0     42.7          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          225    225.0     29.4          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          214    214.0     27.9          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
-Total time: 0.002266 s
+Total time: 0.002338 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -410,19 +410,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    130                                                   labels: array
    131                                                       List of class labels (one for each data sample).
    132                                                   """
-   133         1          189    189.0      8.3          X = atleast2d_or_csr(X)
+   133         1          189    189.0      8.1          X = atleast2d_or_csr(X)
    134
-   135         1         1546   1546.0     68.2          neigh_dist, neigh_ind = self.kneighbors(X)
-   136         1           22     22.0      1.0          pred_labels = self._y[neigh_ind]
+   135         1         1600   1600.0     68.4          neigh_dist, neigh_ind = self.kneighbors(X)
+   136         1           11     11.0      0.5          pred_labels = self._y[neigh_ind]
    137
-   138         1           10     10.0      0.4          weights = _get_weights(neigh_dist, self.weights)
+   138         1            9      9.0      0.4          weights = _get_weights(neigh_dist, self.weights)
    139
    140         1            2      2.0      0.1          if weights is None:
-   141         1          471    471.0     20.8              mode, _ = stats.mode(pred_labels, axis=1)
+   141         1          496    496.0     21.2              mode, _ = stats.mode(pred_labels, axis=1)
    142                                                   else:
    143                                                       mode, _ = weighted_mode(pred_labels, weights, axis=1)
    144
-   145         1           26     26.0      1.1          return self.classes_.take(mode.flatten().astype(np.int))</pre>
+   145         1           31     31.0      1.3          return self.classes_.take(mode.flatten().astype(np.int))</pre>
 </div>
 </div>
 </div>
@@ -450,21 +450,21 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         75 function calls in 0.004 seconds
+<div class="highlight-python"><pre>         75 function calls in 0.007 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.004    0.004 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.004    0.004 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.004    0.004 /tmp/vb_sklearn/sklearn/neighbors/base.py:560(fit)
-     3    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
-     2    0.003    0.002    0.003    0.002 {method 'sum' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.000    0.000    0.007    0.007 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.007    0.007 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.007    0.007 /tmp/vb_sklearn/sklearn/neighbors/base.py:560(fit)
+     3    0.000    0.000    0.006    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     2    0.005    0.003    0.005    0.003 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
+     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
@@ -473,25 +473,25 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/abc.py:128(__instancecheck__)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
-     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
-     6    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     6    0.000    0.000    0.000    0.000 {hasattr}
      3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
-     1    0.000    0.000    0.000    0.000 {getattr}
      5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {getattr}
      2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-     1    0.000    0.000    0.000    0.000 {len}</pre>
+     1    0.000    0.000    0.000    0.000 {len}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.003776 s
+Total time: 0.005744 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -507,9 +507,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1         1758   1758.0     46.6          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          360    360.0      9.5          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1         1658   1658.0     43.9          return self._fit(X)
+   572         1         2621   2621.0     45.6          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          542    542.0      9.4          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1         2581   2581.0     44.9          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
@@ -556,53 +556,53 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         176 function calls in 0.579 seconds
+<div class="highlight-python"><pre>         176 function calls in 0.686 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.579    0.579 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.579    0.579 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.579    0.579 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
-     1    0.001    0.001    0.577    0.577 /tmp/vb_sklearn/sklearn/neighbors/base.py:160(kneighbors)
-     1    0.000    0.000    0.346    0.346 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
-     1    0.073    0.073    0.346    0.346 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:98(euclidean_distances)
-     1    0.000    0.000    0.266    0.266 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
-     1    0.266    0.266    0.266    0.266 {numpy.core._dotblas.dot}
-     1    0.230    0.230    0.230    0.230 {method 'argsort' of 'numpy.ndarray' objects}
-    12    0.008    0.001    0.008    0.001 {method 'sum' of 'numpy.ndarray' objects}
-     4    0.000    0.000    0.006    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
-     4    0.000    0.000    0.006    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
-     8    0.000    0.000    0.006    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
-     1    0.000    0.000    0.004    0.004 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:56(check_pairwise_arrays)
-     4    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
-     4    0.000    0.000    0.002    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+     1    0.000    0.000    0.686    0.686 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.686    0.686 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.686    0.686 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
+     1    0.001    0.001    0.683    0.683 /tmp/vb_sklearn/sklearn/neighbors/base.py:160(kneighbors)
+     1    0.000    0.000    0.448    0.448 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
+     1    0.026    0.026    0.448    0.448 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:98(euclidean_distances)
+     1    0.000    0.000    0.412    0.412 /tmp/vb_sklearn/sklearn/utils/extmath.py:71(safe_sparse_dot)
+     1    0.412    0.412    0.412    0.412 {numpy.core._dotblas.dot}
+     1    0.233    0.233    0.233    0.233 {method 'argsort' of 'numpy.ndarray' objects}
+    12    0.014    0.001    0.014    0.001 {method 'sum' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.011    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
+     4    0.000    0.000    0.011    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
+     8    0.000    0.000    0.010    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     1    0.000    0.000    0.007    0.007 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:56(check_pairwise_arrays)
+     4    0.000    0.000    0.005    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
+     4    0.000    0.000    0.004    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
     12    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
     12    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.where}
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
     24    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     16    0.000    0.000    0.000    0.000 {isinstance}
+     8    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    12    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
-    12    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      2    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.arange}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
-     2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
-     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
-    12    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
-     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
+     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+    12    0.000    0.000    0.000    0.000 {len}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -610,7 +610,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.003776 s
+Total time: 0.005744 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -626,13 +626,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1         1758   1758.0     46.6          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          360    360.0      9.5          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1         1658   1658.0     43.9          return self._fit(X)
+   572         1         2621   2621.0     45.6          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          542    542.0      9.4          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1         2581   2581.0     44.9          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
-Total time: 0.822004 s
+Total time: 0.763335 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -649,19 +649,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    130                                                   labels: array
    131                                                       List of class labels (one for each data sample).
    132                                                   """
-   133         1          982    982.0      0.1          X = atleast2d_or_csr(X)
+   133         1         1566   1566.0      0.2          X = atleast2d_or_csr(X)
    134
-   135         1       819678 819678.0     99.7          neigh_dist, neigh_ind = self.kneighbors(X)
-   136         1           90     90.0      0.0          pred_labels = self._y[neigh_ind]
+   135         1       760525 760525.0     99.6          neigh_dist, neigh_ind = self.kneighbors(X)
+   136         1           86     86.0      0.0          pred_labels = self._y[neigh_ind]
    137
    138         1           14     14.0      0.0          weights = _get_weights(neigh_dist, self.weights)
    139
-   140         1            3      3.0      0.0          if weights is None:
-   141         1         1200   1200.0      0.1              mode, _ = stats.mode(pred_labels, axis=1)
+   140         1            2      2.0      0.0          if weights is None:
+   141         1         1110   1110.0      0.1              mode, _ = stats.mode(pred_labels, axis=1)
    142                                                   else:
    143                                                       mode, _ = weighted_mode(pred_labels, weights, axis=1)
    144
-   145         1           37     37.0      0.0          return self.classes_.take(mode.flatten().astype(np.int))</pre>
+   145         1           32     32.0      0.0          return self.classes_.take(mode.flatten().astype(np.int))</pre>
 </div>
 </div>
 </div>
@@ -697,9 +697,9 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.031    0.031 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.031    0.031 &lt;f&gt;:1(&lt;module&gt;)
      1    0.000    0.000    0.031    0.031 /tmp/vb_sklearn/sklearn/neighbors/base.py:560(fit)
-     1    0.025    0.025    0.028    0.028 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
-     3    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
-     2    0.005    0.003    0.005    0.003 {method 'sum' of 'numpy.ndarray' objects}
+     1    0.024    0.024    0.027    0.027 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
+     3    0.000    0.000    0.006    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     2    0.006    0.003    0.006    0.003 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
@@ -709,10 +709,10 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      8    0.000    0.000    0.000    0.000 {isinstance}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/abc.py:128(__instancecheck__)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
-     1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
+     2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
@@ -730,7 +730,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.030057 s
+Total time: 0.030269 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -746,9 +746,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1         2874   2874.0      9.6          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          194    194.0      0.6          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1        26989  26989.0     89.8          return self._fit(X)
+   572         1         2855   2855.0      9.4          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          218    218.0      0.7          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1        27196  27196.0     89.8          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
@@ -795,47 +795,47 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         109 function calls in 0.294 seconds
+<div class="highlight-python"><pre>         109 function calls in 0.295 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    0.294    0.294 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    0.294    0.294 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.294    0.294 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
+     1    0.000    0.000    0.295    0.295 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    0.295    0.295 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.295    0.295 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
      1    0.000    0.000    0.288    0.288 /tmp/vb_sklearn/sklearn/neighbors/base.py:160(kneighbors)
-     1    0.280    0.280    0.282    0.282 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
-     5    0.000    0.000    0.014    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     1    0.280    0.280    0.283    0.283 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+     5    0.000    0.000    0.013    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
      7    0.013    0.002    0.013    0.002 {method 'sum' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.011    0.006 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
-     2    0.000    0.000    0.011    0.006 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
+     2    0.000    0.000    0.011    0.005 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
+     2    0.000    0.000    0.011    0.005 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
      3    0.000    0.000    0.008    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
      1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.where}
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-     2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
     10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
      2    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      7    0.000    0.000    0.000    0.000 {isinstance}
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
-     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
-     9    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      1    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     9    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -843,7 +843,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.030057 s
+Total time: 0.030269 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -859,13 +859,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1         2874   2874.0      9.6          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          194    194.0      0.6          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1        26989  26989.0     89.8          return self._fit(X)
+   572         1         2855   2855.0      9.4          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          218    218.0      0.7          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1        27196  27196.0     89.8          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
-Total time: 0.294464 s
+Total time: 0.294588 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -882,15 +882,15 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    130                                                   labels: array
    131                                                       List of class labels (one for each data sample).
    132                                                   """
-   133         1         5608   5608.0      1.9          X = atleast2d_or_csr(X)
+   133         1         5525   5525.0      1.9          X = atleast2d_or_csr(X)
    134
-   135         1       288196 288196.0     97.9          neigh_dist, neigh_ind = self.kneighbors(X)
-   136         1           46     46.0      0.0          pred_labels = self._y[neigh_ind]
+   135         1       288362 288362.0     97.9          neigh_dist, neigh_ind = self.kneighbors(X)
+   136         1           49     49.0      0.0          pred_labels = self._y[neigh_ind]
    137
-   138         1           14     14.0      0.0          weights = _get_weights(neigh_dist, self.weights)
+   138         1           15     15.0      0.0          weights = _get_weights(neigh_dist, self.weights)
    139
    140         1            2      2.0      0.0          if weights is None:
-   141         1          568    568.0      0.2              mode, _ = stats.mode(pred_labels, axis=1)
+   141         1          605    605.0      0.2              mode, _ = stats.mode(pred_labels, axis=1)
    142                                                   else:
    143                                                       mode, _ = weighted_mode(pred_labels, weights, axis=1)
    144
@@ -931,8 +931,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.158    0.158 &lt;f&gt;:1(&lt;module&gt;)
      1    0.000    0.000    0.158    0.158 /tmp/vb_sklearn/sklearn/neighbors/base.py:560(fit)
      1    0.151    0.151    0.154    0.154 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
-     3    0.000    0.000    0.006    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
-     2    0.006    0.003    0.006    0.003 {method 'sum' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.005    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     2    0.005    0.003    0.005    0.003 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
@@ -945,16 +945,16 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/abc.py:128(__instancecheck__)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
-     4    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      6    0.000    0.000    0.000    0.000 {hasattr}
+     4    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {getattr}
      5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
@@ -963,7 +963,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.194632 s
+Total time: 0.181854 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -979,9 +979,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1         2874   2874.0      1.5          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          599    599.0      0.3          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1       191159 191159.0     98.2          return self._fit(X)
+   572         1         2874   2874.0      1.6          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          598    598.0      0.3          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1       178382 178382.0     98.1          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
@@ -1028,38 +1028,38 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         109 function calls in 2.220 seconds
+<div class="highlight-python"><pre>         109 function calls in 2.238 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    2.220    2.220 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.000    0.000    2.220    2.220 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    2.220    2.220 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
-     1    0.000    0.000    2.216    2.216 /tmp/vb_sklearn/sklearn/neighbors/base.py:160(kneighbors)
-     1    2.214    2.214    2.215    2.215 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+     1    0.000    0.000    2.238    2.238 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.000    0.000    2.238    2.238 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    2.238    2.238 /tmp/vb_sklearn/sklearn/neighbors/classification.py:120(predict)
+     1    0.000    0.000    2.221    2.221 /tmp/vb_sklearn/sklearn/neighbors/base.py:160(kneighbors)
+     1    2.219    2.219    2.220    2.220 {method 'query' of 'sklearn.neighbors.ball_tree.BallTree' objects}
+     1    0.000    0.000    0.014    0.014 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
+     1    0.013    0.013    0.013    0.013 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      7    0.004    0.001    0.004    0.001 {method 'sum' of 'numpy.ndarray' objects}
      5    0.000    0.000    0.004    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
      2    0.000    0.000    0.003    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
      2    0.000    0.000    0.003    0.002 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
      3    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
-     1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-     1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.where}
-     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     1    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
-     7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
+     7    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     10    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-     2    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      7    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      2    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
@@ -1076,7 +1076,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.194632 s
+Total time: 0.181854 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1092,13 +1092,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1         2874   2874.0      1.5          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          599    599.0      0.3          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1       191159 191159.0     98.2          return self._fit(X)
+   572         1         2874   2874.0      1.6          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          598    598.0      0.3          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1       178382 178382.0     98.1          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 120
-Total time: 2.28094 s
+Total time: 2.28444 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1115,19 +1115,19 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    130                                                   labels: array
    131                                                       List of class labels (one for each data sample).
    132                                                   """
-   133         1         1737   1737.0      0.1          X = atleast2d_or_csr(X)
+   133         1         1767   1767.0      0.1          X = atleast2d_or_csr(X)
    134
-   135         1      2265902 2265902.0     99.3          neigh_dist, neigh_ind = self.kneighbors(X)
-   136         1          106    106.0      0.0          pred_labels = self._y[neigh_ind]
+   135         1      2281260 2281260.0     99.9          neigh_dist, neigh_ind = self.kneighbors(X)
+   136         1          112    112.0      0.0          pred_labels = self._y[neigh_ind]
    137
-   138         1           14     14.0      0.0          weights = _get_weights(neigh_dist, self.weights)
+   138         1           15     15.0      0.0          weights = _get_weights(neigh_dist, self.weights)
    139
-   140         1            2      2.0      0.0          if weights is None:
-   141         1        13140  13140.0      0.6              mode, _ = stats.mode(pred_labels, axis=1)
+   140         1            3      3.0      0.0          if weights is None:
+   141         1         1240   1240.0      0.1              mode, _ = stats.mode(pred_labels, axis=1)
    142                                                   else:
    143                                                       mode, _ = weighted_mode(pred_labels, weights, axis=1)
    144
-   145         1           35     35.0      0.0          return self.classes_.take(mode.flatten().astype(np.int))</pre>
+   145         1           42     42.0      0.0          return self.classes_.take(mode.flatten().astype(np.int))</pre>
 </div>
 </div>
 </div>
@@ -1168,35 +1168,35 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
      3    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
-     2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
      8    0.000    0.000    0.000    0.000 {isinstance}
+     2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/abc.py:128(__instancecheck__)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
-     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
     10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
      6    0.000    0.000    0.000    0.000 {hasattr}
      3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 {getattr}
-     5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
      2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
-     1    0.000    0.000    0.000    0.000 {len}</pre>
+     1    0.000    0.000    0.000    0.000 {len}
+     5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.000652 s
+Total time: 0.000646 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1212,9 +1212,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          236    236.0     36.2          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          215    215.0     33.0          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          201    201.0     30.8          return self._fit(X)
+   572         1          235    235.0     36.4          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          221    221.0     34.2          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          190    190.0     29.4          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
@@ -1296,25 +1296,25 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
     20    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:98(euclidean_distances)
-    60    0.001    0.000    0.001    0.000 {numpy.core.multiarray.where}
     50    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
     42    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+    60    0.001    0.000    0.001    0.000 {numpy.core.multiarray.where}
     92    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
      4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
      4    0.000    0.000    0.001    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
-     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+    85    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
     40    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
+     1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/utils/extmath.py:71(safe_sparse_dot)
     20    0.001    0.000    0.001    0.000 {numpy.core.multiarray.concatenate}
      1    0.001    0.001    0.001    0.001 {numpy.core._dotblas.dot}
-    85    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      8    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
      4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
     20    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:56(check_pairwise_arrays)
     12    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
     12    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
     20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+    20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
     40    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
     54    0.000    0.000    0.000    0.000 {isinstance}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
@@ -1324,11 +1324,11 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
     21    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
     52    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
-     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
+     4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1336,7 +1336,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.000652 s
+Total time: 0.000646 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1352,13 +1352,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          236    236.0     36.2          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          215    215.0     33.0          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          201    201.0     30.8          return self._fit(X)
+   572         1          235    235.0     36.4          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          221    221.0     34.2          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          190    190.0     29.4          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
-Total time: 0.011845 s
+Total time: 0.011714 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1375,14 +1375,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    283                                                   labels: array
    284                                                       List of class labels (one for each data sample).
    285                                                   """
-   286         1          191    191.0      1.6          X = atleast2d_or_csr(X)
+   286         1          192    192.0      1.6          X = atleast2d_or_csr(X)
    287         1            4      4.0      0.0          n_samples = X.shape[0]
    288
-   289         1         2310   2310.0     19.5          neigh_dist, neigh_ind = self.radius_neighbors(X)
-   290        21           89      4.2      0.8          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
-   291        21          123      5.9      1.0          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
+   289         1         2305   2305.0     19.7          neigh_dist, neigh_ind = self.radius_neighbors(X)
+   290        21           96      4.6      0.8          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
+   291        21           79      3.8      0.7          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
    292
-   293         1            5      5.0      0.0          if self.outlier_label is not None:
+   293         1            3      3.0      0.0          if self.outlier_label is not None:
    294                                                       neigh_dist[outliers] = 1e-6
    295         1            3      3.0      0.0          elif outliers:
    296                                                       raise ValueError('No neighbors found for test samples %r, '
@@ -1391,25 +1391,25 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    299                                                                        'or consider removing them from your dataset.'
    300                                                                        % outliers)
    301
-   302         1           10     10.0      0.1          weights = _get_weights(neigh_dist, self.weights)
+   302         1            9      9.0      0.1          weights = _get_weights(neigh_dist, self.weights)
    303
-   304        21          150      7.1      1.3          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
-   305         1          153    153.0      1.3                                 dtype=object)
+   304        21          158      7.5      1.3          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
+   305         1          154    154.0      1.3                                 dtype=object)
    306         1            3      3.0      0.0          if weights is None:
-   307        21         8689    413.8     73.4              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
-   308         1           46     46.0      0.4                              dtype=np.int)
+   307        21         8595    409.3     73.4              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
+   308         1           47     47.0      0.4                              dtype=np.int)
    309                                                   else:
    310                                                       mode = np.array([weighted_mode(pl, w)[0]
    311                                                                        for (pl, w) in zip(pred_labels[inliers], weights)],
    312                                                                       dtype=np.int)
    313
-   314         1           10     10.0      0.1          mode = mode.ravel().astype(np.int)
+   314         1            9      9.0      0.1          mode = mode.ravel().astype(np.int)
    315         1           10     10.0      0.1          prediction = np.empty(n_samples, dtype=self.classes_.dtype)
-   316         1           43     43.0      0.4          prediction[inliers] = self.classes_.take(mode)
+   316         1           42     42.0      0.4          prediction[inliers] = self.classes_.take(mode)
    317         1            3      3.0      0.0          if outliers:
    318                                                       prediction[outliers] = self.outlier_label
    319
-   320         1            3      3.0      0.0          return prediction</pre>
+   320         1            2      2.0      0.0          return prediction</pre>
 </div>
 </div>
 </div>
@@ -1449,28 +1449,28 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      2    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
      8    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 {method 'argsort' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/abc.py:128(__instancecheck__)
-     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
+     1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
-     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      6    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {len}
-     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -1478,7 +1478,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.00064 s
+Total time: 0.000639 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1494,9 +1494,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          227    227.0     35.5          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          215    215.0     33.6          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          198    198.0     30.9          return self._fit(X)
+   572         1          226    226.0     35.4          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          218    218.0     34.1          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          195    195.0     30.5          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
@@ -1565,40 +1565,40 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         19550 function calls in 1.274 seconds
+<div class="highlight-python"><pre>         19550 function calls in 1.323 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    1.274    1.274 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.004    0.004    1.274    1.274 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.005    0.005    1.270    1.270 /tmp/vb_sklearn/sklearn/neighbors/classification.py:273(predict)
-   200    0.971    0.005    1.238    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
-   200    0.008    0.000    0.155    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
-   200    0.140    0.001    0.140    0.001 {method 'sort' of 'numpy.ndarray' objects}
-  2002    0.005    0.000    0.049    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-  2010    0.040    0.000    0.040    0.000 {method 'sum' of 'numpy.ndarray' objects}
-  2200    0.037    0.000    0.037    0.000 {numpy.core.multiarray.where}
-  2412    0.027    0.000    0.027    0.000 {numpy.core.multiarray.array}
-  2000    0.008    0.000    0.024    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
+     1    0.000    0.000    1.323    1.323 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.004    0.004    1.323    1.323 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.005    0.005    1.319    1.319 /tmp/vb_sklearn/sklearn/neighbors/classification.py:273(predict)
+   200    1.043    0.005    1.288    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
+  2002    0.005    0.000    0.113    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+  2010    0.104    0.000    0.104    0.000 {method 'sum' of 'numpy.ndarray' objects}
+   200    0.008    0.000    0.077    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+   200    0.064    0.000    0.064    0.000 {method 'sort' of 'numpy.ndarray' objects}
+  2200    0.032    0.000    0.032    0.000 {numpy.core.multiarray.where}
+  2412    0.026    0.000    0.026    0.000 {numpy.core.multiarray.array}
+  2000    0.008    0.000    0.022    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
      1    0.004    0.004    0.020    0.020 /tmp/vb_sklearn/sklearn/neighbors/base.py:330(radius_neighbors)
-  2405    0.004    0.000    0.018    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+  2405    0.004    0.000    0.017    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
    200    0.005    0.000    0.005    0.000 {numpy.core.multiarray.concatenate}
-  2000    0.005    0.000    0.005    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+  2000    0.004    0.000    0.004    0.000 {method 'reshape' of 'numpy.ndarray' objects}
   2014    0.004    0.000    0.004    0.000 {isinstance}
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
+     1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
      1    0.001    0.001    0.002    0.002 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:98(euclidean_distances)
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
-     1    0.001    0.001    0.001    0.001 {numpy.core._dotblas.dot}
-   200    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:71(safe_sparse_dot)
+     1    0.002    0.002    0.002    0.002 {numpy.core._dotblas.dot}
    200    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+   200    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
    200    0.001    0.000    0.001    0.000 {method 'flatten' of 'numpy.ndarray' objects}
    400    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
      4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
      4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
    201    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
      8    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     4    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:56(check_pairwise_arrays)
     12    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
     12    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
@@ -1608,8 +1608,8 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
     24    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
-     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
+     1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
@@ -1618,7 +1618,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.00064 s
+Total time: 0.000639 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1634,13 +1634,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          227    227.0     35.5          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          215    215.0     33.6          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          198    198.0     30.9          return self._fit(X)
+   572         1          226    226.0     35.4          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          218    218.0     34.1          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          195    195.0     30.5          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
-Total time: 1.38359 s
+Total time: 1.35718 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1657,14 +1657,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    283                                                   labels: array
    284                                                       List of class labels (one for each data sample).
    285                                                   """
-   286         1          198    198.0      0.0          X = atleast2d_or_csr(X)
+   286         1          194    194.0      0.0          X = atleast2d_or_csr(X)
    287         1            4      4.0      0.0          n_samples = X.shape[0]
    288
-   289         1        47312  47312.0      3.4          neigh_dist, neigh_ind = self.radius_neighbors(X)
-   290       201          832      4.1      0.1          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
-   291       201          750      3.7      0.1          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
+   289         1        48989  48989.0      3.6          neigh_dist, neigh_ind = self.radius_neighbors(X)
+   290       201          808      4.0      0.1          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
+   291       201          752      3.7      0.1          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
    292
-   293         1            5      5.0      0.0          if self.outlier_label is not None:
+   293         1            3      3.0      0.0          if self.outlier_label is not None:
    294                                                       neigh_dist[outliers] = 1e-6
    295         1            3      3.0      0.0          elif outliers:
    296                                                       raise ValueError('No neighbors found for test samples %r, '
@@ -1673,25 +1673,25 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    299                                                                        'or consider removing them from your dataset.'
    300                                                                        % outliers)
    301
-   302         1           11     11.0      0.0          weights = _get_weights(neigh_dist, self.weights)
+   302         1           10     10.0      0.0          weights = _get_weights(neigh_dist, self.weights)
    303
-   304       201         2401     11.9      0.2          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
-   305         1         9997   9997.0      0.7                                 dtype=object)
+   304       201         2397     11.9      0.2          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
+   305         1        10641  10641.0      0.8                                 dtype=object)
    306         1            4      4.0      0.0          if weights is None:
-   307       201      1321702   6575.6     95.5              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
-   308         1          212    212.0      0.0                              dtype=np.int)
+   307       201      1293003   6432.9     95.3              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
+   308         1          213    213.0      0.0                              dtype=np.int)
    309                                                   else:
    310                                                       mode = np.array([weighted_mode(pl, w)[0]
    311                                                                        for (pl, w) in zip(pred_labels[inliers], weights)],
    312                                                                       dtype=np.int)
    313
-   314         1           40     40.0      0.0          mode = mode.ravel().astype(np.int)
-   315         1           11     11.0      0.0          prediction = np.empty(n_samples, dtype=self.classes_.dtype)
-   316         1           99     99.0      0.0          prediction[inliers] = self.classes_.take(mode)
+   314         1           42     42.0      0.0          mode = mode.ravel().astype(np.int)
+   315         1           12     12.0      0.0          prediction = np.empty(n_samples, dtype=self.classes_.dtype)
+   316         1          100    100.0      0.0          prediction[inliers] = self.classes_.take(mode)
    317         1            3      3.0      0.0          if outliers:
    318                                                       prediction[outliers] = self.outlier_label
    319
-   320         1            2      2.0      0.0          return prediction</pre>
+   320         1            3      3.0      0.0          return prediction</pre>
 </div>
 </div>
 </div>
@@ -1727,13 +1727,13 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.001    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.001    0.001 &lt;f&gt;:1(&lt;module&gt;)
      1    0.000    0.000    0.001    0.001 /tmp/vb_sklearn/sklearn/neighbors/base.py:560(fit)
-     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
+     1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:96(_fit)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      3    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
      8    0.000    0.000    0.000    0.000 {isinstance}
@@ -1741,26 +1741,26 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/abc.py:128(__instancecheck__)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
-     1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+     1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
      1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      4    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      6    0.000    0.000    0.000    0.000 {hasattr}
      2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {getattr}
-     1    0.000    0.000    0.000    0.000 {len}
      5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
-     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     1    0.000    0.000    0.000    0.000 {len}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.000785 s
+Total time: 0.000872 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1776,9 +1776,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          236    236.0     30.1          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          213    213.0     27.1          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          336    336.0     42.8          return self._fit(X)
+   572         1          252    252.0     28.9          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          220    220.0     25.2          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          400    400.0     45.9          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
@@ -1857,37 +1857,37 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.001    0.001    0.011    0.011 /tmp/vb_sklearn/sklearn/neighbors/classification.py:273(predict)
     20    0.004    0.000    0.008    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/neighbors/base.py:330(radius_neighbors)
-     1    0.001    0.001    0.002    0.002 {method 'query_radius' of 'sklearn.neighbors.ball_tree.BallTree' objects}
     20    0.001    0.000    0.002    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+     1    0.001    0.001    0.001    0.001 {method 'query_radius' of 'sklearn.neighbors.ball_tree.BallTree' objects}
     40    0.001    0.000    0.001    0.000 {numpy.core.multiarray.where}
     40    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
     45    0.001    0.000    0.001    0.000 {method 'sum' of 'numpy.ndarray' objects}
     90    0.001    0.000    0.001    0.000 {numpy.core.multiarray.array}
-    20    0.001    0.000    0.001    0.000 {numpy.core.multiarray.concatenate}
     40    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
+    20    0.001    0.000    0.001    0.000 {numpy.core.multiarray.concatenate}
     84    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
-     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
     20    0.000    0.000    0.000    0.000 {method 'sort' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
      5    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
     20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
     20    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
     41    0.000    0.000    0.000    0.000 {method 'reshape' of 'numpy.ndarray' objects}
     45    0.000    0.000    0.000    0.000 {isinstance}
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
     20    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
     40    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
     21    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
-     4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
+     4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
     10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+    51    0.000    0.000    0.000    0.000 {len}
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
      1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
-    51    0.000    0.000    0.000    0.000 {len}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
      1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
@@ -1899,7 +1899,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.000785 s
+Total time: 0.000872 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1915,13 +1915,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          236    236.0     30.1          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          213    213.0     27.1          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1          336    336.0     42.8          return self._fit(X)
+   572         1          252    252.0     28.9          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          220    220.0     25.2          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1          400    400.0     45.9          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
-Total time: 0.010912 s
+Total time: 0.010851 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -1938,14 +1938,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    283                                                   labels: array
    284                                                       List of class labels (one for each data sample).
    285                                                   """
-   286         1          191    191.0      1.8          X = atleast2d_or_csr(X)
+   286         1          194    194.0      1.8          X = atleast2d_or_csr(X)
    287         1            4      4.0      0.0          n_samples = X.shape[0]
    288
-   289         1         1474   1474.0     13.5          neigh_dist, neigh_ind = self.radius_neighbors(X)
-   290        21           79      3.8      0.7          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
+   289         1         1542   1542.0     14.2          neigh_dist, neigh_ind = self.radius_neighbors(X)
+   290        21           76      3.6      0.7          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
    291        21           66      3.1      0.6          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
    292
-   293         1            5      5.0      0.0          if self.outlier_label is not None:
+   293         1            3      3.0      0.0          if self.outlier_label is not None:
    294                                                       neigh_dist[outliers] = 1e-6
    295         1            3      3.0      0.0          elif outliers:
    296                                                       raise ValueError('No neighbors found for test samples %r, '
@@ -1956,11 +1956,11 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    301
    302         1            9      9.0      0.1          weights = _get_weights(neigh_dist, self.weights)
    303
-   304        21          159      7.6      1.5          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
-   305         1          171    171.0      1.6                                 dtype=object)
+   304        21          163      7.8      1.5          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
+   305         1          153    153.0      1.4                                 dtype=object)
    306         1            3      3.0      0.0          if weights is None:
-   307        21         8634    411.1     79.1              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
-   308         1           47     47.0      0.4                              dtype=np.int)
+   307        21         8523    405.9     78.5              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
+   308         1           46     46.0      0.4                              dtype=np.int)
    309                                                   else:
    310                                                       mode = np.array([weighted_mode(pl, w)[0]
    311                                                                        for (pl, w) in zip(pred_labels[inliers], weights)],
@@ -1972,7 +1972,7 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    317         1            3      3.0      0.0          if outliers:
    318                                                       prediction[outliers] = self.outlier_label
    319
-   320         1            3      3.0      0.0          return prediction</pre>
+   320         1            2      2.0      0.0          return prediction</pre>
 </div>
 </div>
 </div>
@@ -2012,9 +2012,9 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      2    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:33(safe_asarray)
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:22(assert_all_finite)
      8    0.000    0.000    0.000    0.000 {isinstance}
@@ -2023,17 +2023,17 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.concatenate}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1643(cumsum)
      1    0.000    0.000    0.000    0.000 {method 'cumsum' of 'numpy.ndarray' objects}
+    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:120(_num_samples)
-    10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      2    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/_weakrefset.py:68(__contains__)
-     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
      4    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      6    0.000    0.000    0.000    0.000 {hasattr}
+     1    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {getattr}
      1    0.000    0.000    0.000    0.000 {len}
      5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
-     2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
@@ -2041,7 +2041,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.001621 s
+Total time: 0.001579 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -2057,9 +2057,9 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          227    227.0     14.0          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          215    215.0     13.3          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1         1179   1179.0     72.7          return self._fit(X)
+   572         1          225    225.0     14.2          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          214    214.0     13.6          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1         1140   1140.0     72.2          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
@@ -2128,49 +2128,49 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
 <p><strong>Additional output</strong></p>
 <div class="profiler-output container">
 <p>cProfile</p>
-<div class="highlight-python"><pre>         19294 function calls in 1.223 seconds
+<div class="highlight-python"><pre>         19294 function calls in 1.302 seconds
 
 Ordered by: cumulative time
 
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     1    0.000    0.000    1.223    1.223 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
-     1    0.004    0.004    1.223    1.223 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.005    0.005    1.219    1.219 /tmp/vb_sklearn/sklearn/neighbors/classification.py:273(predict)
-   200    0.988    0.005    1.193    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
-   200    0.007    0.000    0.108    0.001 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
-   200    0.096    0.000    0.096    0.000 {method 'sort' of 'numpy.ndarray' objects}
-  2000    0.043    0.000    0.043    0.000 {numpy.core.multiarray.where}
-  2000    0.005    0.000    0.031    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
-  2005    0.024    0.000    0.024    0.000 {method 'sum' of 'numpy.ndarray' objects}
-  2000    0.007    0.000    0.020    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
+     1    0.000    0.000    1.302    1.302 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
+     1    0.004    0.004    1.302    1.302 &lt;f&gt;:1(&lt;module&gt;)
+     1    0.005    0.005    1.297    1.297 /tmp/vb_sklearn/sklearn/neighbors/classification.py:273(predict)
+   200    0.916    0.005    1.271    0.006 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/stats.py:586(mode)
+  2000    0.154    0.000    0.154    0.000 {numpy.core.multiarray.where}
+   200    0.007    0.000    0.094    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/arraysetops.py:90(unique)
+   200    0.080    0.000    0.080    0.000 {method 'sort' of 'numpy.ndarray' objects}
+  2000    0.008    0.000    0.070    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/lib/shape_base.py:194(expand_dims)
+  2404    0.052    0.000    0.059    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
+  2000    0.005    0.000    0.035    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
+  2005    0.026    0.000    0.026    0.000 {method 'sum' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.014    0.014 /tmp/vb_sklearn/sklearn/neighbors/base.py:330(radius_neighbors)
      1    0.014    0.014    0.014    0.014 {method 'query_radius' of 'sklearn.neighbors.ball_tree.BallTree' objects}
   2410    0.013    0.000    0.013    0.000 {numpy.core.multiarray.array}
-  2404    0.004    0.000    0.010    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
-   200    0.004    0.000    0.004    0.000 {numpy.core.multiarray.concatenate}
+   200    0.005    0.000    0.005    0.000 {numpy.core.multiarray.concatenate}
   2001    0.004    0.000    0.004    0.000 {method 'reshape' of 'numpy.ndarray' objects}
-  2005    0.003    0.000    0.003    0.000 {isinstance}
-   200    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
+  2005    0.004    0.000    0.004    0.000 {isinstance}
    200    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/stats/_support.py:212(_chk_asarray)
+   200    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1044(ravel)
    200    0.001    0.000    0.001    0.000 {method 'flatten' of 'numpy.ndarray' objects}
    400    0.000    0.000    0.000    0.000 {numpy.core.multiarray.zeros}
+   201    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
      2    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
-   201    0.000    0.000    0.000    0.000 {method 'ravel' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
      5    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
-     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
-     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
    411    0.000    0.000    0.000    0.000 {len}
+     5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
      5    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+     3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
      1    0.000    0.000    0.000    0.000 {method 'astype' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:6(atleast_1d)
      4    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
      1    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:1791(ones)
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
     10    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
-     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 {method 'take' of 'numpy.ndarray' objects}
+     1    0.000    0.000    0.000    0.000 {method 'fill' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.000    0.000 /tmp/vb_sklearn/sklearn/neighbors/base.py:40(_get_weights)
      4    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
@@ -2180,7 +2180,7 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/base.py
 Function: fit at line 560
-Total time: 0.001621 s
+Total time: 0.001579 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -2196,13 +2196,13 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    569                                                   y : {array-like, sparse matrix}, shape = [n_samples]
    570                                                       Target values, array of integer values.
    571                                                   """
-   572         1          227    227.0     14.0          X, y = check_arrays(X, y, sparse_format="csr")
-   573         1          215    215.0     13.3          self.classes_, self._y = unique(y, return_inverse=True)
-   574         1         1179   1179.0     72.7          return self._fit(X)
+   572         1          225    225.0     14.2          X, y = check_arrays(X, y, sparse_format="csr")
+   573         1          214    214.0     13.6          self.classes_, self._y = unique(y, return_inverse=True)
+   574         1         1140   1140.0     72.2          return self._fit(X)
 
 File: /tmp/vb_sklearn/sklearn/neighbors/classification.py
 Function: predict at line 273
-Total time: 1.3318 s
+Total time: 1.32127 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
@@ -2219,14 +2219,14 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    283                                                   labels: array
    284                                                       List of class labels (one for each data sample).
    285                                                   """
-   286         1          204    204.0      0.0          X = atleast2d_or_csr(X)
-   287         1            4      4.0      0.0          n_samples = X.shape[0]
+   286         1          194    194.0      0.0          X = atleast2d_or_csr(X)
+   287         1            5      5.0      0.0          n_samples = X.shape[0]
    288
-   289         1        36489  36489.0      2.7          neigh_dist, neigh_ind = self.radius_neighbors(X)
-   290       201          705      3.5      0.1          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
-   291       201          597      3.0      0.0          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
+   289         1        35711  35711.0      2.7          neigh_dist, neigh_ind = self.radius_neighbors(X)
+   290       201          630      3.1      0.0          inliers = [i for i, nind in enumerate(neigh_ind) if len(nind) != 0]
+   291       201          587      2.9      0.0          outliers = [i for i, nind in enumerate(neigh_ind) if len(nind) == 0]
    292
-   293         1            4      4.0      0.0          if self.outlier_label is not None:
+   293         1            3      3.0      0.0          if self.outlier_label is not None:
    294                                                       neigh_dist[outliers] = 1e-6
    295         1            3      3.0      0.0          elif outliers:
    296                                                       raise ValueError('No neighbors found for test samples %r, '
@@ -2235,21 +2235,21 @@ Line #      Hits         Time  Per Hit   % Time  Line Contents
    299                                                                        'or consider removing them from your dataset.'
    300                                                                        % outliers)
    301
-   302         1           11     11.0      0.0          weights = _get_weights(neigh_dist, self.weights)
+   302         1           10     10.0      0.0          weights = _get_weights(neigh_dist, self.weights)
    303
-   304       201         2536     12.6      0.2          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
-   305         1         9978   9978.0      0.7                                 dtype=object)
-   306         1            4      4.0      0.0          if weights is None:
-   307       201      1280899   6372.6     96.2              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
-   308         1          211    211.0      0.0                              dtype=np.int)
+   304       201         2532     12.6      0.2          pred_labels = np.array([self._y[ind] for ind in neigh_ind],
+   305         1        10227  10227.0      0.8                                 dtype=object)
+   306         1            3      3.0      0.0          if weights is None:
+   307       201      1271004   6323.4     96.2              mode = np.array([stats.mode(pl)[0] for pl in pred_labels[inliers]],
+   308         1          204    204.0      0.0                              dtype=np.int)
    309                                                   else:
    310                                                       mode = np.array([weighted_mode(pl, w)[0]
    311                                                                        for (pl, w) in zip(pred_labels[inliers], weights)],
    312                                                                       dtype=np.int)
    313
-   314         1           40     40.0      0.0          mode = mode.ravel().astype(np.int)
+   314         1           38     38.0      0.0          mode = mode.ravel().astype(np.int)
    315         1           12     12.0      0.0          prediction = np.empty(n_samples, dtype=self.classes_.dtype)
-   316         1          100    100.0      0.0          prediction[inliers] = self.classes_.take(mode)
+   316         1          101    101.0      0.0          prediction[inliers] = self.classes_.take(mode)
    317         1            3      3.0      0.0          if outliers:
    318                                                       prediction[outliers] = self.outlier_label
    319
@@ -2288,7 +2288,7 @@ Ordered by: cumulative time
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.092    0.092 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.092    0.092 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.058    0.058    0.092    0.092 /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py:74(fit)
+     1    0.058    0.058    0.092    0.092 /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py:75(fit)
      2    0.031    0.015    0.031    0.015 {method 'mean' of 'numpy.ndarray' objects}
      1    0.000    0.000    0.003    0.003 /tmp/vb_sklearn/sklearn/utils/validation.py:127(check_arrays)
      2    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
@@ -2306,110 +2306,110 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      5    0.000    0.000    0.000    0.000 {isinstance}
      2    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      1    0.000    0.000    0.000    0.000 {numpy.core.multiarray.empty}
+     5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
      2    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
      1    0.000    0.000    0.000    0.000 {len}
-     5    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py
-Function: fit at line 74
-Total time: 0.089762 s
+Function: fit at line 75
+Total time: 0.089526 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-    74                                               def fit(self, X, y):
-    75                                                   """
-    76                                                   Fit the NearestCentroid model according to the given training data.
-    77
-    78                                                   Parameters
-    79                                                   ----------
-    80                                                   X : {array-like, sparse matrix}, shape = [n_samples, n_features]
-    81                                                       Training vector, where n_samples in the number of samples and
-    82                                                       n_features is the number of features.
-    83                                                       Note that centroid shrinking cannot be used with sparse matrices.
-    84                                                   y : array, shape = [n_samples]
-    85                                                       Target values (integers)
-    86                                                   """
-    87         1         3005   3005.0      3.3          X, y = check_arrays(X, y, sparse_format="csr")
-    88         1           19     19.0      0.0          if sp.issparse(X) and self.shrink_threshold:
-    89                                                       raise ValueError("threshold shrinking not supported"
-    90                                                                        " for sparse input")
-    91
-    92         1            4      4.0      0.0          n_samples, n_features = X.shape
-    93         1          197    197.0      0.2          classes = np.unique(y)
-    94         1            5      5.0      0.0          self.classes_ = classes
-    95         1            4      4.0      0.0          n_classes = classes.size
-    96         1            4      4.0      0.0          if n_classes &lt; 2:
-    97                                                       raise ValueError('y has less than 2 classes')
-    98
-    99                                                   # Mask mapping each class to it's members.
-   100         1           12     12.0      0.0          self.centroids_ = np.empty((n_classes, n_features), dtype=np.float64)
-   101         3           32     10.7      0.0          for i, cur_class in enumerate(classes):
-   102         2           47     23.5      0.1              center_mask = y == cur_class
-   103         2           63     31.5      0.1              if sp.issparse(X):
-   104                                                           center_mask = np.where(center_mask)[0]
-   105         2        86362  43181.0     96.2              self.centroids_[i] = X[center_mask].mean(axis=0)
-   106
-   107         1            4      4.0      0.0          if self.shrink_threshold:
-   108                                                       dataset_centroid_ = np.array(X.mean(axis=0))[0]
-   109                                                       # Number of clusters in each class.
-   110                                                       nk = np.array([np.sum(classes == cur_class)
-   111                                                                      for cur_class in classes])
-   112                                                       # m parameter for determining deviation
-   113                                                       m = np.sqrt((1. / nk) + (1. / n_samples))
-   114                                                       # Calculate deviation using the standard deviation of centroids.
-   115                                                       variance = np.array(np.power(X - self.centroids_[y], 2))
-   116                                                       variance = variance.sum(axis=0)
-   117                                                       s = np.sqrt(variance / (n_samples - n_classes))
-   118                                                       s += np.median(s)  # To deter outliers from affecting the results.
-   119                                                       mm = m.reshape(len(m), 1)  # Reshape to allow broadcasting.
-   120                                                       ms = mm * s
-   121                                                       deviation = ((self.centroids_ - dataset_centroid_) / ms)
-   122                                                       # Soft thresholding: if the deviation crosses 0 during shrinking,
-   123                                                       # it becomes zero.
-   124                                                       signs = np.sign(deviation)
-   125                                                       deviation = (np.abs(deviation) - self.shrink_threshold)
-   126                                                       deviation[deviation &lt; 0] = 0
-   127                                                       deviation = np.multiply(deviation, signs)
-   128                                                       # Now adjust the centroids using the deviation
-   129                                                       msd = np.multiply(ms, deviation)
-   130                                                       self.centroids_ = np.array([dataset_centroid_ + msd[i]
-   131                                                                                   for i in xrange(n_classes)])
-   132         1            4      4.0      0.0          return self
+    75                                               def fit(self, X, y):
+    76                                                   """
+    77                                                   Fit the NearestCentroid model according to the given training data.
+    78
+    79                                                   Parameters
+    80                                                   ----------
+    81                                                   X : {array-like, sparse matrix}, shape = [n_samples, n_features]
+    82                                                       Training vector, where n_samples in the number of samples and
+    83                                                       n_features is the number of features.
+    84                                                       Note that centroid shrinking cannot be used with sparse matrices.
+    85                                                   y : array, shape = [n_samples]
+    86                                                       Target values (integers)
+    87                                                   """
+    88         1         2935   2935.0      3.3          X, y = check_arrays(X, y, sparse_format="csr")
+    89         1           19     19.0      0.0          if sp.issparse(X) and self.shrink_threshold:
+    90                                                       raise ValueError("threshold shrinking not supported"
+    91                                                                        " for sparse input")
+    92
+    93         1            4      4.0      0.0          n_samples, n_features = X.shape
+    94         1          212    212.0      0.2          classes = np.unique(y)
+    95         1            5      5.0      0.0          self.classes_ = classes
+    96         1            4      4.0      0.0          n_classes = classes.size
+    97         1            4      4.0      0.0          if n_classes &lt; 2:
+    98                                                       raise ValueError('y has less than 2 classes')
+    99
+   100                                                   # Mask mapping each class to it's members.
+   101         1           11     11.0      0.0          self.centroids_ = np.empty((n_classes, n_features), dtype=np.float64)
+   102         3           30     10.0      0.0          for i, cur_class in enumerate(classes):
+   103         2           48     24.0      0.1              center_mask = y == cur_class
+   104         2           64     32.0      0.1              if sp.issparse(X):
+   105                                                           center_mask = np.where(center_mask)[0]
+   106         2        86183  43091.5     96.3              self.centroids_[i] = X[center_mask].mean(axis=0)
+   107
+   108         1            4      4.0      0.0          if self.shrink_threshold:
+   109                                                       dataset_centroid_ = np.array(X.mean(axis=0))[0]
+   110                                                       # Number of clusters in each class.
+   111                                                       nk = np.array([np.sum(classes == cur_class)
+   112                                                                      for cur_class in classes])
+   113                                                       # m parameter for determining deviation
+   114                                                       m = np.sqrt((1. / nk) + (1. / n_samples))
+   115                                                       # Calculate deviation using the standard deviation of centroids.
+   116                                                       variance = np.array(np.power(X - self.centroids_[y], 2))
+   117                                                       variance = variance.sum(axis=0)
+   118                                                       s = np.sqrt(variance / (n_samples - n_classes))
+   119                                                       s += np.median(s)  # To deter outliers from affecting the results.
+   120                                                       mm = m.reshape(len(m), 1)  # Reshape to allow broadcasting.
+   121                                                       ms = mm * s
+   122                                                       deviation = ((self.centroids_ - dataset_centroid_) / ms)
+   123                                                       # Soft thresholding: if the deviation crosses 0 during shrinking,
+   124                                                       # it becomes zero.
+   125                                                       signs = np.sign(deviation)
+   126                                                       deviation = (np.abs(deviation) - self.shrink_threshold)
+   127                                                       deviation[deviation &lt; 0] = 0
+   128                                                       deviation = np.multiply(deviation, signs)
+   129                                                       # Now adjust the centroids using the deviation
+   130                                                       msd = np.multiply(ms, deviation)
+   131                                                       self.centroids_ = np.array([dataset_centroid_ + msd[i]
+   132                                                                                   for i in xrange(n_classes)])
+   133         1            3      3.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py
-Function: predict at line 134
+Function: predict at line 135
 Total time: 0 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   134                                               def predict(self, X):
-   135                                                   """Perform classification on an array of test vectors X.
-   136
-   137                                                   The predicted class C for each sample in X is returned.
-   138
-   139                                                   Parameters
-   140                                                   ----------
-   141                                                   X : array-like, shape = [n_samples, n_features]
-   142
-   143                                                   Returns
-   144                                                   -------
-   145                                                   C : array, shape = [n_samples]
-   146
-   147                                                   Notes
-   148                                                   -----
-   149                                                   If the metric constructor parameter is "precomputed", X is assumed to
-   150                                                   be the distance matrix between the data to be predicted and
-   151                                                   ``self.centroids_``.
-   152                                                   """
-   153                                                   X = atleast2d_or_csr(X)
-   154                                                   if not hasattr(self, "centroids_"):
-   155                                                       raise AttributeError("Model has not been trained yet.")
-   156                                                   return self.classes_[pairwise_distances(
-   157                                                       X, self.centroids_, metric=self.metric).argmin(axis=1)]</pre>
+   135                                               def predict(self, X):
+   136                                                   """Perform classification on an array of test vectors X.
+   137
+   138                                                   The predicted class C for each sample in X is returned.
+   139
+   140                                                   Parameters
+   141                                                   ----------
+   142                                                   X : array-like, shape = [n_samples, n_features]
+   143
+   144                                                   Returns
+   145                                                   -------
+   146                                                   C : array, shape = [n_samples]
+   147
+   148                                                   Notes
+   149                                                   -----
+   150                                                   If the metric constructor parameter is "precomputed", X is assumed to
+   151                                                   be the distance matrix between the data to be predicted and
+   152                                                   ``self.centroids_``.
+   153                                                   """
+   154                                                   X = atleast2d_or_csr(X)
+   155                                                   if not hasattr(self, "centroids_"):
+   156                                                       raise AttributeError("Model has not been trained yet.")
+   157                                                   return self.classes_[pairwise_distances(
+   158                                                       X, self.centroids_, metric=self.metric).argmin(axis=1)]</pre>
 </div>
 </div>
 <p><strong>Benchmark statement</strong></p>
@@ -2430,131 +2430,131 @@ Ordered by: cumulative time
 ncalls  tottime  percall  cumtime  percall filename:lineno(function)
      1    0.000    0.000    0.008    0.008 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/vbench/benchmark.py:286(f)
      1    0.000    0.000    0.008    0.008 &lt;f&gt;:1(&lt;module&gt;)
-     1    0.000    0.000    0.008    0.008 /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py:134(predict)
+     1    0.000    0.000    0.008    0.008 /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py:135(predict)
      1    0.000    0.000    0.006    0.006 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:567(pairwise_distances)
      1    0.001    0.001    0.006    0.006 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:98(euclidean_distances)
      8    0.004    0.001    0.004    0.001 {method 'sum' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.004    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:111(atleast2d_or_csr)
      3    0.000    0.000    0.004    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:88(_atleast2d_or_sparse)
      6    0.000    0.000    0.003    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:15(_assert_all_finite)
-     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:70(safe_sparse_dot)
+     1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/utils/extmath.py:71(safe_sparse_dot)
      1    0.002    0.002    0.002    0.002 {numpy.core._dotblas.dot}
      3    0.000    0.000    0.002    0.001 /tmp/vb_sklearn/sklearn/utils/validation.py:76(array2d)
      1    0.000    0.000    0.002    0.002 /tmp/vb_sklearn/sklearn/metrics/pairwise.py:56(check_pairwise_arrays)
      2    0.000    0.000    0.001    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/fromnumeric.py:1379(sum)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/base.py:553(isspmatrix)
     10    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/scipy/sparse/sputils.py:116(_isinstance)
+    12    0.000    0.000    0.000    0.000 {isinstance}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/shape_base.py:58(atleast_2d)
     20    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
      1    0.000    0.000    0.000    0.000 {method 'argmin' of 'numpy.ndarray' objects}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:237(asanyarray)
-    12    0.000    0.000    0.000    0.000 {isinstance}
      6    0.000    0.000    0.000    0.000 {numpy.core.multiarray.array}
      3    0.000    0.000    0.000    0.000 /home/slave/virtualenvs/cpython-2.7.2/lib/python2.7/site-packages/numpy/core/numeric.py:167(asarray)
      9    0.000    0.000    0.000    0.000 {len}
-     1    0.000    0.000    0.000    0.000 {hasattr}
      3    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.000    0.000 {hasattr}
      1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}</pre>
 </div>
 <p>LineProfiler</p>
 <div class="highlight-python"><pre>   Timer unit: 1e-06 s
 
 File: /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py
-Function: fit at line 74
-Total time: 0.089762 s
+Function: fit at line 75
+Total time: 0.089526 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-    74                                               def fit(self, X, y):
-    75                                                   """
-    76                                                   Fit the NearestCentroid model according to the given training data.
-    77
-    78                                                   Parameters
-    79                                                   ----------
-    80                                                   X : {array-like, sparse matrix}, shape = [n_samples, n_features]
-    81                                                       Training vector, where n_samples in the number of samples and
-    82                                                       n_features is the number of features.
-    83                                                       Note that centroid shrinking cannot be used with sparse matrices.
-    84                                                   y : array, shape = [n_samples]
-    85                                                       Target values (integers)
-    86                                                   """
-    87         1         3005   3005.0      3.3          X, y = check_arrays(X, y, sparse_format="csr")
-    88         1           19     19.0      0.0          if sp.issparse(X) and self.shrink_threshold:
-    89                                                       raise ValueError("threshold shrinking not supported"
-    90                                                                        " for sparse input")
-    91
-    92         1            4      4.0      0.0          n_samples, n_features = X.shape
-    93         1          197    197.0      0.2          classes = np.unique(y)
-    94         1            5      5.0      0.0          self.classes_ = classes
-    95         1            4      4.0      0.0          n_classes = classes.size
-    96         1            4      4.0      0.0          if n_classes &lt; 2:
-    97                                                       raise ValueError('y has less than 2 classes')
-    98
-    99                                                   # Mask mapping each class to it's members.
-   100         1           12     12.0      0.0          self.centroids_ = np.empty((n_classes, n_features), dtype=np.float64)
-   101         3           32     10.7      0.0          for i, cur_class in enumerate(classes):
-   102         2           47     23.5      0.1              center_mask = y == cur_class
-   103         2           63     31.5      0.1              if sp.issparse(X):
-   104                                                           center_mask = np.where(center_mask)[0]
-   105         2        86362  43181.0     96.2              self.centroids_[i] = X[center_mask].mean(axis=0)
-   106
-   107         1            4      4.0      0.0          if self.shrink_threshold:
-   108                                                       dataset_centroid_ = np.array(X.mean(axis=0))[0]
-   109                                                       # Number of clusters in each class.
-   110                                                       nk = np.array([np.sum(classes == cur_class)
-   111                                                                      for cur_class in classes])
-   112                                                       # m parameter for determining deviation
-   113                                                       m = np.sqrt((1. / nk) + (1. / n_samples))
-   114                                                       # Calculate deviation using the standard deviation of centroids.
-   115                                                       variance = np.array(np.power(X - self.centroids_[y], 2))
-   116                                                       variance = variance.sum(axis=0)
-   117                                                       s = np.sqrt(variance / (n_samples - n_classes))
-   118                                                       s += np.median(s)  # To deter outliers from affecting the results.
-   119                                                       mm = m.reshape(len(m), 1)  # Reshape to allow broadcasting.
-   120                                                       ms = mm * s
-   121                                                       deviation = ((self.centroids_ - dataset_centroid_) / ms)
-   122                                                       # Soft thresholding: if the deviation crosses 0 during shrinking,
-   123                                                       # it becomes zero.
-   124                                                       signs = np.sign(deviation)
-   125                                                       deviation = (np.abs(deviation) - self.shrink_threshold)
-   126                                                       deviation[deviation &lt; 0] = 0
-   127                                                       deviation = np.multiply(deviation, signs)
-   128                                                       # Now adjust the centroids using the deviation
-   129                                                       msd = np.multiply(ms, deviation)
-   130                                                       self.centroids_ = np.array([dataset_centroid_ + msd[i]
-   131                                                                                   for i in xrange(n_classes)])
-   132         1            4      4.0      0.0          return self
+    75                                               def fit(self, X, y):
+    76                                                   """
+    77                                                   Fit the NearestCentroid model according to the given training data.
+    78
+    79                                                   Parameters
+    80                                                   ----------
+    81                                                   X : {array-like, sparse matrix}, shape = [n_samples, n_features]
+    82                                                       Training vector, where n_samples in the number of samples and
+    83                                                       n_features is the number of features.
+    84                                                       Note that centroid shrinking cannot be used with sparse matrices.
+    85                                                   y : array, shape = [n_samples]
+    86                                                       Target values (integers)
+    87                                                   """
+    88         1         2935   2935.0      3.3          X, y = check_arrays(X, y, sparse_format="csr")
+    89         1           19     19.0      0.0          if sp.issparse(X) and self.shrink_threshold:
+    90                                                       raise ValueError("threshold shrinking not supported"
+    91                                                                        " for sparse input")
+    92
+    93         1            4      4.0      0.0          n_samples, n_features = X.shape
+    94         1          212    212.0      0.2          classes = np.unique(y)
+    95         1            5      5.0      0.0          self.classes_ = classes
+    96         1            4      4.0      0.0          n_classes = classes.size
+    97         1            4      4.0      0.0          if n_classes &lt; 2:
+    98                                                       raise ValueError('y has less than 2 classes')
+    99
+   100                                                   # Mask mapping each class to it's members.
+   101         1           11     11.0      0.0          self.centroids_ = np.empty((n_classes, n_features), dtype=np.float64)
+   102         3           30     10.0      0.0          for i, cur_class in enumerate(classes):
+   103         2           48     24.0      0.1              center_mask = y == cur_class
+   104         2           64     32.0      0.1              if sp.issparse(X):
+   105                                                           center_mask = np.where(center_mask)[0]
+   106         2        86183  43091.5     96.3              self.centroids_[i] = X[center_mask].mean(axis=0)
+   107
+   108         1            4      4.0      0.0          if self.shrink_threshold:
+   109                                                       dataset_centroid_ = np.array(X.mean(axis=0))[0]
+   110                                                       # Number of clusters in each class.
+   111                                                       nk = np.array([np.sum(classes == cur_class)
+   112                                                                      for cur_class in classes])
+   113                                                       # m parameter for determining deviation
+   114                                                       m = np.sqrt((1. / nk) + (1. / n_samples))
+   115                                                       # Calculate deviation using the standard deviation of centroids.
+   116                                                       variance = np.array(np.power(X - self.centroids_[y], 2))
+   117                                                       variance = variance.sum(axis=0)
+   118                                                       s = np.sqrt(variance / (n_samples - n_classes))
+   119                                                       s += np.median(s)  # To deter outliers from affecting the results.
+   120                                                       mm = m.reshape(len(m), 1)  # Reshape to allow broadcasting.
+   121                                                       ms = mm * s
+   122                                                       deviation = ((self.centroids_ - dataset_centroid_) / ms)
+   123                                                       # Soft thresholding: if the deviation crosses 0 during shrinking,
+   124                                                       # it becomes zero.
+   125                                                       signs = np.sign(deviation)
+   126                                                       deviation = (np.abs(deviation) - self.shrink_threshold)
+   127                                                       deviation[deviation &lt; 0] = 0
+   128                                                       deviation = np.multiply(deviation, signs)
+   129                                                       # Now adjust the centroids using the deviation
+   130                                                       msd = np.multiply(ms, deviation)
+   131                                                       self.centroids_ = np.array([dataset_centroid_ + msd[i]
+   132                                                                                   for i in xrange(n_classes)])
+   133         1            3      3.0      0.0          return self
 
 File: /tmp/vb_sklearn/sklearn/neighbors/nearest_centroid.py
-Function: predict at line 134
-Total time: 0.007499 s
+Function: predict at line 135
+Total time: 0.007515 s
 
 Line #      Hits         Time  Per Hit   % Time  Line Contents
 ==============================================================
-   134                                               def predict(self, X):
-   135                                                   """Perform classification on an array of test vectors X.
-   136
-   137                                                   The predicted class C for each sample in X is returned.
-   138
-   139                                                   Parameters
-   140                                                   ----------
-   141                                                   X : array-like, shape = [n_samples, n_features]
-   142
-   143                                                   Returns
-   144                                                   -------
-   145                                                   C : array, shape = [n_samples]
-   146
-   147                                                   Notes
-   148                                                   -----
-   149                                                   If the metric constructor parameter is "precomputed", X is assumed to
-   150                                                   be the distance matrix between the data to be predicted and
-   151                                                   ``self.centroids_``.
-   152                                                   """
-   153         1         1732   1732.0     23.1          X = atleast2d_or_csr(X)
-   154         1            5      5.0      0.1          if not hasattr(self, "centroids_"):
-   155                                                       raise AttributeError("Model has not been trained yet.")
-   156         1            2      2.0      0.0          return self.classes_[pairwise_distances(
-   157         1         5760   5760.0     76.8              X, self.centroids_, metric=self.metric).argmin(axis=1)]</pre>
+   135                                               def predict(self, X):
+   136                                                   """Perform classification on an array of test vectors X.
+   137
+   138                                                   The predicted class C for each sample in X is returned.
+   139
+   140                                                   Parameters
+   141                                                   ----------
+   142                                                   X : array-like, shape = [n_samples, n_features]
+   143
+   144                                                   Returns
+   145                                                   -------
+   146                                                   C : array, shape = [n_samples]
+   147
+   148                                                   Notes
+   149                                                   -----
+   150                                                   If the metric constructor parameter is "precomputed", X is assumed to
+   151                                                   be the distance matrix between the data to be predicted and
+   152                                                   ``self.centroids_``.
+   153                                                   """
+   154         1         1732   1732.0     23.0          X = atleast2d_or_csr(X)
+   155         1            4      4.0      0.1          if not hasattr(self, "centroids_"):
+   156                                                       raise AttributeError("Model has not been trained yet.")
+   157         1            3      3.0      0.0          return self.classes_[pairwise_distances(
+   158         1         5776   5776.0     76.9              X, self.centroids_, metric=self.metric).argmin(axis=1)]</pre>
 </div>
 </div>
 </div>
