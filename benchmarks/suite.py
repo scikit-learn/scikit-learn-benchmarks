@@ -19,8 +19,8 @@ def gather(quick=False):
     by_module = {}
     benchmarks = []
     for mod in modules:
-        by_module[mod] = [b for b in gather_benchmarks(
-                                                    __import__(mod).__dict__)]
+        by_module[mod] = [b
+                          for b in gather_benchmarks(__import__(mod).__dict__)]
         benchmarks.extend(by_module[mod])
 
     return benchmarks, by_module
@@ -102,7 +102,11 @@ def generate_rst_files(benchmarks, by_module):
         # plot the figure
         plt.figure(figsize=(10, 6))
         ax = plt.gca()
-        benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label, step_no=step_no)
+        try:
+            benchmark.plot(DB_PATH, ax=ax, y=column, ylabel=label,
+                           step_no=step_no)
+        except TypeError:
+            pass
         ylo, yhi = ax.get_ylim()
         plt.ylim([0.0, 1.1 * yhi])
         start, end = ax.get_xlim()
@@ -131,10 +135,12 @@ def generate_rst_files(benchmarks, by_module):
             image_path = []  # tuple of (title, full_path, rel_path)
             # TODO: condition this as well. Maybe some benchmarks are only mem
             image_path.append(('Execution time', plot_benchmark(bmk, step_no,
-                                                        'timing', 'seconds')))
+                                                                'timing',
+                                                                'seconds')))
 
             image_path.append(('Memory usage', plot_benchmark(bmk, step_no,
-                                                      'memory', 'megabytes')))
+                                                              'memory',
+                                                              'megabytes')))
             image_paths.append(image_path)
 
         rst_text = bmk.to_rst(DB_PATH, image_paths)
