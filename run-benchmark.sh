@@ -49,7 +49,6 @@ pip install git+https://github.com/airspeed-velocity/asv
 
 # Create the .asv-machine.json file.
 cat <<EOT >> ${HOME}/.asv-machine.json
-asv machine --yes
 {
     "sklearn-benchmark": {
         "arch": "x86_64",
