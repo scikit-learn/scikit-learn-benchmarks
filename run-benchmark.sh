@@ -47,8 +47,21 @@ source ${HOME}/miniconda/etc/profile.d/conda.sh
 conda activate skl_benchmark
 pip install git+https://github.com/airspeed-velocity/asv
 
-# Setup asv
+# Create the .asv-machine.json file.
+cat <<EOT >> ${HOME}/.asv-machine.json
 asv machine --yes
+{
+    "sklearn-benchmark": {
+        "arch": "x86_64",
+        "cpu": "Intel Core Processor (Haswell, no TSX)",
+        "machine": "sklearn-benchmark",
+        "num_cpu": "8",
+        "os": "Linux 4.15.0-20-generic",
+        "ram": "16424684"
+    },
+    "version": 1
+}
+EOT
 
 # Run the benchmarks
 SKLBENCH_NJOBS=[1,4] asv run -e $COMMIT_TO_BENCH^!
