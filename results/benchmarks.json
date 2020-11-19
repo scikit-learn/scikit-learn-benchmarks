@@ -869,7 +869,7 @@
                 "'sparse'"
             ]
         ],
-        "setup_cache_key": "ensemble:55",
+        "setup_cache_key": "ensemble:59",
         "timeout": 500,
         "type": "peakmemory",
         "unit": "bytes",
@@ -887,7 +887,7 @@
                 "'sparse'"
             ]
         ],
-        "setup_cache_key": "ensemble:55",
+        "setup_cache_key": "ensemble:59",
         "timeout": 500,
         "type": "peakmemory",
         "unit": "bytes",
@@ -909,7 +909,7 @@
         ],
         "rounds": 1,
         "sample_time": 0.01,
-        "setup_cache_key": "ensemble:55",
+        "setup_cache_key": "ensemble:59",
         "timeout": 500,
         "type": "time",
         "unit": "seconds",
@@ -932,7 +932,7 @@
         ],
         "rounds": 1,
         "sample_time": 0.01,
-        "setup_cache_key": "ensemble:55",
+        "setup_cache_key": "ensemble:59",
         "timeout": 500,
         "type": "time",
         "unit": "seconds",
@@ -951,7 +951,7 @@
                 "'sparse'"
             ]
         ],
-        "setup_cache_key": "ensemble:55",
+        "setup_cache_key": "ensemble:59",
         "timeout": 500,
         "type": "track",
         "unit": "unit",
@@ -969,11 +969,87 @@
                 "'sparse'"
             ]
         ],
-        "setup_cache_key": "ensemble:55",
+        "setup_cache_key": "ensemble:59",
         "timeout": 500,
         "type": "track",
         "unit": "unit",
         "version": "61a34f67a5943b1efa1968705ece7be5cd9e97fba27bc7a42ca9a5e61f07eb52"
+    },
+    "ensemble.HistGradientBoostingClassifierBenchmark.peakmem_fit": {
+        "code": "class Estimator:\n    def peakmem_fit(self, *args):\n        self.estimator.fit(self.X, self.y)\n\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass HistGradientBoostingClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
+        "name": "ensemble.HistGradientBoostingClassifierBenchmark.peakmem_fit",
+        "param_names": [],
+        "params": [],
+        "setup_cache_key": "ensemble:96",
+        "timeout": 500,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "92579826177c3d6d7beb1475a3ad1683b67326ee979d80d34256a06c54444a85"
+    },
+    "ensemble.HistGradientBoostingClassifierBenchmark.peakmem_predict": {
+        "code": "class Predictor:\n    def peakmem_predict(self, *args):\n        self.estimator.predict(self.X)\n\nclass Estimator:\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass HistGradientBoostingClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
+        "name": "ensemble.HistGradientBoostingClassifierBenchmark.peakmem_predict",
+        "param_names": [],
+        "params": [],
+        "setup_cache_key": "ensemble:96",
+        "timeout": 500,
+        "type": "peakmemory",
+        "unit": "bytes",
+        "version": "4119f79ee2410f297720ebbe804f68573fe7065a9b3ca92e2eb2a40f840ea68b"
+    },
+    "ensemble.HistGradientBoostingClassifierBenchmark.time_fit": {
+        "code": "class Estimator:\n    def time_fit(self, *args):\n        self.estimator.fit(self.X, self.y)\n\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass HistGradientBoostingClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
+        "min_run_count": 2,
+        "name": "ensemble.HistGradientBoostingClassifierBenchmark.time_fit",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "rounds": 1,
+        "sample_time": 0.01,
+        "setup_cache_key": "ensemble:96",
+        "timeout": 500,
+        "type": "time",
+        "unit": "seconds",
+        "version": "cd73e526a2442477e22de2f22d552e2498295e53ea583cfefb033d880fd7e2f2",
+        "warmup_time": 1
+    },
+    "ensemble.HistGradientBoostingClassifierBenchmark.time_predict": {
+        "code": "class Predictor:\n    def time_predict(self, *args):\n        self.estimator.predict(self.X)\n\nclass Estimator:\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass HistGradientBoostingClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
+        "min_run_count": 2,
+        "name": "ensemble.HistGradientBoostingClassifierBenchmark.time_predict",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "rounds": 1,
+        "sample_time": 0.01,
+        "setup_cache_key": "ensemble:96",
+        "timeout": 500,
+        "type": "time",
+        "unit": "seconds",
+        "version": "4b5ba50a87ee05617a815e1a4f3a0f77bdf656edd6aa400956fdcb17f8848e18",
+        "warmup_time": 1
+    },
+    "ensemble.HistGradientBoostingClassifierBenchmark.track_test_score": {
+        "code": "class Estimator:\n    def track_test_score(self, *args):\n        if hasattr(self.estimator, 'predict'):\n            y_val_pred = self.estimator.predict(self.X_val)\n        else:\n            y_val_pred = None\n        return float(self.test_scorer(self.y_val, y_val_pred))\n\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass HistGradientBoostingClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
+        "name": "ensemble.HistGradientBoostingClassifierBenchmark.track_test_score",
+        "param_names": [],
+        "params": [],
+        "setup_cache_key": "ensemble:96",
+        "timeout": 500,
+        "type": "track",
+        "unit": "unit",
+        "version": "65c33a87df35a03d1f077135b163fcf8a525f5145281b743f5dde67be9d93352"
+    },
+    "ensemble.HistGradientBoostingClassifierBenchmark.track_train_score": {
+        "code": "class Estimator:\n    def track_train_score(self, *args):\n        if hasattr(self.estimator, 'predict'):\n            y_pred = self.estimator.predict(self.X)\n        else:\n            y_pred = None\n        return float(self.train_scorer(self.y, y_pred))\n\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass HistGradientBoostingClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
+        "name": "ensemble.HistGradientBoostingClassifierBenchmark.track_train_score",
+        "param_names": [],
+        "params": [],
+        "setup_cache_key": "ensemble:96",
+        "timeout": 500,
+        "type": "track",
+        "unit": "unit",
+        "version": "81f771d004b7edd4af37042b13e8aef59fcb83f09b3c317d6d635fbf5005038a"
     },
     "ensemble.RandomForestClassifierBenchmark.peakmem_fit": {
         "code": "class Estimator:\n    def peakmem_fit(self, *args):\n        self.estimator.fit(self.X, self.y)\n\n    def setup(self, *params):\n        \"\"\"Generate dataset and load the fitted estimator\"\"\"\n        # This is run once per combination of parameters and per repeat so we\n        # need to avoid doing expensive operations there.\n    \n        if self.skip(params):\n            raise NotImplementedError\n    \n        self.X, self.X_val, self.y, self.y_val = self.make_data(params)\n    \n        est_path = get_estimator_path(self, Benchmark.save_dir,\n                                      params, Benchmark.save_estimators)\n        with est_path.open(mode='rb') as f:\n            self.estimator = pickle.load(f)\n    \n        self.make_scorers()\n\nclass RandomForestClassifierBenchmark:\n    def setup_cache(self):\n        super().setup_cache()",
@@ -992,7 +1068,7 @@
                 "4"
             ]
         ],
-        "setup_cache_key": "ensemble:17",
+        "setup_cache_key": "ensemble:21",
         "timeout": 500,
         "type": "peakmemory",
         "unit": "bytes",
@@ -1015,7 +1091,7 @@
                 "4"
             ]
         ],
-        "setup_cache_key": "ensemble:17",
+        "setup_cache_key": "ensemble:21",
         "timeout": 500,
         "type": "peakmemory",
         "unit": "bytes",
@@ -1042,7 +1118,7 @@
         ],
         "rounds": 1,
         "sample_time": 0.01,
-        "setup_cache_key": "ensemble:17",
+        "setup_cache_key": "ensemble:21",
         "timeout": 500,
         "type": "time",
         "unit": "seconds",
@@ -1070,7 +1146,7 @@
         ],
         "rounds": 1,
         "sample_time": 0.01,
-        "setup_cache_key": "ensemble:17",
+        "setup_cache_key": "ensemble:21",
         "timeout": 500,
         "type": "time",
         "unit": "seconds",
@@ -1094,7 +1170,7 @@
                 "4"
             ]
         ],
-        "setup_cache_key": "ensemble:17",
+        "setup_cache_key": "ensemble:21",
         "timeout": 500,
         "type": "track",
         "unit": "unit",
@@ -1117,7 +1193,7 @@
                 "4"
             ]
         ],
-        "setup_cache_key": "ensemble:17",
+        "setup_cache_key": "ensemble:21",
         "timeout": 500,
         "type": "track",
         "unit": "unit",
