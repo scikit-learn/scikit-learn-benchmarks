@@ -1,0 +1,10 @@
+on: [push]
+
+jobs:
+  check_last_result:
+    runs-on: ubuntu-latest
+    steps:      
+      - uses: actions/checkout@v2
+      
+      - run: |
+          echo ${{ github.event.head_commit.message }}
