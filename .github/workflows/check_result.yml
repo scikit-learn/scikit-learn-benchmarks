@@ -7,7 +7,7 @@ jobs:
     steps:      
       - uses: actions/checkout@v2
       - run: |
-          COMMIT=echo "${{ github.event.head_commit.message }}" | cut -d "[" -f2 | cut -d "]" -f1
+          COMMIT=$(echo "${{ github.event.head_commit.message }}" | cut -d "[" -f2 | cut -d "]" -f1)
           pwd
           if [[ -d logs/log_$COMMIT ]]; then
               # a log exists for this commit, meaning the benchmark failed
