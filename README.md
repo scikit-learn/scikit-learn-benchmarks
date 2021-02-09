@@ -1,4 +1,4 @@
-![Actions status](https://github.com/scikit-learn/scikit-learn-benchmarks/workflows/Last%20run/badge.svg)
+![.github/workflows/check_last_run.yml](https://github.com/scikit-learn/scikit-learn-benchmarks/workflows/.github/workflows/check_last_run.yml/badge.svg)
 
 # scikit-learn-benchmarks
 
