@@ -2,6 +2,7 @@ on: [push]
 
 jobs:
   check_last_result:
+    name: Last run
     runs-on: ubuntu-latest
     if: startsWith(github.event.head_commit.message, 'new result')
     steps:      
@@ -10,6 +11,6 @@ jobs:
           COMMIT=$(echo "${{ github.event.head_commit.message }}" | cut -d "[" -f2 | cut -d "]" -f1)
           pwd
           if [[ -f "logs/log_$COMMIT" ]]; then
-              # a log exists for this commit, meaning the benchmark failed
+              echo "The benchmark of commit $COMMIT failed. Look at logs/log_$COMMIT."
               exit 1
           fi
