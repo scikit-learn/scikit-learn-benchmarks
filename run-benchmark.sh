@@ -62,22 +62,28 @@ cat <<EOT >> ${HOME}/.asv-machine.json
 }
 EOT
 
-# Run the benchmarks
-SKLBENCH_NJOBS=[1,4] asv run -e $COMMIT_TO_BENCH^!
-
-# Generate html
-asv publish
+# Run the benchmarks and generate the html
+{
+    printf "***** Runner *****\n\n" >> log_$COMMIT_TO_BENCH
+    SKLBENCH_NJOBS=[1,4] asv run --strict -e -b MiniBatchKMeans $COMMIT_TO_BENCH^! >> log_$COMMIT_TO_BENCH
+    printf "\n\n***** Publish *****\n\n" >> log_$COMMIT_TO_BENCH
+    asv publish >> log_$COMMIT_TO_BENCH
+} || {
+    # something went wrong, push the log
+    mkdir --parents ${HOME}/scikit-learn-benchmarks/logs; mv log_$COMMIT_TO_BENCH $_/
+}
 
 # Move to scikit-learn-benchmarks/ to commit the new result
 popd
 pushd scikit-learn-benchmarks/
 cp -r ${HOME}/scikit-learn/asv_benchmarks/results/ .
 git add .
-git commit -m 'new result'
+git commit -m "new result [$COMMIT_TO_BENCH]"
 git push origin master
 
 git checkout gh-pages
 cp -r ${HOME}/scikit-learn/asv_benchmarks/html/* .
 git add .
-git commit -m 'new result'
+git commit -m "new result [$COMMIT_TO_BENCH]"
 git push origin gh-pages
+
