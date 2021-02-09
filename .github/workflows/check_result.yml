@@ -3,8 +3,13 @@ on: [push]
 jobs:
   check_last_result:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.head_commit.message, 'new result')
     steps:      
       - uses: actions/checkout@v2
-      
       - run: |
-          echo ${{ github.event.head_commit.message }}
+          COMMIT=echo ${{ github.event.head_commit.message }} | cut -d "[" -f2 | cut -d "]" -f1
+          pwd
+          if [[ -d logs/log_$COMMIT ]]; then
+              # a log exists for this commit, meaning the benchmark failed
+              exit 1
+          fi
