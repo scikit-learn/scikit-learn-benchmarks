@@ -65,7 +65,7 @@ EOT
 # Run the benchmarks and generate the html
 {
     printf "***** Runner *****\n\n" >> log_$COMMIT_TO_BENCH
-    SKLBENCH_NJOBS=[1,4] asv run --strict -e -b MiniBatchKMeans $COMMIT_TO_BENCH^! >> log_$COMMIT_TO_BENCH
+    SKLBENCH_NJOBS=[1,4] asv run --strict -e $COMMIT_TO_BENCH^! >> log_$COMMIT_TO_BENCH
     printf "\n\n***** Publish *****\n\n" >> log_$COMMIT_TO_BENCH
     asv publish >> log_$COMMIT_TO_BENCH
 } || {
