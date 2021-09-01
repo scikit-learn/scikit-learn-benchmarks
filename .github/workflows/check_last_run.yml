@@ -10,8 +10,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           COMMIT=$(echo "${{ github.event.head_commit.message }}" | cut -d "[" -f2 | cut -d "]" -f1)
-          pwd
-          if [[ -f "logs/log_$COMMIT" ]]; then
+          FAIL=$(tail -1 logs/log_$COMMIT)
+          if [[ "$FAIL" == "FAIL" ]]; then
               echo "The benchmark of commit $COMMIT failed. Look at logs/log_$COMMIT."
               exit 1
           fi
