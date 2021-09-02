@@ -15,22 +15,22 @@
               ---------------------------- -------------------------
                representation   algorithm     random     k-means++  
               ================ =========== ============ ============
-                   dense           full      811±90ms    1.97±0.09s 
-                   dense          elkan     4.11±0.04s   5.56±0.2s  
-                   sparse          full     1.64±0.1s    5.40±0.1s  
-                   sparse         elkan     2.23±0.03s   5.78±0.2s  
+                   dense           full      520±20ms    1.61±0.03s 
+                   dense          elkan     3.78±0.01s   4.47±0.01s 
+                   sparse          full     1.18±0.1s    4.15±0.2s  
+                   sparse         elkan     1.76±0.02s   4.35±0.09s 
               ================ =========== ============ ============
 
 [100.00%] ··· Setting up cluster:65                                           ok
 [100.00%] ··· cluster.MiniBatchKMeansBenchmark.time_fit                       ok
-[100.00%] ··· ================ ========== ===========
-              --                        init         
-              ---------------- ----------------------
-               representation    random    k-means++ 
-              ================ ========== ===========
-                   dense        351±10ms    359±10ms 
-                   sparse       599±40ms   2.10±0.1s 
-              ================ ========== ===========
+[100.00%] ··· ================ ========== ============
+              --                         init         
+              ---------------- -----------------------
+               representation    random    k-means++  
+              ================ ========== ============
+                   dense        284±2ms     315±9ms   
+                   sparse       527±50ms   1.59±0.01s 
+              ================ ========== ============
 
 
 
@@ -89,6 +89,10 @@ tk                        8.6.10               hbc83047_0
 wheel                     0.37.0             pyhd3eb1b0_0  
 xz                        5.2.5                h7b6447c_0  
 zlib                      1.2.11               h7b6447c_3  
+
+
+***** Threadpool info *****
+
 [
   {
     "filepath": "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/libgomp.so.1.0.0",
@@ -116,3 +120,31 @@ zlib                      1.2.11               h7b6447c_3
     "num_threads": 8
   }
 ]
+
+
+***** System info *****
+
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              8
+On-line CPU(s) list: 0-7
+Thread(s) per core:  1
+Core(s) per socket:  1
+Socket(s):           8
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               60
+Model name:          Intel Core Processor (Haswell, no TSX)
+Stepping:            1
+CPU MHz:             2294.686
+BogoMIPS:            4589.37
+Hypervisor vendor:   KVM
+Virtualization type: full
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            4096K
+NUMA node0 CPU(s):   0-7
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm invpcid_single pti fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt arat
+MemTotal:       16424684 kB
