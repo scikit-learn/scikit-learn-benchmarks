@@ -68,10 +68,25 @@ EOT
     SKLBENCH_NJOBS=[1,4] asv run --strict -e $COMMIT_TO_BENCH^! >> log_$COMMIT_TO_BENCH
     printf "\n\n***** Publish *****\n\n" >> log_$COMMIT_TO_BENCH
     asv publish >> log_$COMMIT_TO_BENCH
+
+    # versions of the libraries and info of BLAS and OpenMP
+    printf "\n\n***** Dependencies *****\n\n" >> log_$COMMIT_TO_BENCH
+    conda deactivate
+    conda activate env/$(ls env)
+    conda list >> log_$COMMIT_TO_BENCH
+    printf "\n\n***** Threadpool info *****\n\n" >> log_$COMMIT_TO_BENCH
+    python -m threadpoolctl -i sklearn >> log_$COMMIT_TO_BENCH
+
+    # system info
+    printf "\n\n***** System info *****\n\n" >> log_$COMMIT_TO_BENCH
+    lscpu >> log_$COMMIT_TO_BENCH
+    grep MemTotal /proc/meminfo >> log_$COMMIT_TO_BENCH
 } || {
-    # something went wrong, push the log
-    mkdir --parents ${HOME}/scikit-learn-benchmarks/logs; mv log_$COMMIT_TO_BENCH $_/
+    # something went wrong
+    printf "\n\nFAILED" >> log_$COMMIT_TO_BENCH
 }
+# Push the log of the run for potential debugging
+mkdir --parents ${HOME}/scikit-learn-benchmarks/logs; mv log_$COMMIT_TO_BENCH $_/
 
 # Move to scikit-learn-benchmarks/ to commit the new result
 popd
