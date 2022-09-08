@@ -1,70 +1,142 @@
 ***** Runner *****
 
+· Creating environments
+· Discovering benchmarks
+·· Uninstalling from conda-py3.8-cython-joblib-numpy-scipy-threadpoolctl
+·· Building b4f51fd1 <main> for conda-py3.8-cython-joblib-numpy-scipy-threadpoolctl
+·· Installing b4f51fd1 <main> into conda-py3.8-cython-joblib-numpy-scipy-threadpoolctl
+· Running 2 total benchmarks (1 commits * 1 environments * 2 benchmarks)
+[  0.00%] · For scikit-learn commit b4f51fd1 <main>:
+[  0.00%] ·· Benchmarking conda-py3.8-cython-joblib-numpy-scipy-threadpoolctl
+[ 50.00%] ··· Setting up cluster:16                                       failed
+[ 50.00%] ···· ________________________________________________________________________________
+               [Memory] Calling benchmarks.datasets._blobs_dataset...
+               _blobs_dataset(n_clusters=20)
+               ____________________________________________________blobs_dataset - 0.2s, 0.0min
+               Traceback (most recent call last):
+                 File "/home/ubuntu/miniconda/envs/skl_benchmark/lib/python3.8/site-packages/asv/benchmark.py", line 1435, in <module>
+                   main()
+                 File "/home/ubuntu/miniconda/envs/skl_benchmark/lib/python3.8/site-packages/asv/benchmark.py", line 1428, in main
+                   commands[mode](args)
+                 File "/home/ubuntu/miniconda/envs/skl_benchmark/lib/python3.8/site-packages/asv/benchmark.py", line 1136, in main_setup_cache
+                   cache = benchmark.do_setup_cache()
+                 File "/home/ubuntu/miniconda/envs/skl_benchmark/lib/python3.8/site-packages/asv/benchmark.py", line 570, in do_setup_cache
+                   return self._setup_cache()
+                 File "/home/ubuntu/scikit-learn/asv_benchmarks/benchmarks/cluster.py", line 17, in setup_cache
+                   super().setup_cache()
+                 File "/home/ubuntu/scikit-learn/asv_benchmarks/benchmarks/common.py", line 154, in setup_cache
+                   estimator.fit(X, y)
+                 File "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/python3.8/site-packages/sklearn/cluster/_kmeans.py", line 1409, in fit
+                   self._validate_params()
+                 File "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/python3.8/site-packages/sklearn/base.py", line 563, in _validate_params
+                   validate_parameter_constraints(
+                 File "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/python3.8/site-packages/sklearn/utils/_param_validation.py", line 95, in validate_parameter_constraints
+                   raise ValueError(
+               ValueError: The 'tol' parameter of KMeans must be a float in the range [0, inf). Got -1 instead.
+               
+               asv: setup_cache failed (exit status 1)
+
+[ 50.00%] ··· cluster.KMeansBenchmark.time_fit skipped (setup_cache failed)
+[100.00%] ··· Setting up cluster:65                                           ok
+[100.00%] ··· cluster.MiniBatchKMeansBenchmark.time_fit                       ok
+[100.00%] ··· ================ ========= ============
+              --                        init         
+              ---------------- ----------------------
+               representation    random   k-means++  
+              ================ ========= ============
+                   dense        331±2ms    338±8ms   
+                   sparse       496±8ms   1.70±0.02s 
+              ================ ========= ============
+
 
 
 ***** Publish *****
 
-[11.11%] · Loading machine info
-[22.22%] · Getting params, commits, tags and branches
-[33.33%] · Loading results
-[33.33%] ·· Couldn't find 0fb307bf in branches (main)
-[44.44%] · Detecting steps
-[55.56%] · Generating graphs
-[66.67%] · Generating output for SummaryGrid
-[77.78%] · Generating output for SummaryList
-[88.89%] · Generating output for Regressions
+[ 11.11%] · Loading machine info
+[ 22.22%] · Getting params, commits, tags and branches
+[ 33.33%] · Loading results
+[ 33.33%] ·· Couldn't find 0fb307bf in branches (main)
+[ 44.44%] · Detecting steps
+[ 55.56%] · Generating graphs
+[ 66.67%] · Generating output for SummaryGrid
+[ 77.78%] · Generating output for SummaryList
+[ 88.89%] · Generating output for Regressions
 [100.00%] · Writing index
 
 
 ***** Dependencies *****
 
-# packages in environment at /home/ubuntu/miniconda:
+# packages in environment at /home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198:
 #
 # Name                    Version                   Build  Channel
 _libgcc_mutex             0.1                        main  
-_openmp_mutex             4.5                       1_gnu  
-brotlipy                  0.7.0           py39h27cfd23_1003  
-ca-certificates           2022.3.29            h06a4308_1  
-certifi                   2021.10.8        py39h06a4308_2  
-cffi                      1.15.0           py39hd667e15_1  
-charset-normalizer        2.0.4              pyhd3eb1b0_0  
-colorama                  0.4.4              pyhd3eb1b0_0  
-conda                     4.12.0           py39h06a4308_0  
-conda-content-trust       0.1.1              pyhd3eb1b0_0  
-conda-package-handling    1.8.1            py39h7f8727e_0  
-cryptography              36.0.0           py39h9ce1e76_0  
-idna                      3.3                pyhd3eb1b0_0  
-ld_impl_linux-64          2.35.1               h7274673_9  
+_openmp_mutex             5.1                       1_gnu  
+blas                      1.0                         mkl  
+ca-certificates           2022.07.19           h06a4308_0  
+certifi                   2022.6.15        py38h06a4308_0  
+cython                    0.29.30          py38h6a678d5_0  
+fftw                      3.3.9                h27cfd23_1  
+intel-openmp              2021.4.0          h06a4308_3561  
+joblib                    1.1.0              pyhd3eb1b0_0  
+ld_impl_linux-64          2.38                 h1181459_1  
 libffi                    3.3                  he6710b0_2  
-libgcc-ng                 9.3.0               h5101ec6_17  
-libgomp                   9.3.0               h5101ec6_17  
-libstdcxx-ng              9.3.0               hd4cf53a_17  
-ncurses                   6.3                  h7f8727e_2  
-openssl                   1.1.1n               h7f8727e_0  
-pip                       21.2.4           py39h06a4308_0  
-pycosat                   0.6.3            py39h27cfd23_0  
-pycparser                 2.21               pyhd3eb1b0_0  
-pyopenssl                 22.0.0             pyhd3eb1b0_0  
-pysocks                   1.7.1            py39h06a4308_0  
-python                    3.9.12               h12debd9_0  
+libgcc-ng                 11.2.0               h1234567_1  
+libgfortran-ng            11.2.0               h00389a5_1  
+libgfortran5              11.2.0               h1234567_1  
+libgomp                   11.2.0               h1234567_1  
+libstdcxx-ng              11.2.0               h1234567_1  
+mkl                       2021.4.0           h06a4308_640  
+mkl-service               2.4.0            py38h7f8727e_0  
+mkl_fft                   1.3.1            py38hd3c417c_0  
+mkl_random                1.2.2            py38h51133e4_0  
+ncurses                   6.3                  h5eee18b_3  
+numpy                     1.22.3           py38he7a7128_0  
+numpy-base                1.22.3           py38hf524024_0  
+openssl                   1.1.1q               h7f8727e_0  
+pip                       22.1.2           py38h06a4308_0  
+python                    3.8.13               h12debd9_0  
 readline                  8.1.2                h7f8727e_1  
-requests                  2.27.1             pyhd3eb1b0_0  
-ruamel_yaml               0.15.100         py39h27cfd23_0  
-setuptools                61.2.0           py39h06a4308_0  
+scikit-learn              1.2.dev0                 pypi_0    pypi
+scipy                     1.7.3            py38h6c91a56_2  
+setuptools                63.4.1           py38h06a4308_0  
 six                       1.16.0             pyhd3eb1b0_1  
-sqlite                    3.38.2               hc218d9a_0  
-tk                        8.6.11               h1ccaba5_0  
-tqdm                      4.63.0             pyhd3eb1b0_0  
-tzdata                    2022a                hda174b7_0  
-urllib3                   1.26.8             pyhd3eb1b0_0  
+sqlite                    3.39.2               h5082296_0  
+threadpoolctl             2.2.0              pyh0d69192_0  
+tk                        8.6.12               h1ccaba5_0  
 wheel                     0.37.1             pyhd3eb1b0_0  
-xz                        5.2.5                h7b6447c_0  
-yaml                      0.2.5                h7b6447c_0  
-zlib                      1.2.12               h7f8727e_1  
+xz                        5.2.5                h7f8727e_1  
+zlib                      1.2.12               h7f8727e_2  
 
 
 ***** Threadpool info *****
 
+[
+  {
+    "filepath": "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/libgomp.so.1.0.0",
+    "prefix": "libgomp",
+    "user_api": "openmp",
+    "internal_api": "openmp",
+    "version": null,
+    "num_threads": 8
+  },
+  {
+    "filepath": "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/libmkl_rt.so.1",
+    "prefix": "libmkl_rt",
+    "user_api": "blas",
+    "internal_api": "mkl",
+    "version": "2021.4-Product",
+    "num_threads": 8,
+    "threading_layer": "intel"
+  },
+  {
+    "filepath": "/home/ubuntu/scikit-learn/asv_benchmarks/env/90c0cdf54a066993e96e24e17295f198/lib/libiomp5.so",
+    "prefix": "libiomp",
+    "user_api": "openmp",
+    "internal_api": "openmp",
+    "version": null,
+    "num_threads": 8
+  }
+]
 
 
 ***** System info *****
