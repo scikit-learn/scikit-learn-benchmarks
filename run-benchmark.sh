@@ -45,7 +45,7 @@ PATH=${HOME}/miniconda/bin:${PATH}
 conda create -y -n skl_benchmark python=3.8
 source ${HOME}/miniconda/etc/profile.d/conda.sh
 conda activate skl_benchmark
-pip install git+https://github.com/airspeed-velocity/asv
+pip install asv==0.5.1
 
 # Create the .asv-machine.json file.
 cat <<EOT >> ${HOME}/.asv-machine.json
