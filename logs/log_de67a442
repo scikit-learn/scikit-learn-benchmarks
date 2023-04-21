@@ -5,76 +5,57 @@
 ·· Uninstalling from conda-py3.8-cython-joblib-numpy-pandas-scipy-threadpoolctl
 ·· Building de67a442 <main~284> for conda-py3.8-cython-joblib-numpy-pandas-scipy-threadpoolctl
 ·· Installing de67a442 <main~284> into conda-py3.8-cython-joblib-numpy-pandas-scipy-threadpoolctl
-· Running 2 total benchmarks (1 commits * 1 environments * 2 benchmarks)
+· Running 6 total benchmarks (1 commits * 1 environments * 6 benchmarks)
 [  0.00%] · For scikit-learn commit de67a442 <main~284>:
 [  0.00%] ·· Benchmarking conda-py3.8-cython-joblib-numpy-pandas-scipy-threadpoolctl
-[ 50.00%] ··· ...istancesBenchmark.peakmem_pairwise_distances                 ok
-[ 50.00%] ··· ================ ============= ======= =======
-              --                                  n_jobs    
-              ------------------------------ ---------------
-               representation      metric       1       4   
-              ================ ============= ======= =======
-                   dense           cosine      673M   1.01G 
-                   dense         euclidean     770M   1.03G 
-                   dense         manhattan     266M    351M 
-                   dense        correlation    259M    495M 
-                   sparse          cosine     1.43G   1.34G 
-                   sparse        euclidean     584M    903M 
-                   sparse        manhattan     203M    233M 
-                   sparse       correlation    n/a     n/a  
-              ================ ============= ======= =======
+[ 16.67%] ··· Setting up linear_model:151                                     ok
+[ 16.67%] ··· linear_model.SGDRegressorBenchmark.peakmem_fit                  ok
+[ 16.67%] ··· ================ ======
+               representation        
+              ---------------- ------
+                   dense        175M 
+                   sparse       103M 
+              ================ ======
 
-[ 50.00%] ···· For parameters: 'dense', 'cosine', 1
-               ________________________________________________________________________________
-               [Memory] Calling benchmarks.datasets._random_dataset...
-               _random_dataset(n_samples=12000, representation='dense')
-               ___________________________________________________random_dataset - 0.5s, 0.0min
-               
-               For parameters: 'dense', 'manhattan', 1
-               ________________________________________________________________________________
-               [Memory] Calling benchmarks.datasets._random_dataset...
-               _random_dataset(n_samples=4000, representation='dense')
-               ___________________________________________________random_dataset - 0.1s, 0.0min
-               
-               For parameters: 'sparse', 'cosine', 1
-               ________________________________________________________________________________
-               [Memory] Calling benchmarks.datasets._random_dataset...
-               _random_dataset(n_samples=12000, representation='sparse')
-               ___________________________________________________random_dataset - 0.6s, 0.0min
-               
-               For parameters: 'sparse', 'manhattan', 1
-               ________________________________________________________________________________
-               [Memory] Calling benchmarks.datasets._random_dataset...
-               _random_dataset(n_samples=4000, representation='sparse')
-               ___________________________________________________random_dataset - 0.1s, 0.0min
-               
-               For parameters: 'sparse', 'correlation', 1
-               asv: skipped: NotImplementedError()
-               
-               For parameters: 'sparse', 'correlation', 4
-               asv: skipped: NotImplementedError()
+[ 33.33%] ··· ..._model.SGDRegressorBenchmark.peakmem_predict                 ok
+[ 33.33%] ··· ================ =======
+               representation         
+              ---------------- -------
+                   dense         177M 
+                   sparse       97.6M 
+              ================ =======
 
-[100.00%] ··· ...seDistancesBenchmark.time_pairwise_distances                 ok
-[100.00%] ··· ================ ============= ============ ============
-              --                                       n_jobs         
-              ------------------------------ -------------------------
-               representation      metric         1            4      
-              ================ ============= ============ ============
-                   dense           cosine     1.10±0.01s   1.13±0.03s 
-                   dense         euclidean     1.62±0s     2.72±0.03s 
-                   dense         manhattan    6.53±0.2s    2.57±0.2s  
-                   dense        correlation   3.65±0.02s   2.59±0.06s 
-                   sparse          cosine     4.06±0.2s    2.57±0.2s  
-                   sparse        euclidean    3.27±0.01s   5.47±0.04s 
-                   sparse        manhattan     1.00±0s     1.38±0.09s 
-                   sparse       correlation      n/a          n/a     
-              ================ ============= ============ ============
+[ 50.00%] ··· linear_model.SGDRegressorBenchmark.time_fit                     ok
+[ 50.00%] ··· ================ ============
+               representation              
+              ---------------- ------------
+                   dense        4.56±0.01s 
+                   sparse       4.72±0.01s 
+              ================ ============
 
-[100.00%] ···· For parameters: 'sparse', 'correlation', 1
-               asv: skipped: NotImplementedError()
-               
-               For parameters: 'sparse', 'correlation', 4
-               asv: skipped: NotImplementedError()
+[ 66.67%] ··· linear_model.SGDRegressorBenchmark.time_predict                 ok
+[ 66.67%] ··· ================ =============
+               representation               
+              ---------------- -------------
+                   dense         11.4±0.4ms 
+                   sparse       2.15±0.01ms 
+              ================ =============
+
+[ 83.33%] ··· ...model.SGDRegressorBenchmark.track_test_score                 ok
+[ 83.33%] ··· ================ ====================
+               representation                      
+              ---------------- --------------------
+                   dense        0.9636293883563081 
+                   sparse       0.9625556275190844 
+              ================ ====================
+
+[100.00%] ··· ...odel.SGDRegressorBenchmark.track_train_score                 ok
+[100.00%] ··· ================ ====================
+               representation                      
+              ---------------- --------------------
+                   dense        0.9641785521280681 
+                   sparse       0.9619775667973438 
+              ================ ====================
 
 
 
