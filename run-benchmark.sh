@@ -37,15 +37,14 @@ sudo apt-get install --assume-yes g++
 sudo apt-get install --assume-yes make
 
 # install Conda
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ${HOME}/miniconda.sh
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ${HOME}/miniconda.sh
 bash ${HOME}/miniconda.sh -b -p ${HOME}/miniconda
 PATH=${HOME}/miniconda/bin:${PATH}
 
 # Create a conda env and install asv
-conda create -y -n skl_benchmark python=3.8
+conda create -y -n skl_benchmark python=* asv
 source ${HOME}/miniconda/etc/profile.d/conda.sh
 conda activate skl_benchmark
-pip install asv==0.5.1
 
 # Create the .asv-machine.json file.
 cat <<EOT >> ${HOME}/.asv-machine.json
@@ -101,4 +100,3 @@ cp -r ${HOME}/scikit-learn/asv_benchmarks/html/* .
 git add .
 git commit -m "new result [$COMMIT_TO_BENCH]"
 git push origin gh-pages
-
