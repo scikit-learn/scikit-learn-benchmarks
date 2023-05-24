@@ -32,6 +32,7 @@ if [[ -d ${HOME}/scikit-learn-benchmarks/results ]]; then
 fi
 
 # Install gcc
+sudo apt-get update
 sudo apt-get install --assume-yes gcc
 sudo apt-get install --assume-yes g++
 sudo apt-get install --assume-yes make
