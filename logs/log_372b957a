@@ -1,5 +1,94 @@
 ***** Runner *****
 
+· Creating environments
+· Discovering benchmarks
+·· Uninstalling from conda-py3.11-cython-joblib-numpy-pandas-scipy-threadpoolctl
+·· Building 372b957a <main> for conda-py3.11-cython-joblib-numpy-pandas-scipy-threadpoolctl
+·· Installing 372b957a <main> into conda-py3.11-cython-joblib-numpy-pandas-scipy-threadpoolctl
+· Running 8 total benchmarks (1 commits * 1 environments * 8 benchmarks)
+[ 0.00%] · For scikit-learn commit 372b957a <main>:
+[ 0.00%] ·· Benchmarking conda-py3.11-cython-joblib-numpy-pandas-scipy-threadpoolctl
+[12.50%] ··· Setting up cluster:65                                           ok
+[12.50%] ··· cluster.MiniBatchKMeansBenchmark.peakmem_fit                    ok
+[12.50%] ··· ================ ======== ===========
+             --                       init        
+             ---------------- --------------------
+              representation   random   k-means++ 
+             ================ ======== ===========
+                  dense        91.9M      92.6M   
+                  sparse        175M       176M   
+             ================ ======== ===========
+
+[25.00%] ··· ...ter.MiniBatchKMeansBenchmark.peakmem_predict                 ok
+[25.00%] ··· ================ ======== ===========
+             --                       init        
+             ---------------- --------------------
+              representation   random   k-means++ 
+             ================ ======== ===========
+                  dense        88.8M      88.8M   
+                  sparse        104M       104M   
+             ================ ======== ===========
+
+[37.50%] ··· ...r.MiniBatchKMeansBenchmark.peakmem_transform                 ok
+[37.50%] ··· ================ ======== ===========
+             --                       init        
+             ---------------- --------------------
+              representation   random   k-means++ 
+             ================ ======== ===========
+                  dense         120M       120M   
+                  sparse        125M       125M   
+             ================ ======== ===========
+
+[50.00%] ··· cluster.MiniBatchKMeansBenchmark.time_fit                       ok
+[50.00%] ··· ================ ========== ============
+             --                         init         
+             ---------------- -----------------------
+              representation    random    k-means++  
+             ================ ========== ============
+                  dense        481±30ms    495±30ms  
+                  sparse       577±40ms   1.99±0.07s 
+             ================ ========== ============
+
+[62.50%] ··· cluster.MiniBatchKMeansBenchmark.time_predict                   ok
+[62.50%] ··· ================ ============ ============
+             --                          init          
+             ---------------- -------------------------
+              representation     random     k-means++  
+             ================ ============ ============
+                  dense        5.50±0.7ms   5.18±0.2ms 
+                  sparse        37.1±2ms     36.5±2ms  
+             ================ ============ ============
+
+[75.00%] ··· cluster.MiniBatchKMeansBenchmark.time_transform                 ok
+[75.00%] ··· ================ ============ ============
+             --                          init          
+             ---------------- -------------------------
+              representation     random     k-means++  
+             ================ ============ ============
+                  dense         85.1±2ms     87.3±2ms  
+                  sparse       6.93±0.02s   6.74±0.06s 
+             ================ ============ ============
+
+[87.50%] ··· ...er.MiniBatchKMeansBenchmark.track_test_score                 ok
+[87.50%] ··· ================ =========== =====================
+              representation      init                         
+             ---------------- ----------- ---------------------
+                  dense          random     -4.596621036529541 
+                  dense        k-means++   -3.1085314750671387 
+                  sparse         random    -0.9366871118545532 
+                  sparse       k-means++   -0.9386959075927734 
+             ================ =========== =====================
+
+[100.00%] ··· ...r.MiniBatchKMeansBenchmark.track_train_score                 ok
+[100.00%] ··· ================ ===================== ====================
+              --                                  init                   
+              ---------------- ------------------------------------------
+               representation          random             k-means++      
+              ================ ===================== ====================
+                   dense         -4.584851264953613   -3.115997314453125 
+                   sparse       -0.9323447346687317   -0.934399425983429 
+              ================ ===================== ====================
+
 
 
 ***** Publish *****
@@ -17,88 +106,89 @@
 
 ***** Dependencies *****
 
-# packages in environment at /home/ubuntu/miniconda:
+# packages in environment at /home/ubuntu/scikit-learn/asv_benchmarks/env/66b38f94439fd3e7d261847d33263dbf:
 #
 # Name                    Version                   Build  Channel
 _libgcc_mutex             0.1                 conda_forge    conda-forge
 _openmp_mutex             4.5                       2_gnu    conda-forge
-boltons                   23.0.0             pyhd8ed1ab_0    conda-forge
-brotli-python             1.0.9           py310hd8f1fbe_9    conda-forge
+asv-runner                0.0.9                    pypi_0    pypi
+brotli-python             1.0.9           py311ha362b79_9    conda-forge
 bzip2                     1.0.8                h7f98852_4    conda-forge
-c-ares                    1.19.1               hd590300_0    conda-forge
 ca-certificates           2023.7.22            hbcca054_0    conda-forge
 certifi                   2023.7.22          pyhd8ed1ab_0    conda-forge
-cffi                      1.15.1          py310h255011f_3    conda-forge
 charset-normalizer        3.2.0              pyhd8ed1ab_0    conda-forge
-colorama                  0.4.6              pyhd8ed1ab_0    conda-forge
-conda                     23.3.1          py310hff52083_0    conda-forge
-conda-libmamba-solver     23.3.0             pyhd8ed1ab_0    conda-forge
-conda-package-handling    2.2.0              pyh38be061_0    conda-forge
-conda-package-streaming   0.9.0              pyhd8ed1ab_0    conda-forge
-cryptography              41.0.3          py310h75e40e8_0    conda-forge
-fmt                       9.1.0                h924138e_0    conda-forge
-icu                       72.1                 hcb278e6_0    conda-forge
+cython                    3.0.2           py311hb755f60_0    conda-forge
 idna                      3.4                pyhd8ed1ab_0    conda-forge
-jsonpatch                 1.32               pyhd8ed1ab_0    conda-forge
-jsonpointer               2.0                        py_0    conda-forge
-keyutils                  1.6.1                h166bdaf_0    conda-forge
-krb5                      1.21.2               h659d440_0    conda-forge
+joblib                    1.3.2              pyhd8ed1ab_0    conda-forge
 ld_impl_linux-64          2.40                 h41732ed_0    conda-forge
-libarchive                3.6.2                h039dbb9_1    conda-forge
-libcurl                   8.2.1                hca28451_0    conda-forge
-libedit                   3.1.20191231         he28a2e2_2    conda-forge
-libev                     4.33                 h516909a_1    conda-forge
+libblas                   3.9.0           17_linux64_openblas    conda-forge
+libcblas                  3.9.0           17_linux64_openblas    conda-forge
+libexpat                  2.5.0                hcb278e6_1    conda-forge
 libffi                    3.4.2                h7f98852_5    conda-forge
 libgcc-ng                 13.1.0               he5830b7_0    conda-forge
+libgfortran-ng            13.1.0               h69a702a_0    conda-forge
+libgfortran5              13.1.0               h15d22d2_0    conda-forge
 libgomp                   13.1.0               he5830b7_0    conda-forge
-libiconv                  1.17                 h166bdaf_0    conda-forge
-libmamba                  1.4.2                hcea66bb_0    conda-forge
-libmambapy                1.4.2           py310h1428755_0    conda-forge
-libnghttp2                1.52.0               h61bc06f_0    conda-forge
+liblapack                 3.9.0           17_linux64_openblas    conda-forge
 libnsl                    2.0.0                h7f98852_0    conda-forge
-libsolv                   0.7.24               hfc55251_1    conda-forge
-libsqlite                 3.42.0               h2797004_0    conda-forge
-libssh2                   1.11.0               h0841786_0    conda-forge
+libopenblas               0.3.23          pthreads_h80387f5_0    conda-forge
+libsqlite                 3.43.0               h2797004_0    conda-forge
 libstdcxx-ng              13.1.0               hfd8a6a1_0    conda-forge
 libuuid                   2.38.1               h0b41bf4_0    conda-forge
-libxml2                   2.11.5               h0d562d8_0    conda-forge
 libzlib                   1.2.13               hd590300_5    conda-forge
-lz4-c                     1.9.4                hcb278e6_0    conda-forge
-lzo                       2.10              h516909a_1000    conda-forge
-mamba                     1.4.2           py310h51d5547_0    conda-forge
 ncurses                   6.4                  hcb278e6_0    conda-forge
+numpy                     1.25.2          py311h64a7726_0    conda-forge
 openssl                   3.1.2                hd590300_0    conda-forge
 packaging                 23.1               pyhd8ed1ab_0    conda-forge
+pandas                    2.0.3           py311h320fe9a_1    conda-forge
 pip                       23.2.1             pyhd8ed1ab_0    conda-forge
-pluggy                    1.2.0              pyhd8ed1ab_0    conda-forge
-pybind11-abi              4                    hd8ed1ab_3    conda-forge
-pycosat                   0.6.4           py310h5764c6d_1    conda-forge
-pycparser                 2.21               pyhd8ed1ab_0    conda-forge
-pyopenssl                 23.2.0             pyhd8ed1ab_1    conda-forge
+platformdirs              3.10.0             pyhd8ed1ab_0    conda-forge
+pooch                     1.7.0              pyha770c72_3    conda-forge
+pympler                   1.0.1                    pypi_0    pypi
 pysocks                   1.7.1              pyha2e5f31_6    conda-forge
-python                    3.10.12         hd12c33a_0_cpython    conda-forge
-python_abi                3.10                    3_cp310    conda-forge
+python                    3.11.5          hab00c5b_0_cpython    conda-forge
+python-dateutil           2.8.2              pyhd8ed1ab_0    conda-forge
+python-tzdata             2023.3             pyhd8ed1ab_0    conda-forge
+python_abi                3.11                    3_cp311    conda-forge
+pytz                      2023.3             pyhd8ed1ab_0    conda-forge
 readline                  8.2                  h8228510_1    conda-forge
-reproc                    14.2.4               h0b41bf4_0    conda-forge
-reproc-cpp                14.2.4               hcb278e6_0    conda-forge
 requests                  2.31.0             pyhd8ed1ab_0    conda-forge
-ruamel.yaml               0.17.32         py310h2372a71_0    conda-forge
-ruamel.yaml.clib          0.2.7           py310h1fa729e_1    conda-forge
+scikit-learn              1.4.dev0                 pypi_0    pypi
+scipy                     1.11.2          py311h64a7726_0    conda-forge
 setuptools                68.1.2             pyhd8ed1ab_0    conda-forge
+six                       1.16.0             pyh6c4a22f_0    conda-forge
+threadpoolctl             3.2.0              pyha21a80b_0    conda-forge
 tk                        8.6.12               h27826a3_0    conda-forge
-toolz                     0.12.0             pyhd8ed1ab_0    conda-forge
-tqdm                      4.66.1             pyhd8ed1ab_0    conda-forge
+typing-extensions         4.7.1                hd8ed1ab_0    conda-forge
+typing_extensions         4.7.1              pyha770c72_0    conda-forge
 tzdata                    2023c                h71feb2d_0    conda-forge
 urllib3                   2.0.4              pyhd8ed1ab_0    conda-forge
-wheel                     0.41.1             pyhd8ed1ab_0    conda-forge
+wheel                     0.41.2             pyhd8ed1ab_0    conda-forge
 xz                        5.2.6                h166bdaf_0    conda-forge
-yaml-cpp                  0.7.0                h27087fc_2    conda-forge
-zstandard                 0.19.0          py310h1275a96_2    conda-forge
-zstd                      1.5.2                hfc55251_7    conda-forge
 
 
 ***** Threadpool info *****
 
+[
+  {
+    "user_api": "blas",
+    "internal_api": "openblas",
+    "num_threads": 8,
+    "prefix": "libopenblas",
+    "filepath": "/home/ubuntu/scikit-learn/asv_benchmarks/env/66b38f94439fd3e7d261847d33263dbf/lib/libopenblasp-r0.3.23.so",
+    "version": "0.3.23",
+    "threading_layer": "pthreads",
+    "architecture": "Haswell"
+  },
+  {
+    "user_api": "openmp",
+    "internal_api": "openmp",
+    "num_threads": 8,
+    "prefix": "libgomp",
+    "filepath": "/home/ubuntu/scikit-learn/asv_benchmarks/env/66b38f94439fd3e7d261847d33263dbf/lib/libgomp.so.1.0.0",
+    "version": null
+  }
+]
 
 
 ***** System info *****
