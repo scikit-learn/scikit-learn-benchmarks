@@ -8,13 +8,87 @@
 · Running 6 total benchmarks (1 commits * 1 environments * 6 benchmarks)
 [ 0.00%] · For scikit-learn commit dfd299b1 <main~153>:
 [ 0.00%] ·· Benchmarking conda-py3.11-cython-joblib-numpy-pandas-scipy-threadpoolctl
-[16.67%] ··· Setting up ensemble:103                                         ok
-[16.67%] ··· ...dientBoostingClassifierBenchmark.peakmem_fit               103M
-[33.33%] ··· ...tBoostingClassifierBenchmark.peakmem_predict              91.2M
-[50.00%] ··· ...GradientBoostingClassifierBenchmark.time_fit          7.89±0.1s
-[66.67%] ··· ...ientBoostingClassifierBenchmark.time_predict         89.5±0.3ms
-[83.33%] ··· ...BoostingClassifierBenchmark.track_test_score 0.7230709112942986
-[100.00%] ··· ...oostingClassifierBenchmark.track_train_score 0.9812160155622751
+[16.67%] ··· Setting up ensemble:24                                          ok
+[16.67%] ··· ....RandomForestClassifierBenchmark.peakmem_fit                 ok
+[16.67%] ··· ================ ====== ======
+             --                   n_jobs   
+             ---------------- -------------
+              representation    1      4   
+             ================ ====== ======
+                  dense        179M   179M 
+                  sparse       402M   402M 
+             ================ ====== ======
+
+[33.33%] ··· ...domForestClassifierBenchmark.peakmem_predict                 ok
+[33.33%] ··· ================ ====== ======
+             --                   n_jobs   
+             ---------------- -------------
+              representation    1      4   
+             ================ ====== ======
+                  dense        182M   188M 
+                  sparse       402M   402M 
+             ================ ====== ======
+
+[50.00%] ··· ...ble.RandomForestClassifierBenchmark.time_fit         1/4 failed
+[50.00%] ··· ================ =========== ============
+             --                        n_jobs         
+             ---------------- ------------------------
+              representation       1           4      
+             ================ =========== ============
+                  dense        20.8±0.4s     failed   
+                  sparse       16.0±0.4s   1.82±0.06m 
+             ================ =========== ============
+             For parameters: 'dense', 4
+             
+             
+             asv: benchmark timed out (timeout 500s)
+
+[50.00%] ···· For parameters: 'dense', 4
+              
+              
+              asv: benchmark timed out (timeout 500s)
+
+[66.67%] ··· ...RandomForestClassifierBenchmark.time_predict                 ok
+[66.67%] ··· ================ ============ ==========
+             --                        n_jobs        
+             ---------------- -----------------------
+              representation       1           4     
+             ================ ============ ==========
+                  dense        235±0.5ms    155±6ms  
+                  sparse       1.97±0.01s   783±40ms 
+             ================ ============ ==========
+
+[83.33%] ··· ...omForestClassifierBenchmark.track_test_score                 ok
+[83.33%] ··· ================ ==================== ====================
+             --                                 n_jobs                 
+             ---------------- -----------------------------------------
+              representation           1                    4          
+             ================ ==================== ====================
+                  dense        0.7495235176068695   0.7495235176068695 
+                  sparse       0.8656423941766682   0.8656423941766682 
+             ================ ==================== ====================
+
+[100.00%] ··· ...mForestClassifierBenchmark.track_train_score                 ok
+[100.00%] ··· ================ ==================== ====================
+              --                                 n_jobs                 
+              ---------------- -----------------------------------------
+               representation           1                    4          
+              ================ ==================== ====================
+                   dense        0.997565434149867    0.997565434149867  
+                   sparse       0.9996123288718864   0.9996123288718864 
+              ================ ==================== ====================
+
+[100.00%] ··· asv: forkserver:
+[100.00%] ··· Traceback (most recent call last):
+                File "/home/ubuntu/miniconda/envs/skl_benchmark/lib/python3.11/site-packages/asv/benchmark.py", line 68, in <module>
+                  main()
+                File "/home/ubuntu/miniconda/envs/skl_benchmark/lib/python3.11/site-packages/asv/benchmark.py", line 60, in main
+                  commands[mode](args)
+                File "/home/ubuntu/scikit-learn/asv_benchmarks/env/66b38f94439fd3e7d261847d33263dbf/lib/python3.11/site-packages/asv_runner/server.py", line 235, in _run_server
+                  os.unlink(stdout_file)
+              KeyboardInterrupt
+              
+
 
 
 ***** Publish *****
@@ -154,4 +228,4 @@ Vulnerability Spectre v1:        Mitigation; usercopy/swapgs barriers and __user
 Vulnerability Spectre v2:        Mitigation; Retpolines, STIBP disabled, RSB filling, PBRSB-eIBRS Not affected
 Vulnerability Srbds:             Unknown: Dependent on hypervisor status
 Vulnerability Tsx async abort:   Not affected
-MemTotal:       16384564 kB
+MemTotal:       16384572 kB
