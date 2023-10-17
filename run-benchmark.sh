@@ -43,7 +43,7 @@ bash ${HOME}/miniconda.sh -b -p ${HOME}/miniconda
 PATH=${HOME}/miniconda/bin:${PATH}
 
 # Create a conda env and install asv
-conda create -y -n skl_benchmark python=* asv
+conda create -y -n skl_benchmark python=3.11 asv
 source ${HOME}/miniconda/etc/profile.d/conda.sh
 conda activate skl_benchmark
 
