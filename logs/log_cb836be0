@@ -17,7 +17,7 @@
              ================ =========== ======== ===========
                   dense          lloyd      104M       114M   
                   dense          elkan      138M       138M   
-                  sparse         lloyd      255M       255M   
+                  sparse         lloyd      255M       254M   
                   sparse         elkan      262M       261M   
              ================ =========== ======== ===========
 
@@ -27,8 +27,8 @@
              ---------------------------- --------------------
               representation   algorithm   random   k-means++ 
              ================ =========== ======== ===========
-                  dense          lloyd     90.1M      90.1M   
-                  dense          elkan     90.3M      90.2M   
+                  dense          lloyd     89.7M      89.7M   
+                  dense          elkan     89.7M      89.7M   
                   sparse         lloyd     97.6M      97.6M   
                   sparse         elkan     97.6M      97.6M   
              ================ =========== ======== ===========
@@ -51,10 +51,10 @@
              ---------------------------- -------------------------
               representation   algorithm     random     k-means++  
              ================ =========== ============ ============
-                  dense          lloyd      411±10ms    1.23±0.03s 
-                  dense          elkan     2.22±0.01s   2.08±0.02s 
-                  sparse         lloyd     1.71±0.1s    4.41±0.03s 
-                  sparse         elkan     3.40±0.01s   5.29±0.07s 
+                  dense          lloyd      397±40ms    1.19±0.08s 
+                  dense          elkan     2.18±0.02s   2.04±0.04s 
+                  sparse         lloyd     1.61±0.05s   4.26±0.2s  
+                  sparse         elkan     3.43±0.04s   5.04±0.1s  
              ================ =========== ============ ============
 
 [ 4.35%] ··· cluster.KMeansBenchmark.time_predict                            ok
@@ -63,23 +63,23 @@
              ---------------------------- ---------------------------
               representation   algorithm      random      k-means++  
              ================ =========== ============= =============
-                  dense          lloyd     5.32±0.05ms    5.40±0.1ms 
-                  dense          elkan     5.04±0.04ms   5.04±0.06ms 
-                  sparse         lloyd       28.5±3ms      27.6±4ms  
-                  sparse         elkan       27.4±4ms      22.3±6ms  
+                  dense          lloyd      5.21±0.2ms     7.63±1ms  
+                  dense          elkan     5.28±0.07ms   5.09±0.05ms 
+                  sparse         lloyd       27.5±6ms      27.2±6ms  
+                  sparse         elkan       27.2±6ms      28.8±9ms  
              ================ =========== ============= =============
 
 [ 5.22%] ··· cluster.KMeansBenchmark.time_transform                          ok
-[ 5.22%] ··· ================ =========== ============ ============
-             --                                      init          
-             ---------------------------- -------------------------
-              representation   algorithm     random     k-means++  
-             ================ =========== ============ ============
-                  dense          lloyd     92.5±0.3ms   92.5±0.4ms 
-                  dense          elkan     92.9±0.3ms   92.5±0.2ms 
-                  sparse         lloyd      3.46±0s     3.80±0.04s 
-                  sparse         elkan     3.76±0.03s   3.76±0.02s 
-             ================ =========== ============ ============
+[ 5.22%] ··· ================ =========== =========== ===========
+             --                                     init         
+             ---------------------------- -----------------------
+              representation   algorithm     random    k-means++ 
+             ================ =========== =========== ===========
+                  dense          lloyd     89.7±10ms    92.9±2ms 
+                  dense          elkan      92.0±2ms    92.2±2ms 
+                  sparse         lloyd      3.55±1s     4.61±2s  
+                  sparse         elkan      4.54±1s     3.58±1s  
+             ================ =========== =========== ===========
 
 [ 6.09%] ··· cluster.KMeansBenchmark.track_test_score                        ok
 [ 6.09%] ··· ================ =========== =========== =====================
@@ -87,7 +87,7 @@
              ---------------- ----------- ----------- ---------------------
                   dense          lloyd       random     -4.109886169433594 
                   dense          lloyd     k-means++   -3.0753684043884277 
-                  dense          elkan       random    -4.1098856925964355 
+                  dense          elkan       random     -4.109886169433594 
                   dense          elkan     k-means++   -3.0753684043884277 
                   sparse         lloyd       random    -0.9266619682312012 
                   sparse         lloyd     k-means++   -0.9249262809753418 
@@ -116,8 +116,8 @@
              ---------------- --------------------
               representation   random   k-means++ 
              ================ ======== ===========
-                  dense        91.1M      91.9M   
-                  sparse        174M       175M   
+                  dense        91.5M       92M    
+                  sparse        175M       176M   
              ================ ======== ===========
 
 [ 8.70%] ··· ...ter.MiniBatchKMeansBenchmark.peakmem_predict                 ok
@@ -126,7 +126,7 @@
              ---------------- --------------------
               representation   random   k-means++ 
              ================ ======== ===========
-                  dense        88.2M      88.2M   
+                  dense        88.3M      88.2M   
                   sparse        104M       104M   
              ================ ======== ===========
 
@@ -146,8 +146,8 @@
              ---------------- -----------------------
               representation    random    k-means++  
              ================ ========== ============
-                  dense        484±30ms    484±20ms  
-                  sparse       627±20ms   1.63±0.01s 
+                  dense        489±20ms    485±20ms  
+                  sparse       638±30ms   1.94±0.03s 
              ================ ========== ============
 
 [11.30%] ··· cluster.MiniBatchKMeansBenchmark.time_predict                   ok
@@ -156,8 +156,8 @@
              ---------------- -------------------------
               representation     random     k-means++  
              ================ ============ ============
-                  dense        5.70±0.3ms   5.44±0.2ms 
-                  sparse        30.6±8ms     31.1±3ms  
+                  dense        6.61±0.7ms   8.48±0.5ms 
+                  sparse        36.9±3ms    29.9±10ms  
              ================ ============ ============
 
 [12.17%] ··· cluster.MiniBatchKMeansBenchmark.time_transform                 ok
@@ -166,8 +166,8 @@
              ---------------- -------------------------
               representation     random     k-means++  
              ================ ============ ============
-                  dense         102±1ms      104±6ms   
-                  sparse       7.64±0.03s   7.67±0.02s 
+                  dense        93.2±10ms    87.2±0.9ms 
+                  sparse       6.60±0.05s   6.58±0.03s 
              ================ ============ ============
 
 [13.04%] ··· ...er.MiniBatchKMeansBenchmark.track_test_score                 ok
@@ -207,29 +207,29 @@
              --------------- ---------------
               fit_algorithm     1       4   
              =============== ======= =======
-                   lars       85.3M   87.5M 
-                    cd        85.4M   87.5M 
+                   lars       85.6M   87.5M 
+                    cd        85.5M   87.5M 
              =============== ======= =======
 
 [16.52%] ··· ...osition.DictionaryLearningBenchmark.time_fit                 ok
-[16.52%] ··· =============== =========== ===========
-             --                       n_jobs        
-             --------------- -----------------------
-              fit_algorithm       1           4     
-             =============== =========== ===========
-                   lars       17.1±0.4s   10.4±0.2s 
-                    cd         814±20ms   3.23±0.4s 
-             =============== =========== ===========
+[16.52%] ··· =============== ============ ===========
+             --                       n_jobs         
+             --------------- ------------------------
+              fit_algorithm       1            4     
+             =============== ============ ===========
+                   lars       15.6±0.04s   11.1±0.4s 
+                    cd         750±10ms    3.15±0.6s 
+             =============== ============ ===========
 
 [17.39%] ··· ...n.DictionaryLearningBenchmark.time_transform                 ok
-[17.39%] ··· =============== =========== ==========
-             --                      n_jobs        
-             --------------- ----------------------
-              fit_algorithm       1          4     
-             =============== =========== ==========
-                   lars       282±0.8ms   296±10ms 
-                    cd         239±2ms    307±20ms 
-             =============== =========== ==========
+[17.39%] ··· =============== ========= ==========
+             --                     n_jobs       
+             --------------- --------------------
+              fit_algorithm      1         4     
+             =============== ========= ==========
+                   lars       214±3ms   290±20ms 
+                    cd        219±3ms   297±10ms 
+             =============== ========= ==========
 
 [18.26%] ··· ...DictionaryLearningBenchmark.track_test_score                 ok
 [18.26%] ··· =============== ======== ======================
@@ -258,8 +258,8 @@
              --------------- --------------
               fit_algorithm     1      4   
              =============== ======= ======
-                   lars       98.2M   103M 
-                    cd        98.1M   103M 
+                   lars       98.9M   102M 
+                    cd        98.4M   102M 
              =============== ======= ======
 
 [20.87%] ··· ...ictionaryLearningBenchmark.peakmem_transform                 ok
@@ -268,8 +268,8 @@
              --------------- ---------------
               fit_algorithm     1       4   
              =============== ======= =======
-                   lars       86.6M   88.3M 
-                    cd        86.6M   88.3M 
+                   lars       86.6M   88.4M 
+                    cd        86.6M   88.4M 
              =============== ======= =======
 
 [20.87%] ···· For parameters: 'lars', 1
@@ -289,14 +289,14 @@
                 return func(*args, **kwargs)
 
 [21.74%] ··· ...iniBatchDictionaryLearningBenchmark.time_fit                 ok
-[21.74%] ··· =============== =========== ===========
-             --                       n_jobs        
-             --------------- -----------------------
-              fit_algorithm       1           4     
-             =============== =========== ===========
-                   lars        1.23±0s    1.91±0.2s 
-                    cd        384±0.7ms   2.28±0.1s 
-             =============== =========== ===========
+[21.74%] ··· =============== ============ ===========
+             --                       n_jobs         
+             --------------- ------------------------
+              fit_algorithm       1            4     
+             =============== ============ ===========
+                   lars       1.32±0.05s   1.96±0.2s 
+                    cd         389±2ms     1.80±0.2s 
+             =============== ============ ===========
 
 [22.61%] ··· ...chDictionaryLearningBenchmark.time_transform                 ok
 [22.61%] ··· =============== ========= ==========
@@ -304,8 +304,8 @@
              --------------- --------------------
               fit_algorithm      1         4     
              =============== ========= ==========
-                   lars       244±8ms   306±8ms  
-                    cd        246±1ms   306±10ms 
+                   lars       227±2ms   287±10ms 
+                    cd        215±9ms   310±8ms  
              =============== ========= ==========
 
 [22.61%] ···· For parameters: 'lars', 1
@@ -517,8 +517,18 @@
                 return func(*args, **kwargs)
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
                 return func(*args, **kwargs)
+              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
+                return func(*args, **kwargs)
               
               For parameters: 'lars', 4
+              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
+                return func(*args, **kwargs)
+              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
+                return func(*args, **kwargs)
+              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
+                return func(*args, **kwargs)
+              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
+                return func(*args, **kwargs)
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
                 return func(*args, **kwargs)
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
@@ -923,10 +933,6 @@
                 return func(*args, **kwargs)
               
               For parameters: 'cd', 4
-              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
-                return func(*args, **kwargs)
-              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
-                return func(*args, **kwargs)
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
                 return func(*args, **kwargs)
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/utils/_param_validation.py:186: RuntimeWarning: Orthogonal matching pursuit ended prematurely due to linear dependence in the dictionary. The requested precision might not have been met.
@@ -1163,7 +1169,7 @@
              ------------ ------
                  full      907M 
                 arpack     606M 
-              randomized   632M 
+              randomized   633M 
              ============ ======
 
 [26.09%] ··· decomposition.PCABenchmark.peakmem_transform                    ok
@@ -1179,19 +1185,19 @@
 [26.96%] ··· ============ ============
               svd_solver              
              ------------ ------------
-                 full      2.55±0.1s  
-                arpack     1.11±0.03s 
-              randomized   1.09±0.01s 
+                 full      2.85±0.2s  
+                arpack     1.43±0.04s 
+              randomized   1.16±0.02s 
              ============ ============
 
 [27.83%] ··· decomposition.PCABenchmark.time_transform                       ok
-[27.83%] ··· ============ =========
-              svd_solver           
-             ------------ ---------
-                 full      160±1ms 
-                arpack     157±2ms 
-              randomized   156±2ms 
-             ============ =========
+[27.83%] ··· ============ ==========
+              svd_solver            
+             ------------ ----------
+                 full      158±2ms  
+                arpack     153±20ms 
+              randomized   157±2ms  
+             ============ ==========
 
 [28.70%] ··· decomposition.PCABenchmark.track_test_score                     ok
 [28.70%] ··· ============ ====================
@@ -1216,7 +1222,7 @@
 [30.43%] ··· ================ =======
               representation         
              ---------------- -------
-                  dense        92.7M 
+                  dense        91.8M 
                   sparse        117M 
              ================ =======
 
@@ -1224,7 +1230,7 @@
 [31.30%] ··· ================ =======
               representation         
              ---------------- -------
-                  dense        89.3M 
+                  dense        89.2M 
                   sparse       98.9M 
              ================ =======
 
@@ -1232,23 +1238,23 @@
 [32.17%] ··· ================ ============
               representation              
              ---------------- ------------
-                  dense        2.76±0.01s 
-                  sparse       2.45±0.01s 
+                  dense        2.74±0.01s 
+                  sparse       2.12±0.02s 
              ================ ============
 
 [33.04%] ··· ...ientBoostingClassifierBenchmark.time_predict                 ok
 [33.04%] ··· ================ ============
               representation              
              ---------------- ------------
-                  dense        47.9±0.7ms 
-                  sparse        44.6±1ms  
+                  dense         58.3±8ms  
+                  sparse       39.6±0.8ms 
              ================ ============
 
 [33.91%] ··· ...BoostingClassifierBenchmark.track_test_score                 ok
 [33.91%] ··· ================ =====================
               representation                       
              ---------------- ---------------------
-                  dense         0.5425714785409576 
+                  dense         0.5370858238838456 
                   sparse       0.10409974329281042 
              ================ =====================
 
@@ -1256,15 +1262,15 @@
 [34.78%] ··· ================ =====================
               representation                       
              ---------------- ---------------------
-                  dense         0.6342628904750912 
+                  dense         0.6206694375259024 
                   sparse       0.15180008167538628 
              ================ =====================
 
 [35.65%] ··· Setting up ensemble:103                                         ok
-[35.65%] ··· ...dientBoostingClassifierBenchmark.peakmem_fit               104M
-[36.52%] ··· ...tBoostingClassifierBenchmark.peakmem_predict              92.3M
-[37.39%] ··· ...GradientBoostingClassifierBenchmark.time_fit         2.26±0.05s
-[38.26%] ··· ...ientBoostingClassifierBenchmark.time_predict         83.9±0.3ms
+[35.65%] ··· ...dientBoostingClassifierBenchmark.peakmem_fit               103M
+[36.52%] ··· ...tBoostingClassifierBenchmark.peakmem_predict              92.4M
+[37.39%] ··· ...GradientBoostingClassifierBenchmark.time_fit          2.64±0.2s
+[38.26%] ··· ...ientBoostingClassifierBenchmark.time_predict           88.9±1ms
 [39.13%] ··· ...BoostingClassifierBenchmark.track_test_score 0.7230709112942986
 [40.00%] ··· ...oostingClassifierBenchmark.track_train_score 0.9812160155622751
 [40.87%] ··· Setting up ensemble:24                                          ok
@@ -1274,7 +1280,7 @@
              ---------------- -------------
               representation    1      4   
              ================ ====== ======
-                  dense        180M   179M 
+                  dense        179M   179M 
                   sparse       403M   403M 
              ================ ====== ======
 
@@ -1284,7 +1290,7 @@
              ---------------- -------------
               representation    1      4   
              ================ ====== ======
-                  dense        183M   189M 
+                  dense        182M   188M 
                   sparse       403M   403M 
              ================ ====== ======
 
@@ -1294,8 +1300,8 @@
              ---------------- -------------------------
               representation       1            4      
              ================ ============ ============
-                  dense        7.83±0.5s    2.59±0.09s 
-                  sparse       12.9±0.04s   3.86±0.1s  
+                  dense        8.12±0.08s   2.64±0.09s 
+                  sparse       11.4±0.07s   3.70±0.2s  
              ================ ============ ============
 
 [43.48%] ··· ...RandomForestClassifierBenchmark.time_predict                 ok
@@ -1304,8 +1310,8 @@
              ---------------- -----------------------
               representation       1           4     
              ================ ============ ==========
-                  dense        181±0.7ms    133±5ms  
-                  sparse       2.02±0.01s   752±20ms 
+                  dense        160±0.5ms    133±5ms  
+                  sparse       1.88±0.02s   743±40ms 
              ================ ============ ==========
 
 [44.35%] ··· ...omForestClassifierBenchmark.track_test_score                 ok
@@ -1314,7 +1320,7 @@
              ---------------- -----------------------------------------
               representation           1                    4          
              ================ ==================== ====================
-                  dense        0.7450993477768667   0.7450993477768667 
+                  dense        0.7484911462679116   0.7484911462679116 
                   sparse       0.8656423941766682   0.8656423941766682 
              ================ ==================== ====================
 
@@ -1324,7 +1330,7 @@
              ---------------- -----------------------------------------
               representation           1                    4          
              ================ ==================== ====================
-                  dense        0.9971465639552678   0.9971465639552678 
+                  dense        0.9967973831900412   0.9967973831900412 
                   sparse       0.9996123288718864   0.9996123288718864 
              ================ ==================== ====================
 
@@ -1356,27 +1362,27 @@
               asv: skipped: NotImplementedError()
 
 [47.83%] ··· linear_model.ElasticNetBenchmark.time_fit                       ok
-[47.83%] ··· ================ ============ =========
-             --                     precompute      
-             ---------------- ----------------------
-              representation      True       False  
-             ================ ============ =========
-                  dense         1.49±0s     1.81±0s 
-                  sparse       2.92±0.02s     n/a   
-             ================ ============ =========
+[47.83%] ··· ================ ============ ===========
+             --                      precompute       
+             ---------------- ------------------------
+              representation      True        False   
+             ================ ============ ===========
+                  dense        1.38±0.01s   1.96±0.2s 
+                  sparse       2.59±0.2s       n/a    
+             ================ ============ ===========
 
 [47.83%] ···· For parameters: 'sparse', False
               asv: skipped: NotImplementedError()
 
 [48.70%] ··· linear_model.ElasticNetBenchmark.time_predict                   ok
-[48.70%] ··· ================ ============= ============
-             --                       precompute        
-             ---------------- --------------------------
-              representation       True        False    
-             ================ ============= ============
-                  dense        50.1±0.09ms   46.8±0.2ms 
-                  sparse       3.10±0.01ms      n/a     
-             ================ ============= ============
+[48.70%] ··· ================ ============= ==========
+             --                      precompute       
+             ---------------- ------------------------
+              representation       True       False   
+             ================ ============= ==========
+                  dense          53.0±6ms    52.9±4ms 
+                  sparse       3.08±0.07ms     n/a    
+             ================ ============= ==========
 
 [48.70%] ···· For parameters: 'sparse', False
               asv: skipped: NotImplementedError()
@@ -1388,7 +1394,7 @@
               representation          True                False        
              ================ ==================== ====================
                   dense        0.9274010856209145   0.9274010850953214 
-                  sparse       0.9500186293910091          n/a         
+                  sparse       0.950543049579452           n/a         
              ================ ==================== ====================
 
 [49.57%] ···· For parameters: 'sparse', False
@@ -1401,7 +1407,7 @@
               representation          True                False        
              ================ ==================== ====================
                   dense        0.9276022550495941   0.9276022552325599 
-                  sparse       0.956361459914158           n/a         
+                  sparse       0.9555878974385189          n/a         
              ================ ==================== ====================
 
 [50.43%] ···· For parameters: 'sparse', False
@@ -1427,7 +1433,7 @@
              ---------------- ---------------
               representation    True   False 
              ================ ======= =======
-                  dense         490M    489M 
+                  dense         489M    488M 
                   sparse       96.7M    n/a  
              ================ ======= =======
 
@@ -1435,27 +1441,27 @@
               asv: skipped: NotImplementedError()
 
 [53.04%] ··· linear_model.LassoBenchmark.time_fit                            ok
-[53.04%] ··· ================ ============ =========
-             --                     precompute      
-             ---------------- ----------------------
-              representation      True       False  
-             ================ ============ =========
-                  dense         1.48±0s     1.81±0s 
-                  sparse       2.42±0.05s     n/a   
-             ================ ============ =========
+[53.04%] ··· ================ ============ ============
+             --                       precompute       
+             ---------------- -------------------------
+              representation      True        False    
+             ================ ============ ============
+                  dense        1.36±0.01s   1.68±0.02s 
+                  sparse       2.37±0.01s      n/a     
+             ================ ============ ============
 
 [53.04%] ···· For parameters: 'sparse', False
               asv: skipped: NotImplementedError()
 
 [53.91%] ··· linear_model.LassoBenchmark.time_predict                        ok
-[53.91%] ··· ================ ============ ============
-             --                       precompute       
-             ---------------- -------------------------
-              representation      True        False    
-             ================ ============ ============
-                  dense        46.9±0.2ms   49.9±0.3ms 
-                  sparse       3.06±0.4ms      n/a     
-             ================ ============ ============
+[53.91%] ··· ================ ============= ============
+             --                       precompute        
+             ---------------- --------------------------
+              representation       True        False    
+             ================ ============= ============
+                  dense         47.2±0.5ms   47.8±0.9ms 
+                  sparse       2.38±0.06ms      n/a     
+             ================ ============= ============
 
 [53.91%] ···· For parameters: 'sparse', False
               asv: skipped: NotImplementedError()
@@ -1467,7 +1473,7 @@
               representation          True                False        
              ================ ==================== ====================
                   dense        0.9274015024583205   0.9274015028138817 
-                  sparse       0.9485004015565667          n/a         
+                  sparse       0.9488694443016203          n/a         
              ================ ==================== ====================
 
 [54.78%] ···· For parameters: 'sparse', False
@@ -1480,7 +1486,7 @@
               representation          True                False        
              ================ ==================== ====================
                   dense         0.92760249197518    0.9276024919395177 
-                  sparse       0.9539083689393967          n/a         
+                  sparse       0.9531286948121315          n/a         
              ================ ==================== ====================
 
 [55.65%] ···· For parameters: 'sparse', False
@@ -1499,7 +1505,7 @@
 [57.39%] ··· ================ ======
               representation        
              ---------------- ------
-                  dense        490M 
+                  dense        489M 
                   sparse       157M 
              ================ ======
 
@@ -1507,16 +1513,16 @@
 [58.26%] ··· ================ ============
               representation              
              ---------------- ------------
-                  dense        3.02±0.01s 
-                  sparse        1.11±0s   
+                  dense        3.15±0.09s 
+                  sparse        981±5ms   
              ================ ============
 
 [59.13%] ··· ...model.LinearRegressionBenchmark.time_predict                 ok
 [59.13%] ··· ================ ============
               representation              
              ---------------- ------------
-                  dense        47.3±0.1ms 
-                  sparse       32.7±0.1ms 
+                  dense         47.8±1ms  
+                  sparse       31.2±0.4ms 
              ================ ============
 
 [60.00%] ··· ...l.LinearRegressionBenchmark.track_test_score                 ok
@@ -1524,7 +1530,7 @@
               representation                       
              ---------------- ---------------------
                   dense         0.9274012651798128 
-                  sparse       0.09867472290109691 
+                  sparse       0.11195556042744848 
              ================ =====================
 
 [60.87%] ··· ....LinearRegressionBenchmark.track_train_score                 ok
@@ -1532,7 +1538,7 @@
               representation                      
              ---------------- --------------------
                   dense        0.927602494829764  
-                  sparse       0.9999999999962731 
+                  sparse       0.9999999999963195 
              ================ ====================
 
 [61.74%] ··· Setting up linear_model:28                                      ok
@@ -1543,7 +1549,7 @@
               representation   solver     1       4   
              ================ ======== ======= =======
                   dense        lbfgs     106M   99.1M 
-                  dense         saga    83.7M   84.9M 
+                  dense         saga    83.8M   84.9M 
                   sparse       lbfgs     382M    125M 
                   sparse        saga     104M    105M 
              ================ ======== ======= =======
@@ -1554,23 +1560,23 @@
              ------------------------- ---------------
               representation   solver     1       4   
              ================ ======== ======= =======
-                  dense        lbfgs    99.3M   99.2M 
-                  dense         saga    86.4M   86.3M 
-                  sparse       lbfgs     101M    101M 
-                  sparse        saga    88.1M   88.1M 
+                  dense        lbfgs    98.9M   99.5M 
+                  dense         saga    86.4M   86.4M 
+                  sparse       lbfgs     101M    100M 
+                  sparse        saga    88.5M   88.3M 
              ================ ======== ======= =======
 
 [63.48%] ··· ...r_model.LogisticRegressionBenchmark.time_fit                 ok
-[63.48%] ··· ================ ======== ============ ===========
-             --                                 n_jobs         
-             ------------------------- ------------------------
-              representation   solver       1            4     
-             ================ ======== ============ ===========
-                  dense        lbfgs     21.2±1ms     190±2ms  
-                  dense         saga    4.31±0.3s    5.50±0.7s 
-                  sparse       lbfgs    1.16±0.02s   3.03±0.2s 
-                  sparse        saga    3.97±0.02s   3.64±0.3s 
-             ================ ======== ============ ===========
+[63.48%] ··· ================ ======== ============ ============
+             --                                  n_jobs         
+             ------------------------- -------------------------
+              representation   solver       1            4      
+             ================ ======== ============ ============
+                  dense        lbfgs     22.3±1ms     180±5ms   
+                  dense         saga    5.12±0.02s   5.32±0.02s 
+                  sparse       lbfgs    1.04±0.02s   2.90±0.2s  
+                  sparse        saga    3.60±0.01s   3.66±0.01s 
+             ================ ======== ============ ============
 
 [64.35%] ··· ...del.LogisticRegressionBenchmark.time_predict                 ok
 [64.35%] ··· ================ ======== ============= =============
@@ -1578,20 +1584,20 @@
              ------------------------- ---------------------------
               representation   solver        1             4      
              ================ ======== ============= =============
-                  dense        lbfgs     3.23±0.1ms   2.95±0.06ms 
-                  dense         saga    1.86±0.02ms   1.92±0.02ms 
-                  sparse       lbfgs    6.81±0.05ms   6.81±0.05ms 
-                  sparse        saga    4.41±0.05ms   4.40±0.05ms 
+                  dense        lbfgs    3.23±0.02ms    3.07±0.1ms 
+                  dense         saga    1.95±0.03ms   1.93±0.02ms 
+                  sparse       lbfgs     7.30±0.1ms    10.2±0.1ms 
+                  sparse        saga    6.45±0.01ms   4.91±0.02ms 
              ================ ======== ============= =============
 
 [65.22%] ··· ...LogisticRegressionBenchmark.track_test_score                 ok
 [65.22%] ··· ================ ======== ======== =====================
               representation   solver   n_jobs                       
              ---------------- -------- -------- ---------------------
-                  dense        lbfgs      1      0.17248308930992695 
-                  dense        lbfgs      4      0.17248308930992695 
-                  dense         saga      1       0.7727661671483629 
-                  dense         saga      4       0.7727661671483629 
+                  dense        lbfgs      1       0.1732697903796469 
+                  dense        lbfgs      4       0.1732697903796469 
+                  dense         saga      1       0.7771689053909882 
+                  dense         saga      4       0.7771689053909882 
                   sparse       lbfgs      1      0.06538461538461539 
                   sparse       lbfgs      4      0.06538461538461539 
                   sparse        saga      1       0.5765140080078162 
@@ -1602,10 +1608,10 @@
 [66.09%] ··· ================ ======== ======== ====================
               representation   solver   n_jobs                      
              ---------------- -------- -------- --------------------
-                  dense        lbfgs      1      0.1789125193422021 
-                  dense        lbfgs      4      0.1789125193422021 
-                  dense         saga      1      0.7994225582161085 
-                  dense         saga      4      0.7994225582161085 
+                  dense        lbfgs      1      0.1785508839230278 
+                  dense        lbfgs      4      0.1785508839230278 
+                  dense         saga      1      0.7954496926034851 
+                  dense         saga      4      0.7954496926034851 
                   sparse       lbfgs      1      0.0681998556998557 
                   sparse       lbfgs      4      0.0681998556998557 
                   sparse        saga      1      0.6908414295256007 
@@ -1620,7 +1626,7 @@
                   dense           auto      464M 
                   dense           svd       825M 
                   dense         cholesky    464M 
-                  dense           lsqr      472M 
+                  dense           lsqr      473M 
                   dense        sparse_cg    467M 
                   dense           sag       473M 
                   dense           saga      473M 
@@ -1663,20 +1669,20 @@
 [68.70%] ··· ================ =========== ============
               representation     solver               
              ---------------- ----------- ------------
-                  dense           auto      211±1ms   
-                  dense           svd      1.71±0.02s 
-                  dense         cholesky   209±0.7ms  
-                  dense           lsqr      221±3ms   
-                  dense        sparse_cg    278±3ms   
-                  dense           sag      31.4±0.3s  
-                  dense           saga     12.4±0.02s 
-                  sparse          auto     157±0.7ms  
+                  dense           auto      222±2ms   
+                  dense           svd      1.95±0.1s  
+                  dense         cholesky    205±2ms   
+                  dense           lsqr      221±10ms  
+                  dense        sparse_cg    275±30ms  
+                  dense           sag      25.8±0.1s  
+                  dense           saga     11.9±0.04s 
+                  sparse          auto      143±1ms   
                   sparse          svd         n/a     
-                  sparse        cholesky   5.70±0.03s 
-                  sparse          lsqr     138±0.6ms  
-                  sparse       sparse_cg    165±6ms   
-                  sparse          sag      2.93±0.1s  
-                  sparse          saga     2.14±0.04s 
+                  sparse        cholesky   5.30±0.01s 
+                  sparse          lsqr      126±20ms  
+                  sparse       sparse_cg    142±2ms   
+                  sparse          sag      2.45±0.03s 
+                  sparse          saga     1.81±0.01s 
              ================ =========== ============
 
 [68.70%] ···· For parameters: 'sparse', 'svd'
@@ -1686,20 +1692,20 @@
 [69.57%] ··· ================ =========== =============
               representation     solver                
              ---------------- ----------- -------------
-                  dense           auto      24.6±0.4ms 
-                  dense           svd       26.2±0.5ms 
-                  dense         cholesky    26.2±0.1ms 
-                  dense           lsqr     26.1±0.07ms 
-                  dense        sparse_cg    26.3±0.2ms 
-                  dense           sag      26.2±0.08ms 
-                  dense           saga      26.2±0.3ms 
-                  sparse          auto     7.82±0.06ms 
+                  dense           auto      26.9±0.2ms 
+                  dense           svd       24.3±0.1ms 
+                  dense         cholesky    24.3±0.1ms 
+                  dense           lsqr       27.2±2ms  
+                  dense        sparse_cg     27.1±3ms  
+                  dense           sag       24.1±0.2ms 
+                  dense           saga      24.1±0.5ms 
+                  sparse          auto      6.83±0.2ms 
                   sparse          svd          n/a     
-                  sparse        cholesky    7.59±0.2ms 
-                  sparse          lsqr     7.81±0.08ms 
-                  sparse       sparse_cg   7.83±0.04ms 
-                  sparse          sag      7.83±0.04ms 
-                  sparse          saga      8.24±0.7ms 
+                  sparse        cholesky     7.16±1ms  
+                  sparse          lsqr       6.86±1ms  
+                  sparse       sparse_cg   6.78±0.05ms 
+                  sparse          sag        7.21±1ms  
+                  sparse          saga       7.19±1ms  
              ================ =========== =============
 
 [69.57%] ···· For parameters: 'sparse', 'svd'
@@ -1716,13 +1722,13 @@
                   dense        sparse_cg   0.9433995989989826 
                   dense           sag       0.94339933719428  
                   dense           saga     0.9433995886080997 
-                  sparse          auto     0.9559364983453127 
+                  sparse          auto     0.9571166005141326 
                   sparse          svd             n/a         
-                  sparse        cholesky   0.9559363001009055 
-                  sparse          lsqr     0.9559364939537307 
-                  sparse       sparse_cg   0.9559364983453127 
-                  sparse          sag      0.9559403054081762 
-                  sparse          saga     0.9559410027834436 
+                  sparse        cholesky   0.9571170638618606 
+                  sparse          lsqr     0.9571166033989545 
+                  sparse       sparse_cg   0.9571166005141326 
+                  sparse          sag       0.9571187430523   
+                  sparse          saga     0.9571184313552151 
              ================ =========== ====================
 
 [70.43%] ···· For parameters: 'sparse', 'svd'
@@ -1739,13 +1745,13 @@
                   dense        sparse_cg   0.9444001571192623 
                   dense           sag      0.9444001419121766 
                   dense           saga     0.9444001543688754 
-                  sparse          auto     0.9659603006930404 
+                  sparse          auto     0.9657661035472471 
                   sparse          svd             n/a         
-                  sparse        cholesky   0.9659603032918241 
-                  sparse          lsqr     0.9659603004966123 
-                  sparse       sparse_cg   0.9659603006930404 
-                  sparse          sag      0.9659567438859308 
-                  sparse          saga     0.9659567100162183 
+                  sparse        cholesky   0.9657661061668905 
+                  sparse          lsqr     0.9657661032765283 
+                  sparse       sparse_cg   0.9657661035472471 
+                  sparse          sag      0.9657625424267708 
+                  sparse          saga     0.9657625113485871 
              ================ =========== ====================
 
 [71.30%] ···· For parameters: 'sparse', 'svd'
@@ -1753,12 +1759,12 @@
 
 [72.17%] ··· Setting up linear_model:151                                     ok
 [72.17%] ··· linear_model.SGDRegressorBenchmark.peakmem_fit                  ok
-[72.17%] ··· ================ ======
-              representation        
-             ---------------- ------
-                  dense        160M 
-                  sparse       88M  
-             ================ ======
+[72.17%] ··· ================ =======
+              representation         
+             ---------------- -------
+                  dense         160M 
+                  sparse       88.1M 
+             ================ =======
 
 [73.04%] ··· ..._model.SGDRegressorBenchmark.peakmem_predict                 ok
 [73.04%] ··· ================ =======
@@ -1772,24 +1778,24 @@
 [73.91%] ··· ================ ============
               representation              
              ---------------- ------------
-                  dense        5.39±0.01s 
-                  sparse       4.93±0.01s 
+                  dense        5.79±0.4s  
+                  sparse       4.26±0.01s 
              ================ ============
 
 [74.78%] ··· linear_model.SGDRegressorBenchmark.time_predict                 ok
-[74.78%] ··· ================ ============
-              representation              
-             ---------------- ------------
-                  dense        10.9±0.1ms 
-                  sparse       2.93±0.4ms 
-             ================ ============
+[74.78%] ··· ================ =============
+              representation               
+             ---------------- -------------
+                  dense        9.81±0.08ms 
+                  sparse       2.13±0.01ms 
+             ================ =============
 
 [75.65%] ··· ...model.SGDRegressorBenchmark.track_test_score                 ok
 [75.65%] ··· ================ ====================
               representation                      
              ---------------- --------------------
                   dense        0.9636293915848902 
-                  sparse       0.9614971673099436 
+                  sparse       0.9615144610799312 
              ================ ====================
 
 [76.52%] ··· ...odel.SGDRegressorBenchmark.track_train_score                 ok
@@ -1797,7 +1803,7 @@
               representation                      
              ---------------- --------------------
                   dense        0.9641785427097553 
-                  sparse       0.9621322913914441 
+                  sparse       0.9619233561023691 
              ================ ====================
 
 [77.39%] ··· Setting up manifold:15                                          ok
@@ -1805,16 +1811,16 @@
 [77.39%] ··· ============ =======
                 method           
              ------------ -------
-                exact      89.9M 
-              barnes_hut   97.8M 
+                exact      91.1M 
+              barnes_hut   97.6M 
              ============ =======
 
 [78.26%] ··· manifold.TSNEBenchmark.time_fit                                 ok
 [78.26%] ··· ============ ============
                 method                
              ------------ ------------
-                exact      6.52±0.01s 
-              barnes_hut   3.11±0.03s 
+                exact      6.52±0.06s 
+              barnes_hut   3.46±0.3s  
              ============ ============
 
 [79.13%] ··· manifold.TSNEBenchmark.track_test_score                         ok
@@ -1822,7 +1828,7 @@
                 method                        
              ------------ --------------------
                 exact      0.3218818006120378 
-              barnes_hut   0.7243015766143799 
+              barnes_hut   0.7243015170097351 
              ============ ====================
 
 [80.00%] ··· manifold.TSNEBenchmark.track_train_score                        ok
@@ -1830,7 +1836,7 @@
                 method                        
              ------------ --------------------
                 exact      0.3218818006120378 
-              barnes_hut   0.7243015766143799 
+              barnes_hut   0.7243015170097351 
              ============ ====================
 
 [80.87%] ··· ...istancesBenchmark.peakmem_pairwise_distances                 ok
@@ -1839,13 +1845,13 @@
              ------------------------------ ---------------
               representation      metric       1       4   
              ================ ============= ======= =======
-                  dense           cosine      669M    785M 
-                  dense         euclidean     752M    930M 
-                  dense         manhattan     255M    338M 
-                  dense        correlation    248M    484M 
-                  sparse          cosine     1.42G   1.41G 
-                  sparse        euclidean     570M    893M 
-                  sparse        manhattan     187M    232M 
+                  dense           cosine      669M    782M 
+                  dense         euclidean     752M   1.12G 
+                  dense         manhattan     255M    340M 
+                  dense        correlation    248M    478M 
+                  sparse          cosine     1.42G   1.26G 
+                  sparse        euclidean     570M    952M 
+                  sparse        manhattan     187M    219M 
                   sparse       correlation    n/a     n/a  
              ================ ============= ======= =======
 
@@ -1853,7 +1859,7 @@
               ________________________________________________________________________________
               [Memory] Calling benchmarks.datasets._random_dataset...
               _random_dataset(n_samples=12000, representation='dense')
-              ___________________________________________________random_dataset - 0.2s, 0.0min
+              ___________________________________________________random_dataset - 0.3s, 0.0min
               
               For parameters: 'dense', 'manhattan', 1
               ________________________________________________________________________________
@@ -1865,13 +1871,13 @@
               ________________________________________________________________________________
               [Memory] Calling benchmarks.datasets._random_dataset...
               _random_dataset(n_samples=12000, representation='sparse')
-              ___________________________________________________random_dataset - 0.9s, 0.0min
+              ___________________________________________________random_dataset - 0.8s, 0.0min
               
               For parameters: 'sparse', 'manhattan', 1
               ________________________________________________________________________________
               [Memory] Calling benchmarks.datasets._random_dataset...
               _random_dataset(n_samples=4000, representation='sparse')
-              ___________________________________________________random_dataset - 0.1s, 0.0min
+              ___________________________________________________random_dataset - 0.3s, 0.0min
               
               For parameters: 'sparse', 'correlation', 1
               asv: skipped: NotImplementedError()
@@ -1885,13 +1891,13 @@
              ------------------------------ -------------------------
               representation      metric         1            4      
              ================ ============= ============ ============
-                  dense           cosine     1.11±0.01s   1.24±0.03s 
-                  dense         euclidean     1.72±0s     3.08±0.06s 
-                  dense         manhattan    7.38±0.1s    2.65±0.07s 
-                  dense        correlation   3.27±0.01s   2.52±0.03s 
-                  sparse          cosine     3.72±0.1s    2.61±0.2s  
-                  sparse        euclidean    2.56±0.02s   2.13±0.08s 
-                  sparse        manhattan    1.23±0.01s   1.32±0.01s 
+                  dense           cosine     1.06±0.01s   1.25±0.05s 
+                  dense         euclidean    1.73±0.06s   3.22±0.07s 
+                  dense         manhattan    6.28±0.03s   2.79±0.3s  
+                  dense        correlation   3.32±0.02s   2.69±0.07s 
+                  sparse          cosine     4.28±0.7s    2.55±0.08s 
+                  sparse        euclidean    2.79±0.4s    2.09±0.1s  
+                  sparse        manhattan    1.28±0.2s    1.30±0.02s 
                   sparse       correlation      n/a          n/a     
              ================ ============= ============ ============
 
@@ -1913,14 +1919,14 @@
               ________________________________________________________________________________
               [Memory] Calling benchmarks.datasets._synth_classification_dataset...
               _synth_classification_dataset(n_samples=50000, n_features=100)
-              _____________________________________synth_classification_dataset - 0.6s, 0.0min
+              _____________________________________synth_classification_dataset - 0.5s, 0.0min
 
 [83.48%] ··· ...ction.CrossValidationBenchmark.time_crossval                 ok
 [83.48%] ··· ======== ============
               n_jobs              
              -------- ------------
-                1      1.07±0.01m 
-                4      17.2±0.07s 
+                1      1.07±0.03m 
+                4      18.8±0.7s  
              ======== ============
 
 [84.35%] ··· ...tion.CrossValidationBenchmark.track_crossval                 ok
@@ -1952,16 +1958,16 @@
 [86.96%] ··· ======== ============
               n_jobs              
              -------- ------------
-                1      5.68±0.01m 
-                4      1.69±0.01m 
+                1      5.66±0.04m 
+                4      1.73±0.01m 
              ======== ============
 
 [87.83%] ··· ...l_selection.GridSearchBenchmark.time_predict                 ok
 [87.83%] ··· ======== ============
               n_jobs              
              -------- ------------
-                1       43.0±2ms  
-                4      42.9±0.3ms 
+                1       50.0±6ms  
+                4      38.1±0.8ms 
              ======== ============
 
 [88.70%] ··· ...lection.GridSearchBenchmark.track_test_score                 ok
@@ -1987,9 +1993,9 @@
              ----------- -----------------------------------------
               algorithm   low / 1   low / 4   high / 1   high / 4 
              =========== ========= ========= ========== ==========
-                brute      77.6M     77.8M     81.1M      81.1M   
-               kd_tree     80.2M     80.1M     88.6M      88.6M   
-              ball_tree    80.1M     80.1M     88.5M      88.5M   
+                brute      77.9M     77.9M     81.2M      81.2M   
+               kd_tree     80.1M     80.1M     88.7M      88.7M   
+              ball_tree    80.2M     80.1M     88.5M      88.5M   
              =========== ========= ========= ========== ==========
 
 [91.30%] ··· ...NeighborsClassifierBenchmark.peakmem_predict                 ok
@@ -1998,9 +2004,9 @@
              ----------- -----------------------------------------
               algorithm   low / 1   low / 4   high / 1   high / 4 
              =========== ========= ========= ========== ==========
-                brute      88.4M     88.3M      93M       93.1M   
-               kd_tree     81.7M     84.4M     91.5M      91.4M   
-              ball_tree    81.5M     84.3M      91M       90.9M   
+                brute      88.3M     88.5M     93.1M      93.3M   
+               kd_tree     81.7M     84.5M     91.2M      91.5M   
+              ball_tree    81.5M     84.3M     91.1M      91.1M   
              =========== ========= ========= ========== ==========
 
 [92.17%] ··· ...hbors.KNeighborsClassifierBenchmark.time_fit                 ok
@@ -2009,12 +2015,12 @@
              ----------------------- ---------------------------
               algorithm   dimension        1             4      
              =========== =========== ============= =============
-                brute        low       1.06±0.2ms     1.05±0ms  
-                brute        high     1.74±0.03ms    1.27±0.2ms 
-               kd_tree       low      12.0±0.06ms    12.8±0.6ms 
-               kd_tree       high       59.0±2ms      56.4±3ms  
-              ball_tree      low      8.76±0.07ms   8.75±0.07ms 
-              ball_tree      high      33.9±0.2ms    34.0±0.3ms 
+                brute        low       1.03±0.2ms     1.02±0ms  
+                brute        high     1.19±0.01ms   1.19±0.01ms 
+               kd_tree       low      11.9±0.04ms   11.9±0.04ms 
+               kd_tree       high      50.6±0.4ms    50.1±0.3ms 
+              ball_tree      low      8.61±0.07ms   8.58±0.02ms 
+              ball_tree      high     32.5±0.09ms    32.6±0.1ms 
              =========== =========== ============= =============
 
 [93.04%] ··· ...s.KNeighborsClassifierBenchmark.time_predict                 ok
@@ -2023,48 +2029,48 @@
              ----------------------- -------------------------
               algorithm   dimension       1            4      
              =========== =========== ============ ============
-                brute        low      91.1±0.4ms   88.7±0.3ms 
-                brute        high     130±0.4ms    129±0.4ms  
-               kd_tree       low      1.41±0.04s   2.82±0.2s  
-               kd_tree       high     9.38±0.09s   8.29±0.3s  
-              ball_tree      low      2.44±0.3s    4.84±0.8s  
-              ball_tree      high     7.45±0.6s    11.1±0.5s  
+                brute        low      91.2±10ms    90.7±0.1ms 
+                brute        high      130±10ms     127±3ms   
+               kd_tree       low       1.17±0s     2.76±0.07s 
+               kd_tree       high     8.23±0.01s   8.73±0.3s  
+              ball_tree      low      2.02±0.1s    5.49±0.3s  
+              ball_tree      high     8.23±0.2s    10.6±0.4s  
              =========== =========== ============ ============
 
 [93.91%] ··· ...eighborsClassifierBenchmark.track_test_score                 ok
-[93.91%] ··· =========== =========== ======== ====================
-              algorithm   dimension   n_jobs                      
-             ----------- ----------- -------- --------------------
-                brute        low        1      0.4429571912829343 
-                brute        low        4      0.4429571912829343 
-                brute        high       1      0.6740298313758913 
-                brute        high       4      0.6740298313758913 
-               kd_tree       low        1      0.4429571912829343 
-               kd_tree       low        4      0.4429571912829343 
-               kd_tree       high       1      0.6740298313758913 
-               kd_tree       high       4      0.6740298313758913 
-              ball_tree      low        1      0.4429571912829343 
-              ball_tree      low        4      0.4429571912829343 
-              ball_tree      high       1      0.6740298313758913 
-              ball_tree      high       4      0.6740298313758913 
-             =========== =========== ======== ====================
+[93.91%] ··· =========== =========== ======== =====================
+              algorithm   dimension   n_jobs                       
+             ----------- ----------- -------- ---------------------
+                brute        low        1      0.44033615234225143 
+                brute        low        4      0.44033615234225143 
+                brute        high       1       0.6552512514068385 
+                brute        high       4       0.6552512514068385 
+               kd_tree       low        1      0.44033615234225143 
+               kd_tree       low        4      0.44033615234225143 
+               kd_tree       high       1       0.6552512514068385 
+               kd_tree       high       4       0.6552512514068385 
+              ball_tree      low        1      0.44033615234225143 
+              ball_tree      low        4      0.44033615234225143 
+              ball_tree      high       1       0.6552512514068385 
+              ball_tree      high       4       0.6552512514068385 
+             =========== =========== ======== =====================
 
 [94.78%] ··· ...ighborsClassifierBenchmark.track_train_score                 ok
 [94.78%] ··· =========== =========== ======== ====================
               algorithm   dimension   n_jobs                      
              ----------- ----------- -------- --------------------
-                brute        low        1      0.6385128876659937 
-                brute        low        4      0.6385128876659937 
-                brute        high       1      0.7891633631498848 
-                brute        high       4      0.7891633631498848 
-               kd_tree       low        1      0.6385128876659937 
-               kd_tree       low        4      0.6385128876659937 
-               kd_tree       high       1      0.7891633631498848 
-               kd_tree       high       4      0.7891633631498848 
-              ball_tree      low        1      0.6385128876659937 
-              ball_tree      low        4      0.6385128876659937 
-              ball_tree      high       1      0.7891633631498848 
-              ball_tree      high       4      0.7891633631498848 
+                brute        low        1      0.6439434548717159 
+                brute        low        4      0.6439434548717159 
+                brute        high       1      0.796656649445452  
+                brute        high       4      0.796656649445452  
+               kd_tree       low        1      0.6439434548717159 
+               kd_tree       low        4      0.6439434548717159 
+               kd_tree       high       1      0.796656649445452  
+               kd_tree       high       4      0.796656649445452  
+              ball_tree      low        1      0.6439434548717159 
+              ball_tree      low        4      0.6439434548717159 
+              ball_tree      high       1      0.796656649445452  
+              ball_tree      high       4      0.796656649445452  
              =========== =========== ======== ====================
 
 [95.65%] ··· Setting up svm:14                                               ok
@@ -2105,14 +2111,14 @@
              ========= ======
 
 [97.39%] ··· svm.SVCBenchmark.time_fit                                       ok
-[97.39%] ··· ========= =========
-               kernel           
-             --------- ---------
-               linear   1.76±0s 
-                poly    1.76±0s 
-                rbf     1.77±0s 
-              sigmoid   1.77±0s 
-             ========= =========
+[97.39%] ··· ========= ============
+               kernel              
+             --------- ------------
+               linear   1.52±0.3s  
+                poly    1.97±0.2s  
+                rbf     1.55±0.01s 
+              sigmoid   1.93±0.2s  
+             ========= ============
 
 [97.39%] ···· For parameters: 'linear'
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
@@ -2149,10 +2155,10 @@
                 warnings.warn(
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
                 warnings.warn(
-              
-              For parameters: 'poly'
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
                 warnings.warn(
+              
+              For parameters: 'poly'
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
                 warnings.warn(
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
@@ -2225,10 +2231,12 @@
                 warnings.warn(
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
                 warnings.warn(
-              
-              For parameters: 'sigmoid'
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
                 warnings.warn(
+              /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
+                warnings.warn(
+              
+              For parameters: 'sigmoid'
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
                 warnings.warn(
               /home/ubuntu/scikit-learn/asv_benchmarks/env/f6ff9b5b333fe13b488feffb65c69a2e/lib/python3.11/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
@@ -2268,10 +2276,10 @@
 [98.26%] ··· ========= ============
                kernel              
              --------- ------------
-               linear    676±4ms   
-                poly     627±2ms   
-                rbf     1.75±0.02s 
-              sigmoid    633±2ms   
+               linear    670±60ms  
+                poly     658±2ms   
+                rbf     1.94±0.02s 
+              sigmoid    623±30ms  
              ========= ============
 
 [99.13%] ··· svm.SVCBenchmark.track_test_score                               ok
@@ -2348,7 +2356,7 @@ python                    3.11.7          hab00c5b_1_cpython    conda-forge
 python-dateutil           2.8.2              pyhd8ed1ab_0    conda-forge
 python-tzdata             2023.4             pyhd8ed1ab_0    conda-forge
 python_abi                3.11                    4_cp311    conda-forge
-pytz                      2023.3.post1       pyhd8ed1ab_0    conda-forge
+pytz                      2023.4             pyhd8ed1ab_0    conda-forge
 readline                  8.2                  h8228510_1    conda-forge
 scikit-learn              1.5.dev0                 pypi_0    pypi
 scipy                     1.11.2          py311h64a7726_1    conda-forge
@@ -2401,13 +2409,14 @@ Thread(s) per core:              1
 Core(s) per socket:              1
 Socket(s):                       8
 Stepping:                        1
-BogoMIPS:                        4589.35
-Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm invpcid_single pti fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt arat
+BogoMIPS:                        4589.37
+Flags:                           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm invpcid_single pti fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt arat
 Hypervisor vendor:               KVM
 Virtualization type:             full
 L1d cache:                       256 KiB (8 instances)
 L1i cache:                       256 KiB (8 instances)
 L2 cache:                        32 MiB (8 instances)
+L3 cache:                        128 MiB (8 instances)
 NUMA node(s):                    1
 NUMA node0 CPU(s):               0-7
 Vulnerability Itlb multihit:     KVM: Mitigation: VMX unsupported
